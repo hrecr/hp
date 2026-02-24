@@ -1,110 +1,72 @@
 {
-  "name": "YOUR NAME",
-  "tagline": "Researcher • Engineer • Builder",
-  "location": "Istanbul, Türkiye",
-  "email": "you@example.com",
-  "phone": "+90 5xx xxx xx xx",
-  "githubUsername": "YOUR_GITHUB_USERNAME",
-  "links": {
-    "website": "https://example.com",
-    "github": "https://github.com/YOUR_GITHUB_USERNAME",
-    "linkedin": "https://www.linkedin.com/in/YOUR_HANDLE",
-    "googleScholar": "",
-    "orcid": "",
-    "cvPdf": "../resume/CV.pdf"
+  "siteMetadata": {
+    "name": "Reza Saadi",
+    "title": "Reza Saadi — Cryptography Researcher",
+    "description": "Cryptography researcher at Koç University and Amirkabir University of Technology. Research interests in cryptographic protocols, security, and applied cryptography.",
+    "email": "",
+    "linkedin": "https://www.linkedin.com/in/hrezasaadi/",
+    "location": "Istanbul, Türkiye",
+    "resumePdf": "./resume/Resume.pdf"
   },
-  "summary": "Write a 3–5 sentence summary that mixes your research identity with what you build. Example: I work on trustworthy machine learning systems and also ship production-grade tools. I like problems that have both math and messy reality.",
-  "highlights": [
-    "1–2 punchy achievements with numbers (accuracy, latency, citations, users, grants, etc.)",
-    "Another achievement with a real metric",
-    "A third highlight that hints at your niche"
-  ],
-  "skills": {
-    "Languages": ["Python", "C/C++", "JavaScript/TypeScript"],
-    "ML/DS": ["PyTorch", "scikit-learn", "pandas"],
-    "Web": ["HTML", "CSS", "Node.js"],
-    "Tools": ["Git", "Docker", "Linux"]
-  },
-  "education": [
-    {
-      "degree": "M.Sc. in Computer Science",
-      "school": "Your University",
-      "location": "City, Country",
-      "start": "2023",
-      "end": "2025",
-      "details": [
-        "Thesis: Something specific and interesting",
-        "Advisor: Prof. Someone"
-      ]
-    }
-  ],
-  "experience": [
-    {
-      "role": "Research Engineer",
-      "org": "Lab / Company",
-      "location": "City, Country",
-      "start": "2024",
-      "end": "Present",
-      "bullets": [
-        "Built X that improved Y by Z%",
-        "Implemented A; reduced B from 120ms to 40ms"
-      ]
-    }
-  ],
-  "publications": [
-    {
-      "title": "Paper Title Goes Here",
-      "authors": "Your Name, Coauthor A, Coauthor B",
-      "venue": "Conference / Journal",
-      "year": 2025,
-      "badges": ["peer-reviewed"],
-      "links": {
-        "pdf": "../papers/paper-1.pdf",
-        "doi": "",
-        "code": ""
-      },
-      "note": "One-line contribution summary (what the paper actually does)."
-    }
-  ],
-  "researchProjects": [
-    {
-      "title": "Research Project Name",
-      "role": "Lead / Contributor",
-      "when": "2024–2025",
-      "summary": "Two sentences on the question, method, and why it matters.",
-      "stack": ["PyTorch", "CUDA", "Linux"],
-      "highlights": [
-        "Key result or finding",
-        "A neat evaluation detail or dataset"
-      ],
-      "links": {
-        "projectPage": "",
-        "paper": "../papers/paper-1.pdf",
-        "code": "https://github.com/YOUR_GITHUB_USERNAME/your-repo"
-      }
-    }
-  ],
-  "implementationProjects": {
-    "mode": "github",
-    "featuredRepos": [
-      "awesome-project",
-      "another-project"
-    ],
-    "manual": [
+  "sections": {
+    "about": {
+      "heading": "About Me",
+      "content": "I am a Cryptography Researcher with experience in designing and analysing secure protocols, with affiliations at Koç University and previous education at Amirkabir University of Technology — Tehran Polytechnic. My research focuses on applied cryptography, security protocols, and systems that bridge theory and practice."
+    },
+    "resume": {
+      "heading": "Resume",
+      "pdf": "./resume/Resume.pdf",
+      "description": "Download my full curriculum vitae."
+    },
+    "education": [
       {
-        "name": "Implementation Project (Manual Entry)",
-        "description": "Use this when you want to curate projects without GitHub API.",
-        "topics": ["systems", "ml"],
-        "links": {
-          "repo": "https://github.com/YOUR_GITHUB_USERNAME/your-repo",
-          "demo": "",
-          "docs": ""
-        }
+        "institution": "Koç University",
+        "degree": "",
+        "fieldOfStudy": "",
+        "startDate": "",
+        "endDate": "",
+        "location": "Istanbul, Türkiye"
+      },
+      {
+        "institution": "Amirkabir University of Technology – Tehran Polytechnic",
+        "degree": "",
+        "fieldOfStudy": "",
+        "startDate": "",
+        "endDate": "",
+        "location": "Tehran, Iran"
       }
-    ]
-  },
-  "contact": {
-    "pitch": "Want to collaborate, review a paper, or build something weird and useful? Email me.",
-    "timezone": "Europe/Istanbul"
+    ],
+    "papers": [
+      {
+        "title": "Sample Publication Title",
+        "description": "Description of a selected research paper or publication.",
+        "pdfLink": ""
+      }
+    ],
+    "researchProjects": [
+      {
+        "name": "Cryptographic Protocol Design",
+        "description": "Research on secure protocol design and analysis.",
+        "link": ""
+      }
+    ],
+    "implementationProjects": {
+      "mode": "manual",
+      "manual": [
+        {
+          "name": "Example Implementation Project",
+          "description": "Placeholder for your Github project description.",
+          "topics": ["cryptography", "security"],
+          "links": {
+            "repo": "https://github.com/hrecr/"
+          }
+        }
+      ]
+    },
+    "contact": {
+      "heading": "Contact",
+      "email": "",
+      "linkedin": "https://www.linkedin.com/in/hrezasaadi/"
+    }
   }
 }
