@@ -1,14 +1,14 @@
 {
-  "name": "YOUR NAME",
-  "tagline": "Researcher • Engineer • Builder",
+  "name": "Reza Saadi",
+  "tagline": "Cryptography researcher • Rust developer ",
   "location": "Istanbul, Türkiye",
-  "email": "you@example.com",
+  "email": "hdadmarzi23@ku.edu.tr",
   "phone": "+90 5xx xxx xx xx",
-  "githubUsername": "YOUR_GITHUB_USERNAME",
+  "githubUsername": "hrecr",
   "links": {
-    "website": "https://example.com",
-    "github": "https://github.com/YOUR_GITHUB_USERNAME",
-    "linkedin": "https://www.linkedin.com/in/YOUR_HANDLE",
+    "website": "https://hrecr.github.io",
+    "github": "https://github.com/hrecr",
+    "linkedin": "https://www.linkedin.com/in/hrezasaadi",
     "googleScholar": "",
     "orcid": "",
     "cvPdf": "../resume/CV.pdf"
@@ -20,21 +20,19 @@
     "A third highlight that hints at your niche"
   ],
   "skills": {
-    "Languages": ["Python", "C/C++", "JavaScript/TypeScript"],
-    "ML/DS": ["PyTorch", "scikit-learn", "pandas"],
-    "Web": ["HTML", "CSS", "Node.js"],
-    "Tools": ["Git", "Docker", "Linux"]
+    "Languages": ["Rust", "Python","Golang"],
+    "Tools": ["Git", "Docker", "Linux","Latex"]
   },
   "education": [
     {
-      "degree": "M.Sc. in Computer Science",
-      "school": "Your University",
-      "location": "City, Country",
-      "start": "2023",
-      "end": "2025",
+      "degree": "M.Sc. in Computer Science and engineering",
+      "school": "Koç University",
+      "location": "Istanbul, Turkey",
+      "start": "2023-Fall",
+      "end": "2026-Spring",
       "details": [
-        "Thesis: Something specific and interesting",
-        "Advisor: Prof. Someone"
+        "Subject: Password based authentication schemes(MPC)",
+        "Advisor: Prof. alptekin kupcu"
       ]
     }
   ],
