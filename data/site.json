@@ -1,108 +1,431 @@
 {
-  "name": "Reza Saadi",
-  "tagline": "Cryptography researcher • Rust developer ",
+  "name": "Hamid Reza Saadi Dadmarzi",
+  "tagline": "Ph.D. Researcher • Secure Computation • Privacy-Preserving ML",
   "location": "Istanbul, Türkiye",
   "email": "hdadmarzi23@ku.edu.tr",
-  "phone": "+90 5xx xxx xx xx",
-  "githubUsername": "hrecr",
+  "phone": "+90 538 783 75 69",
+  "githubUsername": "",
   "links": {
-    "website": "https://hrecr.github.io",
-    "github": "https://github.com/hrecr",
-    "linkedin": "https://www.linkedin.com/in/hrezasaadi",
+    "website": "",
+    "github": "",
+    "linkedin": "https://www.linkedin.com/in/hrezasaadi/",
     "googleScholar": "",
     "orcid": "",
     "cvPdf": "../resume/CV.pdf"
   },
-  "summary": "Write a 3–5 sentence summary that mixes your research identity with what you build. Example: I work on trustworthy machine learning systems and also ship production-grade tools. I like problems that have both math and messy reality.",
+  "summary": "Ph.D. student in Computer Science at Koç University (Istanbul), working on Secure Multi‑Party Computation (SMPC), privacy‑preserving machine learning, and post‑quantum cryptography. I like research that has both proofs and performance: designing protocols, writing simulation/UC security arguments, and benchmarking implementations (Rust/Go/Docker). Previously built automated crypto asset-management tools and market screeners, and worked on quantum kernels for neural networks using Qiskit/PyQuil. I’m also curating a Post‑Quantum Cryptography (PQC) Application Atlas (90+ papers across 19 domains).",
   "highlights": [
-    "1–2 punchy achievements with numbers (accuracy, latency, citations, users, grants, etc.)",
-    "Another achievement with a real metric",
-    "A third highlight that hints at your niche"
+    "Curating a PQC Application Atlas: 90+ papers (2020–present) organized into 19 application domains.",
+    "Research across SMPC, privacy-preserving ML, and post-quantum cryptography (first-author projects in progress).",
+    "External reviewer for IEEE TIFS, ACM ASIACCS 2024, ACNS 2026, and the Turkish Journal of Electrical Engineering & Computer Sciences."
   ],
   "skills": {
-    "Languages": ["Rust", "Python","Golang"],
-    "Tools": ["Git", "Docker", "Linux","Latex"]
+    "Spoken languages": [
+      "Persian (Native)",
+      "English (Working Professional)",
+      "Turkish (Elementary)"
+    ],
+    "Programming": [
+      "C++",
+      "Python",
+      "Go (Golang)",
+      "Rust",
+      "MATLAB"
+    ],
+    "Typesetting": [
+      "LaTeX"
+    ],
+    "Data manipulation & ML": [
+      "NumPy",
+      "pandas",
+      "SciPy",
+      "scikit-learn",
+      "TensorFlow"
+    ],
+    "Quantum information": [
+      "Qiskit",
+      "PyQuil"
+    ],
+    "Optimization": [
+      "scipy.optimize",
+      "CVXPY"
+    ],
+    "Data analysis & visualization": [
+      "Tableau",
+      "Excel",
+      "Power BI"
+    ],
+    "Go libraries": [
+      "Lattigo"
+    ]
   },
   "education": [
     {
-      "degree": "M.Sc. in Computer Science and engineering",
+      "degree": "Ph.D. in Computer Science",
       "school": "Koç University",
       "location": "Istanbul, Turkey",
-      "start": "2023-Fall",
-      "end": "2026-Spring",
+      "start": "2023/11",
+      "end": "Present",
       "details": [
-        "Subject: Password based authentication schemes(MPC)",
-        "Advisor: Prof. alptekin kupcu"
+        "Research focus: Secure Multi-Party Computation (SMPC), Privacy-preserving ML, Post-Quantum Cryptography.",
+        "Affiliation: Koç University, Dept. of Engineering."
+      ]
+    },
+    {
+      "degree": "M.Sc. in Applied Mathematics",
+      "school": "Amirkabir University of Technology (Tehran Polytechnic)",
+      "location": "Tehran, Iran",
+      "start": "2017/09",
+      "end": "2020/08",
+      "details": []
+    },
+    {
+      "degree": "Minor in Physics",
+      "school": "Amirkabir University of Technology (Tehran Polytechnic)",
+      "location": "Tehran, Iran",
+      "start": "2018/09",
+      "end": "2020/08",
+      "details": []
+    },
+    {
+      "degree": "B.Sc. in Applied Mathematics",
+      "school": "Amirkabir University of Technology (Tehran Polytechnic)",
+      "location": "Tehran, Iran",
+      "start": "2014/09",
+      "end": "2017/08",
+      "details": [
+        "Ranked in the top 5% among all students."
       ]
     }
   ],
   "experience": [
     {
-      "role": "Research Engineer",
-      "org": "Lab / Company",
-      "location": "City, Country",
-      "start": "2024",
-      "end": "Present",
+      "role": "Crypto screeners & automated asset management bots",
+      "org": "BTL Coin Crypto Exchange",
+      "location": "Istanbul, Turkey / Remote",
+      "start": "2021/05",
+      "end": "2023/10",
       "bullets": [
-        "Built X that improved Y by Z%",
-        "Implemented A; reduced B from 120ms to 40ms"
+        "Developed personalized market screeners and automated crypto asset management bots using Golang and Docker."
+      ]
+    },
+    {
+      "role": "Quantum kernels for neural networks",
+      "org": "Institute for Research in Fundamental Sciences (IPM)",
+      "location": "Tehran, Iran",
+      "start": "2020/10",
+      "end": "2021/03",
+      "bullets": [
+        "Optimized quantum kernels for neural networks using Qiskit and PyQuil."
+      ]
+    },
+    {
+      "role": "Data warehouse & data integration",
+      "org": "Paid University Project",
+      "location": "Tehran, Iran",
+      "start": "2019/05",
+      "end": "2020/07",
+      "bullets": [
+        "Developed a data warehouse and integrated data using Excel and Tableau."
       ]
     }
   ],
-  "publications": [
-    {
-      "title": "Paper Title Goes Here",
-      "authors": "Your Name, Coauthor A, Coauthor B",
-      "venue": "Conference / Journal",
-      "year": 2025,
-      "badges": ["peer-reviewed"],
-      "links": {
-        "pdf": "../papers/paper-1.pdf",
-        "doi": "",
-        "code": ""
-      },
-      "note": "One-line contribution summary (what the paper actually does)."
-    }
-  ],
+  "publications": [],
   "researchProjects": [
     {
-      "title": "Research Project Name",
-      "role": "Lead / Contributor",
-      "when": "2024–2025",
-      "summary": "Two sentences on the question, method, and why it matters.",
-      "stack": ["PyTorch", "CUDA", "Linux"],
+      "title": "Updatable Distributed Password-Protected Sharing (UpSPA)",
+      "role": "Designer / Protocol engineer",
+      "when": "Near completion",
+      "summary": "Designed and strengthened an updatable SMPC scheme; authored ideal/real simulation proofs under malicious adversaries; enhanced protocol design; evaluated performance in Rust, Golang, and Docker.",
+      "stack": [
+        "SMPC",
+        "Rust",
+        "Go",
+        "Docker"
+      ],
       "highlights": [
-        "Key result or finding",
-        "A neat evaluation detail or dataset"
+        "Ideal/real simulation proofs under malicious adversaries.",
+        "Protocol design improvements + performance evaluation (Rust/Go, containerized benchmarks)."
       ],
       "links": {
         "projectPage": "",
-        "paper": "../papers/paper-1.pdf",
-        "code": "https://github.com/YOUR_GITHUB_USERNAME/your-repo"
+        "paper": "",
+        "code": ""
+      }
+    },
+    {
+      "title": "Post-Quantum Secure SPA Framework",
+      "role": "First author",
+      "when": "In development",
+      "summary": "Extending the UpSPA concept to a post-quantum secure framework using a KEM with three properties; building UC-security proofs for adaptive malicious adversaries and benchmarking against UpSPA and existing SSO schemes.",
+      "stack": [
+        "PQC",
+        "KEM",
+        "UC security",
+        "Benchmarking"
+      ],
+      "highlights": [
+        "UC-security proofs (adaptive malicious adversaries).",
+        "Performance benchmarking vs UpSPA + existing SSO schemes."
+      ],
+      "links": {
+        "projectPage": "",
+        "paper": "",
+        "code": ""
+      }
+    },
+    {
+      "title": "CURE Project (privacy-preserving ML with FHE)",
+      "role": "Contributor",
+      "when": "Completed",
+      "summary": "Assisted in developing privacy-preserving ML models using Lattigo (Golang), implementing and debugging CKKS-based FHE and bootstrapping modules.",
+      "stack": [
+        "FHE",
+        "CKKS",
+        "Lattigo",
+        "Go"
+      ],
+      "highlights": [
+        "Implemented + debugged CKKS/FHE components and bootstrapping modules in Go (Lattigo)."
+      ],
+      "links": {
+        "projectPage": "",
+        "paper": "",
+        "code": ""
+      }
+    },
+    {
+      "title": "Frequency Domain DP-FL",
+      "role": "First author",
+      "when": "In progress",
+      "summary": "Developing a frequency-domain differential privacy framework for communication-efficient federated learning, integrating Fourier-based grouping with tight DP accounting.",
+      "stack": [
+        "Differential Privacy",
+        "Federated Learning",
+        "Fourier",
+        "DP accounting"
+      ],
+      "highlights": [
+        "Fourier-based grouping for communication efficiency.",
+        "Tight differential privacy accounting."
+      ],
+      "links": {
+        "projectPage": "",
+        "paper": "",
+        "code": ""
+      }
+    },
+    {
+      "title": "PQC Application Atlas",
+      "role": "Independent curator",
+      "when": "Ongoing",
+      "summary": "Curating a comprehensive survey of post-quantum cryptography applications: 90+ papers (2020–present) organized into 19 domains in Overleaf, planned as a public reference website inspired by the Error Correction Zoo.",
+      "stack": [
+        "Survey",
+        "PQC",
+        "Overleaf",
+        "Web reference"
+      ],
+      "highlights": [
+        "90+ papers (2020–present), categorized into 19 application domains.",
+        "Planned public reference website (Error Correction Zoo-inspired)."
+      ],
+      "links": {
+        "projectPage": "",
+        "paper": "",
+        "code": ""
       }
     }
   ],
   "implementationProjects": {
-    "mode": "github",
-    "featuredRepos": [
-      "awesome-project",
-      "another-project"
-    ],
+    "mode": "manual",
+    "featuredRepos": [],
     "manual": [
       {
-        "name": "Implementation Project (Manual Entry)",
-        "description": "Use this when you want to curate projects without GitHub API.",
-        "topics": ["systems", "ml"],
+        "name": "Crypto market screeners & asset management bots",
+        "description": "Personalized market screeners and automated crypto asset management bots.",
+        "topics": [
+          "Go",
+          "Docker",
+          "Crypto"
+        ],
         "links": {
-          "repo": "https://github.com/YOUR_GITHUB_USERNAME/your-repo",
+          "repo": "",
+          "demo": "",
+          "docs": ""
+        }
+      },
+      {
+        "name": "Quantum kernel optimization for neural networks",
+        "description": "Optimized quantum kernels for neural networks using Qiskit and PyQuil.",
+        "topics": [
+          "Qiskit",
+          "PyQuil",
+          "Quantum ML"
+        ],
+        "links": {
+          "repo": "",
+          "demo": "",
+          "docs": ""
+        }
+      },
+      {
+        "name": "Data warehouse + integration (Excel/Tableau)",
+        "description": "Developed a data warehouse and integrated data; delivered analysis and visualization workflows using Excel and Tableau.",
+        "topics": [
+          "Excel",
+          "Tableau",
+          "Data warehouse"
+        ],
+        "links": {
+          "repo": "",
           "demo": "",
           "docs": ""
         }
       }
     ]
   },
+  "honorsAwards": [
+    "Awarded double major recognition from the Exceptional Talent Center at the university.",
+    "Admitted to the Master of Science program without a national entrance exam (Exceptional Talent Center).",
+    "Ranked in the top 5% among all students in the B.Sc. program."
+  ],
+  "academicServices": [
+    {
+      "text": "External reviewer for IEEE Transactions on Information Forensics & Security, ACM ASIACCS 2024, ACNS 2026, and Turkish Journal of Electrical Engineering & Computer Sciences (10+ papers across 4+ venues).",
+      "links": [
+        {
+          "label": "IEEE TIFS",
+          "url": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=10206"
+        },
+        {
+          "label": "ACM ASIACCS 2024",
+          "url": "https://asiaccs2024.sutd.edu.sg/"
+        },
+        {
+          "label": "ACNS 2026",
+          "url": "https://acns2026.github.io/"
+        },
+        {
+          "label": "Turkish Journal of Electrical Engineering & Computer Sciences",
+          "url": "https://journals.tubitak.gov.tr/elektrik/"
+        }
+      ]
+    },
+    "Mentored two interns during the previous summers."
+  ],
+  "teachingExperience": [
+    {
+      "org": "Amirkabir University of Technology",
+      "items": [
+        {
+          "course": "Time Series Analysis",
+          "term": "Fall 2019"
+        },
+        {
+          "course": "Multivariable Calculus",
+          "term": "Spring 2019"
+        },
+        {
+          "course": "Introduction to C Programming",
+          "term": "Fall 2018"
+        },
+        {
+          "course": "Partial Differential Equations",
+          "term": "Fall 2018"
+        },
+        {
+          "course": "Foundation of Matrix and Linear Algebra",
+          "term": "Spring 2018"
+        },
+        {
+          "course": "One Variable Calculus",
+          "term": "Fall 2017"
+        },
+        {
+          "course": "Introduction to Probability",
+          "term": "Spring 2017"
+        },
+        {
+          "course": "General Physics (Electricity and Magnetism)",
+          "term": "Spring 2017"
+        },
+        {
+          "course": "Foundation of Mathematical Analysis",
+          "term": "Spring 2017"
+        },
+        {
+          "course": "Introduction to Set Theory and Logic",
+          "term": "Fall 2016 – Spring 2018"
+        }
+      ]
+    },
+    {
+      "org": "Koç University",
+      "items": [
+        {
+          "course": "Introduction to Python Programming",
+          "term": "Fall 2023"
+        },
+        {
+          "course": "Discrete Structures",
+          "term": "Spring 2024"
+        },
+        {
+          "course": "Data Structures & Algorithms",
+          "term": "Fall 2024"
+        },
+        {
+          "course": "Computer Networks & Security",
+          "term": "Spring 2025"
+        },
+        {
+          "course": "Modern Cryptography",
+          "term": "Fall 2025"
+        }
+      ]
+    }
+  ],
+  "conferencesWorkshops": [
+    {
+      "name": "Frontiers in Mathematical Science 6th Conference",
+      "host": "Sharif University of Technology",
+      "location": "Tehran",
+      "date": "July 2018"
+    },
+    {
+      "name": "Frontiers in Mathematical Science 5th Conference",
+      "host": "Institute for Research in Fundamental Sciences (IPM)",
+      "location": "Tehran",
+      "date": "July 2017"
+    },
+    {
+      "name": "Second Summer School for Undergraduate Students in Iran",
+      "host": "Institute for Advanced Studies in Basic Sciences",
+      "location": "Zanjan",
+      "date": "July 2017"
+    },
+    {
+      "name": "Workshop on Mathematics of Information-Theoretic Cryptography",
+      "host": "Institute for Mathematical Sciences",
+      "location": "Singapore",
+      "date": "Sept. 2016"
+    },
+    {
+      "name": "First Summer School for Undergraduate Students in Iran",
+      "host": "Institute for Advanced Studies in Basic Sciences",
+      "location": "Zanjan",
+      "date": "July 2016"
+    },
+    {
+      "name": "Workshop on Game Theory",
+      "host": "Amirkabir University of Technology",
+      "location": "Tehran",
+      "date": "June 2016"
+    }
+  ],
   "contact": {
-    "pitch": "Want to collaborate, review a paper, or build something weird and useful? Email me.",
+    "pitch": "Collaboration on SMPC / privacy-preserving ML / post-quantum crypto, reviewing, or building practical cryptographic systems — email me.",
     "timezone": "Europe/Istanbul"
   }
 }
