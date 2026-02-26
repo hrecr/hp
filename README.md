@@ -1,4 +1,4 @@
-# Dual-UI Portfolio 
+# Dual-UI Portfolio (Retro + Modern)
 
 This repo is a **static portfolio site** for:
 
