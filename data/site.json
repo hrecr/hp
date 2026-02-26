@@ -20,11 +20,6 @@
     "Curating a PQC Application Atlas: 90+ papers (2020–present) organized into 19 application domains."
   ],  
   "skills": {
-    "Spoken languages": [
-      "Persian (Native)",
-      "English (Working Professional)",
-      "Turkish (Elementary)"
-    ],
     "Programming": [
       "C++",
       "Python",
@@ -57,6 +52,11 @@
     ],
     "Go libraries": [
       "Lattigo"
+    ],
+    "Spoken languages": [
+      "Persian (Native)",
+      "English (Working Professional)",
+      "Turkish (Elementary)"
     ]
   },
   "education": [
@@ -99,16 +99,6 @@
     }
   ],
   "experience": [
-    {
-      "role": "Crypto screeners & automated asset management bots",
-      "org": "BTL Coin Crypto Exchange",
-      "location": "Istanbul, Turkey / Remote",
-      "start": "2021/05",
-      "end": "2023/10",
-      "bullets": [
-        "Developed personalized market screeners and automated crypto asset management bots using Golang and Docker."
-      ]
-    },
     {
       "role": "Quantum kernels for neural networks",
       "org": "Institute for Research in Fundamental Sciences (IPM)",
