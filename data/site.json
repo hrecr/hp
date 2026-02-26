@@ -1,6 +1,6 @@
 {
   "name": "Hamid Reza Saadi Dadmarzi",
-  "tagline": "Ph.D. Researcher • Secure Computation • Privacy-Preserving ML",
+  "tagline": "M.Sc. Researcher • Secure Computation • Privacy-Preserving ML",
   "location": "Istanbul, Türkiye",
   "email": "hdadmarzi23@ku.edu.tr",
   "phone": "+90 538 783 75 69",
@@ -13,11 +13,11 @@
     "orcid": "",
     "cvPdf": "../resume/CV.pdf"
   },
-  "summary": "Ph.D. student in Computer Science at Koç University (Istanbul), working on Secure Multi‑Party Computation (SMPC), privacy‑preserving machine learning, and post‑quantum cryptography. I like research that has both proofs and performance: designing protocols, writing simulation/UC security arguments, and benchmarking implementations (Rust/Go/Docker). Previously built automated crypto asset-management tools and market screeners, and worked on quantum kernels for neural networks using Qiskit/PyQuil. I’m also curating a Post‑Quantum Cryptography (PQC) Application Atlas (90+ papers across 19 domains).",
+  "summary": "M.Sc. student in Computer Science at Koç University (Istanbul), working on Secure Multi‑Party Computation (SMPC), privacy‑preserving machine learning, and post‑quantum cryptography. I like research that has both proofs and performance: designing protocols, writing simulation/UC security arguments, and benchmarking implementations (Rust/Go/Docker). Previously built automated crypto asset-management tools and market screeners, and worked on quantum kernels for neural networks using Qiskit/PyQuil. I’m also curating a Post‑Quantum Cryptography (PQC) Application Atlas (90+ papers across 19 domains).",
   "highlights": [
     "Curating a PQC Application Atlas: 90+ papers (2020–present) organized into 19 application domains.",
     "Research across SMPC, privacy-preserving ML, and post-quantum cryptography (first-author projects in progress).",
-    "External reviewer for IEEE TIFS, ACM ASIACCS 2024, ACNS 2026, and the Turkish Journal of Electrical Engineering & Computer Sciences."
+    "External reviewer for IEEE TIFS, ACM ASIACCS 2024 and 2026, ACNS 2026, JISAS 2025,Royal society open science 2024 and the Turkish Journal of Electrical Engineering & Computer Sciences."
   ],
   "skills": {
     "Spoken languages": [
@@ -61,13 +61,13 @@
   },
   "education": [
     {
-      "degree": "Ph.D. in Computer Science",
+      "degree": "M.Sc. in Computer Science",
       "school": "Koç University",
       "location": "Istanbul, Turkey",
       "start": "2023/11",
       "end": "Present",
       "details": [
-        "Research focus: Secure Multi-Party Computation (SMPC), Privacy-preserving ML, Post-Quantum Cryptography.",
+        "Research focus: Password based authentication schemes(SMPC), Post-Quantum Cryptography and Privacy-preserving ML.",
         "Affiliation: Koç University, Dept. of Engineering."
       ]
     },
@@ -135,13 +135,12 @@
     {
       "title": "Updatable Distributed Password-Protected Sharing (UpSPA)",
       "role": "Designer / Protocol engineer",
-      "when": "Near completion",
+      "when": "will be submitted soon",
       "summary": "Designed and strengthened an updatable SMPC scheme; authored ideal/real simulation proofs under malicious adversaries; enhanced protocol design; evaluated performance in Rust, Golang, and Docker.",
       "stack": [
         "SMPC",
         "Rust",
-        "Go",
-        "Docker"
+        "Go"
       ],
       "highlights": [
         "Ideal/real simulation proofs under malicious adversaries.",
@@ -238,82 +237,119 @@
     }
   ],
   "implementationProjects": {
-    "mode": "manual",
-    "featuredRepos": [],
-    "manual": [
+  "mode": "manual",
+  "featuredRepos": [
+    "UpSpa_benchmark",
+    "UpSPA_FPB",
+    "TSPA_benchmark",
+    "rezasaadi.github.io"
+  ],
+  "manual": [
+    {
+      "name": "Crypto market screeners & asset management bots",
+      "description": "Personalized market screeners and automated crypto asset management bots.",
+      "topics": ["Go", "Docker", "Crypto"],
+      "links": { "repo": "", "demo": "", "docs": "" }
+    },
+    {
+      "name": "Quantum kernel optimization for neural networks",
+      "description": "Optimized quantum kernels for neural networks using Qiskit and PyQuil.",
+      "topics": ["Qiskit", "PyQuil", "Quantum ML"],
+      "links": { "repo": "", "demo": "", "docs": "" }
+    },
+    {
+      "name": "Data warehouse + integration (Excel/Tableau)",
+      "description": "Developed a data warehouse and integrated data; delivered analysis and visualization workflows using Excel and Tableau.",
+      "topics": ["Excel", "Tableau", "Data warehouse"],
+      "links": { "repo": "", "demo": "", "docs": "" }
+    },
+
+    {
+      "name": "UpSPA vs TSPA Benchmarks",
+      "description": "Unified, reproducible benchmark suite measuring client phases, primitives, server/storage-provider primitives, LAN/WAN network simulation, and modeled end-to-end totals for UpSPA/TSPA.",
+      "topics": ["Rust", "Benchmarking", "Cryptography", "Docker", "Network simulation"],
+      "links": {
+        "repo": "https://github.com/rezasaadi/UpSpa_benchmark",
+        "demo": "",
+        "docs": "https://github.com/rezasaadi/UpSpa_benchmark/tree/main/docs"
+      }
+    },
+    {
+      "name": "UpSPA_FPB",
+      "description": "Multi-component UpSPA codebase (Rust crates + Go storage-provider service + docs/scripts tooling).",
+      "topics": ["Rust", "Go", "Cryptography", "Services", "Tooling"],
+      "links": {
+        "repo": "https://github.com/rezasaadi/UpSPA_FPB",
+        "demo": "",
+        "docs": "https://github.com/rezasaadi/UpSPA_FPB/tree/main/docs"
+      }
+    },
+    {
+      "name": "TSPA Benchmark",
+      "description": "Manual, reproducible client-side micro-benchmarks for a Threshold SPA-style protocol (registration + authentication; deterministic RNG; scriptable outputs).",
+      "topics": ["Rust", "Benchmarking", "OPRF", "Ristretto255", "BLAKE3"],
+      "links": {
+        "repo": "https://github.com/rezasaadi/TSPA_benchmark",
+        "demo": "",
+        "docs": "https://github.com/rezasaadi/TSPA_benchmark"
+      }
+    }
+  ]
+},
+  "honorsAwards": [
       {
-        "name": "Crypto market screeners & asset management bots",
-        "description": "Personalized market screeners and automated crypto asset management bots.",
-        "topics": [
-          "Go",
-          "Docker",
-          "Crypto"
-        ],
-        "links": {
-          "repo": "",
-          "demo": "",
-          "docs": ""
-        }
+        "text": "Recognized as an Outstanding Teaching Assistant for the Computer Networks and Security course; awarded a top-up conference travel allowance (8,000 TL), Spring 2025."
       },
       {
-        "name": "Quantum kernel optimization for neural networks",
-        "description": "Optimized quantum kernels for neural networks using Qiskit and PyQuil.",
-        "topics": [
-          "Qiskit",
-          "PyQuil",
-          "Quantum ML"
-        ],
-        "links": {
-          "repo": "",
-          "demo": "",
-          "docs": ""
-        }
+        "text": "Awarded double major recognition from the Exceptional Talent Center at the university."
       },
       {
-        "name": "Data warehouse + integration (Excel/Tableau)",
-        "description": "Developed a data warehouse and integrated data; delivered analysis and visualization workflows using Excel and Tableau.",
-        "topics": [
-          "Excel",
-          "Tableau",
-          "Data warehouse"
-        ],
-        "links": {
-          "repo": "",
-          "demo": "",
-          "docs": ""
-        }
+        "text": "Admitted to the Master of Science program without a national entrance exam (Exceptional Talent Center)."
+      },
+      {
+        "text": "Ranked in the top 5% among all students in the B.Sc. program."
+      }
+  ],
+  "academicServices": [
+  {
+    "text": "External reviewer for IEEE Transactions on Information Forensics & Security (IEEE TIFS), ACM ASIACCS 2024 & 2026, ACNS 2026, Journal of Information Security and Applications (JISA, 2025), Royal Society Open Science (2024), and the Turkish Journal of Electrical Engineering & Computer Sciences.",
+    "links": [
+      {
+        "label": "IEEE TIFS",
+        "url": "https://signalprocessingsociety.org/publications-resources/ieee-transactions-information-forensics-and-security"
+      },
+      {
+        "label": "ACM ASIACCS 2024",
+        "url": "https://asiaccs2024.sutd.edu.sg/"
+      },
+      {
+        "label": "ACM ASIACCS 2026",
+        "url": "https://asiaccs2026.cse.iitkgp.ac.in/"
+      },
+      {
+        "label": "ACNS 2026",
+        "url": "https://acns2026.github.io/"
+      },
+      {
+        "label": "JISA (Elsevier)",
+        "url": "https://www.sciencedirect.com/journal/journal-of-information-security-and-applications"
+      },
+      {
+        "label": "Royal Society Open Science",
+        "url": "https://royalsocietypublishing.org/rsos"
+      },
+      {
+        "label": "Turkish Journal of Electrical Engineering & Computer Sciences",
+        "url": "https://journals.tubitak.gov.tr/elektrik/"
       }
     ]
   },
-  "honorsAwards": [
-    "Awarded double major recognition from the Exceptional Talent Center at the university.",
-    "Admitted to the Master of Science program without a national entrance exam (Exceptional Talent Center).",
-    "Ranked in the top 5% among all students in the B.Sc. program."
-  ],
-  "academicServices": [
-    {
-      "text": "External reviewer for IEEE Transactions on Information Forensics & Security, ACM ASIACCS 2024, ACNS 2026, and Turkish Journal of Electrical Engineering & Computer Sciences (10+ papers across 4+ venues).",
-      "links": [
-        {
-          "label": "IEEE TIFS",
-          "url": "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=10206"
-        },
-        {
-          "label": "ACM ASIACCS 2024",
-          "url": "https://asiaccs2024.sutd.edu.sg/"
-        },
-        {
-          "label": "ACNS 2026",
-          "url": "https://acns2026.github.io/"
-        },
-        {
-          "label": "Turkish Journal of Electrical Engineering & Computer Sciences",
-          "url": "https://journals.tubitak.gov.tr/elektrik/"
-        }
-      ]
-    },
-    "Mentored two interns during the previous summers."
-  ],
+  {
+    "text": "Mentored two interns during Summer 2025; mentoring four interns from Fall 2025 through Summer 2026."
+  }
+],
+    
+  
   "teachingExperience": [
     {
       "org": "Amirkabir University of Technology",
@@ -377,7 +413,7 @@
         },
         {
           "course": "Computer Networks & Security",
-          "term": "Spring 2025"
+          "term": "Spring 2025,Spring 2026"
         },
         {
           "course": "Modern Cryptography",
