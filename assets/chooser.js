@@ -54,7 +54,6 @@ function attachCardHandlers() {
 
     link.addEventListener('click', () => {
       if (remember?.checked) setSaved(ui);
-      // let navigation happen
     });
   }
 
@@ -69,7 +68,6 @@ function attachSavedShortcut() {
   const saved = normalizeUi(getSaved());
   if (!saved) return;
 
-  // Soft shortcut: press Enter to continue with saved UI.
   window.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
     const active = document.activeElement;

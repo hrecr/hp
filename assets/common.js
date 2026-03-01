@@ -1,8 +1,3 @@
-/*
-  Common helpers shared by both UIs.
-  Keep it vanilla: no build step, no dependencies.
-*/
-
 export async function loadSiteData(relativePath = '../data/site.json') {
   const res = await fetch(relativePath, { cache: 'no-store' });
   if (!res.ok) {
@@ -50,7 +45,6 @@ export function joinNonEmpty(parts, sep = ' · ') {
 
 export function normalizeUrl(url) {
   if (!url) return '';
-  // If user forgets scheme, try to rescue it.
   if (/^https?:\/\//i.test(url)) return url;
   if (url.startsWith('mailto:') || url.startsWith('tel:')) return url;
   return `https://${url}`;
@@ -80,12 +74,10 @@ export async function fetchGithubRepos(username, { max = 60 } = {}) {
   if (cachedRaw) {
     try {
       const cached = JSON.parse(cachedRaw);
-      // 6 hours cache: polite to GitHub API.
       if (cached?.ts && Date.now() - cached.ts < 6 * 60 * 60 * 1000 && Array.isArray(cached?.repos)) {
         return { repos: cached.repos, note: 'Loaded from cache.' };
       }
     } catch {
-      // ignore
     }
   }
 
@@ -135,7 +127,6 @@ export function pickFeaturedRepos(allRepos, featuredNames = []) {
 
   if (featured.length) return featured;
 
-  // Fallback: top non-fork repos by stars; then by recent update.
   return allRepos
     .filter(r => !r.fork && !r.archived)
     .sort((a, b) => {
