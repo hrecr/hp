@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Research • Portfolio</title>
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../modern.css" />
+</head>
+<body>
+  <header class="topbar" id="top">
+    <a class="brand" href="../" aria-label="Back to Modern home">
+      <span class="logo">◎</span>
+      <span id="brandName">Portfolio</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="navlink" href="../#about">About</a>
+      <a class="navlink" href="../#education">Education</a>
+      <a class="navlink" href="../#experience">Experience</a>
+      <a class="navlink" href="../#projects">Projects</a>
+      <a class="navlink" href="#projects">Research Projects</a>
+      <a class="navlink" href="#papers">Papers</a>
+      <a class="navlink" href="../#contact">Contact</a>
+      <button class="theme" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" id="projects">
+      <div class="section-head">
+        <h2>Research Projects</h2>
+        <p>Protocol design, proofs, and performance engineering — the weird and wonderful triangle.</p>
+      </div>
+
+      <article class="panel" style="margin-bottom: 14px;">
+        <div class="grid-2" style="align-items:end;">
+          <div>
+            <label class="small" for="q" style="display:block; margin-bottom:6px;">Search</label>
+            <input id="q" type="search" placeholder="e.g., UpSPA, PQ, UC, SMPC…" style="width:100%;" />
+          </div>
+          <div>
+            <label class="small" for="tag" style="display:block; margin-bottom:6px;">Filter by tag</label>
+            <select id="tag" style="width:100%;">
+              <option value="">All</option>
+            </select>
+          </div>
+        </div>
+      </article>
+
+      <div class="cards" id="researchCards"></div>
+    </section>
+
+    <section class="section" id="papers">
+      <div class="section-head">
+        <h2>Papers</h2>
+        <p>Selected publications and manuscripts.</p>
+      </div>
+      <article class="panel">
+        <ul class="bullets" id="pubList"></ul>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="tiny">Edit content in <code>data/site.json</code> → <code>researchProjects</code> and <code>publications</code>.</div>
+        <a class="tinylink" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="./research.js"></script>
+</body>
+</html>
