@@ -21,10 +21,9 @@
   ],  
   "skills": {
     "Programming": [
-      "C++",
-      "Python",
-      "Go (Golang)",
       "Rust",
+      "Python",
+      "Go" ,
       "MATLAB"
     ],
     "Typesetting": [
