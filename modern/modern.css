@@ -21,6 +21,39 @@
   --shadow: 0 14px 34px rgba(0,0,0,0.12);
 }
 
+
+.right-stack{
+    display: flex;
+    flex-direction: column;
+    padding: 0;             
+    overflow: hidden;      
+}
+
+.right-top{
+    padding: 22px 22px 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-bottom{
+    padding: 10px 22px 22px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.profile-photo{
+    width: 170px;          
+    height: 170px;         
+    object-fit: cover;
+    border-radius: 9999px; 
+    border: 2px solid rgba(255,255,255,0.14);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 900px){
+    .profile-photo{ width: 140px; height: 140px; }
+}
+
 @media (prefers-color-scheme: light){
   :root:not([data-theme]){
     --bg: #f6f7fb;
