@@ -242,6 +242,7 @@ function cardWithList(title, sub, items) {
 
 function renderResearch(items) {
   const root = el('researchCards');
+  if (!root) return;
   root.innerHTML = '';
 
   if (!Array.isArray(items) || !items.length) {
@@ -357,14 +358,12 @@ function renderService(items) {
   for (const item of list) {
     const li = document.createElement('li');
 
-    // Strings
     if (!item || typeof item === 'string') {
       li.textContent = String(item || '');
       root.appendChild(li);
       continue;
     }
 
-    // Objects: { text, links: [{label,url}, ...] }
     const text = item.text || '';
     li.appendChild(document.createTextNode(text));
 
