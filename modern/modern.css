@@ -232,7 +232,7 @@ code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Libera
   margin-top: 14px;
 }
 @media (max-width: 900px){
-  .cards{grid-template-columns: 1fr;}
+  .cards{ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 }
 
 .card{

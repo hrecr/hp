@@ -3,11 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="refresh" content="0; url=../index.html#education" />
-  <title>Education</title>
+  <meta name="color-scheme" content="dark light" />
+  <title>Education • Portfolio</title>
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../modern.css" />
 </head>
 <body>
-  <p>Redirecting to Education…</p>
-  <p><a href="../index.html#education">Open Education</a></p>
+  <header class="topbar" id="top">
+    <a class="brand" href="../" aria-label="Back to Modern home">
+      <span class="logo">◎</span>
+      <span id="brandName">Portfolio</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="navlink" href="../#about">Home</a>
+      <a class="navlink" href="../education/">Education</a>
+      <a class="navlink" href="../research/">Research</a>
+      <a class="navlink" href="../experience/">Experience</a>
+      <a class="navlink" href="../teaching/">Teaching</a>
+      <a class="navlink" href="../services/">Service</a>
+      <a class="navlink" href="../awards/">Awards</a>
+      <a class="navlink" href="../workshops/">Workshops</a>
+      <a class="navlink" href="../projects/">Projects</a>
+      <a class="navlink" href="../contact/">Contact</a>
+      <button class="theme" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" id="education">
+      <div class="section-head">
+        <h2>Education</h2>
+        <p>Formal training and research focus areas.</p>
+      </div>
+
+      <article class="panel">
+        <div id="educationTimeline" class="timeline"></div>
+      </article>
+    </section>
+
+   
+  </main>
+
+  <script type="module" src="./education.js"></script>
 </body>
 </html>

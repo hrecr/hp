@@ -1,37 +1,23 @@
-function el(id) { return document.getElementById(id); }
+import { loadSiteData, setTitle, joinNonEmpty, normalizeUrl } from '../../assets/common.js';
+import { initTheme, el, attachReveal } from '../page-helpers.js';
 
-function normalizeUrl(u) {
-  if (!u) return '';
-  if (/^https?:\/\//i.test(u)) return u;
-  return 'https://' + u.replace(/^\/\//, '');
-}
+function clear(node) { node.innerHTML = ''; }
 
-function getTheme() {
-  return localStorage.getItem('theme') || 'dark';
-}
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-  localStorage.setItem('theme', theme);
-}
-function toggleTheme() {
-  applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+function tagChip(label) {
+  const span = document.createElement('span');
+  span.className = 'tag';
+  span.textContent = label;
+  return span;
 }
 
-async function loadSiteData(path) {
-  const r = await fetch(path, { cache: 'no-store' });
-  if (!r.ok) throw new Error('Failed to load ' + path);
-  return r.json();
-}
-
-function joinNonEmpty(parts) {
-  return parts.filter(Boolean).join(' • ');
-}
-
-function badge(label) {
-  const b = document.createElement('span');
-  b.className = 'badge';
-  b.textContent = label;
-  return b;
+function actionBtn(label, href) {
+  const a = document.createElement('a');
+  a.className = 'action';
+  a.href = href;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.textContent = label;
+  return a;
 }
 
 function cardProject(r) {
@@ -43,102 +29,72 @@ function cardProject(r) {
   const L = r?.links || {};
 
   const actions = [];
-  if (L.projectPage) actions.push({ label: 'Project', href: normalizeUrl(L.projectPage) });
-  if (L.paper) actions.push({ label: 'Paper', href: normalizeUrl(L.paper) });
-  if (L.code) actions.push({ label: 'Code', href: normalizeUrl(L.code) });
+  if (L.projectPage) actions.push(['Project', normalizeUrl(L.projectPage)]);
+  if (L.paper) actions.push(['Paper', normalizeUrl(L.paper)]);
+  if (L.code) actions.push(['Code', normalizeUrl(L.code)]);
 
   const c = document.createElement('article');
   c.className = 'card reveal';
 
-  const h = document.createElement('div');
-  h.className = 'card-head';
-
   const t = document.createElement('div');
-  t.className = 'card-title';
+  t.className = 'title';
   t.textContent = title;
 
   const s = document.createElement('div');
-  s.className = 'card-sub';
+  s.className = 'sub';
   s.textContent = sub || '';
 
-  h.appendChild(t);
-  if (sub) h.appendChild(s);
+  const d = document.createElement('div');
+  d.className = 'desc';
+  d.textContent = desc;
 
-  const p = document.createElement('p');
-  p.className = 'card-desc';
-  p.textContent = desc;
+  c.appendChild(t);
+  if (sub) c.appendChild(s);
+  if (desc) c.appendChild(d);
 
-  let ul = null;
   if (hi.length) {
-    ul = document.createElement('ul');
-    ul.className = 'card-bullets';
+    const ul = document.createElement('ul');
+    ul.className = 'bullets';
     for (const x of hi) {
       const li = document.createElement('li');
       li.textContent = x;
       ul.appendChild(li);
     }
+    c.appendChild(ul);
   }
 
-  const meta = document.createElement('div');
-  meta.className = 'card-meta';
-
-  const tagWrap = document.createElement('div');
-  tagWrap.className = 'tags';
-  for (const tg of tags) tagWrap.appendChild(badge(tg));
-
-  const actWrap = document.createElement('div');
-  actWrap.className = 'actions';
-  for (const a of actions) {
-    const link = document.createElement('a');
-    link.className = 'smalllink';
-    link.href = a.href;
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.textContent = a.label + ' →';
-    actWrap.appendChild(link);
+  if (tags.length) {
+    const tagWrap = document.createElement('div');
+    tagWrap.className = 'tags';
+    for (const tg of tags) tagWrap.appendChild(tagChip(tg));
+    c.appendChild(tagWrap);
   }
 
-  meta.appendChild(tagWrap);
-  meta.appendChild(actWrap);
-
-  c.appendChild(h);
-  c.appendChild(p);
-  if (ul) c.appendChild(ul);
-  c.appendChild(meta);
+  if (actions.length) {
+    const actWrap = document.createElement('div');
+    actWrap.className = 'actions';
+    for (const [lab, href] of actions) actWrap.appendChild(actionBtn(lab, href));
+    c.appendChild(actWrap);
+  }
 
   return c;
 }
 
 function renderResearch(items) {
   const root = el('researchCards');
-  if (!root) return;
-
-  root.innerHTML = '';
+  clear(root);
 
   if (!Array.isArray(items) || !items.length) {
-    const empty = document.createElement('article');
-    empty.className = 'card reveal';
-    empty.innerHTML = `
-      <div class="card-head">
-        <div class="card-title">No research projects yet</div>
-        <div class="card-sub"></div>
-      </div>
-      <p class="card-desc">Add <code>researchProjects</code> in <code>data/site.json</code>, or adjust your filters.</p>
-    `;
-    root.appendChild(empty);
+    root.appendChild(cardProject({ title: 'No research projects yet', summary: 'Add researchProjects in data/site.json, or adjust your filters.' }));
     return;
   }
 
-  for (const r of items) {
-    root.appendChild(cardProject(r));
-  }
+  for (const r of items) root.appendChild(cardProject(r));
 }
 
 function renderPublications(pubs) {
   const ul = el('pubList');
-  if (!ul) return;
-
-  ul.innerHTML = '';
+  clear(ul);
 
   if (!Array.isArray(pubs) || !pubs.length) {
     const li = document.createElement('li');
@@ -153,7 +109,7 @@ function renderPublications(pubs) {
     const title = p.title || 'Untitled';
     const venue = p.venue || p.where || '';
     const year = p.year || '';
-    const note = joinNonEmpty([venue, year]);
+    const note = joinNonEmpty([venue, year], ' — ');
 
     if (p.url) {
       const a = document.createElement('a');
@@ -163,9 +119,9 @@ function renderPublications(pubs) {
       a.textContent = title;
       li.appendChild(a);
     } else {
-      const strong = document.createElement('span');
-      strong.textContent = title;
-      li.appendChild(strong);
+      const span = document.createElement('span');
+      span.textContent = title;
+      li.appendChild(span);
     }
 
     if (note) {
@@ -187,7 +143,7 @@ function renderPublications(pubs) {
 function uniqueTags(items) {
   const s = new Set();
   for (const it of (items || [])) {
-    for (const t of (it.stack || [])) s.add(t);
+    for (const t of (it?.stack || [])) s.add(String(t));
   }
   return Array.from(s).sort((a, b) => a.localeCompare(b));
 }
@@ -198,69 +154,50 @@ function filterItems(items, q, tag) {
 
   return (items || []).filter(it => {
     const hay = [
-      it.title, it.role, it.when, it.summary,
-      ...(it.stack || []),
-      ...(it.highlights || [])
+      it?.title, it?.role, it?.when, it?.summary,
+      ...(it?.stack || []),
+      ...(it?.highlights || [])
     ].filter(Boolean).join(' ').toLowerCase();
 
     const okQ = !qq || hay.includes(qq);
-    const okT = !tg || (it.stack || []).some(x => String(x).toLowerCase() === tg);
+    const okT = !tg || (it?.stack || []).some(x => String(x).toLowerCase() === tg);
     return okQ && okT;
   });
 }
 
-function setupReveal() {
-  const nodes = Array.from(document.querySelectorAll('.reveal'));
-  if (!nodes.length) return;
-
-  const obs = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) e.target.classList.add('in');
-    }
-  }, { threshold: 0.12 });
-
-  for (const node of nodes) obs.observe(node);
-}
-
 async function init() {
-  applyTheme(getTheme());
-  const toggle = el('themeToggle');
-  if (toggle) toggle.addEventListener('click', toggleTheme);
+  initTheme('dark');
 
-  // ✅ correct path FROM /modern/research/
   const site = await loadSiteData('../../data/site.json');
-  const brand = el('brandName');
-  if (brand) brand.textContent = site?.name || 'Portfolio';
+  el('brandName').textContent = site?.name || 'Portfolio';
+  setTitle(site?.name || 'Portfolio', 'Research');
 
   const all = site?.researchProjects || [];
-  const pubs = site?.publications || [];
-  renderPublications(pubs);
+  renderPublications(site?.publications || []);
 
   const tagSel = el('tag');
-  if (tagSel) {
-    for (const t of uniqueTags(all)) {
-      const opt = document.createElement('option');
-      opt.value = t;
-      opt.textContent = t;
-      tagSel.appendChild(opt);
-    }
+  for (const t of uniqueTags(all)) {
+    const opt = document.createElement('option');
+    opt.value = t;
+    opt.textContent = t;
+    tagSel.appendChild(opt);
   }
 
   const q = el('q');
   const rerender = () => {
-    const filtered = filterItems(all, q ? q.value : '', tagSel ? tagSel.value : '');
+    const filtered = filterItems(all, q.value, tagSel.value);
     renderResearch(filtered);
-    setupReveal();
+    attachReveal();
   };
 
-  if (q) q.addEventListener('input', rerender);
-  if (tagSel) tagSel.addEventListener('change', rerender);
+  q.addEventListener('input', rerender);
+  tagSel.addEventListener('change', rerender);
 
   rerender();
 }
 
 init().catch(err => {
   console.error(err);
-  const root = el('researchCards');
+  const root = document.getElementById('researchCards');
   if (root) root.textContent = 'Failed to load data/site.json. Check paths and deployment.';
 });

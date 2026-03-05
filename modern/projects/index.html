@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>Research • Portfolio</title>
+  <title>Projects • Portfolio</title>
   <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="../modern.css" />
 </head>
@@ -33,42 +33,23 @@
   <main>
     <section class="section" id="projects">
       <div class="section-head">
-        <h2>Research Projects</h2>
-        <p>Protocol design, proofs, and performance engineering — the weird and wonderful triangle.</p>
+        <h2>Projects</h2>
+        <p>Implementation projects: libraries, prototypes, and applied systems work.</p>
       </div>
 
-      <article class="panel" style="margin-bottom: 14px;">
-        <div class="grid-2" style="align-items:end;">
-          <div>
-            <label class="small" for="q" style="display:block; margin-bottom:6px;">Search</label>
-            <input id="q" type="search" placeholder="e.g., UpSPA, PQ, UC, SMPC…" style="width:100%;" />
-          </div>
-          <div>
-            <label class="small" for="tag" style="display:block; margin-bottom:6px;">Filter by tag</label>
-            <select id="tag" style="width:100%;">
-              <option value="">All</option>
-            </select>
-          </div>
+      <div class="subhead">
+        <div class="small" id="ghNote"></div>
+        <div>
+          <a class="smalllink" id="ghProfile" href="#" target="_blank" rel="noopener">Open GitHub profile →</a>
         </div>
-      </article>
-
-      <div class="cards" id="researchCards"></div>
-    </section>
-
-    <section class="section" id="papers">
-      <div class="section-head">
-        <h2>Papers</h2>
-        <p>Selected publications and manuscripts.</p>
       </div>
 
-      <article class="panel">
-        <ul class="bullets" id="pubList"></ul>
-      </article>
+      <div class="cards" id="projectCards"></div>
     </section>
 
-    
+   
   </main>
 
-  <script type="module" src="./research.js"></script>
+  <script type="module" src="./projects.js"></script>
 </body>
 </html>
