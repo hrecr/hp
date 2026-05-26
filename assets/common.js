@@ -45,9 +45,12 @@ export function joinNonEmpty(parts, sep = ' · ') {
 
 export function normalizeUrl(url) {
   if (!url) return '';
-  if (/^https?:\/\//i.test(url)) return url;
-  if (url.startsWith('mailto:') || url.startsWith('tel:')) return url;
-  return `https://${url}`;
+  const u = String(url).trim();
+  if (!u) return '';
+  if (/^https?:\/\//i.test(u)) return u;
+  if (u.startsWith('mailto:') || u.startsWith('tel:')) return u;
+  if (u.startsWith('#') || u.startsWith('/') || u.startsWith('./') || u.startsWith('../')) return u;
+  return `https://${u}`;
 }
 
 export function setText(el, text) {

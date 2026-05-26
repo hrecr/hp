@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>About • Portfolio</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../modern.css" />
+</head>
+<body>
+  <header class="topbar" id="top">
+    <a class="brand" href="../" aria-label="Back to home">
+      <span class="logo">◎</span>
+      <span id="brandName">Portfolio</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="navlink" href="../">Home</a>
+      <a class="navlink" href="../education/">Education</a>
+      <a class="navlink" href="../research/">Research</a>
+      <a class="navlink" href="../projects/">Projects</a>
+      <a class="navlink" href="../services/">Services</a>
+      <a class="navlink" href="../teaching/">Teaching</a>
+      <a class="navlink" href="../experience/">Experience</a>
+      <a class="navlink" href="../about/">About</a>
+      <a class="navlink" href="../contact/">Contact</a>
+      <button class="theme" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Bio, research background, skills, and CV links.</p>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel reveal">
+          <h3>Bio</h3>
+          <p id="bio">Loading…</p>
+          <div class="cta">
+            <a class="btn" id="btnCVLong" href="../../resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf" target="_blank" rel="noopener">CV long version</a>
+            <a class="btn ghost" id="btnCVShort" href="../../resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf" target="_blank" rel="noopener">CV short version</a>
+          </div>
+        </article>
+
+        <article class="panel reveal">
+          <h3>Highlights</h3>
+          <ul class="bullets" id="highlights"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="skills-section">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <p>A compact map of research areas, implementation tools, and languages.</p>
+      </div>
+      <article class="panel reveal">
+        <div id="skills" class="skills"></div>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="./about.js"></script>
+</body>
+</html>

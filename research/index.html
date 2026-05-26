@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Research • Portfolio</title>
+  <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../modern.css" />
+</head>
+<body>
+  <header class="topbar" id="top">
+    <a class="brand" href="../" aria-label="Back to home">
+      <span class="logo">◎</span>
+      <span id="brandName">Portfolio</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="navlink" href="../">Home</a>
+      <a class="navlink" href="../education/">Education</a>
+      <a class="navlink" href="../research/">Research</a>
+      <a class="navlink" href="../projects/">Projects</a>
+      <a class="navlink" href="../services/">Services</a>
+      <a class="navlink" href="../teaching/">Teaching</a>
+      <a class="navlink" href="../experience/">Experience</a>
+      <a class="navlink" href="../about/">About</a>
+      <a class="navlink" href="../contact/">Contact</a>
+      <button class="theme" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section" id="research">
+      <div class="section-head">
+        <h2>Research</h2>
+        <p>Clickable research themes with current projects, tags, and related publications/manuscripts.</p>
+      </div>
+      <div class="research-grid" id="researchAreas"></div>
+    </section>
+
+    <section class="section" id="research-details">
+      <div class="section-head">
+        <h2>Research story</h2>
+        <p>How the projects fit together: protocol design, security models, and implementation artifacts.</p>
+      </div>
+      <div class="area-details" id="areaDetails"></div>
+    </section>
+
+    <section class="section" id="papers">
+      <div class="section-head">
+        <h2>Publications and manuscripts</h2>
+        <p>Selected papers, preprints, and research manuscripts associated with the themes above.</p>
+      </div>
+      <article class="panel reveal">
+        <ul class="bullets pub-list" id="pubList"></ul>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="./research.js"></script>
+</body>
+</html>
