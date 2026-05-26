@@ -19,37 +19,28 @@ function action(label, href) {
   return a;
 }
 
+function imagePath(path) {
+  if (!path) return '';
+  if (/^(https?:)?\/\//.test(path) || path.startsWith('data:') || path.startsWith('/')) return path;
+  return `../${path}`;
+}
+
 function topicIconSvg(area) {
   const key = area.iconKey || area.id || '';
   const icons = {
-    'mpc-distributed': `
-      <svg viewBox="0 0 72 72" role="img" aria-label="MPC and distributed systems icon">
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="20" cy="21" r="7"/><circle cx="52" cy="21" r="7"/><circle cx="20" cy="51" r="7"/><circle cx="52" cy="51" r="7"/>
-          <path d="M27 21h18M27 51h18M20 28v16M52 28v16M25 26l22 20M47 26L25 46" opacity=".72"/>
-          <rect x="29" y="30" width="14" height="13" rx="3"/>
-          <path d="M32 30v-3a4 4 0 0 1 8 0v3"/>
-        </g>
-      </svg>`,
-    'pqc': `
-      <svg viewBox="0 0 72 72" role="img" aria-label="Post-quantum cryptography icon">
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M36 8l24 10v17c0 16-10 25-24 30-14-5-24-14-24-30V18L36 8z"/>
-          <path d="M24 27l12-7 12 7-12 7-12-7zM24 42l12-7 12 7-12 7-12-7z" opacity=".78"/>
-          <path d="M24 27v15M48 27v15M36 34v15" opacity=".62"/>
-        </g>
-      </svg>`,
-    'ppml': `
-      <svg viewBox="0 0 72 72" role="img" aria-label="Privacy-preserving ML icon">
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="19" cy="20" r="5"/><circle cx="19" cy="52" r="5"/><circle cx="37" cy="36" r="5"/><circle cx="55" cy="20" r="5"/><circle cx="55" cy="52" r="5"/>
-          <path d="M24 22l8 9M24 50l8-9M42 34l8-9M42 38l8 9" opacity=".70"/>
-          <path d="M12 36c7-10 15-15 24-15s17 5 24 15c-7 10-15 15-24 15S19 46 12 36z" opacity=".75"/>
-          <path d="M16 60L60 12"/>
-        </g>
-      </svg>`
+    'mpc-distributed': `<span>MPC</span>`,
+    'pqc': `<span>PQC</span>`,
+    'ppml': `<span>ML</span>`
   };
   return icons[key] || `<span>${area.icon || '◎'}</span>`;
+}
+
+function topicMediaHtml(area) {
+  if (area.image) {
+    const alt = String(area.title || 'Research topic').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + ' illustration';
+    return `<img class="topic-art" src="${imagePath(area.image)}" alt="${alt}" loading="lazy">`;
+  }
+  return topicIconSvg(area);
 }
 function renderAreaCards(areas) {
   const root = el('researchAreas');
@@ -61,7 +52,7 @@ function renderAreaCards(areas) {
 
     const icon = document.createElement('div');
     icon.className = 'topic-thumb';
-    icon.innerHTML = topicIconSvg(area);
+    icon.innerHTML = topicMediaHtml(area);
 
     const body = document.createElement('div');
     body.className = 'topic-body';

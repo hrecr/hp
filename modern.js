@@ -102,7 +102,7 @@ function renderAreaPreview(areas) {
 
     const icon = document.createElement('div');
     icon.className = 'topic-thumb';
-    icon.innerHTML = topicIconSvg(area);
+    icon.innerHTML = topicMediaHtml(area);
 
     const body = document.createElement('div');
     body.className = 'topic-body';

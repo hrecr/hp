@@ -1,6 +1,6 @@
 {
   "name": "HamidReza Saadi Dadmarzi",
-  "tagline": "Cryptography researcher •  Password-based authentication(MPC) • Post-quantum security • Privacy-preserving ML",
+  "tagline": "Cryptography researcher • MPC authentication • Post-quantum security • Privacy-preserving ML",
   "location": "Istanbul, Türkiye",
   "email": "hdadmarzi23@ku.edu.tr",
   "phone": "+90 538 783 75 69",
@@ -649,7 +649,7 @@
   "researchAreas": [
     {
       "id": "mpc-distributed",
-      "title": "Multi-Party Computation(MPC) & Distributed Systems",
+      "title": "MPC & Distributed Systems",
       "icon": "",
       "question": "How can password authentication remain secure when secrets are distributed, updateable, and exposed to malicious infrastructure?",
       "summary": "This line studies password-authentication protocols that split trust across servers while supporting updates, robustness, and performance measurement. My contribution is at the protocol-design/proof boundary, plus the systems side: Rust/Go implementations, Dockerized experiments, and reproducible benchmarks.",
@@ -704,7 +704,8 @@
         "UpSPA: Secure and Updatable Single Password Authentication",
         "RoUpSPA: Robust Updatable Single Password Authentication"
       ],
-      "iconKey": "mpc-distributed"
+      "iconKey": "mpc-distributed",
+      "image": "assets/research/mpc-secure-multiparty-computation.jpg"
     },
     {
       "id": "pqc",
@@ -755,11 +756,12 @@
         "QuasarSSO: A Post-Quantum Password-Protected SSO System",
         "AEGIS: A Mechanizable Framework for Post-Quantum IoT Authenticated Key Exchange"
       ],
-      "iconKey": "pqc"
+      "iconKey": "pqc",
+      "image": "assets/research/pqc-post-quantum-cryptography.jpg"
     },
     {
       "id": "ppml",
-      "title": "Privacy-Preserving Machine Learning(PPML)",
+      "title": "Privacy-Preserving ML",
       "icon": "",
       "question": "How can learning systems expose less data while staying efficient enough for real distributed training pipelines?",
       "summary": "This line connects cryptographic privacy and machine learning systems. I present CURE and DPFL/SpectraDP as complementary directions: one based on FHE tooling and one based on communication-efficient differential privacy for federated learning.",
@@ -801,7 +803,8 @@
       "publications": [
         "SpectraDP: Spectral Trade-offs for Communication-Efficient Differentially Private Learning"
       ],
-      "iconKey": "ppml"
+      "iconKey": "ppml",
+      "image": "assets/research/ppml-privacy-preserving-ml.jpg"
     }
   ]
 }

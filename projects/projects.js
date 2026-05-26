@@ -138,7 +138,7 @@ async function init() {
   if (impl.mode === 'github') {
     await renderGithubProjects(site?.githubUsername || '', impl.featuredRepos || []);
   } else {
-    el('ghNote').textContent = 'Curated list';
+    el('ghNote').textContent = 'Curated list (manual mode).';
     renderManualProjects(impl.manual || []);
   }
 
