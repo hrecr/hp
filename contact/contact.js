@@ -14,9 +14,6 @@ async function init() {
   setHref('emailLink', site?.email ? `mailto:${site.email}` : '');
   el('emailLink').textContent = site?.email || '—';
 
-  setHref('phoneLink', site?.phone ? `tel:${site.phone.replace(/\s+/g, '')}` : '');
-  el('phoneLink').textContent = site?.phone || '—';
-
   el('loc').textContent = site?.location || '—';
   el('tz').textContent = site?.contact?.timezone || '—';
 

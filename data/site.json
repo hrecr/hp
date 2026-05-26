@@ -3,7 +3,6 @@
   "tagline": "Cryptography researcher • MPC authentication • Post-quantum security • Privacy-preserving ML",
   "location": "Istanbul, Türkiye",
   "email": "hdadmarzi23@ku.edu.tr",
-  "phone": "+90 538 783 75 69",
   "githubUsername": "rezasaadi",
   "links": {
     "website": "",
@@ -649,7 +648,7 @@
   "researchAreas": [
     {
       "id": "mpc-distributed",
-      "title": "MPC & Distributed Systems",
+      "title": "Multi-Party Computation & Distributed Systems",
       "icon": "",
       "question": "How can password authentication remain secure when secrets are distributed, updateable, and exposed to malicious infrastructure?",
       "summary": "This line studies password-authentication protocols that split trust across servers while supporting updates, robustness, and performance measurement. My contribution is at the protocol-design/proof boundary, plus the systems side: Rust/Go implementations, Dockerized experiments, and reproducible benchmarks.",
@@ -705,7 +704,7 @@
         "RoUpSPA: Robust Updatable Single Password Authentication"
       ],
       "iconKey": "mpc-distributed",
-      "image": "assets/research/mpc-secure-multiparty-computation.jpg"
+      "image": "assets/research/mpc-secure-multiparty-computation.png"
     },
     {
       "id": "pqc",
@@ -757,7 +756,7 @@
         "AEGIS: A Mechanizable Framework for Post-Quantum IoT Authenticated Key Exchange"
       ],
       "iconKey": "pqc",
-      "image": "assets/research/pqc-post-quantum-cryptography.jpg"
+      "image": "assets/research/pqc-post-quantum-cryptography.png"
     },
     {
       "id": "ppml",
@@ -804,7 +803,7 @@
         "SpectraDP: Spectral Trade-offs for Communication-Efficient Differentially Private Learning"
       ],
       "iconKey": "ppml",
-      "image": "assets/research/ppml-privacy-preserving-ml.jpg"
+      "image": "assets/research/ppml-privacy-preserving-ml.png"
     }
   ]
 }

@@ -90,6 +90,22 @@ function topicIconSvg(area) {
   };
   return icons[key] || `<span>${area.icon || '◎'}</span>`;
 }
+function imagePath(path) {
+  if (!path) return '';
+  if (/^(https?:)?\/\//.test(path) || path.startsWith('data:') || path.startsWith('/')) return path;
+  return path;
+}
+function topicMediaHtml(area) {
+  if (area.image) {
+    const alt = String(area.title || 'Research topic')
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;') + ' illustration';
+    return `<img class="topic-art" src="${imagePath(area.image)}" alt="${alt}" loading="lazy">`;
+  }
+  return topicIconSvg(area);
+}
 
 function renderAreaPreview(areas) {
   const root = maybeEl('homeResearchCards');
