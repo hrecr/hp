@@ -10,9 +10,9 @@
     "linkedin": "https://www.linkedin.com/in/hrezasaadi/",
     "googleScholar": "",
     "orcid": "",
-    "cvPdf": "../resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf",
-    "cvLongPdf": "../resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf",
-    "cvShortPdf": "../resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf"
+    "cvPdf": "resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf",
+    "cvLongPdf": "resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf",
+    "cvShortPdf": "resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf"
   },
   "bio": "I am HamidReza Saadi Dadmarzi, an M.Sc. student in Computer Science at Koç University and a researcher in cryptography. My work is centered on password-based authentication, secure multi-party computation, post-quantum protocols, and privacy-preserving machine learning. I like problems where theory, proofs, and systems all have to fit together: a protocol should be formally meaningful, implementable, and measurable.",
   "summary": "I design and analyze cryptographic protocols for authentication and privacy in distributed systems. My current research focuses on MPC-based password authentication, robust/updatable authentication, post-quantum SSO and IoT authenticated key exchange, and privacy-preserving learning. I also build Rust/Go prototypes and benchmark harnesses so that protocol claims can be tested against realistic implementation costs.",

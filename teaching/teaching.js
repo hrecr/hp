@@ -58,7 +58,7 @@ function renderTeaching(groups) {
 async function init() {
   initTheme('dark');
 
-  const site = await loadSiteData('../../data/site.json');
+  const site = await loadSiteData('../data/site.json');
   el('brandName').textContent = site?.name || 'Portfolio';
   setTitle(site?.name || 'Portfolio', 'Teaching');
 

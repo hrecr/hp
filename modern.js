@@ -175,8 +175,8 @@ async function init() {
   renderAreaPreview(site?.researchAreas || []);
   setHrefIfExists('btnGithub', normalizeUrl(site?.links?.github || ''));
   setHrefIfExists('btnLinkedIn', normalizeUrl(site?.links?.linkedin || ''));
-  setHrefIfExists('btnCVLong', site?.links?.cvLongPdf || '../resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf');
-  setHrefIfExists('btnCVShort', site?.links?.cvShortPdf || '../resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf');
+  setHrefIfExists('btnCVLong', site?.links?.cvLongPdf || 'resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf');
+  setHrefIfExists('btnCVShort', site?.links?.cvShortPdf || 'resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf');
   attachReveal();
   smoothScrollToHash();
 }
