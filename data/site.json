@@ -1,11 +1,11 @@
 {
-  "name": "HamidReza Saadi Dadmarzi",
-  "tagline": "Cryptography researcher • MPC authentication • Post-quantum security • Privacy-preserving ML",
+  "name": "Reza Saadi",
+  "tagline": "Cryptography and security researcher",
   "location": "Istanbul, Türkiye",
   "email": "hdadmarzi23@ku.edu.tr",
   "githubUsername": "rezasaadi",
   "links": {
-    "website": "",
+    "website": "https://rezasaadi.github.io/",
     "github": "https://github.com/rezasaadi",
     "linkedin": "https://www.linkedin.com/in/hrezasaadi/",
     "googleScholar": "",
@@ -15,7 +15,7 @@
     "cvShortPdf": "resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf"
   },
   "bio": "I am HamidReza Saadi Dadmarzi, an M.Sc. student in Computer Science at Koç University and a researcher in cryptography. My work is centered on password-based authentication, secure multi-party computation, post-quantum protocols, and privacy-preserving machine learning. I like problems where theory, proofs, and systems all have to fit together: a protocol should be formally meaningful, implementable, and measurable.",
-  "summary": "I design and analyze cryptographic protocols for authentication and privacy in distributed systems. My current research focuses on MPC-based password authentication, robust/updatable authentication, post-quantum SSO and IoT authenticated key exchange, and privacy-preserving learning. I also build Rust/Go prototypes and benchmark harnesses so that protocol claims can be tested against realistic implementation costs.",
+  "summary": "I design password-based and post-quantum authentication protocols, connecting formal security with reproducible implementations.",
   "highlights": [
     "M.Sc. researcher at Koç University working on password-based authentication, MPC, PQC, and privacy-preserving ML.",
     "Author of UpSPA and RoUpSPA research lines, with public code and benchmarks for UpSPA.",
@@ -145,39 +145,45 @@
   "publications": [
     {
       "title": "UpSPA: Secure and Updatable Single Password Authentication",
-      "venue": "IACR ePrint / submitted to ESORICS 2026",
+      "venue": "IACR ePrint",
       "year": "2026",
-      "status": "Preprint + code available",
+      "status": "Preprint and artifact available",
+      "summary": "An updatable password-authentication protocol with a public implementation and reproducible benchmark suite.",
       "url": "https://eprint.iacr.org/2026/784.pdf",
       "code": "https://github.com/rezasaadi/UpSpa_benchmark",
       "area": "MPC & Distributed Systems"
     },
     {
       "title": "RoUpSPA: Robust Updatable Single Password Authentication",
-      "venue": "Preprint",
+      "venue": "Research manuscript",
       "year": "2026",
-      "status": "Planned ACM TOPS submission",
+      "status": "Manuscript in preparation",
+      "summary": "A robustness-oriented continuation of UpSPA for distributed deployments with provider failures and malicious behavior.",
+      "code": "https://github.com/rezasaadi/Threshold-Password-Authentication-Protocols",
       "area": "MPC & Distributed Systems"
     },
     {
       "title": "SpectraDP: Spectral Trade-offs for Communication-Efficient Differentially Private Learning",
       "venue": "Research manuscript",
       "year": "2026",
-      "status": "In progress",
+      "status": "Work in progress",
+      "summary": "A frequency-domain approach to communication-efficient differentially private federated learning.",
       "area": "Privacy-Preserving ML"
     },
     {
       "title": "QuasarSSO: A Post-Quantum Password-Protected SSO System",
-      "venue": "Selected research project",
+      "venue": "Research project",
       "year": "2026",
-      "status": "In progress",
+      "status": "Work in progress",
+      "summary": "A KEM-centered direction for password-protected single sign-on in the post-quantum setting.",
       "area": "Post-Quantum Cryptography"
     },
     {
       "title": "AEGIS: A Mechanizable Framework for Post-Quantum IoT Authenticated Key Exchange",
-      "venue": "Selected research project",
+      "venue": "Interactive research framework",
       "year": "2026",
-      "status": "Interactive framework page included",
+      "status": "Framework available",
+      "summary": "A framework for explicit and mechanizable security analysis of post-quantum IoT authenticated key exchange.",
       "url": "./aegis-framework/",
       "area": "Post-Quantum Cryptography"
     }
@@ -221,7 +227,7 @@
       "links": {
         "projectPage": "",
         "paper": "",
-        "code": ""
+        "code": "https://github.com/rezasaadi/Threshold-Password-Authentication-Protocols"
       }
     },
     {
@@ -309,7 +315,10 @@
   "implementationProjects": {
     "mode": "manual",
     "featuredRepos": [
-      "UpSPA_FPB",
+      "UpSPA_extension",
+      "UpSPA_Extension_User_Study_Version",
+      "Threshold-Password-Authentication-Protocols",
+      "CTRU-Light-and-PQC-on-AVR",
       "UpSpa_benchmark",
       "Augsso_bench",
       "PAS-TA-U_bench",
@@ -331,8 +340,8 @@
           "TypeScript"
         ],
         "links": {
-          "repo": "https://github.com/rezasaadi/UpSPA_FPB",
-          "docs": "https://github.com/rezasaadi/UpSPA_FPB/tree/main/docs",
+          "repo": "https://github.com/rezasaadi/UpSPA_extension",
+          "docs": "https://github.com/rezasaadi/UpSPA_extension/tree/main/docs",
           "demo": ""
         }
       },
@@ -348,6 +357,52 @@
         "links": {
           "repo": "https://github.com/rezasaadi/UpSpa_benchmark",
           "docs": "https://eprint.iacr.org/2026/784.pdf",
+          "demo": ""
+        }
+      },
+      {
+        "name": "Unified Threshold Password-Authentication Benchmarks",
+        "description": "A reproducible Rust benchmark suite comparing UpSPA, PAS-TA-U, AugSSO, and an UpSPA quorum construction under shared timing and network settings.",
+        "topics": [
+          "Rust",
+          "Threshold authentication",
+          "UpSPA",
+          "Reproducible benchmarks"
+        ],
+        "links": {
+          "repo": "https://github.com/rezasaadi/Threshold-Password-Authentication-Protocols",
+          "docs": "",
+          "demo": ""
+        }
+      },
+      {
+        "name": "CTRU-Light and Hybrid Post-Quantum MQTT on AVR",
+        "description": "The CHES 2026 artifact for a lightweight lattice KEM and hybrid KEM-MQTT protocol on constrained 8-bit AVR sensor platforms.",
+        "topics": [
+          "Post-quantum cryptography",
+          "AVR",
+          "IoT",
+          "KEM",
+          "MQTT"
+        ],
+        "links": {
+          "repo": "https://github.com/rezasaadi/CTRU-Light-and-PQC-on-AVR",
+          "docs": "",
+          "demo": ""
+        }
+      },
+      {
+        "name": "UpSPA Browser Extension User Study",
+        "description": "A public user-study version of the UpSPA browser extension for evaluating the real password-management workflow.",
+        "topics": [
+          "Browser extension",
+          "User study",
+          "UpSPA",
+          "Authentication"
+        ],
+        "links": {
+          "repo": "https://github.com/rezasaadi/UpSPA_Extension_User_Study_Version",
+          "docs": "",
           "demo": ""
         }
       },
@@ -642,7 +697,7 @@
     }
   ],
   "contact": {
-    "pitch": "For collaboration on MPC authentication, post-quantum protocol design, privacy-preserving ML, or implementation artifacts, email me.",
+    "pitch": "I welcome research discussions and collaboration opportunities in authentication, secure multiparty computation, post-quantum cryptography, and privacy-preserving systems.",
     "timezone": "Europe/Istanbul"
   },
   "researchAreas": [
@@ -682,7 +737,7 @@
             },
             {
               "label": "Browser extension prototype",
-              "href": "https://github.com/rezasaadi/UpSPA_FPB"
+              "href": "https://github.com/rezasaadi/UpSPA_extension"
             }
           ]
         },
@@ -696,15 +751,19 @@
             "Malicious security",
             "Availability"
           ],
-          "links": []
+          "links": [
+            {
+              "label": "Threshold password benchmarks",
+              "href": "https://github.com/rezasaadi/Threshold-Password-Authentication-Protocols"
+            }
+          ]
         }
       ],
       "publications": [
         "UpSPA: Secure and Updatable Single Password Authentication",
         "RoUpSPA: Robust Updatable Single Password Authentication"
       ],
-      "iconKey": "mpc-distributed",
-      "image": "assets/research/mpc-secure-multiparty-computation.png"
+      "iconKey": "mpc-distributed"
     },
     {
       "id": "pqc",
@@ -755,8 +814,7 @@
         "QuasarSSO: A Post-Quantum Password-Protected SSO System",
         "AEGIS: A Mechanizable Framework for Post-Quantum IoT Authenticated Key Exchange"
       ],
-      "iconKey": "pqc",
-      "image": "assets/research/pqc-post-quantum-cryptography.png"
+      "iconKey": "pqc"
     },
     {
       "id": "ppml",
@@ -802,8 +860,9 @@
       "publications": [
         "SpectraDP: Spectral Trade-offs for Communication-Efficient Differentially Private Learning"
       ],
-      "iconKey": "ppml",
-      "image": "assets/research/ppml-privacy-preserving-ml.png"
+      "iconKey": "ppml"
     }
-  ]
+  ],
+  "displayName": "Reza Saadi",
+  "fullName": "HamidReza Saadi Dadmarzi"
 }
