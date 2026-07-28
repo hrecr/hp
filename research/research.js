@@ -1,5 +1,5 @@
-import { loadSiteData, setTitle, joinNonEmpty, normalizeUrl, smoothScrollToHash } from '../assets/common.js';
-import { initTheme, el, attachReveal } from '../page-helpers.js';
+import { loadSiteData, setTitle, normalizeUrl, smoothScrollToHash } from '../assets/common.js';
+import { initTheme, el, attachReveal, researchIconMarkup } from '../page-helpers.js';
 
 function tag(label) {
   const span = document.createElement('span');
@@ -19,29 +19,6 @@ function action(label, href) {
   return a;
 }
 
-function imagePath(path) {
-  if (!path) return '';
-  if (/^(https?:)?\/\//.test(path) || path.startsWith('data:') || path.startsWith('/')) return path;
-  return `../${path}`;
-}
-
-function topicIconSvg(area) {
-  const key = area.iconKey || area.id || '';
-  const icons = {
-    'mpc-distributed': `<span>MPC</span>`,
-    'pqc': `<span>PQC</span>`,
-    'ppml': `<span>ML</span>`
-  };
-  return icons[key] || `<span>${area.icon || '◎'}</span>`;
-}
-
-function topicMediaHtml(area) {
-  if (area.image) {
-    const alt = String(area.title || 'Research topic').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;') + ' illustration';
-    return `<img class="topic-art" src="${imagePath(area.image)}" alt="${alt}" loading="lazy">`;
-  }
-  return topicIconSvg(area);
-}
 function renderAreaCards(areas) {
   const root = el('researchAreas');
   root.innerHTML = '';
@@ -52,7 +29,7 @@ function renderAreaCards(areas) {
 
     const icon = document.createElement('div');
     icon.className = 'topic-thumb';
-    icon.innerHTML = topicMediaHtml(area);
+    icon.innerHTML = researchIconMarkup(area);
 
     const body = document.createElement('div');
     body.className = 'topic-body';
@@ -155,39 +132,6 @@ function renderAreaDetails(areas) {
     root.appendChild(section);
   }
 }
-function renderPublications(pubs) {
-  const ul = el('pubList');
-  ul.innerHTML = '';
-  if (!Array.isArray(pubs) || !pubs.length) {
-    const li = document.createElement('li');
-    li.textContent = 'Publications will appear here.';
-    ul.appendChild(li);
-    return;
-  }
-  for (const p of pubs) {
-    const li = document.createElement('li');
-    const title = p.title || 'Untitled';
-    if (p.url) {
-      const a = document.createElement('a');
-      a.href = normalizeUrl(p.url);
-      if (!String(p.url).startsWith('./') && !String(p.url).startsWith('../') && !String(p.url).startsWith('/')) {
-        a.target = '_blank';
-        a.rel = 'noopener';
-      }
-      a.textContent = title;
-      li.appendChild(a);
-    } else {
-      li.appendChild(document.createTextNode(title));
-    }
-    const note = joinNonEmpty([p.venue, p.year, p.status], ' — ');
-    if (note) li.appendChild(document.createTextNode(' — ' + note));
-    if (p.code) {
-      li.appendChild(document.createTextNode(' '));
-      li.appendChild(action('Code', p.code));
-    }
-    ul.appendChild(li);
-  }
-}
 async function init() {
   initTheme('dark');
   const site = await loadSiteData('../data/site.json');
@@ -196,7 +140,6 @@ async function init() {
   const areas = site?.researchAreas || [];
   renderAreaCards(areas);
   renderAreaDetails(areas);
-  renderPublications(site?.publications || []);
   attachReveal();
   setTimeout(smoothScrollToHash, 0);
 }
