@@ -1,124 +1,80 @@
 import {
   loadSiteData,
   setTitle,
-  escapeHtml,
-  joinNonEmpty,
-  normalizeUrl,
-  smoothScrollToHash
+  normalizeUrl
 } from './assets/common.js';
+import {
+  initTheme,
+  attachReveal,
+  setHref,
+  researchIconMarkup
+} from './page-helpers.js';
 
-const THEME_KEY = 'portfolio_theme_v1';
+const byId = id => document.getElementById(id);
 
-function getTheme() {
-  try { return localStorage.getItem(THEME_KEY); } catch { return null; }
-}
-function setTheme(v) {
-  try { localStorage.setItem(THEME_KEY, v); } catch { /* ignore */ }
-}
-function applyTheme(theme) {
-  const root = document.documentElement;
-  if (!theme) root.removeAttribute('data-theme');
-  else root.setAttribute('data-theme', theme);
-}
-function toggleTheme() {
-  const cur = document.documentElement.getAttribute('data-theme') || getTheme() || 'dark';
-  const next = cur === 'light' ? 'dark' : 'light';
-  applyTheme(next);
-  setTheme(next);
-}
-function maybeEl(id) { return document.getElementById(id); }
-function setTextIfExists(id, text) {
-  const node = maybeEl(id);
-  if (!node) return;
-  node.textContent = text ?? '';
-}
-function setHrefIfExists(id, url) {
-  const a = maybeEl(id);
-  if (!a) return;
-  if (!url) {
-    a.setAttribute('href', '#');
-    a.setAttribute('aria-disabled', 'true');
-    a.style.opacity = '0.55';
-    a.style.pointerEvents = 'none';
-    return;
+function makeLink(label, href) {
+  if (!href) return null;
+  const anchor = document.createElement('a');
+  anchor.href = normalizeUrl(href);
+  anchor.textContent = label;
+  if (/^https?:\/\//i.test(anchor.href)) {
+    anchor.target = '_blank';
+    anchor.rel = 'noopener';
   }
-  a.removeAttribute('aria-disabled');
-  a.style.opacity = '';
-  a.style.pointerEvents = '';
-  a.href = url;
-}
-function renderHighlights(list) {
-  const ul = maybeEl('highlights');
-  if (!ul) return;
-  ul.innerHTML = '';
-  for (const item of (list || [])) {
-    const li = document.createElement('li');
-    li.textContent = item;
-    ul.appendChild(li);
-  }
+  return anchor;
 }
 
-function topicIconSvg(area) {
-  const key = area.iconKey || area.id || '';
-  const icons = {
-    'mpc-distributed': `
-      <svg viewBox="0 0 72 72" role="img" aria-label="MPC and distributed systems icon">
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="20" cy="21" r="7"/><circle cx="52" cy="21" r="7"/><circle cx="20" cy="51" r="7"/><circle cx="52" cy="51" r="7"/>
-          <path d="M27 21h18M27 51h18M20 28v16M52 28v16M25 26l22 20M47 26L25 46" opacity=".72"/>
-          <rect x="29" y="30" width="14" height="13" rx="3"/>
-          <path d="M32 30v-3a4 4 0 0 1 8 0v3"/>
-        </g>
-      </svg>`,
-    'pqc': `
-      <svg viewBox="0 0 72 72" role="img" aria-label="Post-quantum cryptography icon">
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M36 8l24 10v17c0 16-10 25-24 30-14-5-24-14-24-30V18L36 8z"/>
-          <path d="M24 27l12-7 12 7-12 7-12-7zM24 42l12-7 12 7-12 7-12-7z" opacity=".78"/>
-          <path d="M24 27v15M48 27v15M36 34v15" opacity=".62"/>
-        </g>
-      </svg>`,
-    'ppml': `
-      <svg viewBox="0 0 72 72" role="img" aria-label="Privacy-preserving ML icon">
-        <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="19" cy="20" r="5"/><circle cx="19" cy="52" r="5"/><circle cx="37" cy="36" r="5"/><circle cx="55" cy="20" r="5"/><circle cx="55" cy="52" r="5"/>
-          <path d="M24 22l8 9M24 50l8-9M42 34l8-9M42 38l8 9" opacity=".70"/>
-          <path d="M12 36c7-10 15-15 24-15s17 5 24 15c-7 10-15 15-24 15S19 46 12 36z" opacity=".75"/>
-          <path d="M16 60L60 12"/>
-        </g>
-      </svg>`
-  };
-  return icons[key] || `<span>${area.icon || '◎'}</span>`;
-}
-function imagePath(path) {
-  if (!path) return '';
-  if (/^(https?:)?\/\//.test(path) || path.startsWith('data:') || path.startsWith('/')) return path;
-  return path;
-}
-function topicMediaHtml(area) {
-  if (area.image) {
-    const alt = String(area.title || 'Research topic')
-      .replace(/&/g, '&amp;')
-      .replace(/"/g, '&quot;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;') + ' illustration';
-    return `<img class="topic-art" src="${imagePath(area.image)}" alt="${alt}" loading="lazy">`;
-  }
-  return topicIconSvg(area);
-}
-
-function renderAreaPreview(areas) {
-  const root = maybeEl('homeResearchCards');
+function renderFeaturedPublications(publications = []) {
+  const root = byId('featuredPublications');
   if (!root) return;
-  root.innerHTML = '';
-  for (const area of (areas || []).slice(0, 3)) {
-    const a = document.createElement('a');
-    a.className = 'research-topic reveal';
-    a.href = `./research/#${area.id || ''}`;
+  root.replaceChildren();
+
+  const selected = publications.slice(0, 3);
+  for (const publication of selected) {
+    const card = document.createElement('article');
+    card.className = 'publication-card reveal';
+
+    const meta = document.createElement('div');
+    meta.className = 'publication-meta';
+    meta.textContent = [publication.year, publication.venue, publication.status]
+      .filter(Boolean)
+      .join(' · ');
+
+    const title = document.createElement('h3');
+    title.textContent = publication.title || 'Untitled work';
+
+    const description = document.createElement('p');
+    description.textContent = publication.summary ||
+      (publication.area ? `Research in ${publication.area}.` : 'Research publication or manuscript.');
+
+    const actions = document.createElement('div');
+    actions.className = 'publication-actions';
+    const links = [
+      makeLink('Paper', publication.url),
+      makeLink('Code', publication.code),
+      makeLink('Project', publication.projectPage)
+    ].filter(Boolean);
+    links.forEach(link => actions.appendChild(link));
+
+    card.append(meta, title, description);
+    if (links.length) card.appendChild(actions);
+    root.appendChild(card);
+  }
+}
+
+function renderResearchAreas(areas = []) {
+  const root = byId('homeResearchCards');
+  if (!root) return;
+  root.replaceChildren();
+
+  for (const area of areas.slice(0, 3)) {
+    const link = document.createElement('a');
+    link.className = 'research-topic reveal';
+    link.href = `./research/#${area.id || ''}`;
 
     const icon = document.createElement('div');
     icon.className = 'topic-thumb';
-    icon.innerHTML = topicMediaHtml(area);
+    icon.innerHTML = researchIconMarkup(area);
 
     const body = document.createElement('div');
     body.className = 'topic-body';
@@ -127,60 +83,112 @@ function renderAreaPreview(areas) {
     title.className = 'topic-title';
     title.textContent = area.title || 'Research area';
 
-    const q = document.createElement('div');
-    q.className = 'topic-question';
-    q.textContent = area.question || area.summary || '';
+    const question = document.createElement('p');
+    question.className = 'topic-question';
+    question.textContent = area.summary || area.question || '';
 
     const tags = document.createElement('div');
     tags.className = 'topic-tags';
-    for (const tag of (area.tags || []).slice(0, 5)) {
-      const span = document.createElement('span');
-      span.className = 'tag';
-      span.textContent = tag;
-      tags.appendChild(span);
+    for (const label of (area.tags || []).slice(0, 4)) {
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = label;
+      tags.appendChild(tag);
     }
 
-    body.appendChild(title);
-    body.appendChild(q);
-    body.appendChild(tags);
-    a.appendChild(icon);
-    a.appendChild(body);
-    root.appendChild(a);
+    body.append(title, question, tags);
+    link.append(icon, body);
+    root.appendChild(link);
   }
 }
-function attachReveal() {
-  const obs = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) {
-        e.target.classList.add('on');
-        obs.unobserve(e.target);
-      }
-    }
-  }, { threshold: 0.12 });
-  for (const node of Array.from(document.querySelectorAll('.reveal'))) obs.observe(node);
+
+function renderArtifacts(projects = []) {
+  const root = byId('featuredArtifacts');
+  if (!root) return;
+  root.replaceChildren();
+
+  const preferredNames = [
+    'UpSPA Real-Case Password Manager Extension',
+    'Updatable Single-Password Authentication: Paper Artifact and Benchmarks',
+    'AEGIS Mechanizable Framework for Post-Quantum IoT AKE'
+  ];
+
+  const selected = preferredNames
+    .map(name => projects.find(project => project.name === name))
+    .filter(Boolean);
+
+  const fallback = projects.filter(project => !selected.includes(project));
+  const finalProjects = [...selected, ...fallback].slice(0, 3);
+
+  finalProjects.forEach((project, index) => {
+    const card = document.createElement('article');
+    card.className = 'artifact-card reveal';
+
+    const number = document.createElement('div');
+    number.className = 'artifact-number';
+    number.textContent = String(index + 1).padStart(2, '0');
+
+    const title = document.createElement('h3');
+    title.textContent = project.name || 'Software artifact';
+
+    const description = document.createElement('p');
+    description.textContent = project.description || '';
+
+    const actions = document.createElement('div');
+    actions.className = 'artifact-actions';
+    const sourceLinks = project.links || {};
+    const links = [
+      makeLink('Repository', sourceLinks.repo),
+      makeLink('Documentation', sourceLinks.docs),
+      makeLink('Live demo', sourceLinks.demo)
+    ].filter(Boolean);
+    links.forEach(link => actions.appendChild(link));
+
+    card.append(number, title, description);
+    if (links.length) card.appendChild(actions);
+    root.appendChild(card);
+  });
 }
+
+function configureProfileLinks(site) {
+  const links = site.links || {};
+  setHref('btnGithub', normalizeUrl(links.github || ''));
+  setHref('btnLinkedIn', normalizeUrl(links.linkedin || ''));
+  setHref('btnScholar', normalizeUrl(links.googleScholar || ''));
+  setHref('btnOrcid', normalizeUrl(links.orcid || ''));
+  setHref('btnCVShort', links.cvShortPdf || 'resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf');
+
+  const email = site.email || '';
+  const emailLink = byId('heroEmail');
+  if (emailLink) {
+    emailLink.textContent = email;
+    emailLink.href = email ? `mailto:${email}` : '#';
+    emailLink.hidden = !email;
+  }
+}
+
 async function init() {
-  applyTheme(getTheme() || 'dark');
-  const themeBtn = maybeEl('themeToggle');
-  if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+  initTheme('auto');
 
   const site = await loadSiteData('./data/site.json');
-  setTitle(site?.name || 'Portfolio', 'Home');
-  setTextIfExists('brandName', site?.name || 'Portfolio');
-  setTextIfExists('name', site?.name || 'YOUR NAME');
-  setTextIfExists('tagline', site?.tagline || '');
-  setTextIfExists('summary', site?.summary || '');
-  setTextIfExists('metaLine', joinNonEmpty([site?.location, site?.email]));
-  renderHighlights(site?.highlights || []);
-  renderAreaPreview(site?.researchAreas || []);
-  setHrefIfExists('btnGithub', normalizeUrl(site?.links?.github || ''));
-  setHrefIfExists('btnLinkedIn', normalizeUrl(site?.links?.linkedin || ''));
-  setHrefIfExists('btnCVLong', site?.links?.cvLongPdf || 'resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf');
-  setHrefIfExists('btnCVShort', site?.links?.cvShortPdf || 'resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf');
+  const displayName = site.displayName || site.name || 'Reza Saadi';
+  setTitle(displayName, 'Cryptography Researcher');
+
+  const brand = byId('brandName');
+  if (brand) brand.textContent = displayName;
+
+  configureProfileLinks(site);
+  renderFeaturedPublications(site.publications || []);
+  renderResearchAreas(site.researchAreas || []);
+  renderArtifacts(site.implementationProjects?.manual || []);
+
+  const year = byId('currentYear');
+  if (year) year.textContent = String(new Date().getFullYear());
+
   attachReveal();
-  smoothScrollToHash();
 }
-init().catch((err) => {
-  console.error(err);
-  document.body.innerHTML = `<pre style="padding:20px">Modern UI failed to load.\n\n${escapeHtml(String(err))}</pre>`;
+
+init().catch(error => {
+  console.error(error);
+  document.querySelectorAll('.reveal').forEach(node => node.classList.add('on'));
 });
