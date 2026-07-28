@@ -49,8 +49,10 @@ function card(title, sub, desc, tags, actions) {
       const link = document.createElement('a');
       link.className = 'action';
       link.href = a.href;
-      link.target = '_blank';
-      link.rel = 'noopener';
+      if (/^https?:\/\//.test(a.href)) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
       link.textContent = a.label;
       aWrap.appendChild(link);
     }
@@ -138,7 +140,7 @@ async function init() {
   if (impl.mode === 'github') {
     await renderGithubProjects(site?.githubUsername || '', impl.featuredRepos || []);
   } else {
-    el('ghNote').textContent = 'Curated list (manual mode).';
+    el('ghNote').textContent = 'Notable public repositories, curated from GitHub.';
     renderManualProjects(impl.manual || []);
   }
 
