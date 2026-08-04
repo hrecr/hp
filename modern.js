@@ -17,7 +17,7 @@ function makeLink(label, href) {
   const anchor = document.createElement('a');
   anchor.href = normalizeUrl(href);
   anchor.textContent = label;
-  if (/^https?:\/\//i.test(anchor.href)) {
+  if (/^https?:\/\//i.test(String(href))) {
     anchor.target = '_blank';
     anchor.rel = 'noopener';
   }
@@ -110,7 +110,7 @@ function renderArtifacts(projects = []) {
   const preferredNames = [
     'UpSPA Real-Case Password Manager Extension',
     'Updatable Single-Password Authentication: Paper Artifact and Benchmarks',
-    'AEGIS Mechanizable Framework for Post-Quantum IoT AKE'
+    'AEGIS Protocol Assurance for Post-Quantum IoT'
   ];
 
   const selected = preferredNames
@@ -137,9 +137,12 @@ function renderArtifacts(projects = []) {
     const actions = document.createElement('div');
     actions.className = 'artifact-actions';
     const sourceLinks = project.links || {};
+    const documentationUrl = project.name === 'AEGIS Protocol Assurance for Post-Quantum IoT'
+      ? './research/aegis-framework/'
+      : sourceLinks.docs;
     const links = [
       makeLink('Repository', sourceLinks.repo),
-      makeLink('Documentation', sourceLinks.docs),
+      makeLink('Documentation', documentationUrl),
       makeLink('Live demo', sourceLinks.demo)
     ].filter(Boolean);
     links.forEach(link => actions.appendChild(link));
