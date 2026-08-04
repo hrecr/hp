@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The AEGIS Workflow</title>
+  <meta name="description" content="The proposed eleven-step AEGIS workflow from protocol submission through framework modeling, security games, formal translation, and evidence reporting.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="The AEGIS Workflow">
+  <meta property="og:description" content="The proposed eleven-step AEGIS workflow from protocol submission through framework modeling, security games, formal translation, and evidence reporting.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/workflow/index.html">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../index.html" aria-label="AEGIS overview"><img src="../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../index.html">Overview</a>
+        <a href="../workflow/index.html" aria-current="page">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../framework/index.html">Framework Overview</a>
+            <a href="../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../dsl/index.html">DSL</a>
+        <a href="../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../verification/index.html">Verification Overview</a>
+            <a href="../verification/lean/index.html">Lean 4</a>
+            <a href="../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../verification/status/index.html">Result Status</a>
+            <a href="../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../index.html">AEGIS</a></li><li><span aria-current="page">Workflow</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">ELEVEN STEPS · FOUR PHASES</p>
+    <h1>The AEGIS Workflow</h1>
+    <p class="hero__lead">The AEGIS workflow is a proposed auditable chain from a protocol source to a trust-aware report. The public website summarizes the steps; detailed schemas remain part of the project and paper design.</p>
+    
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">PHASE A · UNDERSTAND</p>
+    <h2>Turn source material into a traceable protocol representation.</h2>
+    <div class="workflow-list"><article class="workflow-step"><span class="workflow-step__number">01</span><div><div class="workflow-step__heading"><h3>Protocol Submission</h3><span class="status status--info">Conceptual</span></div><p>Provide a protocol paper, structured description, pseudocode, message flow, or DSL.</p><dl><div><dt>Input</dt><dd>Protocol source and intended claims</dd></div><div><dt>Output</dt><dd>Submission package</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">02</span><div><div class="workflow-step__heading"><h3>Extraction and Normalization</h3><span class="status status--info">Planned</span></div><p>Identify parties, messages, credentials, algorithms, state, and claimed properties.</p><dl><div><dt>Input</dt><dd>Submission package</dd></div><div><dt>Output</dt><dd>Protocol IR</dd></div></dl></div></article></div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">PHASE B · MODEL</p>
+    <h2>Make protocol objects, bindings, and compatibility gaps explicit.</h2>
+    <div class="workflow-list"><article class="workflow-step"><span class="workflow-step__number">03</span><div><div class="workflow-step__heading"><h3>IoT-PQ-AKEmin Mapping</h3><span class="status status--neutral">Framework draft</span></div><p>Represent the protocol in a common minimal inspection model.</p><dl><div><dt>Input</dt><dd>Protocol IR</dd></div><div><dt>Output</dt><dd>AKEmin mapping</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">04</span><div><div class="workflow-step__heading"><h3>IoT-PQ-AKEgen Adapter</h3><span class="status status--neutral">Framework draft</span></div><p>Construct transcripts, contexts, freshness maps, and partnering rules.</p><dl><div><dt>Input</dt><dd>AKEmin mapping</dd></div><div><dt>Output</dt><dd>AKEgen adapter</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">05</span><div><div class="workflow-step__heading"><h3>Compatibility Checking</h3><span class="status status--info">Conceptual</span></div><p>Evaluate the protocol against structural requirements R1–R12.</p><dl><div><dt>Input</dt><dd>AKEgen adapter</dd></div><div><dt>Output</dt><dd>Compatibility findings</dd></div></dl></div></article></div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">PHASE C · FORMALIZE</p>
+    <h2>Create typed specifications and property-specific experiments.</h2>
+    <div class="workflow-list"><article class="workflow-step"><span class="workflow-step__number">06</span><div><div class="workflow-step__heading"><h3>DSL Generation</h3><span class="status status--info">Planned</span></div><p>Generate a typed and provenance-preserving specification.</p><dl><div><dt>Input</dt><dd>Adapter and findings</dd></div><div><dt>Output</dt><dd>AEGIS DSL</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">07</span><div><div class="workflow-step__heading"><h3>DSL Validation</h3><span class="status status--info">Planned</span></div><p>Check syntax, types, protocol flow, state, and semantic consistency.</p><dl><div><dt>Input</dt><dd>AEGIS DSL</dd></div><div><dt>Output</dt><dd>Validated model</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">08</span><div><div class="workflow-step__heading"><h3>Security-Game Generation</h3><span class="status status--info">Planned</span></div><p>Instantiate selected AKE and IoT robustness experiments.</p><dl><div><dt>Input</dt><dd>Validated model</dd></div><div><dt>Output</dt><dd>Security games</dd></div></dl></div></article></div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">PHASE D · VERIFY</p>
+    <h2>Translate obligations, check evidence, and report each claim independently.</h2>
+    <div class="workflow-list"><article class="workflow-step"><span class="workflow-step__number">09</span><div><div class="workflow-step__heading"><h3>Formal Translation</h3><span class="status status--info">Planned</span></div><p>Translate definitions and theorem targets to Lean or Rocq.</p><dl><div><dt>Input</dt><dd>Security games</dd></div><div><dt>Output</dt><dd>Formal projects</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">10</span><div><div class="workflow-step__heading"><h3>Machine Checking</h3><span class="status status--info">Planned</span></div><p>Check proof terms, assumptions, placeholders, and counterexamples.</p><dl><div><dt>Input</dt><dd>Formal projects and proofs</dd></div><div><dt>Output</dt><dd>Per-theorem status</dd></div></dl></div></article><article class="workflow-step"><span class="workflow-step__number">11</span><div><div class="workflow-step__heading"><h3>Final Report</h3><span class="status status--info">Planned</span></div><p>Produce a precise report with evidence, limitations, and artifacts.</p><dl><div><dt>Input</dt><dd>Machine-check evidence</dd></div><div><dt>Output</dt><dd>Evidence package</dd></div></dl></div></article></div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">WORKFLOW BOUNDARY</p>
+    <h2>Visible does not mean implemented.</h2>
+    <p class="lead-copy">A step being shown on this website does not mean that its implementation is complete. Status badges distinguish framework definitions, design work, prototypes, and planned components.</p>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-BR93"><span class="reference-id">BR93</span><div><strong>Entity Authentication and Key Distribution</strong><p>Mihir Bellare and Phillip Rogaway · CRYPTO &#39;93, LNCS 773 · 1994</p><small>DOI 10.1007/3-540-48329-2_21</small></div></li><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-UC01"><span class="reference-id">UC01</span><div><strong>Universally Composable Security: A New Paradigm for Cryptographic Protocols</strong><p>Ran Canetti · FOCS 2001 · 2001</p><small>IACR ePrint 2000/067</small></div></li><li id="ref-Q-UC10"><span class="reference-id">Q-UC10</span><div><strong>Universally Composable Quantum Multi-Party Computation</strong><p>Dominique Unruh · EUROCRYPT 2010, LNCS 6110 · 2010</p><small>DOI 10.1007/978-3-642-13190-5_25; arXiv 0910.2912</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../index.html">Overview</a><a href="../workflow/index.html">Workflow</a><a href="../framework/index.html">Framework</a><a href="../dsl/index.html">DSL</a><a href="../security-games/index.html">Security Games</a><a href="../verification/index.html">Verification</a><a href="../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

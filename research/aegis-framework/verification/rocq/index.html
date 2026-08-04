@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coq / Rocq Backend — AEGIS</title>
+  <meta name="description" content="Planned Coq/Rocq module generation for AEGIS protocol models, games, theorem statements, assumptions, and open obligations.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="Coq / Rocq Backend — AEGIS">
+  <meta property="og:description" content="Planned Coq/Rocq module generation for AEGIS protocol models, games, theorem statements, assumptions, and open obligations.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/verification/rocq/index.html">
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../../index.html" aria-label="AEGIS overview"><img src="../../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../../index.html">Overview</a>
+        <a href="../../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../../framework/index.html">Framework Overview</a>
+            <a href="../../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../../dsl/index.html">DSL</a>
+        <a href="../../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../../verification/index.html">Verification Overview</a>
+            <a href="../../verification/lean/index.html">Lean 4</a>
+            <a href="../../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../../verification/status/index.html">Result Status</a>
+            <a href="../../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../../index.html">AEGIS</a></li><li><a href="../../verification/index.html">Verification</a></li><li><span aria-current="page">Coq / Rocq</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">VERIFICATION BACKEND</p>
+    <h1>Coq / Rocq Backend</h1>
+    <p class="hero__lead">The planned Rocq exporter will generate modular .v files for protocol types, interfaces, state transitions, security games, theorem statements, assumptions, and open proof obligations.</p>
+    <div class="hero__status"><span class="status status--info">Planned</span></div>
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">NAMING NOTE</p>
+    <h2>Coq / Rocq supports reader familiarity.</h2>
+    <p class="lead-copy">The Rocq Prover is the current name of the proof assistant formerly known as Coq. This website uses “Coq / Rocq” for accessibility to readers familiar with either name.</p><div class="code-panel">
+  <div class="code-panel__bar"><span>Planned generated project structure</span><button class="copy-button" type="button" aria-label="Copy code to clipboard">Copy</button></div>
+  <pre><code>AEGIS/Core/
+AEGIS/Generated/ExamplePQ_AKE/
+  Types.v
+  Protocol.v
+  Contexts.v
+  Oracles.v
+  Games.v
+  Statements.v
+  Assumptions.v</code></pre>
+</div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">TRUST POLICY</p>
+    <h2>Placeholders cannot become verified evidence.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>No Admitted</h3>
+    <p>Verified modules contain no prohibited admitted proofs.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Assumptions listed</h3>
+    <p>Explicit module assumptions remain visible.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>Unfinished stays open</h3>
+    <p>Incomplete theorems retain Open status.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>Pinned Rocq version</h3>
+    <p>The prover version is fixed for reproducibility.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">05</span>
+    
+    <h3>Source maps</h3>
+    <p>Definitions remain traceable to the DSL source.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">06</span>
+    
+    <h3>Obligation manifests</h3>
+    <p>Every open target appears in the evidence package.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-ROCQ"><span class="reference-id">ROCQ</span><div><strong>The Rocq Prover Reference Manual</strong><p>The Rocq Prover Project · Official documentation · 2026</p><small>Rocq documentation</small></div></li><li id="ref-ROCQ-RENAME"><span class="reference-id">ROCQ-RENAME</span><div><strong>Rocq Prover 9.0 Release Notes / Name Evolution</strong><p>The Rocq Prover Project · Official release documentation · 2025</p><small>Rocq 9.0</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../../index.html">Overview</a><a href="../../workflow/index.html">Workflow</a><a href="../../framework/index.html">Framework</a><a href="../../dsl/index.html">DSL</a><a href="../../security-games/index.html">Security Games</a><a href="../../verification/index.html">Verification</a><a href="../../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

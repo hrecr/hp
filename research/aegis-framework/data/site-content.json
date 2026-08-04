@@ -1,0 +1,397 @@
+{
+  "project": {
+    "name": "AEGIS",
+    "descriptor": "PROTOCOL ASSURANCE",
+    "maturity": "Research direction · project sketch · active development",
+    "tagline": "From protocol descriptions to machine-checkable security obligations.",
+    "lead": "AEGIS is a research direction for turning post-quantum IoT authentication and key-establishment protocols into structured framework models, a typed DSL, formal security games, and Lean 4 or Coq/Rocq proof obligations.",
+    "contact": {
+      "leadName": "Reza Saadi",
+      "affiliation": "{{AFFILIATION}}",
+      "email": "{{CONTACT_EMAIL}}",
+      "github": "{{GITHUB_URL}}"
+    }
+  },
+  "navigation": [
+    {
+      "label": "Overview",
+      "href": "/index.html"
+    },
+    {
+      "label": "Workflow",
+      "href": "/workflow/index.html"
+    },
+    {
+      "label": "Framework",
+      "href": "/framework/index.html",
+      "children": [
+        {
+          "label": "Framework Overview",
+          "href": "/framework/index.html"
+        },
+        {
+          "label": "IoT-PQ-AKEmin",
+          "href": "/framework/ake-min/index.html"
+        },
+        {
+          "label": "IoT-PQ-AKEgen",
+          "href": "/framework/ake-gen/index.html"
+        },
+        {
+          "label": "Structural Requirements",
+          "href": "/framework/requirements/index.html"
+        },
+        {
+          "label": "Security Properties",
+          "href": "/framework/security/index.html"
+        }
+      ]
+    },
+    {
+      "label": "DSL",
+      "href": "/dsl/index.html"
+    },
+    {
+      "label": "Security Games",
+      "href": "/security-games/index.html"
+    },
+    {
+      "label": "Verification",
+      "href": "/verification/index.html",
+      "children": [
+        {
+          "label": "Verification Overview",
+          "href": "/verification/index.html"
+        },
+        {
+          "label": "Lean 4",
+          "href": "/verification/lean/index.html"
+        },
+        {
+          "label": "Coq / Rocq",
+          "href": "/verification/rocq/index.html"
+        },
+        {
+          "label": "Result Status",
+          "href": "/verification/status/index.html"
+        },
+        {
+          "label": "Illustrative Report",
+          "href": "/report/example/index.html"
+        }
+      ]
+    },
+    {
+      "label": "About",
+      "href": "/about/index.html"
+    }
+  ],
+  "workflow": [
+    {
+      "number": "01",
+      "phase": "Understand",
+      "title": "Protocol Submission",
+      "summary": "Provide a protocol paper, structured description, pseudocode, message flow, or DSL.",
+      "input": "Protocol source and intended claims",
+      "output": "Submission package",
+      "status": "Conceptual"
+    },
+    {
+      "number": "02",
+      "phase": "Understand",
+      "title": "Extraction and Normalization",
+      "summary": "Identify parties, messages, credentials, algorithms, state, and claimed properties.",
+      "input": "Submission package",
+      "output": "Protocol IR",
+      "status": "Planned"
+    },
+    {
+      "number": "03",
+      "phase": "Model",
+      "title": "IoT-PQ-AKEmin Mapping",
+      "summary": "Represent the protocol in a common minimal inspection model.",
+      "input": "Protocol IR",
+      "output": "AKEmin mapping",
+      "status": "Framework draft"
+    },
+    {
+      "number": "04",
+      "phase": "Model",
+      "title": "IoT-PQ-AKEgen Adapter",
+      "summary": "Construct transcripts, contexts, freshness maps, and partnering rules.",
+      "input": "AKEmin mapping",
+      "output": "AKEgen adapter",
+      "status": "Framework draft"
+    },
+    {
+      "number": "05",
+      "phase": "Model",
+      "title": "Compatibility Checking",
+      "summary": "Evaluate the protocol against structural requirements R1–R12.",
+      "input": "AKEgen adapter",
+      "output": "Compatibility findings",
+      "status": "Conceptual"
+    },
+    {
+      "number": "06",
+      "phase": "Formalize",
+      "title": "DSL Generation",
+      "summary": "Generate a typed and provenance-preserving specification.",
+      "input": "Adapter and findings",
+      "output": "AEGIS DSL",
+      "status": "Planned"
+    },
+    {
+      "number": "07",
+      "phase": "Formalize",
+      "title": "DSL Validation",
+      "summary": "Check syntax, types, protocol flow, state, and semantic consistency.",
+      "input": "AEGIS DSL",
+      "output": "Validated model",
+      "status": "Planned"
+    },
+    {
+      "number": "08",
+      "phase": "Formalize",
+      "title": "Security-Game Generation",
+      "summary": "Instantiate selected AKE and IoT robustness experiments.",
+      "input": "Validated model",
+      "output": "Security games",
+      "status": "Planned"
+    },
+    {
+      "number": "09",
+      "phase": "Verify",
+      "title": "Formal Translation",
+      "summary": "Translate definitions and theorem targets to Lean or Rocq.",
+      "input": "Security games",
+      "output": "Formal projects",
+      "status": "Planned"
+    },
+    {
+      "number": "10",
+      "phase": "Verify",
+      "title": "Machine Checking",
+      "summary": "Check proof terms, assumptions, placeholders, and counterexamples.",
+      "input": "Formal projects and proofs",
+      "output": "Per-theorem status",
+      "status": "Planned"
+    },
+    {
+      "number": "11",
+      "phase": "Verify",
+      "title": "Final Report",
+      "summary": "Produce a precise report with evidence, limitations, and artifacts.",
+      "input": "Machine-check evidence",
+      "output": "Evidence package",
+      "status": "Planned"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "R1",
+      "group": "Encoding and transcript",
+      "title": "Typed and domain-separated encoding",
+      "summary": "Protocol fields, roles, versions, and labels must have unambiguous encodings."
+    },
+    {
+      "id": "R2",
+      "group": "Encoding and transcript",
+      "title": "Transcript completeness",
+      "summary": "Every value affecting acceptance, authentication, algorithm selection, or key derivation must be represented."
+    },
+    {
+      "id": "R3",
+      "group": "Identity and negotiation binding",
+      "title": "Identity and peer binding",
+      "summary": "The local identity and intended peer must be tied to the session context."
+    },
+    {
+      "id": "R4",
+      "group": "Identity and negotiation binding",
+      "title": "Credential binding",
+      "summary": "Credential identifiers used for authentication must be bound."
+    },
+    {
+      "id": "R5",
+      "group": "Identity and negotiation binding",
+      "title": "Algorithm-suite binding",
+      "summary": "Negotiated KEM, authentication, hash, KDF, and hybrid identifiers must be bound."
+    },
+    {
+      "id": "R6",
+      "group": "Identity and negotiation binding",
+      "title": "Role separation",
+      "summary": "Initiator and responder contexts must be distinguishable."
+    },
+    {
+      "id": "R7",
+      "group": "Key establishment",
+      "title": "Fresh contribution",
+      "summary": "The session key must depend on session-specific fresh material."
+    },
+    {
+      "id": "R8",
+      "group": "Key establishment",
+      "title": "Authentication binds the transcript",
+      "summary": "Authentication material must cover the relevant transcript context."
+    },
+    {
+      "id": "R9",
+      "group": "Key establishment",
+      "title": "Session-key derivation binds the transcript",
+      "summary": "The KDF must combine key material with the required context."
+    },
+    {
+      "id": "R10",
+      "group": "IoT execution safety",
+      "title": "Cheap pre-authentication checks",
+      "summary": "Expose low-cost checks before expensive post-quantum operations."
+    },
+    {
+      "id": "R11",
+      "group": "IoT execution safety",
+      "title": "State-update clarity",
+      "summary": "State update timing, commit points, rollback, and recovery must be explicit."
+    },
+    {
+      "id": "R12",
+      "group": "IoT execution safety",
+      "title": "Explicit failure behavior",
+      "summary": "Failures must have clear rejection behavior and rejected sessions output no key."
+    }
+  ],
+  "securityProperties": {
+    "core": [
+      {
+        "id": "correctness",
+        "title": "Correctness",
+        "summary": "Honest partnered sessions accept and agree on context and key."
+      },
+      {
+        "id": "ake-secrecy",
+        "title": "AKE session-key secrecy",
+        "summary": "A fresh session key is indistinguishable from a random key."
+      },
+      {
+        "id": "mutual-authentication",
+        "title": "Mutual authentication",
+        "summary": "An authentication-fresh accepted session has a unique matching peer session."
+      },
+      {
+        "id": "forward-secrecy",
+        "title": "Forward secrecy",
+        "summary": "Post-acceptance long-term compromise does not reveal past session keys."
+      },
+      {
+        "id": "kci",
+        "title": "KCI resistance",
+        "summary": "Compromising one party does not enable impersonation of another party to the victim."
+      },
+      {
+        "id": "uks",
+        "title": "UKS resistance",
+        "summary": "Parties do not share a key while disagreeing about peer identity or credential."
+      },
+      {
+        "id": "replay",
+        "title": "Replay resistance",
+        "summary": "Old messages do not cause a new session to accept without a live matching execution."
+      },
+      {
+        "id": "downgrade",
+        "title": "Downgrade resistance",
+        "summary": "Negotiation interference does not force an unauthorized weaker suite."
+      }
+    ],
+    "iot": [
+      {
+        "id": "state-reveal",
+        "title": "State-reveal resilience",
+        "summary": "Parameterized by an explicit leakage profile Λ."
+      },
+      {
+        "id": "desynchronization",
+        "title": "Desynchronization resilience",
+        "summary": "Parameterized by disturbed-session bound q and recovery bound ρ."
+      },
+      {
+        "id": "energy-exhaustion",
+        "title": "Energy-exhaustion resistance",
+        "summary": "Parameterized by a cost model and bound Γ."
+      }
+    ]
+  },
+  "oracles": {
+    "session": [
+      "NewSession",
+      "Send",
+      "Execute"
+    ],
+    "exposure": [
+      "Reveal",
+      "Corrupt",
+      "EphemeralReveal",
+      "StateReveal",
+      "Test"
+    ],
+    "network": [
+      "Drop",
+      "Delay",
+      "Deliver",
+      "Replay"
+    ]
+  },
+  "verificationStatuses": [
+    {
+      "id": "machine-checked",
+      "title": "Machine-checked",
+      "definition": "The exact frozen theorem has a complete kernel-accepted proof without prohibited placeholders."
+    },
+    {
+      "id": "conditional",
+      "title": "Machine-checked under assumptions",
+      "definition": "The proof is accepted and depends on explicitly listed assumptions."
+    },
+    {
+      "id": "structural",
+      "title": "Structural certificate verified",
+      "definition": "A structural property is machine-checked; this is not automatically a complete cryptographic theorem."
+    },
+    {
+      "id": "open",
+      "title": "Open",
+      "definition": "The statement is well-formed, but no complete proof is available."
+    },
+    {
+      "id": "proof-rejected",
+      "title": "Proof rejected",
+      "definition": "A submitted proof was rejected; this does not show the theorem is false."
+    },
+    {
+      "id": "blocked",
+      "title": "Blocked",
+      "definition": "Required model information or backend support is missing."
+    },
+    {
+      "id": "placeholder",
+      "title": "Untrusted placeholder",
+      "definition": "The apparent proof depends on a placeholder, hidden axiom, or unapproved dependency."
+    },
+    {
+      "id": "refuted",
+      "title": "Formally refuted",
+      "definition": "A checked proof of negation or valid checked counterexample exists."
+    },
+    {
+      "id": "na",
+      "title": "Not applicable",
+      "definition": "The property does not apply to the selected configuration."
+    },
+    {
+      "id": "disabled",
+      "title": "Disabled",
+      "definition": "The property was not selected."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Structural Requirements R1–R12 — AEGIS</title>
+  <meta name="description" content="Twelve conceptual AEGIS structural requirements covering encoding, identity binding, key establishment, and IoT execution safety.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="Structural Requirements R1–R12 — AEGIS">
+  <meta property="og:description" content="Twelve conceptual AEGIS structural requirements covering encoding, identity binding, key establishment, and IoT execution safety.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/framework/requirements/index.html">
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../../index.html" aria-label="AEGIS overview"><img src="../../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../../index.html">Overview</a>
+        <a href="../../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../../framework/index.html">Framework Overview</a>
+            <a href="../../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../../dsl/index.html">DSL</a>
+        <a href="../../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../../verification/index.html">Verification Overview</a>
+            <a href="../../verification/lean/index.html">Lean 4</a>
+            <a href="../../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../../verification/status/index.html">Result Status</a>
+            <a href="../../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../../index.html">AEGIS</a></li><li><a href="../../framework/index.html">Framework</a></li><li><span aria-current="page">Structural Requirements</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">FRAMEWORK · COMPATIBILITY</p>
+    <h1>Structural Requirements R1–R12</h1>
+    <p class="hero__lead">The requirements make missing protocol structure explicit. They support later security definitions but do not automatically prove the selected security claims.</p>
+    <div class="hero__status"><span class="status status--info">Conceptual specification</span></div>
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">GROUP A · ENCODING AND TRANSCRIPT</p>
+    <h2>Encoding and transcript</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">R1</span>
+    
+    <h3>Typed and domain-separated encoding</h3>
+    <p>Protocol fields, roles, versions, and labels must have unambiguous encodings.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R2</span>
+    
+    <h3>Transcript completeness</h3>
+    <p>Every value affecting acceptance, authentication, algorithm selection, or key derivation must be represented.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">GROUP B · IDENTITY AND NEGOTIATION BINDING</p>
+    <h2>Identity and negotiation binding</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">R3</span>
+    
+    <h3>Identity and peer binding</h3>
+    <p>The local identity and intended peer must be tied to the session context.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R4</span>
+    
+    <h3>Credential binding</h3>
+    <p>Credential identifiers used for authentication must be bound.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R5</span>
+    
+    <h3>Algorithm-suite binding</h3>
+    <p>Negotiated KEM, authentication, hash, KDF, and hybrid identifiers must be bound.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R6</span>
+    
+    <h3>Role separation</h3>
+    <p>Initiator and responder contexts must be distinguishable.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">GROUP C · KEY ESTABLISHMENT</p>
+    <h2>Key establishment</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">R7</span>
+    
+    <h3>Fresh contribution</h3>
+    <p>The session key must depend on session-specific fresh material.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R8</span>
+    
+    <h3>Authentication binds the transcript</h3>
+    <p>Authentication material must cover the relevant transcript context.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R9</span>
+    
+    <h3>Session-key derivation binds the transcript</h3>
+    <p>The KDF must combine key material with the required context.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">GROUP D · IOT EXECUTION SAFETY</p>
+    <h2>IoT execution safety</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">R10</span>
+    
+    <h3>Cheap pre-authentication checks</h3>
+    <p>Expose low-cost checks before expensive post-quantum operations.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R11</span>
+    
+    <h3>State-update clarity</h3>
+    <p>State update timing, commit points, rollback, and recovery must be explicit.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">R12</span>
+    
+    <h3>Explicit failure behavior</h3>
+    <p>Failures must have clear rejection behavior and rejected sessions output no key.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">RESULT VOCABULARY</p>
+    <h2>Compatibility findings stay qualified.</h2>
+    <div class="status-legend"><span class="status status--success">Satisfied</span><span class="status status--success">Partially satisfied</span><span class="status status--danger">Violated</span><span class="status status--neutral">Unresolved</span><span class="status status--neutral">Not applicable</span></div><p class="lead-copy">A structural finding is not automatically a security proof. Each requirement is reported independently with its source evidence and limitations.</p>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-EDHOC"><span class="reference-id">EDHOC</span><div><strong>Ephemeral Diffie-Hellman Over COSE (EDHOC)</strong><p>Göran Selander et al. · RFC 9528 · 2024</p><small>RFC 9528</small></div></li><li id="ref-FIPS203"><span class="reference-id">FIPS203</span><div><strong>Module-Lattice-Based Key-Encapsulation Mechanism Standard (ML-KEM)</strong><p>NIST · Federal Information Processing Standard · 2024</p><small>FIPS 203</small></div></li><li id="ref-FIPS204"><span class="reference-id">FIPS204</span><div><strong>Module-Lattice-Based Digital Signature Standard (ML-DSA)</strong><p>NIST · Federal Information Processing Standard · 2024</p><small>FIPS 204</small></div></li><li id="ref-AEGIS-DRAFT"><span class="reference-id">AEGIS-DRAFT</span><div><strong>IoT-PQ-AKEmin and IoT-PQ-AKEgen Framework Draft</strong><p>AEGIS project · Internal manuscript · 2026</p><small>Work in progress; not a publication</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../../index.html">Overview</a><a href="../../workflow/index.html">Workflow</a><a href="../../framework/index.html">Framework</a><a href="../../dsl/index.html">DSL</a><a href="../../security-games/index.html">Security Games</a><a href="../../verification/index.html">Verification</a><a href="../../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

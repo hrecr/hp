@@ -1,0 +1,149 @@
+{
+  "BR93": {
+    "authors": "Mihir Bellare and Phillip Rogaway",
+    "title": "Entity Authentication and Key Distribution",
+    "venue": "CRYPTO '93, LNCS 773",
+    "year": 1994,
+    "identifier": "DOI 10.1007/3-540-48329-2_21"
+  },
+  "CK01": {
+    "authors": "Ran Canetti and Hugo Krawczyk",
+    "title": "Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels",
+    "venue": "EUROCRYPT 2001, LNCS 2045",
+    "year": 2001,
+    "identifier": "DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040"
+  },
+  "eCK07": {
+    "authors": "Brian LaMacchia, Kristin Lauter, and Anton Mityagin",
+    "title": "Stronger Security of Authenticated Key Exchange",
+    "venue": "ProvSec 2007, LNCS 4784",
+    "year": 2007,
+    "identifier": "DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073"
+  },
+  "UC01": {
+    "authors": "Ran Canetti",
+    "title": "Universally Composable Security: A New Paradigm for Cryptographic Protocols",
+    "venue": "FOCS 2001",
+    "year": 2001,
+    "identifier": "IACR ePrint 2000/067"
+  },
+  "Q-UC10": {
+    "authors": "Dominique Unruh",
+    "title": "Universally Composable Quantum Multi-Party Computation",
+    "venue": "EUROCRYPT 2010, LNCS 6110",
+    "year": 2010,
+    "identifier": "DOI 10.1007/978-3-642-13190-5_25; arXiv 0910.2912"
+  },
+  "PROVERIF16": {
+    "authors": "Bruno Blanchet",
+    "title": "Modeling and Verifying Security Protocols with the Applied Pi Calculus and ProVerif",
+    "venue": "Foundations and Trends in Privacy and Security 1(1–2)",
+    "year": 2016,
+    "identifier": "DOI 10.1561/3300000004"
+  },
+  "AVISPA05": {
+    "authors": "Alessandro Armando et al.",
+    "title": "The AVISPA Tool for the Automated Validation of Internet Security Protocols and Applications",
+    "venue": "CAV 2005, LNCS 3576",
+    "year": 2005,
+    "identifier": "DOI 10.1007/11513988_27"
+  },
+  "SCYTHER08": {
+    "authors": "Cas Cremers",
+    "title": "The Scyther Tool: Verification, Falsification, and Analysis of Security Protocols",
+    "venue": "CAV 2008, LNCS 5123",
+    "year": 2008,
+    "identifier": "DOI 10.1007/978-3-540-70545-1_38"
+  },
+  "TAMARIN12": {
+    "authors": "Benedikt Schmidt, Simon Meier, Cas Cremers, and David Basin",
+    "title": "Automated Analysis of Diffie-Hellman Protocols and Advanced Security Properties",
+    "venue": "IEEE CSF 2012",
+    "year": 2012,
+    "identifier": "DOI 10.1109/CSF.2012.25"
+  },
+  "EDHOC": {
+    "authors": "Göran Selander et al.",
+    "title": "Ephemeral Diffie-Hellman Over COSE (EDHOC)",
+    "venue": "RFC 9528",
+    "year": 2024,
+    "identifier": "RFC 9528"
+  },
+  "FIPS203": {
+    "authors": "NIST",
+    "title": "Module-Lattice-Based Key-Encapsulation Mechanism Standard (ML-KEM)",
+    "venue": "Federal Information Processing Standard",
+    "year": 2024,
+    "identifier": "FIPS 203"
+  },
+  "FIPS204": {
+    "authors": "NIST",
+    "title": "Module-Lattice-Based Digital Signature Standard (ML-DSA)",
+    "venue": "Federal Information Processing Standard",
+    "year": 2024,
+    "identifier": "FIPS 204"
+  },
+  "KEMTLS20": {
+    "authors": "Peter Schwabe, Douglas Stebila, and Thom Wiggers",
+    "title": "Post-Quantum TLS Without Handshake Signatures",
+    "venue": "ACM CCS 2020",
+    "year": 2020,
+    "identifier": "DOI 10.1145/3372297.3423350; IACR ePrint 2020/534"
+  },
+  "PQ-EDHOC": {
+    "authors": "Clément Papon and Cristina Onete",
+    "title": "Post-Quantum EDHOC — Initiator and Responder Using Signature and/or KEM",
+    "venue": "IETF Internet-Draft",
+    "year": 2026,
+    "identifier": "draft-papon-lake-pq-edhoc-00; work in progress"
+  },
+  "AUTHKEM-EDHOC": {
+    "authors": "IETF LAKE contributors",
+    "title": "KEM-Based Authentication for EDHOC",
+    "venue": "IETF Internet-Draft family",
+    "year": 2026,
+    "identifier": "draft-pocero-authkem-edhoc; work in progress"
+  },
+  "RFC9958": {
+    "authors": "IETF",
+    "title": "Post-Quantum Cryptography for Engineers",
+    "venue": "RFC",
+    "year": 2026,
+    "identifier": "RFC 9958"
+  },
+  "LEAN": {
+    "authors": "The Lean 4 Project",
+    "title": "The Lean Language Reference and Theorem Proving in Lean 4",
+    "venue": "Official documentation",
+    "year": 2026,
+    "identifier": "Lean 4 documentation"
+  },
+  "LEAN-LAKE": {
+    "authors": "The Lean 4 Project",
+    "title": "Lake — Lean Build Tool",
+    "venue": "Official language reference",
+    "year": 2026,
+    "identifier": "Lake documentation"
+  },
+  "ROCQ": {
+    "authors": "The Rocq Prover Project",
+    "title": "The Rocq Prover Reference Manual",
+    "venue": "Official documentation",
+    "year": 2026,
+    "identifier": "Rocq documentation"
+  },
+  "ROCQ-RENAME": {
+    "authors": "The Rocq Prover Project",
+    "title": "Rocq Prover 9.0 Release Notes / Name Evolution",
+    "venue": "Official release documentation",
+    "year": 2025,
+    "identifier": "Rocq 9.0"
+  },
+  "AEGIS-DRAFT": {
+    "authors": "AEGIS project",
+    "title": "IoT-PQ-AKEmin and IoT-PQ-AKEgen Framework Draft",
+    "venue": "Internal manuscript",
+    "year": 2026,
+    "identifier": "Work in progress; not a publication"
+  }
+}

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IoT-PQ-AKEgen — AEGIS</title>
+  <meta name="description" content="IoT-PQ-AKEgen is the generalized AEGIS framework draft for constructing proof-oriented transcripts, contexts, freshness maps, and partnering relations.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="IoT-PQ-AKEgen — AEGIS">
+  <meta property="og:description" content="IoT-PQ-AKEgen is the generalized AEGIS framework draft for constructing proof-oriented transcripts, contexts, freshness maps, and partnering relations.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/framework/ake-gen/index.html">
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../../index.html" aria-label="AEGIS overview"><img src="../../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../../index.html">Overview</a>
+        <a href="../../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../../framework/index.html">Framework Overview</a>
+            <a href="../../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../../dsl/index.html">DSL</a>
+        <a href="../../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../../verification/index.html">Verification Overview</a>
+            <a href="../../verification/lean/index.html">Lean 4</a>
+            <a href="../../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../../verification/status/index.html">Result Status</a>
+            <a href="../../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../../index.html">AEGIS</a></li><li><a href="../../framework/index.html">Framework</a></li><li><span aria-current="page">IoT-PQ-AKEgen</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">FRAMEWORK MODULE · WORKFLOW STEP 04</p>
+    <h1>IoT-PQ-AKEgen</h1>
+    <p class="hero__lead">A generalized representation for proof-compatible protocol modeling. It is intended for evaluating existing protocols and guiding future protocol instances while remaining primitive-, flow-, and transport-independent.</p>
+    <div class="hero__status"><span class="status status--neutral">Framework draft</span></div>
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">DESIGN PRINCIPLES</p>
+    <h2>General enough to compare. Explicit enough to prove.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>Protocol independence</h3>
+    <p>A design constraint for the generalized adapter layer.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Primitive independence</h3>
+    <p>A design constraint for the generalized adapter layer.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>Message-flow independence</h3>
+    <p>A design constraint for the generalized adapter layer.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>Proof compatibility</h3>
+    <p>A design constraint for the generalized adapter layer.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">PROTOCOL LIFECYCLE</p>
+    <h2>Lifecycle transitions are first-class objects.</h2>
+    <div class="pipeline" aria-label="Process flow"><div class="pipeline__item"><span>01</span><strong>Setup</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>02</span><strong>Provision</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>03</span><strong>Start</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>04</span><strong>Process</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>05</span><strong>Derive</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>06</span><strong>Accept / Reject</strong></div></div><dl class="definition-list"><div><dt>Setup</dt><dd>Declare public parameters, suites, and domain separation.</dd></div><div><dt>Provision</dt><dd>Associate parties with credentials and initial state.</dd></div><div><dt>Start</dt><dd>Create a role-specific local session.</dd></div><div><dt>Process</dt><dd>Parse messages and advance explicit state.</dd></div><div><dt>Derive</dt><dd>Construct context-bound authentication and key material.</dd></div><div><dt>Accept / Reject</dt><dd>Commit outputs or fail without exposing a session key.</dd></div></dl>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">CORE OBJECTS</p>
+    <h2>Proof dependencies become named fields.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Session state</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Typed transcript</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Transcript header and static context</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Binding context Bind(T)</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Session identifier</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Authentication context</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>KDF context</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Freshness map</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Partnering relation</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>State-update interface</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Failure behavior</h3>
+    <p>Explicit adapter object with provenance and completeness status.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">ADAPTER CONCEPT</p>
+    <h2>A concrete session becomes a reviewable chain.</h2>
+    <div class="pipeline" aria-label="Process flow"><div class="pipeline__item"><span>01</span><strong>Concrete session</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>02</span><strong>Transcript</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>03</span><strong>Binding context</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>04</span><strong>Authentication context</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>05</span><strong>KDF context</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>06</span><strong>Session identifier</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>07</span><strong>Freshness map</strong></div></div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">PARTIAL COMPATIBILITY</p>
+    <h2>Gaps become obligations, not invented behavior.</h2>
+    <p class="lead-copy">A protocol may be partially representable. Missing credential identifiers, algorithm bindings, state timing, or failure behavior remain explicit adapter gaps and later proof obligations.</p><div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Conformance is not proof</h3>
+    <p>Framework conformance does not establish a complete cryptographic theorem.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Metadata is not authenticated</h3>
+    <p>Canonical framework metadata is not automatically protocol-authenticated.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Identifiers may be external</h3>
+    <p>A canonical session identifier does not imply the wire protocol computes it.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>No full UC claim</h3>
+    <p>The framework does not claim full universal composability.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-BR93"><span class="reference-id">BR93</span><div><strong>Entity Authentication and Key Distribution</strong><p>Mihir Bellare and Phillip Rogaway · CRYPTO &#39;93, LNCS 773 · 1994</p><small>DOI 10.1007/3-540-48329-2_21</small></div></li><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-UC01"><span class="reference-id">UC01</span><div><strong>Universally Composable Security: A New Paradigm for Cryptographic Protocols</strong><p>Ran Canetti · FOCS 2001 · 2001</p><small>IACR ePrint 2000/067</small></div></li><li id="ref-Q-UC10"><span class="reference-id">Q-UC10</span><div><strong>Universally Composable Quantum Multi-Party Computation</strong><p>Dominique Unruh · EUROCRYPT 2010, LNCS 6110 · 2010</p><small>DOI 10.1007/978-3-642-13190-5_25; arXiv 0910.2912</small></div></li><li id="ref-AEGIS-DRAFT"><span class="reference-id">AEGIS-DRAFT</span><div><strong>IoT-PQ-AKEmin and IoT-PQ-AKEgen Framework Draft</strong><p>AEGIS project · Internal manuscript · 2026</p><small>Work in progress; not a publication</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../../index.html">Overview</a><a href="../../workflow/index.html">Workflow</a><a href="../../framework/index.html">Framework</a><a href="../../dsl/index.html">DSL</a><a href="../../security-games/index.html">Security Games</a><a href="../../verification/index.html">Verification</a><a href="../../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

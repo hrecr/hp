@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IoT-PQ-AKEmin — AEGIS</title>
+  <meta name="description" content="IoT-PQ-AKEmin is the AEGIS framework draft for minimally inspecting post-quantum IoT authenticated key-establishment protocols.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="IoT-PQ-AKEmin — AEGIS">
+  <meta property="og:description" content="IoT-PQ-AKEmin is the AEGIS framework draft for minimally inspecting post-quantum IoT authenticated key-establishment protocols.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/framework/ake-min/index.html">
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../../index.html" aria-label="AEGIS overview"><img src="../../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../../index.html">Overview</a>
+        <a href="../../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../../framework/index.html">Framework Overview</a>
+            <a href="../../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../../dsl/index.html">DSL</a>
+        <a href="../../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../../verification/index.html">Verification Overview</a>
+            <a href="../../verification/lean/index.html">Lean 4</a>
+            <a href="../../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../../verification/status/index.html">Result Status</a>
+            <a href="../../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../../index.html">AEGIS</a></li><li><a href="../../framework/index.html">Framework</a></li><li><span aria-current="page">IoT-PQ-AKEmin</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">FRAMEWORK MODULE · WORKFLOW STEP 03</p>
+    <h1>IoT-PQ-AKEmin</h1>
+    <p class="hero__lead">A minimal common model for inspecting post-quantum IoT AKE protocols. It provides a shared inspection language for parties, sessions, messages, credentials, fresh contributions, state, adversary queries, and security goals.</p>
+    <div class="hero__status"><span class="status status--neutral">Framework draft</span></div>
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">WHY A MINIMAL MODEL</p>
+    <h2>Compare assumptions without flattening them.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>Different proof methods</h3>
+    <p>Different proof methods establish different guarantees.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Freshness varies</h3>
+    <p>Identically named claims may use different freshness conditions.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>IoT state matters</h3>
+    <p>IoT protocols expose state, retransmission, and physical-leakage questions.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>PQ cost boundaries</h3>
+    <p>Migration introduces algorithm negotiation and new computational boundaries.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">QUALITATIVE VIEW</p>
+    <h2>Analysis styles expose different strengths.</h2>
+    <div class="table-scroll"><table>
+  <caption>Qualitative analysis comparison</caption>
+  <thead><tr><th scope="col">Analysis style</th><th scope="col">Typical strength</th><th scope="col">Typical gap for comparison</th></tr></thead>
+  <tbody><tr><th scope="row">Computational AKE games</th><td>Precise reductions and advantages</td><td>Often protocol-specific</td></tr><tr><th scope="row">Symbolic verification</th><td>Automated trace and authentication analysis</td><td>Does not automatically yield PQ computational reductions</td></tr><tr><th scope="row">BAN-style reasoning</th><td>Compact belief reasoning</td><td>Limited modern computational interpretation</td></tr><tr><th scope="row">UC / quantum UC</th><td>Strong composition</td><td>Heavy modeling burden</td></tr><tr><th scope="row">Informal analysis</th><td>Flexible discussion</td><td>Hard to reproduce or compare</td></tr></tbody>
+</table></div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">INSPECTION OBJECTS</p>
+    <h2>Record what the protocol actually exposes.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Parties and roles</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Local sessions</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Message flow</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Credentials</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Algorithm suites</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Fresh and long-term values</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Authentication operations</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Key derivation</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>State and failures</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Claimed security goals</h3>
+    <p>A source-grounded field in the normalized protocol view.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">ADVERSARY INTERFACE</p>
+    <h2>Capabilities are grouped, not assumed.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Session control</h3>
+    <p>NewSession · Send · Execute</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Exposure</h3>
+    <p>Reveal · Corrupt · EphemeralReveal · StateReveal · Test</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Network control</h3>
+    <p>Drop · Delay · Deliver · Replay</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">SECURITY GOALS</p>
+    <h2>Eleven independent targets.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Correctness</h3>
+    <p>Honest partnered sessions accept and agree on context and key.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>AKE session-key secrecy</h3>
+    <p>A fresh session key is indistinguishable from a random key.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Mutual authentication</h3>
+    <p>An authentication-fresh accepted session has a unique matching peer session.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Forward secrecy</h3>
+    <p>Post-acceptance long-term compromise does not reveal past session keys.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>KCI resistance</h3>
+    <p>Compromising one party does not enable impersonation of another party to the victim.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>UKS resistance</h3>
+    <p>Parties do not share a key while disagreeing about peer identity or credential.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Replay resistance</h3>
+    <p>Old messages do not cause a new session to accept without a live matching execution.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Downgrade resistance</h3>
+    <p>Negotiation interference does not force an unauthorized weaker suite.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>State-reveal resilience</h3>
+    <p>Parameterized by an explicit leakage profile Λ.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Desynchronization resilience</h3>
+    <p>Parameterized by disturbed-session bound q and recovery bound ρ.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Energy-exhaustion resistance</h3>
+    <p>Parameterized by a cost model and bound Γ.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">HANDOFF TO AKEGEN</p>
+    <h2>Missing values stay visible.</h2>
+    <p class="lead-copy">AKEmin records what the protocol actually exposes. AKEgen then constructs canonical transcripts, binding contexts, session identifiers, authentication contexts, KDF contexts, freshness maps, and partnering relations. Missing values are not silently inserted into the protocol.</p><a class="section-cta" href="../ake-gen/index.html">Continue to AKEgen <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-BR93"><span class="reference-id">BR93</span><div><strong>Entity Authentication and Key Distribution</strong><p>Mihir Bellare and Phillip Rogaway · CRYPTO &#39;93, LNCS 773 · 1994</p><small>DOI 10.1007/3-540-48329-2_21</small></div></li><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-PROVERIF16"><span class="reference-id">PROVERIF16</span><div><strong>Modeling and Verifying Security Protocols with the Applied Pi Calculus and ProVerif</strong><p>Bruno Blanchet · Foundations and Trends in Privacy and Security 1(1–2) · 2016</p><small>DOI 10.1561/3300000004</small></div></li><li id="ref-AVISPA05"><span class="reference-id">AVISPA05</span><div><strong>The AVISPA Tool for the Automated Validation of Internet Security Protocols and Applications</strong><p>Alessandro Armando et al. · CAV 2005, LNCS 3576 · 2005</p><small>DOI 10.1007/11513988_27</small></div></li><li id="ref-SCYTHER08"><span class="reference-id">SCYTHER08</span><div><strong>The Scyther Tool: Verification, Falsification, and Analysis of Security Protocols</strong><p>Cas Cremers · CAV 2008, LNCS 5123 · 2008</p><small>DOI 10.1007/978-3-540-70545-1_38</small></div></li><li id="ref-TAMARIN12"><span class="reference-id">TAMARIN12</span><div><strong>Automated Analysis of Diffie-Hellman Protocols and Advanced Security Properties</strong><p>Benedikt Schmidt, Simon Meier, Cas Cremers, and David Basin · IEEE CSF 2012 · 2012</p><small>DOI 10.1109/CSF.2012.25</small></div></li><li id="ref-AEGIS-DRAFT"><span class="reference-id">AEGIS-DRAFT</span><div><strong>IoT-PQ-AKEmin and IoT-PQ-AKEgen Framework Draft</strong><p>AEGIS project · Internal manuscript · 2026</p><small>Work in progress; not a publication</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../../index.html">Overview</a><a href="../../workflow/index.html">Workflow</a><a href="../../framework/index.html">Framework</a><a href="../../dsl/index.html">DSL</a><a href="../../security-games/index.html">Security Games</a><a href="../../verification/index.html">Verification</a><a href="../../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

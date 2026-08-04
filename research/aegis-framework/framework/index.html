@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The AEGIS Framework</title>
+  <meta name="description" content="AEGIS separates minimal protocol inspection, generalized proof-oriented representation, structural requirements, and formal security properties.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="The AEGIS Framework">
+  <meta property="og:description" content="AEGIS separates minimal protocol inspection, generalized proof-oriented representation, structural requirements, and formal security properties.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/framework/index.html">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../index.html" aria-label="AEGIS overview"><img src="../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../index.html">Overview</a>
+        <a href="../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../framework/index.html">Framework Overview</a>
+            <a href="../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../dsl/index.html">DSL</a>
+        <a href="../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../verification/index.html">Verification Overview</a>
+            <a href="../verification/lean/index.html">Lean 4</a>
+            <a href="../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../verification/status/index.html">Result Status</a>
+            <a href="../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../index.html">AEGIS</a></li><li><span aria-current="page">Framework</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">FRAMEWORK · FOUR MODULES</p>
+    <h1>The AEGIS Framework</h1>
+    <p class="hero__lead">The framework separates protocol inspection, generalized representation, structural compatibility, and formal security definitions. This prevents a single vague “secure” label from hiding different models or assumptions.</p>
+    
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">RELATIONSHIP</p>
+    <h2>From concrete behavior to independent claims.</h2>
+    <div class="pipeline" aria-label="Process flow"><div class="pipeline__item"><span>01</span><strong>Concrete protocol</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>02</span><strong>IoT-PQ-AKEmin</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>03</span><strong>IoT-PQ-AKEgen</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>04</span><strong>R1–R12</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>05</span><strong>Security definitions</strong></div></div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">MODULES</p>
+    <h2>Four layers, four distinct responsibilities.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>IoT-PQ-AKEmin</h3>
+    <p>Minimal common objects for inspecting existing protocols.</p>
+    
+    <a class="text-link" href="ake-min/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>IoT-PQ-AKEgen</h3>
+    <p>Generalized protocol lifecycle, transcripts, contexts, freshness, and partnering.</p>
+    
+    <a class="text-link" href="ake-gen/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>Structural Requirements</h3>
+    <p>Twelve explicit requirements for proof-compatible protocol structure.</p>
+    
+    <a class="text-link" href="requirements/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>Security Properties</h3>
+    <p>Separate formal targets for core AKE security and IoT robustness.</p>
+    
+    <a class="text-link" href="security/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+</div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">COMPARISON</p>
+    <h2>Inspection first. Proof-oriented modeling second.</h2>
+    <div class="table-scroll"><table>
+  <caption>AKEmin and AKEgen comparison</caption>
+  <thead><tr><th scope="col">Dimension</th><th scope="col">AKEmin</th><th scope="col">AKEgen</th></tr></thead>
+  <tbody><tr><th scope="row">Main purpose</th><td>Inspect existing protocols</td><td>Build a proof-oriented representation</td></tr><tr><th scope="row">Input</th><td>Normalized concrete protocol</td><td>Reviewed AKEmin mapping</td></tr><tr><th scope="row">Output</th><td>Common protocol view</td><td>Canonical adapter objects</td></tr><tr><th scope="row">Missing data</th><td>Remains visible</td><td>Becomes partial adapter fields</td></tr><tr><th scope="row">Main use</th><td>Comparison and gap discovery</td><td>Compatibility and proof generation</td></tr></tbody>
+</table></div><p class="section-note">AEGIS does not claim full universal composability. The framework is positioned as a lighter, protocol-independent layer between isolated protocol-specific games and full composable treatments.</p>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-BR93"><span class="reference-id">BR93</span><div><strong>Entity Authentication and Key Distribution</strong><p>Mihir Bellare and Phillip Rogaway · CRYPTO &#39;93, LNCS 773 · 1994</p><small>DOI 10.1007/3-540-48329-2_21</small></div></li><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-UC01"><span class="reference-id">UC01</span><div><strong>Universally Composable Security: A New Paradigm for Cryptographic Protocols</strong><p>Ran Canetti · FOCS 2001 · 2001</p><small>IACR ePrint 2000/067</small></div></li><li id="ref-Q-UC10"><span class="reference-id">Q-UC10</span><div><strong>Universally Composable Quantum Multi-Party Computation</strong><p>Dominique Unruh · EUROCRYPT 2010, LNCS 6110 · 2010</p><small>DOI 10.1007/978-3-642-13190-5_25; arXiv 0910.2912</small></div></li><li id="ref-AEGIS-DRAFT"><span class="reference-id">AEGIS-DRAFT</span><div><strong>IoT-PQ-AKEmin and IoT-PQ-AKEgen Framework Draft</strong><p>AEGIS project · Internal manuscript · 2026</p><small>Work in progress; not a publication</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../index.html">Overview</a><a href="../workflow/index.html">Workflow</a><a href="../framework/index.html">Framework</a><a href="../dsl/index.html">DSL</a><a href="../security-games/index.html">Security Games</a><a href="../verification/index.html">Verification</a><a href="../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

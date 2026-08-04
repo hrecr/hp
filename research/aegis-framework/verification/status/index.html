@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verification Result Status — AEGIS</title>
+  <meta name="description" content="Exact AEGIS vocabulary for machine-checked, conditional, structural, open, rejected, blocked, placeholder, refuted, and disabled results.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="Verification Result Status — AEGIS">
+  <meta property="og:description" content="Exact AEGIS vocabulary for machine-checked, conditional, structural, open, rejected, blocked, placeholder, refuted, and disabled results.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/verification/status/index.html">
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../../index.html" aria-label="AEGIS overview"><img src="../../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../../index.html">Overview</a>
+        <a href="../../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../../framework/index.html">Framework Overview</a>
+            <a href="../../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../../dsl/index.html">DSL</a>
+        <a href="../../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../../verification/index.html">Verification Overview</a>
+            <a href="../../verification/lean/index.html">Lean 4</a>
+            <a href="../../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../../verification/status/index.html">Result Status</a>
+            <a href="../../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../../index.html">AEGIS</a></li><li><a href="../../verification/index.html">Verification</a></li><li><span aria-current="page">Result Status</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">EVIDENCE VOCABULARY</p>
+    <h1>Verification Result Status</h1>
+    <p class="hero__lead">A controlled vocabulary keeps generated statements, completed proofs, assumptions, open obligations, and refutations from collapsing into one misleading score.</p>
+    
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">EXACT STATUS DEFINITIONS</p>
+    <h2>Every label has one narrow meaning.</h2>
+    <div class="status-definitions"><article><div><span class="status status--success">Machine-checked</span></div><p>The exact frozen theorem has a complete kernel-accepted proof without prohibited placeholders.</p></article><article><div><span class="status status--success">Machine-checked under assumptions</span></div><p>The proof is accepted and depends on explicitly listed assumptions.</p></article><article><div><span class="status status--neutral">Structural certificate verified</span></div><p>A structural property is machine-checked; this is not automatically a complete cryptographic theorem.</p></article><article><div><span class="status status--warning">Open</span></div><p>The statement is well-formed, but no complete proof is available.</p></article><article><div><span class="status status--danger">Proof rejected</span></div><p>A submitted proof was rejected; this does not show the theorem is false.</p></article><article><div><span class="status status--neutral">Blocked</span></div><p>Required model information or backend support is missing.</p></article><article><div><span class="status status--neutral">Untrusted placeholder</span></div><p>The apparent proof depends on a placeholder, hidden axiom, or unapproved dependency.</p></article><article><div><span class="status status--danger">Formally refuted</span></div><p>A checked proof of negation or valid checked counterexample exists.</p></article><article><div><span class="status status--neutral">Not applicable</span></div><p>The property does not apply to the selected configuration.</p></article><article><div><span class="status status--neutral">Disabled</span></div><p>The property was not selected.</p></article></div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">FOUR MILESTONES</p>
+    <h2>Validity is not verification.</h2>
+    <div class="pipeline" aria-label="Process flow"><div class="pipeline__item"><span>01</span><strong>Valid DSL</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>02</span><strong>Generated game</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>03</span><strong>Accepted theorem statement</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>04</span><strong>Completed proof</strong></div></div><p class="lead-copy">A valid DSL, generated game, accepted theorem statement, and completed proof are four different milestones. The website never collapses them into one green badge.</p>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-LEAN"><span class="reference-id">LEAN</span><div><strong>The Lean Language Reference and Theorem Proving in Lean 4</strong><p>The Lean 4 Project · Official documentation · 2026</p><small>Lean 4 documentation</small></div></li><li id="ref-ROCQ"><span class="reference-id">ROCQ</span><div><strong>The Rocq Prover Reference Manual</strong><p>The Rocq Prover Project · Official documentation · 2026</p><small>Rocq documentation</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../../index.html">Overview</a><a href="../../workflow/index.html">Workflow</a><a href="../../framework/index.html">Framework</a><a href="../../dsl/index.html">DSL</a><a href="../../security-games/index.html">Security Games</a><a href="../../verification/index.html">Verification</a><a href="../../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Illustrative AEGIS Report — Not a Real Protocol Result</title>
+  <meta name="description" content="Illustrative fictional AEGIS report demonstrating per-property verification statuses, assumptions, and open obligations. Not a real protocol result.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="Illustrative AEGIS Report — Not a Real Protocol Result">
+  <meta property="og:description" content="Illustrative fictional AEGIS report demonstrating per-property verification statuses, assumptions, and open obligations. Not a real protocol result.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/report/example/index.html">
+  <link rel="icon" href="../../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../../index.html" aria-label="AEGIS overview"><img src="../../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../../index.html">Overview</a>
+        <a href="../../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../../framework/index.html">Framework Overview</a>
+            <a href="../../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../../dsl/index.html">DSL</a>
+        <a href="../../security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button is-current" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../../verification/index.html">Verification Overview</a>
+            <a href="../../verification/lean/index.html">Lean 4</a>
+            <a href="../../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../../verification/status/index.html">Result Status</a>
+            <a href="../../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../../index.html">AEGIS</a></li><li><a href="../../verification/index.html">Verification</a></li><li><span aria-current="page">Illustrative Report</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    <div class="alert-banner" role="note">ILLUSTRATIVE — NOT A RESULT FOR A REAL PROTOCOL</div>
+    <p class="eyebrow">ILLUSTRATIVE EVIDENCE PACKAGE</p>
+    <h1>Illustrative AEGIS Report</h1>
+    <p class="hero__lead">A fictional example showing how AEGIS would keep framework findings, backend evidence, assumptions, and unresolved obligations separate.</p>
+    
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">SUMMARY</p>
+    <h2>ExamplePQ-AKE · Partially verified</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Protocol</h3>
+    <p>ExamplePQ-AKE — fictional</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Overall</h3>
+    <p>Partially verified — illustrative</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Framework</h3>
+    <p>9 satisfied · 2 partial · 1 violated</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Backends</h3>
+    <p>Lean 4 + Coq / Rocq</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">PROPERTY RESULTS</p>
+    <h2>Every property carries its own evidence status.</h2>
+    <div class="alert-banner">ILLUSTRATIVE OUTPUT — NOT A REAL PROTOCOL RESULT</div><div class="table-scroll"><table>
+  <caption>Illustrative property results</caption>
+  <thead><tr><th scope="col">Property</th><th scope="col">Status</th><th scope="col">Evidence note</th></tr></thead>
+  <tbody><tr><th scope="row">Correctness</th><td><span class="status status--success">Machine-checked</span></td><td>Cross-backend</td></tr><tr><th scope="row">AKE secrecy</th><td><span class="status status--warning">Open</span></td><td>No completed proof</td></tr><tr><th scope="row">Mutual authentication</th><td><span class="status status--success">Machine-checked under assumptions</span></td><td>Assumptions listed</td></tr><tr><th scope="row">Forward secrecy</th><td><span class="status status--danger">Proof rejected</span></td><td>Lean rejected; Rocq open</td></tr><tr><th scope="row">KCI</th><td><span class="status status--neutral">Disabled</span></td><td>Not selected</td></tr><tr><th scope="row">UKS</th><td><span class="status status--success">Machine-checked</span></td><td>Illustrative only</td></tr><tr><th scope="row">Replay</th><td><span class="status status--danger">Formally refuted</span></td><td>Illustrative bounded model</td></tr><tr><th scope="row">Downgrade</th><td><span class="status status--success">Machine-checked under assumptions</span></td><td>Lean only</td></tr><tr><th scope="row">State reveal</th><td><span class="status status--neutral">Blocked</span></td><td>Leakage profile missing</td></tr><tr><th scope="row">Desynchronization</th><td><span class="status status--warning">Open</span></td><td>Obligation unresolved</td></tr><tr><th scope="row">Energy exhaustion</th><td><span class="status status--neutral">Not applicable</span></td><td>No cost model selected</td></tr></tbody>
+</table></div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">TRUST SUMMARY</p>
+    <h2>The evidence package reports its boundary.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>Explicit assumptions</h3>
+    <p>5 — illustrative</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Hidden axioms</h3>
+    <p>0 — illustrative</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>Prohibited placeholders</h3>
+    <p>0 — illustrative</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>Open obligations</h3>
+    <p>4 — illustrative</p>
+    
+    
+  </article>
+</div><p class="lead-copy">These values demonstrate report structure only. They are not measurements or results for any real protocol.</p>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../../index.html">Overview</a><a href="../../workflow/index.html">Workflow</a><a href="../../framework/index.html">Framework</a><a href="../../dsl/index.html">DSL</a><a href="../../security-games/index.html">Security Games</a><a href="../../verification/index.html">Verification</a><a href="../../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

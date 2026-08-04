@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Security Games — AEGIS</title>
+  <meta name="description" content="AEGIS security-game anatomy, adversary queries, eight core AKE experiments, and three parameterized IoT robustness experiments.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="Security Games — AEGIS">
+  <meta property="og:description" content="AEGIS security-game anatomy, adversary queries, eight core AKE experiments, and three parameterized IoT robustness experiments.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/security-games/index.html">
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/globals.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="../index.html" aria-label="AEGIS overview"><img src="../assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="../index.html">Overview</a>
+        <a href="../workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="../framework/index.html">Framework Overview</a>
+            <a href="../framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="../framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="../framework/requirements/index.html">Structural Requirements</a>
+            <a href="../framework/security/index.html">Security Properties</a>
+          </div>
+        </div>
+        <a href="../dsl/index.html">DSL</a>
+        <a href="../security-games/index.html" aria-current="page">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="../verification/index.html">Verification Overview</a>
+            <a href="../verification/lean/index.html">Lean 4</a>
+            <a href="../verification/rocq/index.html">Coq / Rocq</a>
+            <a href="../verification/status/index.html">Result Status</a>
+            <a href="../report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="../about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="../workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  <nav class="breadcrumb wrap" aria-label="Breadcrumb"><ol><li><a href="../index.html">AEGIS</a></li><li><span aria-current="page">Security Games</span></li></ol></nav>
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">FORMAL SECURITY EXPERIMENTS</p>
+    <h1>Security Games</h1>
+    <p class="hero__lead">AEGIS is intended to turn selected claims into explicit experiments with a challenger, adversary interface, freshness predicate, winning event, advantage, and theorem target.</p>
+    
+    
+    </div>
+    
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">GAME ANATOMY</p>
+    <h2>Every claim exposes its experiment.</h2>
+    <div class="pipeline" aria-label="Process flow"><div class="pipeline__item"><span>01</span><strong>Protocol model</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>02</span><strong>Adversary capabilities</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>03</span><strong>Freshness / eligibility</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>04</span><strong>Winning event</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>05</span><strong>Advantage definition</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>06</span><strong>Theorem target</strong></div></div>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">ADVERSARY ORACLES</p>
+    <h2>Capabilities are explicit inputs.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Session interaction</h3>
+    <p>NewSession · Send · Execute</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Exposure</h3>
+    <p>Reveal · Corrupt · EphemeralReveal · StateReveal · Test</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Network control</h3>
+    <p>Drop · Delay · Deliver · Replay</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">CORE GAMES</p>
+    <h2>Eight independent AKE experiments.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Correctness</h3>
+    <p>Purpose: Agreement of honest partnered sessions. Central event: Accepted partners disagree.</p>
+    <p class="card__meta"><strong>Needs:</strong> Acceptance, partnering, context, session key</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>AKE session-key secrecy</h3>
+    <p>Purpose: Protect a fresh accepted session key. Central event: Adversary distinguishes real from random.</p>
+    <p class="card__meta"><strong>Needs:</strong> Session key, exposure, freshness, Test</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Mutual authentication</h3>
+    <p>Purpose: Bind acceptance to a unique matching peer. Central event: Accepted session lacks a valid partner.</p>
+    <p class="card__meta"><strong>Needs:</strong> Acceptance, peer identity, partnering</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Forward secrecy</h3>
+    <p>Purpose: Protect past keys after later compromise. Central event: Past Test key is distinguished after corruption.</p>
+    <p class="card__meta"><strong>Needs:</strong> Acceptance time, corruption time, freshness</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>KCI resistance</h3>
+    <p>Purpose: Resist impersonation after victim compromise. Central event: Adversary impersonates a different peer.</p>
+    <p class="card__meta"><strong>Needs:</strong> Credentials, corruption, peer binding</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>UKS resistance</h3>
+    <p>Purpose: Prevent identity disagreement for a shared key. Central event: Partners agree on key but not peer identity.</p>
+    <p class="card__meta"><strong>Needs:</strong> Keys, identities, credentials, partnering</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Replay resistance</h3>
+    <p>Purpose: Prevent stale messages creating fresh acceptance. Central event: New acceptance has only an old matching trace.</p>
+    <p class="card__meta"><strong>Needs:</strong> Transcript, state, freshness, matching</p>
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Downgrade resistance</h3>
+    <p>Purpose: Protect authorized algorithm negotiation. Central event: Session accepts an unauthorized weaker suite.</p>
+    <p class="card__meta"><strong>Needs:</strong> Suite negotiation and authenticated context</p>
+    
+  </article>
+</div>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">IOT ROBUSTNESS GAMES</p>
+    <h2>Parameterized claims need explicit profiles.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>State reveal</h3>
+    <p>Requires leakage profile Λ; never report this property without the profile.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Desynchronization</h3>
+    <p>Requires Sync, disturbance bound q, and recovery bound ρ.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>Energy exhaustion</h3>
+    <p>Requires a concrete cost metric, pre-authentication boundary, and bound Γ.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">GAME STATUS</p>
+    <h2>Generated does not mean verified.</h2>
+    <div class="status-legend"><span class="status status--neutral">Generated</span><span class="status status--warning">Generated with warnings</span><span class="status status--neutral">Blocked</span><span class="status status--neutral">Unresolved</span><span class="status status--neutral">Not applicable</span><span class="status status--neutral">Disabled</span></div><p class="section-note">Game generated does not mean property verified.</p>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-BR93"><span class="reference-id">BR93</span><div><strong>Entity Authentication and Key Distribution</strong><p>Mihir Bellare and Phillip Rogaway · CRYPTO &#39;93, LNCS 773 · 1994</p><small>DOI 10.1007/3-540-48329-2_21</small></div></li><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-KEMTLS20"><span class="reference-id">KEMTLS20</span><div><strong>Post-Quantum TLS Without Handshake Signatures</strong><p>Peter Schwabe, Douglas Stebila, and Thom Wiggers · ACM CCS 2020 · 2020</p><small>DOI 10.1145/3372297.3423350; IACR ePrint 2020/534</small></div></li><li id="ref-EDHOC"><span class="reference-id">EDHOC</span><div><strong>Ephemeral Diffie-Hellman Over COSE (EDHOC)</strong><p>Göran Selander et al. · RFC 9528 · 2024</p><small>RFC 9528</small></div></li><li id="ref-PQ-EDHOC"><span class="reference-id">PQ-EDHOC</span><div><strong>Post-Quantum EDHOC — Initiator and Responder Using Signature and/or KEM</strong><p>Clément Papon and Cristina Onete · IETF Internet-Draft · 2026</p><small>draft-papon-lake-pq-edhoc-00; work in progress</small></div></li><li id="ref-AUTHKEM-EDHOC"><span class="reference-id">AUTHKEM-EDHOC</span><div><strong>KEM-Based Authentication for EDHOC</strong><p>IETF LAKE contributors · IETF Internet-Draft family · 2026</p><small>draft-pocero-authkem-edhoc; work in progress</small></div></li><li id="ref-AEGIS-DRAFT"><span class="reference-id">AEGIS-DRAFT</span><div><strong>IoT-PQ-AKEmin and IoT-PQ-AKEgen Framework Draft</strong><p>AEGIS project · Internal manuscript · 2026</p><small>Work in progress; not a publication</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="../index.html">Overview</a><a href="../workflow/index.html">Workflow</a><a href="../framework/index.html">Framework</a><a href="../dsl/index.html">DSL</a><a href="../security-games/index.html">Security Games</a><a href="../verification/index.html">Verification</a><a href="../about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="../assets/js/site.js" defer></script>
+</body>
+</html>

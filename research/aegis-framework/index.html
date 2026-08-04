@@ -1,423 +1,385 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unified Security Model for Post-Quantum IoT Protocols</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            light: '#f0f4f8',
-                            DEFAULT: '#334155',
-                            accent: '#0d9488',
-                            accentHover: '#0f766e',
-                            surface: '#ffffff'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 400px;
-            max-height: 500px;
-        }
-        @media (max-width: 640px) {
-            .chart-container {
-                height: 300px;
-            }
-        }
-        .interactive-item { transition: all 0.2s ease-in-out; }
-        .interactive-item:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
-        .active-tab { background-color: #0d9488; color: white; border-color: #0d9488; }
-        .inactive-tab { background-color: white; color: #334155; border-color: #e2e8f0; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AEGIS — Protocol Assurance for Post-Quantum IoT</title>
+  <meta name="description" content="AEGIS is a research direction for modeling post-quantum IoT authentication and key-establishment protocols, generating formal security games, and producing machine-checkable proof obligations.">
+  <meta name="theme-color" content="#0a1720">
+  <meta property="og:title" content="AEGIS — Protocol Assurance for Post-Quantum IoT">
+  <meta property="og:description" content="AEGIS is a research direction for modeling post-quantum IoT authentication and key-establishment protocols, generating formal security games, and producing machine-checkable proof obligations.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://rezasaadi.github.io/research/aegis-framework/index.html">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/globals.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AEGIS","description":"AEGIS is a research direction for modeling post-quantum IoT authentication and key-establishment protocols, generating formal security games, and producing machine-checkable proof obligations.","url":"https://rezasaadi.github.io/research/aegis-framework/"}</script>
 </head>
-<body class="bg-brand-light text-brand font-sans antialiased leading-relaxed">
-
-    <!-- Chosen Palette: Warm Neutral Light (slate-50 equivalent) background, Slate-700 text, Teal-600 accents for a clean, academic, and modern tech aesthetic. -->
-    
-    <!-- Application Structure Plan: The SPA is structured linearly to mirror the logical flow of an academic proposal: Introduction -> Problem -> Gap Analysis -> The Proposed Solution (IoT-PQ-AKE_min) -> Contributions. It utilizes a dashboard-like interactive section for the core framework to allow users to explore adversary queries and security goals without cluttering the screen with text. This structure transforms a static abstract into an engaging pitch, prioritizing user understanding of the *need* for the framework before diving into its *mechanics*. -->
-    
-    <!-- Visualization & Content Choices: 
-         1. Problem Landscape -> Goal: Show fragmentation -> Viz: Doughnut Chart (Chart.js) -> Interaction: Hover tooltips -> Justifies why a unified model is needed. NO SVG.
-         2. Gap Analysis -> Goal: Compare standard models vs reality -> Viz: Radar Chart (Chart.js) -> Interaction: Hover comparisons -> Highlights the specific vulnerabilities ignored by current models (energy, desync). NO SVG.
-         3. Proposed Framework -> Goal: Organize complex definitions -> Viz: Interactive HTML/Tailwind Grid Dashboard -> Interaction: Clickable list items revealing detailed text blocks -> Keeps cognitive load low while providing full technical depth. NO SVG.
-         4. Methodology Mapping -> Goal: Show transformation -> Viz: CSS Flexbox flow diagram -> Interaction: Static clean layout -> Visualizes the mapping of legacy proofs to the new model. NO SVG. -->
-    
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="text-xl font-bold tracking-tight text-brand">IoT-PQ-AKE<span class="text-brand-accent text-sm ml-1 font-mono">_min</span></div>
-                <div class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="../" class="text-brand-accent font-semibold hover:text-brand-accentHover transition-colors">← Back to Research</a>
-                    <a href="#problem" class="hover:text-brand-accent transition-colors">The Problem</a>
-                    <a href="#gap" class="hover:text-brand-accent transition-colors">Gap Analysis</a>
-                    <a href="#framework" class="hover:text-brand-accent transition-colors">Proposed Framework</a>
-                    <a href="#contributions" class="hover:text-brand-accent transition-colors">Contributions</a>
-                </div>
-            </div>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="AEGIS overview"><img src="assets/images/aegis-logo.webp" alt="" width="46" height="46"><b>AEGIS<small>PROTOCOL ASSURANCE</small></b></a>
+      <button class="menu-button" type="button" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only">Open navigation</span></button>
+      <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html" aria-current="page">Overview</a>
+        <a href="workflow/index.html">Workflow</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Framework <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown">
+            <a href="framework/index.html">Framework Overview</a>
+            <a href="framework/ake-min/index.html">IoT-PQ-AKEmin</a>
+            <a href="framework/ake-gen/index.html">IoT-PQ-AKEgen</a>
+            <a href="framework/requirements/index.html">Structural Requirements</a>
+            <a href="framework/security/index.html">Security Properties</a>
+          </div>
         </div>
-    </nav>
+        <a href="dsl/index.html">DSL</a>
+        <a href="security-games/index.html">Security Games</a>
+        <div class="nav-group">
+          <button class="nav-group__button" type="button" aria-expanded="false">Verification <span aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown nav-dropdown--right">
+            <a href="verification/index.html">Verification Overview</a>
+            <a href="verification/lean/index.html">Lean 4</a>
+            <a href="verification/rocq/index.html">Coq / Rocq</a>
+            <a href="verification/status/index.html">Result Status</a>
+            <a href="report/example/index.html">Illustrative Report</a>
+          </div>
+        </div>
+        <a href="about/index.html">About</a>
+      </nav>
+      <a class="header-cta" href="workflow/index.html">EXPLORE WORKFLOW <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+  
+  <main id="main-content"><section class="hero">
+  <div class="wrap hero__inner hero__inner--with-logo">
+    <div class="hero__copy">
+    
+    <p class="eyebrow">PROTOCOL ASSURANCE · RESEARCH DIRECTION</p>
+    <h1>From protocol descriptions to <em>machine-checkable</em> security obligations.</h1>
+    <p class="hero__lead">AEGIS is a research direction for turning post-quantum IoT authentication and key-establishment protocols into structured framework models, a typed DSL, formal security games, and Lean 4 or Coq/Rocq proof obligations.</p>
+    
+    <div class="hero__actions"><a class="button" href="workflow/index.html">Explore the Workflow <span aria-hidden="true">→</span></a><a class="text-link text-link--light" href="framework/index.html">View the Framework</a><a class="text-link text-link--light" href="about/index.html#scope">See Project Scope</a></div>
+    </div>
+    <figure class="hero__logo"><img src="assets/images/aegis-logo.webp" alt="AEGIS gold shield and circuit framework logo" width="720" height="720" fetchpriority="high"></figure>
+  </div>
+</section><div class="hero-chips wrap" aria-label="Project themes"><span>Post-quantum AKE</span><span>IoT-aware</span><span>Protocol-independent</span><span>Typed DSL</span><span>Formal games</span><span>Lean / Rocq</span></div><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">01 · THE PROBLEM</p>
+    <h2>Security claims need a common language.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>Fragmented models</h3>
+    <p>Security analyses use different models, adversarial interfaces, and vocabularies.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Hard comparisons</h3>
+    <p>Guarantees that share a name may rely on different freshness, corruption, or partnering definitions.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>IoT constraints</h3>
+    <p>State, energy, packet loss, communication cost, and partial leakage influence real protocol behavior.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>Post-quantum transition</h3>
+    <p>KEMs and signatures introduce new message sizes, computation costs, negotiation choices, and downgrade concerns.</p>
+    
+    
+  </article>
+</div><p class="section-note">AEGIS does not replace established AKE models or formal verification tools. It aims to provide a common intermediate representation that makes assumptions, coverage, and missing obligations explicit.</p>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">02 · PROJECT ARCHITECTURE</p>
+    <h2>One auditable path from prose to evidence.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>Understand</h3>
+    <p>Extract and normalize the protocol.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Model</h3>
+    <p>Map it into IoT-PQ-AKEmin and IoT-PQ-AKEgen.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>Formalize</h3>
+    <p>Generate a typed DSL and security games.</p>
+    
+    
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>Verify</h3>
+    <p>Translate theorem targets and report proof status.</p>
+    
+    
+  </article>
+</div>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">03 · ELEVEN-STEP WORKFLOW</p>
+    <h2>One auditable chain.</h2>
+    <div class="card-grid card-grid--steps">
+  <article class="card">
+    <span class="card__number">01</span>
+    
+    <h3>Protocol Submission</h3>
+    <p>Provide a protocol paper, structured description, pseudocode, message flow, or DSL.</p>
+    
+    <a class="text-link" href="workflow/index.html">Understand <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">02</span>
+    
+    <h3>Extraction and Normalization</h3>
+    <p>Identify parties, messages, credentials, algorithms, state, and claimed properties.</p>
+    
+    <a class="text-link" href="workflow/index.html">Understand <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">03</span>
+    
+    <h3>IoT-PQ-AKEmin Mapping</h3>
+    <p>Represent the protocol in a common minimal inspection model.</p>
+    
+    <a class="text-link" href="workflow/index.html">Model <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">04</span>
+    
+    <h3>IoT-PQ-AKEgen Adapter</h3>
+    <p>Construct transcripts, contexts, freshness maps, and partnering rules.</p>
+    
+    <a class="text-link" href="workflow/index.html">Model <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">05</span>
+    
+    <h3>Compatibility Checking</h3>
+    <p>Evaluate the protocol against structural requirements R1–R12.</p>
+    
+    <a class="text-link" href="workflow/index.html">Model <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">06</span>
+    
+    <h3>DSL Generation</h3>
+    <p>Generate a typed and provenance-preserving specification.</p>
+    
+    <a class="text-link" href="workflow/index.html">Formalize <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">07</span>
+    
+    <h3>DSL Validation</h3>
+    <p>Check syntax, types, protocol flow, state, and semantic consistency.</p>
+    
+    <a class="text-link" href="workflow/index.html">Formalize <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">08</span>
+    
+    <h3>Security-Game Generation</h3>
+    <p>Instantiate selected AKE and IoT robustness experiments.</p>
+    
+    <a class="text-link" href="workflow/index.html">Formalize <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">09</span>
+    
+    <h3>Formal Translation</h3>
+    <p>Translate definitions and theorem targets to Lean or Rocq.</p>
+    
+    <a class="text-link" href="workflow/index.html">Verify <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">10</span>
+    
+    <h3>Machine Checking</h3>
+    <p>Check proof terms, assumptions, placeholders, and counterexamples.</p>
+    
+    <a class="text-link" href="workflow/index.html">Verify <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    <span class="card__number">11</span>
+    
+    <h3>Final Report</h3>
+    <p>Produce a precise report with evidence, limitations, and artifacts.</p>
+    
+    <a class="text-link" href="workflow/index.html">Verify <span aria-hidden="true">→</span></a>
+  </article>
+</div><a class="section-cta" href="workflow/index.html">View the complete workflow <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">04 · FRAMEWORK</p>
+    <h2>A framework, a language, and proof backends.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>IoT-PQ-AKEmin</h3>
+    <p>A minimal inspection layer for existing protocols.</p>
+    
+    <a class="text-link" href="framework/ake-min/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    
+    
+    <h3>IoT-PQ-AKEgen</h3>
+    <p>A generalized, proof-oriented representation.</p>
+    
+    <a class="text-link" href="framework/ake-gen/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    
+    
+    <h3>Structural requirements</h3>
+    <p>Twelve checks for encoding, binding, freshness, state, and failure behavior.</p>
+    
+    <a class="text-link" href="framework/requirements/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    
+    
+    <h3>Security definitions</h3>
+    <p>Separate games for core AKE security and IoT robustness.</p>
+    
+    <a class="text-link" href="framework/security/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+</div><a class="section-cta section-cta--light" href="framework/index.html">Explore the Framework <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">05 · PLANNED DSL</p>
+    <h2>A typed bridge between protocols and proofs.</h2>
+    <div class="code-panel">
+  <div class="code-panel__bar"><span>Illustrative AEGIS DSL — grammar under development</span><button class="copy-button" type="button" aria-label="Copy code to clipboard">Copy</button></div>
+  <pre><code>protocol ExamplePQAKE {
+  parties Device, Gateway
+  roles Initiator, Responder
 
-    <header class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-        <div class="inline-block px-4 py-1.5 rounded-full bg-teal-100 text-teal-800 text-sm font-semibold tracking-wide mb-6 uppercase">Research Proposal</div>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
-            Unifying Security Analyses for Post-Quantum IoT Protocols
-        </h1>
-        <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
-            A proposal defining a minimal, comprehensive model (<span class="font-mono text-brand-accent bg-teal-50 px-1 rounded">IoT-PQ-AKE_min</span>) to standardize the evaluation of modern post-quantum authentication and key-establishment protocols.
-        </p>
-        <a href="#problem" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-accent hover:bg-brand-accentHover md:py-4 md:text-lg md:px-10 transition-colors shadow-lg">
-            Explore the Analysis
-            <span class="ml-2 text-xl">&#8595;</span>
-        </a>
-    </header>
+  bind {
+    identities
+    credentials
+    algorithm_suite
+    transcript
+  }
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-32">
-
-        <section id="problem" class="scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Fragmentation Problem</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                    Post-quantum IoT protocols (like PQ-EDHOC, AuthKEM-EDHOC, PQ-Lattice) are emerging rapidly. However, their security analyses are wildly inconsistent, making it impossible to directly compare their security guarantees.
-                </p>
-            </div>
-            
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col lg:flex-row items-center gap-12">
-                <div class="w-full lg:w-1/2">
-                    <h3 class="text-xl font-bold mb-4 text-slate-800">Current Proof Methodologies</h3>
-                    <p class="text-slate-600 mb-6">
-                        Researchers currently utilize a fractured landscape of formal and informal verification tools. Because models like ProVerif handle state differently than BAN logic or RoR proofs, a protocol "proven secure" in one paper may fail under the threat model of another.
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center text-slate-700"><span class="text-brand-accent mr-2 font-bold">&#8226;</span> RoR (Real-or-Random) proofs</li>
-                        <li class="flex items-center text-slate-700"><span class="text-brand-accent mr-2 font-bold">&#8226;</span> BAN Logic</li>
-                        <li class="flex items-center text-slate-700"><span class="text-brand-accent mr-2 font-bold">&#8226;</span> ProVerif / AVISPA</li>
-                        <li class="flex items-center text-slate-700"><span class="text-brand-accent mr-2 font-bold">&#8226;</span> Informal heuristic arguments</li>
-                    </ul>
-                </div>
-                <div class="w-full lg:w-1/2">
-                    <div class="chart-container">
-                        <canvas id="fragmentationChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="gap" class="scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Analysis Gap</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                    Standard protocol analyses often miss critical vulnerabilities specific to constrained IoT environments in a post-quantum world. We must bridge the gap between theoretical security and physical reality.
-                </p>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col-reverse lg:flex-row items-center gap-12">
-                <div class="w-full lg:w-1/2">
-                    <div class="chart-container">
-                        <canvas id="gapRadarChart"></canvas>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2 space-y-6">
-                    <h3 class="text-xl font-bold text-slate-800">Crucial Missing Elements</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <div class="font-bold text-slate-800 mb-1">State Leakage</div>
-                            <div class="text-sm text-slate-600">IoT devices are easily captured. Partial state leakage resilience is rarely formalized.</div>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <div class="font-bold text-slate-800 mb-1">Energy Exhaustion</div>
-                            <div class="text-sm text-slate-600">Adversaries forcing expensive PQ operations to drain constrained batteries.</div>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <div class="font-bold text-slate-800 mb-1">Desynchronization</div>
-                            <div class="text-sm text-slate-600">Attacks targeting stateful hash-based signatures or counters causing connection denial.</div>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                            <div class="font-bold text-slate-800 mb-1">Downgrade Attacks</div>
-                            <div class="text-sm text-slate-600">Forcing protocols back to classical algorithms during the PQ transition phase.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="framework" class="scroll-mt-24">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Proposed Framework: <span class="font-mono text-brand-accent">IoT-PQ-AKE_min</span></h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                    A unified model offering a common language to review recent post-quantum IoT authentication and key-establishment protocols. Explore the formalized queries and goals below.
-                </p>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="flex border-b border-slate-200">
-                    <button id="btn-queries" class="flex-1 py-4 text-center font-bold text-lg active-tab transition-colors" onclick="switchTab('queries')">
-                        Adversary Queries
-                    </button>
-                    <button id="btn-goals" class="flex-1 py-4 text-center font-bold text-lg inactive-tab transition-colors" onclick="switchTab('goals')">
-                        Security Goals
-                    </button>
-                </div>
-                
-                <div class="p-0 flex flex-col md:flex-row h-auto md:h-[450px]">
-                    <div class="w-full md:w-1/3 border-r border-slate-200 bg-slate-50 overflow-y-auto" id="list-container">
-                    </div>
-                    
-                    <div class="w-full md:w-2/3 p-8 flex flex-col justify-center bg-white" id="detail-container">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contributions" class="scroll-mt-24 bg-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
-            <div class="absolute top-[-50px] right-[-50px] w-64 h-64 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-            
-            <div class="relative z-10">
-                <h2 class="text-3xl font-bold mb-8 text-center text-teal-400">Explicit Contributions</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-xl hover:bg-slate-800 transition-colors">
-                        <div class="text-3xl mb-4 text-teal-400">&#10112;</div>
-                        <h4 class="text-lg font-bold mb-2">Define Minimal Model</h4>
-                        <p class="text-slate-300 text-sm">We define a minimal post-quantum AKE model tailored for IoT, establishing a rigorous baseline.</p>
-                    </div>
-                    
-                    <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-xl hover:bg-slate-800 transition-colors">
-                        <div class="text-3xl mb-4 text-teal-400">&#10113;</div>
-                        <h4 class="text-lg font-bold mb-2">Formalize Queries</h4>
-                        <p class="text-slate-300 text-sm">Rigorous definitions for Send, Execute, Reveal, Corrupt, EphemeralReveal, StateReveal, and Test queries.</p>
-                    </div>
-
-                    <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-xl hover:bg-slate-800 transition-colors">
-                        <div class="text-3xl mb-4 text-teal-400">&#10114;</div>
-                        <h4 class="text-lg font-bold mb-2">Define Goals</h4>
-                        <p class="text-slate-300 text-sm">Formalizing AKE secrecy, KCI/UKS resistance, state-leakage, desynchronization, and energy-exhaustion resilience.</p>
-                    </div>
-
-                    <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-xl hover:bg-slate-800 transition-colors">
-                        <div class="text-3xl mb-4 text-teal-400">&#10115;</div>
-                        <h4 class="text-lg font-bold mb-2">Map Existing Methods</h4>
-                        <p class="text-slate-300 text-sm">We translate RoR, BAN, ProVerif, and AVISPA into our model, identifying exact proof coverage and blind spots.</p>
-                    </div>
-
-                    <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-xl hover:bg-slate-800 transition-colors">
-                        <div class="text-3xl mb-4 text-teal-400">&#10116;</div>
-                        <h4 class="text-lg font-bold mb-2">Protocol Evaluation</h4>
-                        <p class="text-slate-300 text-sm">Applying the unified model to evaluate and compare recent protocols like PQ-EDHOC and Kyber-based IoT AKE.</p>
-                    </div>
-
-                    <div class="bg-slate-800/50 border border-slate-700 p-6 rounded-xl hover:bg-slate-800 transition-colors border-dashed border-teal-500/50">
-                        <div class="text-3xl mb-4 text-teal-400">&#10117;</div>
-                        <h4 class="text-lg font-bold mb-2">Implementation Data</h4>
-                        <p class="text-slate-300 text-sm italic">Optional: Providing realistic performance comparisons and implementation experiments on constrained networks.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800 mt-12">
-        <p class="text-sm">Interactive Architecture generated for Protocol Security Analysis Proposal.</p>
-    </footer>
-
-    <script>
-        const frameworkData = {
-            queries: [
-                { id: 'q1', title: 'Send', desc: 'Allows the adversary to send arbitrary messages to protocol instances and receive their responses, modeling active network control.' },
-                { id: 'q2', title: 'Execute', desc: 'Models passive eavesdropping. The adversary observes an honest execution between instances without interfering.' },
-                { id: 'q3', title: 'Reveal', desc: 'The adversary obtains the established session key of a targeted session, modeling session key leakage.' },
-                { id: 'q4', title: 'Corrupt', desc: 'The adversary obtains the long-term private keys of a party. Essential for testing Forward Secrecy and KCI resistance.' },
-                { id: 'q5', title: 'EphemeralReveal', desc: 'The adversary extracts the ephemeral randomness (e.g., coin tosses) used by an instance during a specific session.' },
-                { id: 'q6', title: 'StateReveal', desc: 'Crucial for IoT. The adversary compromises the internal state of a device midway through protocol execution.' },
-                { id: 'q7', title: 'Test', desc: 'The core indistinguishability challenge. The adversary must distinguish the real session key from a random string of the same length.' }
-            ],
-            goals: [
-                { id: 'g1', title: 'AKE Secrecy', desc: 'The established session key remains computationally indistinguishable from a random string to any active adversary.' },
-                { id: 'g2', title: 'Mutual Authentication', desc: 'Both the client and server are assured of each others identity, preventing impersonation.' },
-                { id: 'g3', title: 'Forward Secrecy', desc: 'Compromise of long-term keys today does not compromise session keys established in the past.' },
-                { id: 'g4', title: 'KCI Resistance', desc: 'Key Compromise Impersonation resistance. Even if an attackers steals A\'s long-term key, they cannot forge a connection to A pretending to be B.' },
-                { id: 'g5', title: 'UKS Resistance', desc: 'Unknown Key-Share resistance. Party A cannot be coerced into sharing a key with B while believing they are sharing it with C.' },
-                { id: 'g6', title: 'Downgrade Resistance', desc: 'Adversaries cannot force the protocol to fallback to weaker, classical algorithms during the PQ transition.' },
-                { id: 'g7', title: 'State-Leakage Resilience', desc: 'The protocol remains secure even if partial internal state (like a pre-computation phase) is extracted from the IoT device.' },
-                { id: 'g8', title: 'Desynchronization Resilience', desc: 'Resistance against attacks that deliberately drop or alter messages to cause counters or stateful PQ signatures to desync.' },
-                { id: 'g9', title: 'Energy-Exhaustion Resistance', desc: 'The protocol rejects invalid attempts early (e.g., before expensive PQ operations) to prevent battery drainage attacks.' }
-            ]
-        };
-
-        let currentTab = 'queries';
-        let activeItemId = 'q1';
-
-        function renderList() {
-            const container = document.getElementById('list-container');
-            container.innerHTML = '';
-            
-            const items = frameworkData[currentTab];
-            items.forEach((item, index) => {
-                const btn = document.createElement('button');
-                btn.className = `w-full text-left px-6 py-4 border-b border-slate-200 transition-colors ${item.id === activeItemId ? 'bg-teal-50 border-l-4 border-l-teal-600 text-teal-800 font-bold' : 'hover:bg-slate-100 text-slate-700 border-l-4 border-l-transparent'}`;
-                btn.onclick = () => selectItem(item.id);
-                
-                const flexDiv = document.createElement('div');
-                flexDiv.className = 'flex justify-between items-center';
-                
-                const titleSpan = document.createElement('span');
-                titleSpan.textContent = item.title;
-                
-                const arrowSpan = document.createElement('span');
-                arrowSpan.innerHTML = '&#8594;';
-                arrowSpan.className = item.id === activeItemId ? 'text-teal-600' : 'text-slate-300';
-                
-                flexDiv.appendChild(titleSpan);
-                flexDiv.appendChild(arrowSpan);
-                btn.appendChild(flexDiv);
-                
-                container.appendChild(btn);
-                
-                if (index === 0 && !activeItemId.startsWith(currentTab.charAt(0))) {
-                    activeItemId = item.id;
-                }
-            });
-            renderDetail();
-        }
-
-        function renderDetail() {
-            const container = document.getElementById('detail-container');
-            const items = frameworkData[currentTab];
-            const activeItem = items.find(i => i.id === activeItemId) || items[0];
-            
-            const badgeType = currentTab === 'queries' ? 'Adversary Query' : 'Security Goal';
-            
-            container.innerHTML = `
-                <div class="inline-block px-3 py-1 rounded bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider mb-4 w-max">${badgeType}</div>
-                <h3 class="text-3xl font-bold text-slate-900 mb-6">${activeItem.title}</h3>
-                <p class="text-lg text-slate-600 leading-relaxed">${activeItem.desc}</p>
-            `;
-        }
-
-        function selectItem(id) {
-            activeItemId = id;
-            renderList();
-        }
-
-        window.switchTab = function(tabName) {
-            currentTab = tabName;
-            activeItemId = frameworkData[tabName][0].id;
-            
-            const btnQueries = document.getElementById('btn-queries');
-            const btnGoals = document.getElementById('btn-goals');
-            
-            if (tabName === 'queries') {
-                btnQueries.className = 'flex-1 py-4 text-center font-bold text-lg active-tab transition-colors';
-                btnGoals.className = 'flex-1 py-4 text-center font-bold text-lg inactive-tab transition-colors border-b border-slate-200';
-            } else {
-                btnGoals.className = 'flex-1 py-4 text-center font-bold text-lg active-tab transition-colors';
-                btnQueries.className = 'flex-1 py-4 text-center font-bold text-lg inactive-tab transition-colors border-b border-slate-200';
-            }
-            
-            renderList();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            renderList();
-
-            const ctxFrag = document.getElementById('fragmentationChart').getContext('2d');
-            new Chart(ctxFrag, {
-                type: 'doughnut',
-                data: {
-                    labels: ['ProVerif / Tamarin', 'BAN Logic', 'RoR Proofs', 'Informal Arguments', 'AVISPA'],
-                    datasets: [{
-                        data: [35, 20, 25, 15, 5],
-                        backgroundColor: [
-                            '#0d9488', 
-                            '#334155', 
-                            '#64748b', 
-                            '#cbd5e1', 
-                            '#f1f5f9'  
-                        ],
-                        borderWidth: 2,
-                        borderColor: '#ffffff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'right', labels: { font: { family: 'Inter' } } },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return ' ' + context.label + ': ' + context.raw + '% of recent papers';
-                                }
-                            }
-                        }
-                    },
-                    cutout: '70%'
-                }
-            });
-
-            const ctxRadar = document.getElementById('gapRadarChart').getContext('2d');
-            new Chart(ctxRadar, {
-                type: 'radar',
-                data: {
-                    labels: ['Basic Secrecy', 'Forward Secrecy', 'KCI/UKS', 'State Leakage', 'Energy Limits', 'Desync'],
-                    datasets: [
-                        {
-                            label: 'Standard Analysis Models',
-                            data: [95, 80, 60, 20, 10, 15],
-                            backgroundColor: 'rgba(51, 65, 85, 0.2)',
-                            borderColor: 'rgba(51, 65, 85, 1)',
-                            pointBackgroundColor: 'rgba(51, 65, 85, 1)',
-                            borderWidth: 2
-                        },
-                        {
-                            label: 'Proposed IoT-PQ-AKE_min',
-                            data: [100, 100, 100, 95, 95, 90],
-                            backgroundColor: 'rgba(13, 148, 136, 0.4)',
-                            borderColor: 'rgba(13, 148, 136, 1)',
-                            pointBackgroundColor: 'rgba(13, 148, 136, 1)',
-                            borderWidth: 2
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
-                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
-                            pointLabels: { font: { family: 'Inter', size: 12 }, color: '#334155' },
-                            ticks: { display: false, max: 100, min: 0 }
-                        }
-                    },
-                    plugins: {
-                        legend: { position: 'bottom', labels: { font: { family: 'Inter' } } },
-                        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)' }
-                    }
-                }
-            });
-        });
-    </script>
+  goals {
+    ake_secrecy
+    mutual_authentication
+    replay_resistance
+  }
+}</code></pre>
+</div><a class="section-cta" href="dsl/index.html">Explore the DSL <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section section--alt">
+  <div class="wrap">
+    <p class="eyebrow">06 · SECURITY GAMES</p>
+    <h2>Claims become explicit experiments.</h2>
+    <div class="pipeline" aria-label="Process flow"><div class="pipeline__item"><span>01</span><strong>Protocol model</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>02</span><strong>Adversary interface</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>03</span><strong>Freshness</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>04</span><strong>Winning event</strong></div><span class="pipeline__arrow" aria-hidden="true">→</span><div class="pipeline__item"><span>05</span><strong>Theorem target</strong></div></div><div class="card-grid ">
+  <article class="card">
+    
+    
+    <h3>Core AKE</h3>
+    <p>Correctness, secrecy, authentication, forward secrecy, KCI, UKS, replay, and downgrade.</p>
+    
+    
+  </article>
+<article class="card">
+    
+    
+    <h3>IoT robustness</h3>
+    <p>State reveal, desynchronization, and energy exhaustion.</p>
+    
+    
+  </article>
+</div><a class="section-cta" href="security-games/index.html">View Security Games <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">07 · FORMAL VERIFICATION</p>
+    <h2>Backend-neutral definitions, then proof-assistant output.</h2>
+    <div class="card-grid ">
+  <article class="card">
+    
+    <span class="status status--info">Planned</span>
+    <h3>Lean 4</h3>
+    <p>Planned typed definitions, theorem statements, and proof obligations.</p>
+    
+    <a class="text-link" href="verification/lean/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+<article class="card">
+    
+    <span class="status status--info">Planned</span>
+    <h3>Coq / Rocq</h3>
+    <p>Planned modular formal definitions and machine-checked proofs.</p>
+    
+    <a class="text-link" href="verification/rocq/index.html">Explore <span aria-hidden="true">→</span></a>
+  </article>
+</div><p class="section-note">The project distinguishes generated statements from completed proofs. An open or rejected proof does not by itself show that a protocol is insecure.</p><a class="section-cta" href="verification/index.html">Explore Verification <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section section--dark">
+  <div class="wrap">
+    <p class="eyebrow">08 · ILLUSTRATIVE OUTPUT</p>
+    <h2>Report claims independently.</h2>
+    <div class="alert-banner">ILLUSTRATIVE OUTPUT — NOT A REAL PROTOCOL RESULT</div><div class="table-scroll"><table>
+  <caption>Illustrative property status</caption>
+  <thead><tr><th scope="col">Property</th><th scope="col">Illustrative status</th></tr></thead>
+  <tbody><tr><th scope="row">Correctness</th><td><span class="status status--success">Machine-checked</span></td></tr><tr><th scope="row">AKE secrecy</th><td><span class="status status--warning">Open</span></td></tr><tr><th scope="row">Mutual authentication</th><td><span class="status status--success">Machine-checked under assumptions</span></td></tr><tr><th scope="row">Replay resistance</th><td><span class="status status--danger">Formally refuted</span></td></tr><tr><th scope="row">State reveal</th><td><span class="status status--neutral">Disabled</span></td></tr></tbody>
+</table></div><a class="section-cta section-cta--light" href="report/example/index.html">View the illustrative report <span aria-hidden="true">→</span></a>
+  </div>
+</section><section class="section">
+  <div class="wrap">
+    <p class="eyebrow">09 · PROJECT STATUS</p>
+    <h2>Research direction and implementation roadmap.</h2>
+    <div class="table-scroll"><table>
+  <caption>Public project maturity</caption>
+  <thead><tr><th scope="col">Component</th><th scope="col">Public status</th></tr></thead>
+  <tbody><tr><th scope="row">Framework concepts</th><td><span class="status status--success">Draft available</span></td></tr><tr><th scope="row">Website/project architecture</th><td><span class="status status--info">In development</span></td></tr><tr><th scope="row">DSL grammar</th><td><span class="status status--info">Planned / under design</span></td></tr><tr><th scope="row">Protocol extractor</th><td><span class="status status--info">Planned prototype</span></td></tr><tr><th scope="row">Static validator</th><td><span class="status status--info">Planned prototype</span></td></tr><tr><th scope="row">Security-game generator</th><td><span class="status status--info">Planned prototype</span></td></tr><tr><th scope="row">Lean exporter</th><td><span class="status status--info">Planned</span></td></tr><tr><th scope="row">Rocq exporter</th><td><span class="status status--info">Planned</span></td></tr><tr><th scope="row">Protocol case studies</th><td><span class="status status--neutral">Future work</span></td></tr></tbody>
+</table></div>
+  </div>
+</section><section class="section section--references">
+  <div class="wrap">
+    <p class="eyebrow">ACADEMIC GROUNDING</p>
+    <h2>Selected references</h2>
+    <ol class="references"><li id="ref-BR93"><span class="reference-id">BR93</span><div><strong>Entity Authentication and Key Distribution</strong><p>Mihir Bellare and Phillip Rogaway · CRYPTO &#39;93, LNCS 773 · 1994</p><small>DOI 10.1007/3-540-48329-2_21</small></div></li><li id="ref-CK01"><span class="reference-id">CK01</span><div><strong>Analysis of Key-Exchange Protocols and Their Use for Building Secure Channels</strong><p>Ran Canetti and Hugo Krawczyk · EUROCRYPT 2001, LNCS 2045 · 2001</p><small>DOI 10.1007/3-540-44987-6_28; IACR ePrint 2001/040</small></div></li><li id="ref-eCK07"><span class="reference-id">eCK07</span><div><strong>Stronger Security of Authenticated Key Exchange</strong><p>Brian LaMacchia, Kristin Lauter, and Anton Mityagin · ProvSec 2007, LNCS 4784 · 2007</p><small>DOI 10.1007/978-3-540-75670-5_1; IACR ePrint 2006/073</small></div></li><li id="ref-UC01"><span class="reference-id">UC01</span><div><strong>Universally Composable Security: A New Paradigm for Cryptographic Protocols</strong><p>Ran Canetti · FOCS 2001 · 2001</p><small>IACR ePrint 2000/067</small></div></li><li id="ref-EDHOC"><span class="reference-id">EDHOC</span><div><strong>Ephemeral Diffie-Hellman Over COSE (EDHOC)</strong><p>Göran Selander et al. · RFC 9528 · 2024</p><small>RFC 9528</small></div></li><li id="ref-FIPS203"><span class="reference-id">FIPS203</span><div><strong>Module-Lattice-Based Key-Encapsulation Mechanism Standard (ML-KEM)</strong><p>NIST · Federal Information Processing Standard · 2024</p><small>FIPS 203</small></div></li><li id="ref-FIPS204"><span class="reference-id">FIPS204</span><div><strong>Module-Lattice-Based Digital Signature Standard (ML-DSA)</strong><p>NIST · Federal Information Processing Standard · 2024</p><small>FIPS 204</small></div></li></ol>
+  </div>
+</section></main>
+  <footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div><strong class="footer-mark">AEGIS</strong><p>From protocol descriptions to machine-checkable security obligations.</p></div>
+    <nav aria-label="Footer navigation"><a href="index.html">Overview</a><a href="workflow/index.html">Workflow</a><a href="framework/index.html">Framework</a><a href="dsl/index.html">DSL</a><a href="security-games/index.html">Security Games</a><a href="verification/index.html">Verification</a><a href="about/index.html">About</a></nav>
+    <p class="site-footer__status">Research direction · project sketch · active development<br>© <span data-current-year></span> AEGIS</p>
+  </div>
+</footer>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
