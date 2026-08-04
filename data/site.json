@@ -179,11 +179,11 @@
       "area": "Post-Quantum Cryptography"
     },
     {
-      "title": "AEGIS: A Mechanizable Framework for Post-Quantum IoT Authenticated Key Exchange",
-      "venue": "Interactive research framework",
+      "title": "AEGIS: Protocol Assurance for Post-Quantum IoT",
+      "venue": "Research direction and project architecture",
       "year": "2026",
-      "status": "Framework available",
-      "summary": "A framework for explicit and mechanizable security analysis of post-quantum IoT authenticated key exchange.",
+      "status": "Research direction · active development",
+      "summary": "A research direction for structuring post-quantum IoT authentication and key-establishment protocols as framework models, a typed DSL, formal games, and machine-checkable obligations.",
       "url": "./aegis-framework/",
       "area": "Post-Quantum Cryptography"
     }
@@ -251,10 +251,10 @@
       }
     },
     {
-      "title": "AEGIS: Mechanizable Framework for PQ IoT AKE",
-      "role": "Security-model design and interactive framework",
+      "title": "AEGIS: Protocol Assurance for Post-Quantum IoT",
+      "role": "Research framework and project architecture",
       "when": "2026",
-      "summary": "Mechanizable model for post-quantum IoT authenticated key exchange, including state-leakage, desynchronization, downgrade, and energy-exhaustion considerations.",
+      "summary": "Research direction for modeling post-quantum IoT authenticated key exchange, with explicit state-leakage, desynchronization, downgrade, and energy-exhaustion considerations.",
       "stack": [
         "PQC",
         "IoT",
@@ -262,7 +262,7 @@
         "Security model"
       ],
       "highlights": [
-        "Interactive HTML framework page included in this website."
+        "Multi-page AEGIS project website included in this portfolio."
       ],
       "links": {
         "projectPage": "./aegis-framework/",
@@ -422,8 +422,8 @@
         }
       },
       {
-        "name": "AEGIS Mechanizable Framework for Post-Quantum IoT AKE",
-        "description": "Interactive framework page for comparing and mechanizing security analyses of post-quantum IoT authenticated key exchange protocols.",
+        "name": "AEGIS Protocol Assurance for Post-Quantum IoT",
+        "description": "Multi-page project architecture for structuring and comparing analyses of post-quantum IoT authenticated key-exchange protocols.",
         "topics": [
           "PQC",
           "IoT",
@@ -792,9 +792,9 @@
           "links": []
         },
         {
-          "title": "AEGIS: Mechanizable Framework for PQ IoT AKE",
-          "status": "Interactive framework page included",
-          "summary": "A framework for comparing security analyses of post-quantum IoT authenticated key-exchange protocols. It makes the threat model explicit: state leakage, desynchronization, downgrade attacks, energy exhaustion, KCI/UKS resistance, and standard AKE secrecy.",
+          "title": "AEGIS: Protocol Assurance for Post-Quantum IoT",
+          "status": "Research direction · active development",
+          "summary": "A research direction for making post-quantum IoT authenticated key-exchange analyses structured, comparable, and auditable. It keeps state leakage, desynchronization, downgrade, energy exhaustion, KCI/UKS, and AKE secrecy as distinct claims.",
           "tags": [
             "IoT",
             "AKE",
@@ -812,7 +812,7 @@
       ],
       "publications": [
         "QuasarSSO: A Post-Quantum Password-Protected SSO System",
-        "AEGIS: A Mechanizable Framework for Post-Quantum IoT Authenticated Key Exchange"
+        "AEGIS: Protocol Assurance for Post-Quantum IoT"
       ],
       "iconKey": "pqc"
     },
