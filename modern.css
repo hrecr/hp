@@ -744,6 +744,32 @@ h3 {
   border-left: 2px solid var(--border-strong);
 }
 
+.entry-link {
+  display: block;
+  padding-right: 16px;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.entry-link::after {
+  content: 'View degree details →';
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 720;
+}
+
+.entry-link:hover,
+.entry-link:focus-visible {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  border-left-color: var(--accent-strong);
+  transform: translateX(3px);
+  outline: none;
+}
+
 .entry .top,
 .project-head,
 .subhead,

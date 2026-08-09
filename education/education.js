@@ -11,8 +11,13 @@ function renderEducation(list) {
   }
 
   for (const item of list) {
-    const entry = document.createElement('div');
+    const entry = document.createElement(item.href ? 'a' : 'div');
     entry.className = 'entry reveal';
+    if (item.href) {
+      entry.classList.add('entry-link');
+      entry.href = item.href;
+      entry.setAttribute('aria-label', `View ${item.degree || 'degree'} at ${item.school || 'university'}`);
+    }
 
     const top = document.createElement('div');
     top.className = 'top';

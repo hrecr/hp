@@ -1,0 +1,187 @@
+.degree-page {
+  min-height: calc(100vh - 86px);
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 38px;
+  color: var(--subtle);
+  font-size: 0.88rem;
+}
+
+.breadcrumb a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.degree-head {
+  max-width: 880px;
+  margin-bottom: 38px;
+}
+
+.degree-head h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2.25rem, 6vw, 4.6rem);
+  letter-spacing: -0.045em;
+}
+
+.degree-head > p:last-child {
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+.degree-tabs {
+  display: inline-flex;
+  gap: 6px;
+  margin-bottom: 22px;
+  padding: 5px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.degree-tab {
+  min-width: 150px;
+  padding: 11px 22px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.degree-tab[aria-selected="true"] {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+  box-shadow: inset 0 0 0 1px var(--border-strong);
+}
+
+.degree-tab:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+.degree-tab-panel:focus {
+  outline: none;
+}
+
+.empty-courses {
+  min-height: 250px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.empty-courses h2 {
+  margin-bottom: 6px;
+  font-size: 1.35rem;
+}
+
+.empty-courses p {
+  margin: 0;
+}
+
+.empty-mark {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  display: grid;
+  place-items: center;
+  color: var(--accent-strong);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+}
+
+.resource-list {
+  display: grid;
+  gap: 14px;
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  padding: clamp(22px, 4vw, 34px);
+  color: var(--text);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.resource-row:hover,
+.resource-row:focus-visible {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.resource-index {
+  color: var(--accent-strong);
+  font-size: 0.82rem;
+  font-weight: 780;
+}
+
+.resource-copy {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.resource-copy strong {
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+}
+
+.resource-copy > span:last-child {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.resource-type {
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.resource-action {
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 720;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .degree-tabs {
+    width: 100%;
+  }
+
+  .degree-tab {
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  .resource-row {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .resource-action {
+    grid-column: 2;
+    white-space: normal;
+  }
+}

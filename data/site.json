@@ -61,6 +61,7 @@
   "education": [
     {
       "degree": "M.Sc. in Computer Science",
+      "href": "./koc-ms/",
       "school": "Koç University",
       "location": "Istanbul, Türkiye",
       "start": "2023/11",

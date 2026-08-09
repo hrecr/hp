@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Courses, thesis, and thesis-defense presentation for Reza Saadi's M.Sc. in Computer Science at Koç University." />
+  <title>Koç University M.Sc. — Reza Saadi</title>
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../modern.css" />
+  <link rel="stylesheet" href="./koc-ms.css" />
+</head>
+<body>
+  <header class="topbar" id="top">
+    <a class="brand" href="../../" aria-label="Back to home">
+      <span class="logo">RS</span>
+      <span id="brandName">Reza Saadi</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary"></nav>
+  </header>
+
+  <main>
+    <section class="section degree-page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../">Education</a>
+        <span aria-hidden="true">/</span>
+        <span>M.Sc. at Koç University</span>
+      </nav>
+
+      <div class="section-head degree-head reveal">
+        <p class="section-kicker">2023/11–Present · Istanbul, Türkiye</p>
+        <h1>M.Sc. in Computer Science</h1>
+        <p>Koç University</p>
+      </div>
+
+      <div class="degree-tabs reveal" role="tablist" aria-label="M.Sc. information">
+        <button class="degree-tab" id="courses-tab" type="button" role="tab"
+          aria-selected="true" aria-controls="courses-panel" data-tab="courses">
+          My courses
+        </button>
+        <button class="degree-tab" id="thesis-tab" type="button" role="tab"
+          aria-selected="false" aria-controls="thesis-panel" data-tab="thesis" tabindex="-1">
+          Thesis
+        </button>
+      </div>
+
+      <section class="degree-tab-panel reveal" id="courses-panel" role="tabpanel"
+        aria-labelledby="courses-tab" tabindex="0">
+        <div class="panel empty-courses">
+          <span class="empty-mark" aria-hidden="true">—</span>
+          <h2>My courses</h2>
+          <p>No courses have been added yet.</p>
+        </div>
+      </section>
+
+      <section class="degree-tab-panel" id="thesis-panel" role="tabpanel"
+        aria-labelledby="thesis-tab" tabindex="0" hidden>
+        <div class="resource-list">
+          <a class="resource-row" href="./files/Reza-Saadi-MSc-Thesis.pdf">
+            <span class="resource-index" aria-hidden="true">01</span>
+            <span class="resource-copy">
+              <span class="resource-type">PDF document</span>
+              <strong>M.Sc. Thesis</strong>
+              <span>Secure Single Password Authentication Protocols in Distributed Systems</span>
+            </span>
+            <span class="resource-action">Open thesis <span aria-hidden="true">↗</span></span>
+          </a>
+
+          <a class="resource-row" href="./presentation/">
+            <span class="resource-index" aria-hidden="true">02</span>
+            <span class="resource-copy">
+              <span class="resource-type">Interactive web deck</span>
+              <strong>Thesis Defense Presentation</strong>
+              <span>Open the complete Reveal.js presentation in the browser.</span>
+            </span>
+            <span class="resource-action">View presentation <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="./koc-ms.js"></script>
+</body>
+</html>
