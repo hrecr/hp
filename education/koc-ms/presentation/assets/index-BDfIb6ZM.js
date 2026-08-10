@@ -1,0 +1,4383 @@
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))s(i);new MutationObserver(i=>{for(const a of i)if(a.type==="childList")for(const r of a.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&s(r)}).observe(document,{childList:!0,subtree:!0});function t(i){const a={};return i.integrity&&(a.integrity=i.integrity),i.referrerPolicy&&(a.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?a.credentials="include":i.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(i){if(i.ep)return;i.ep=!0;const a=t(i);fetch(i.href,a)}})();/*!
+ * reveal.js 5.2.0
+ * https://revealjs.com
+ * MIT licensed
+ *
+ * Copyright (C) 2011-2024 Hakim El Hattab, https://hakim.se
+ */const wt=(n,e)=>{for(let t in e)n[t]=e[t];return n},$=(n,e)=>Array.from(n.querySelectorAll(e)),an=(n,e,t)=>{t?n.classList.add(e):n.classList.remove(e)},bt=n=>{if(typeof n=="string"){if(n==="null")return null;if(n==="true")return!0;if(n==="false")return!1;if(n.match(/^-?[\d\.]+$/))return parseFloat(n)}return n},ze=(n,e)=>{n.style.transform=e},Ps=(n,e)=>{let t=n.matches||n.matchesSelector||n.msMatchesSelector;return!(!t||!t.call(n,e))},ae=(n,e)=>{if(typeof n.closest=="function")return n.closest(e);for(;n;){if(Ps(n,e))return n;n=n.parentNode}return null},ua=n=>{let e=(n=n||document.documentElement).requestFullscreen||n.webkitRequestFullscreen||n.webkitRequestFullScreen||n.mozRequestFullScreen||n.msRequestFullscreen;e&&e.apply(n)},wn=n=>{let e=document.createElement("style");return e.type="text/css",n&&n.length>0&&(e.styleSheet?e.styleSheet.cssText=n:e.appendChild(document.createTextNode(n))),document.head.appendChild(e),e},$i=()=>{let n={};location.search.replace(/[A-Z0-9]+?=([\w\.%-]*)/gi,(e=>{n[e.split("=").shift()]=e.split("=").pop()}));for(let e in n){let t=n[e];n[e]=bt(unescape(t))}return n.dependencies!==void 0&&delete n.dependencies,n},Lr={mp4:"video/mp4",m4a:"video/mp4",ogv:"video/ogg",mpeg:"video/mpeg",webm:"video/webm"},pa=navigator.userAgent,Rt=/(iphone|ipod|ipad|android)/gi.test(pa)||navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1,ha=/android/gi.test(pa);var Cr=(function(n){if(n){var e=function(b){return[].slice.call(b)},t=3,s=[],i=null,a="requestAnimationFrame"in n?function(){n.cancelAnimationFrame(i),i=n.requestAnimationFrame((function(){return o(s.filter((function(b){return b.dirty&&b.active})))}))}:function(){},r=function(b){return function(){s.forEach((function(q){return q.dirty=b})),a()}},o=function(b){b.filter((function(I){return!I.styleComputed})).forEach((function(I){I.styleComputed=d(I)})),b.filter(p).forEach(f);var q=b.filter(h);q.forEach(c),q.forEach((function(I){f(I),l(I)})),q.forEach(S)},l=function(b){return b.dirty=0},c=function(b){b.availableWidth=b.element.parentNode.clientWidth,b.currentWidth=b.element.scrollWidth,b.previousFontSize=b.currentFontSize,b.currentFontSize=Math.min(Math.max(b.minSize,b.availableWidth/b.currentWidth*b.previousFontSize),b.maxSize),b.whiteSpace=b.multiLine&&b.currentFontSize===b.minSize?"normal":"nowrap"},h=function(b){return b.dirty!==2||b.dirty===2&&b.element.parentNode.clientWidth!==b.availableWidth},d=function(b){var q=n.getComputedStyle(b.element,null);return b.currentFontSize=parseFloat(q.getPropertyValue("font-size")),b.display=q.getPropertyValue("display"),b.whiteSpace=q.getPropertyValue("white-space"),!0},p=function(b){var q=!1;return!b.preStyleTestCompleted&&(/inline-/.test(b.display)||(q=!0,b.display="inline-block"),b.whiteSpace!=="nowrap"&&(q=!0,b.whiteSpace="nowrap"),b.preStyleTestCompleted=!0,q)},f=function(b){b.element.style.whiteSpace=b.whiteSpace,b.element.style.display=b.display,b.element.style.fontSize=b.currentFontSize+"px"},S=function(b){b.element.dispatchEvent(new CustomEvent("fit",{detail:{oldValue:b.previousFontSize,newValue:b.currentFontSize,scaleFactor:b.currentFontSize/b.previousFontSize}}))},u=function(b,q){return function(){b.dirty=q,b.active&&a()}},v=function(b){return function(){s=s.filter((function(q){return q.element!==b.element})),b.observeMutations&&b.observer.disconnect(),b.element.style.whiteSpace=b.originalStyle.whiteSpace,b.element.style.display=b.originalStyle.display,b.element.style.fontSize=b.originalStyle.fontSize}},w=function(b){return function(){b.active||(b.active=!0,a())}},P=function(b){return function(){return b.active=!1}},C=function(b){b.observeMutations&&(b.observer=new MutationObserver(u(b,1)),b.observer.observe(b.element,b.observeMutations))},T={minSize:16,maxSize:512,multiLine:!0,observeMutations:"MutationObserver"in n&&{subtree:!0,childList:!0,characterData:!0}},A=null,k=function(){n.clearTimeout(A),A=n.setTimeout(r(2),L.observeWindowDelay)},N=["resize","orientationchange"];return Object.defineProperty(L,"observeWindow",{set:function(b){var q="".concat(b?"add":"remove","EventListener");N.forEach((function(I){n[q](I,k)}))}}),L.observeWindow=!0,L.observeWindowDelay=100,L.fitAll=r(t),L}function R(b,q){var I=Object.assign({},T,q),K=b.map((function(Y){var te=Object.assign({},I,{element:Y,active:!0});return(function(se){se.originalStyle={whiteSpace:se.element.style.whiteSpace,display:se.element.style.display,fontSize:se.element.style.fontSize},C(se),se.newbie=!0,se.dirty=!0,s.push(se)})(te),{element:Y,fit:u(te,t),unfreeze:w(te),freeze:P(te),unsubscribe:v(te)}}));return a(),K}function L(b){var q=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{};return typeof b=="string"?R(e(document.querySelectorAll(b)),q):R([b],q)[0]}})(typeof window>"u"?null:window);let Nr=class{constructor(e){this.Reveal=e,this.startEmbeddedIframe=this.startEmbeddedIframe.bind(this)}shouldPreload(e){if(this.Reveal.isScrollView())return!0;let t=this.Reveal.getConfig().preloadIframes;return typeof t!="boolean"&&(t=e.hasAttribute("data-preload")),t}load(e,t={}){e.style.display=this.Reveal.getConfig().display,$(e,"img[data-src], video[data-src], audio[data-src], iframe[data-src]").forEach((i=>{(i.tagName!=="IFRAME"||this.shouldPreload(i))&&(i.setAttribute("src",i.getAttribute("data-src")),i.setAttribute("data-lazy-loaded",""),i.removeAttribute("data-src"))})),$(e,"video, audio").forEach((i=>{let a=0;$(i,"source[data-src]").forEach((r=>{r.setAttribute("src",r.getAttribute("data-src")),r.removeAttribute("data-src"),r.setAttribute("data-lazy-loaded",""),a+=1})),Rt&&i.tagName==="VIDEO"&&i.setAttribute("playsinline",""),a>0&&i.load()}));let s=e.slideBackgroundElement;if(s){s.style.display="block";let i=e.slideBackgroundContentElement,a=e.getAttribute("data-background-iframe");if(s.hasAttribute("data-loaded")===!1){s.setAttribute("data-loaded","true");let o=e.getAttribute("data-background-image"),l=e.getAttribute("data-background-video"),c=e.hasAttribute("data-background-video-loop"),h=e.hasAttribute("data-background-video-muted");if(o)/^data:/.test(o.trim())?i.style.backgroundImage=`url(${o.trim()})`:i.style.backgroundImage=o.split(",").map((d=>`url(${((p="")=>encodeURI(p).replace(/%5B/g,"[").replace(/%5D/g,"]").replace(/[!'()*]/g,(f=>`%${f.charCodeAt(0).toString(16).toUpperCase()}`)))(decodeURI(d.trim()))})`)).join(",");else if(l){let d=document.createElement("video");c&&d.setAttribute("loop",""),(h||this.Reveal.isSpeakerNotes())&&(d.muted=!0),Rt&&(d.muted=!0,d.setAttribute("playsinline","")),l.split(",").forEach((p=>{const f=document.createElement("source");f.setAttribute("src",p);let S=((u="")=>Lr[u.split(".").pop()])(p);S&&f.setAttribute("type",S),d.appendChild(f)})),i.appendChild(d)}else if(a&&t.excludeIframes!==!0){let d=document.createElement("iframe");d.setAttribute("allowfullscreen",""),d.setAttribute("mozallowfullscreen",""),d.setAttribute("webkitallowfullscreen",""),d.setAttribute("allow","autoplay"),d.setAttribute("data-src",a),d.style.width="100%",d.style.height="100%",d.style.maxHeight="100%",d.style.maxWidth="100%",i.appendChild(d)}}let r=i.querySelector("iframe[data-src]");r&&this.shouldPreload(s)&&!/autoplay=(1|true|yes)/gi.test(a)&&r.getAttribute("src")!==a&&r.setAttribute("src",a)}this.layout(e)}layout(e){Array.from(e.querySelectorAll(".r-fit-text")).forEach((t=>{Cr(t,{minSize:24,maxSize:.8*this.Reveal.getConfig().height,observeMutations:!1,observeWindow:!1})}))}unload(e){e.style.display="none";let t=this.Reveal.getSlideBackground(e);t&&(t.style.display="none",$(t,"iframe[src]").forEach((s=>{s.removeAttribute("src")}))),$(e,"video[data-lazy-loaded][src], audio[data-lazy-loaded][src], iframe[data-lazy-loaded][src]").forEach((s=>{s.setAttribute("data-src",s.getAttribute("src")),s.removeAttribute("src")})),$(e,"video[data-lazy-loaded] source[src], audio source[src]").forEach((s=>{s.setAttribute("data-src",s.getAttribute("src")),s.removeAttribute("src")}))}formatEmbeddedContent(){let e=(t,s,i)=>{$(this.Reveal.getSlidesElement(),"iframe["+t+'*="'+s+'"]').forEach((a=>{let r=a.getAttribute(t);r&&r.indexOf(i)===-1&&a.setAttribute(t,r+(/\?/.test(r)?"&":"?")+i)}))};e("src","youtube.com/embed/","enablejsapi=1"),e("data-src","youtube.com/embed/","enablejsapi=1"),e("src","player.vimeo.com/","api=1"),e("data-src","player.vimeo.com/","api=1")}startEmbeddedContent(e){if(e){const t=this.Reveal.isSpeakerNotes();$(e,'img[src$=".gif"]').forEach((s=>{s.setAttribute("src",s.getAttribute("src"))})),$(e,"video, audio").forEach((s=>{if(ae(s,".fragment")&&!ae(s,".fragment.visible"))return;let i=this.Reveal.getConfig().autoPlayMedia;if(typeof i!="boolean"&&(i=s.hasAttribute("data-autoplay")||!!ae(s,".slide-background")),i&&typeof s.play=="function"){if(t&&!s.muted)return;if(s.readyState>1)this.startEmbeddedMedia({target:s});else if(Rt){let a=s.play();a&&typeof a.catch=="function"&&s.controls===!1&&a.catch((()=>{s.controls=!0,s.addEventListener("play",(()=>{s.controls=!1}))}))}else s.removeEventListener("loadeddata",this.startEmbeddedMedia),s.addEventListener("loadeddata",this.startEmbeddedMedia)}})),t||($(e,"iframe[src]").forEach((s=>{ae(s,".fragment")&&!ae(s,".fragment.visible")||this.startEmbeddedIframe({target:s})})),$(e,"iframe[data-src]").forEach((s=>{ae(s,".fragment")&&!ae(s,".fragment.visible")||s.getAttribute("src")!==s.getAttribute("data-src")&&(s.removeEventListener("load",this.startEmbeddedIframe),s.addEventListener("load",this.startEmbeddedIframe),s.setAttribute("src",s.getAttribute("data-src")))})))}}startEmbeddedMedia(e){let t=!!ae(e.target,"html"),s=!!ae(e.target,".present");t&&s&&(e.target.paused||e.target.ended)&&(e.target.currentTime=0,e.target.play()),e.target.removeEventListener("loadeddata",this.startEmbeddedMedia)}startEmbeddedIframe(e){let t=e.target;if(t&&t.contentWindow){let s=!!ae(e.target,"html"),i=!!ae(e.target,".present");if(s&&i){let a=this.Reveal.getConfig().autoPlayMedia;typeof a!="boolean"&&(a=t.hasAttribute("data-autoplay")||!!ae(t,".slide-background")),/youtube\.com\/embed\//.test(t.getAttribute("src"))&&a?t.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}',"*"):/player\.vimeo\.com\//.test(t.getAttribute("src"))&&a?t.contentWindow.postMessage('{"method":"play"}',"*"):t.contentWindow.postMessage("slide:start","*")}}}stopEmbeddedContent(e,t={}){t=wt({unloadIframes:!0},t),e&&e.parentNode&&($(e,"video, audio").forEach((s=>{s.hasAttribute("data-ignore")||typeof s.pause!="function"||(s.setAttribute("data-paused-by-reveal",""),s.pause())})),$(e,"iframe").forEach((s=>{s.contentWindow&&s.contentWindow.postMessage("slide:stop","*"),s.removeEventListener("load",this.startEmbeddedIframe)})),$(e,'iframe[src*="youtube.com/embed/"]').forEach((s=>{!s.hasAttribute("data-ignore")&&s.contentWindow&&typeof s.contentWindow.postMessage=="function"&&s.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}',"*")})),$(e,'iframe[src*="player.vimeo.com/"]').forEach((s=>{!s.hasAttribute("data-ignore")&&s.contentWindow&&typeof s.contentWindow.postMessage=="function"&&s.contentWindow.postMessage('{"method":"pause"}',"*")})),t.unloadIframes===!0&&$(e,"iframe[data-src]").forEach((s=>{s.setAttribute("src","about:blank"),s.removeAttribute("src")})))}};const tt=".slides section",Me=".slides>section",qi=".slides>section.present>section",Ir=/registerPlugin|registerKeyboardShortcut|addKeyBinding|addEventListener|showPreview/;let $r=class{constructor(e){this.Reveal=e}render(){this.element=document.createElement("div"),this.element.className="slide-number",this.Reveal.getRevealElement().appendChild(this.element)}configure(e,t){let s="none";e.slideNumber&&!this.Reveal.isPrintView()&&(e.showSlideNumber==="all"||e.showSlideNumber==="speaker"&&this.Reveal.isSpeakerNotes())&&(s="block"),this.element.style.display=s}update(){this.Reveal.getConfig().slideNumber&&this.element&&(this.element.innerHTML=this.getSlideNumber())}getSlideNumber(e=this.Reveal.getCurrentSlide()){let t,s=this.Reveal.getConfig(),i="h.v";if(typeof s.slideNumber=="function")t=s.slideNumber(e);else{typeof s.slideNumber=="string"&&(i=s.slideNumber),/c/.test(i)||this.Reveal.getHorizontalSlides().length!==1||(i="c");let r=e&&e.dataset.visibility==="uncounted"?0:1;switch(t=[],i){case"c":t.push(this.Reveal.getSlidePastCount(e)+r);break;case"c/t":t.push(this.Reveal.getSlidePastCount(e)+r,"/",this.Reveal.getTotalSlides());break;default:let o=this.Reveal.getIndices(e);t.push(o.h+r);let l=i==="h/v"?"/":".";this.Reveal.isVerticalSlide(e)&&t.push(l,o.v+1)}}let a="#"+this.Reveal.location.getHash(e);return this.formatNumber(t[0],t[1],t[2],a)}formatNumber(e,t,s,i="#"+this.Reveal.location.getHash()){return typeof s!="number"||isNaN(s)?`<a href="${i}">
+					<span class="slide-number-a">${e}</span>
+					</a>`:`<a href="${i}">
+					<span class="slide-number-a">${e}</span>
+					<span class="slide-number-delimiter">${t}</span>
+					<span class="slide-number-b">${s}</span>
+					</a>`}destroy(){this.element.remove()}},qr=class{constructor(e){this.Reveal=e,this.onInput=this.onInput.bind(this),this.onBlur=this.onBlur.bind(this),this.onKeyDown=this.onKeyDown.bind(this)}render(){this.element=document.createElement("div"),this.element.className="jump-to-slide",this.jumpInput=document.createElement("input"),this.jumpInput.type="text",this.jumpInput.className="jump-to-slide-input",this.jumpInput.placeholder="Jump to slide",this.jumpInput.addEventListener("input",this.onInput),this.jumpInput.addEventListener("keydown",this.onKeyDown),this.jumpInput.addEventListener("blur",this.onBlur),this.element.appendChild(this.jumpInput)}show(){this.indicesOnShow=this.Reveal.getIndices(),this.Reveal.getRevealElement().appendChild(this.element),this.jumpInput.focus()}hide(){this.isVisible()&&(this.element.remove(),this.jumpInput.value="",clearTimeout(this.jumpTimeout),delete this.jumpTimeout)}isVisible(){return!!this.element.parentNode}jump(){clearTimeout(this.jumpTimeout),delete this.jumpTimeout;let e,t=this.jumpInput.value.trim("");if(/^\d+$/.test(t)){const s=this.Reveal.getConfig().slideNumber;if(s==="c"||s==="c/t"){const i=this.Reveal.getSlides()[parseInt(t,10)-1];i&&(e=this.Reveal.getIndices(i))}}return e||(/^\d+\.\d+$/.test(t)&&(t=t.replace(".","/")),e=this.Reveal.location.getIndicesFromHash(t,{oneBasedIndex:!0})),!e&&/\S+/i.test(t)&&t.length>1&&(e=this.search(t)),e&&t!==""?(this.Reveal.slide(e.h,e.v,e.f),!0):(this.Reveal.slide(this.indicesOnShow.h,this.indicesOnShow.v,this.indicesOnShow.f),!1)}jumpAfter(e){clearTimeout(this.jumpTimeout),this.jumpTimeout=setTimeout((()=>this.jump()),e)}search(e){const t=new RegExp("\\b"+e.trim()+"\\b","i"),s=this.Reveal.getSlides().find((i=>t.test(i.innerText)));return s?this.Reveal.getIndices(s):null}cancel(){this.Reveal.slide(this.indicesOnShow.h,this.indicesOnShow.v,this.indicesOnShow.f),this.hide()}confirm(){this.jump(),this.hide()}destroy(){this.jumpInput.removeEventListener("input",this.onInput),this.jumpInput.removeEventListener("keydown",this.onKeyDown),this.jumpInput.removeEventListener("blur",this.onBlur),this.element.remove()}onKeyDown(e){e.keyCode===13?this.confirm():e.keyCode===27&&(this.cancel(),e.stopImmediatePropagation())}onInput(e){this.jumpAfter(200)}onBlur(){setTimeout((()=>this.hide()),1)}};const rn=n=>{let e=n.match(/^#([0-9a-f]{3})$/i);if(e&&e[1])return e=e[1],{r:17*parseInt(e.charAt(0),16),g:17*parseInt(e.charAt(1),16),b:17*parseInt(e.charAt(2),16)};let t=n.match(/^#([0-9a-f]{6})$/i);if(t&&t[1])return t=t[1],{r:parseInt(t.slice(0,2),16),g:parseInt(t.slice(2,4),16),b:parseInt(t.slice(4,6),16)};let s=n.match(/^rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/i);if(s)return{r:parseInt(s[1],10),g:parseInt(s[2],10),b:parseInt(s[3],10)};let i=n.match(/^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d]+|[\d]*.[\d]+)\s*\)$/i);return i?{r:parseInt(i[1],10),g:parseInt(i[2],10),b:parseInt(i[3],10),a:parseFloat(i[4])}:null};let Or=class{constructor(e){this.Reveal=e}render(){this.element=document.createElement("div"),this.element.className="backgrounds",this.Reveal.getRevealElement().appendChild(this.element)}create(){this.element.innerHTML="",this.element.classList.add("no-transition"),this.Reveal.getHorizontalSlides().forEach((e=>{let t=this.createBackground(e,this.element);$(e,"section").forEach((s=>{this.createBackground(s,t),t.classList.add("stack")}))})),this.Reveal.getConfig().parallaxBackgroundImage?(this.element.style.backgroundImage='url("'+this.Reveal.getConfig().parallaxBackgroundImage+'")',this.element.style.backgroundSize=this.Reveal.getConfig().parallaxBackgroundSize,this.element.style.backgroundRepeat=this.Reveal.getConfig().parallaxBackgroundRepeat,this.element.style.backgroundPosition=this.Reveal.getConfig().parallaxBackgroundPosition,setTimeout((()=>{this.Reveal.getRevealElement().classList.add("has-parallax-background")}),1)):(this.element.style.backgroundImage="",this.Reveal.getRevealElement().classList.remove("has-parallax-background"))}createBackground(e,t){let s=document.createElement("div");s.className="slide-background "+e.className.replace(/present|past|future/,"");let i=document.createElement("div");return i.className="slide-background-content",s.appendChild(i),t.appendChild(s),e.slideBackgroundElement=s,e.slideBackgroundContentElement=i,this.sync(e),s}sync(e){const t=e.slideBackgroundElement,s=e.slideBackgroundContentElement,i={background:e.getAttribute("data-background"),backgroundSize:e.getAttribute("data-background-size"),backgroundImage:e.getAttribute("data-background-image"),backgroundVideo:e.getAttribute("data-background-video"),backgroundIframe:e.getAttribute("data-background-iframe"),backgroundColor:e.getAttribute("data-background-color"),backgroundGradient:e.getAttribute("data-background-gradient"),backgroundRepeat:e.getAttribute("data-background-repeat"),backgroundPosition:e.getAttribute("data-background-position"),backgroundTransition:e.getAttribute("data-background-transition"),backgroundOpacity:e.getAttribute("data-background-opacity")},a=e.hasAttribute("data-preload");e.classList.remove("has-dark-background"),e.classList.remove("has-light-background"),t.removeAttribute("data-loaded"),t.removeAttribute("data-background-hash"),t.removeAttribute("data-background-size"),t.removeAttribute("data-background-transition"),t.style.backgroundColor="",s.style.backgroundSize="",s.style.backgroundRepeat="",s.style.backgroundPosition="",s.style.backgroundImage="",s.style.opacity="",s.innerHTML="",i.background&&(/^(http|file|\/\/)/gi.test(i.background)||/\.(svg|png|jpg|jpeg|gif|bmp|webp)([?#\s]|$)/gi.test(i.background)?e.setAttribute("data-background-image",i.background):t.style.background=i.background),(i.background||i.backgroundColor||i.backgroundGradient||i.backgroundImage||i.backgroundVideo||i.backgroundIframe)&&t.setAttribute("data-background-hash",i.background+i.backgroundSize+i.backgroundImage+i.backgroundVideo+i.backgroundIframe+i.backgroundColor+i.backgroundGradient+i.backgroundRepeat+i.backgroundPosition+i.backgroundTransition+i.backgroundOpacity),i.backgroundSize&&t.setAttribute("data-background-size",i.backgroundSize),i.backgroundColor&&(t.style.backgroundColor=i.backgroundColor),i.backgroundGradient&&(t.style.backgroundImage=i.backgroundGradient),i.backgroundTransition&&t.setAttribute("data-background-transition",i.backgroundTransition),a&&t.setAttribute("data-preload",""),i.backgroundSize&&(s.style.backgroundSize=i.backgroundSize),i.backgroundRepeat&&(s.style.backgroundRepeat=i.backgroundRepeat),i.backgroundPosition&&(s.style.backgroundPosition=i.backgroundPosition),i.backgroundOpacity&&(s.style.opacity=i.backgroundOpacity);const r=this.getContrastClass(e);typeof r=="string"&&e.classList.add(r)}getContrastClass(e){const t=e.slideBackgroundElement;let s=e.getAttribute("data-background-color");if(!s||!rn(s)){let a=window.getComputedStyle(t);a&&a.backgroundColor&&(s=a.backgroundColor)}if(s){const a=rn(s);if(a&&a.a!==0)return typeof(i=s)=="string"&&(i=rn(i)),(i?(299*i.r+587*i.g+114*i.b)/1e3:null)<128?"has-dark-background":"has-light-background"}var i;return null}bubbleSlideContrastClassToElement(e,t){["has-light-background","has-dark-background"].forEach((s=>{e.classList.contains(s)?t.classList.add(s):t.classList.remove(s)}),this)}update(e=!1){let t=this.Reveal.getConfig(),s=this.Reveal.getCurrentSlide(),i=this.Reveal.getIndices(),a=null,r=t.rtl?"future":"past",o=t.rtl?"past":"future";if(Array.from(this.element.childNodes).forEach(((c,h)=>{c.classList.remove("past","present","future"),h<i.h?c.classList.add(r):h>i.h?c.classList.add(o):(c.classList.add("present"),a=c),(e||h===i.h)&&$(c,".slide-background").forEach(((d,p)=>{d.classList.remove("past","present","future");const f=typeof i.v=="number"?i.v:0;p<f?d.classList.add("past"):p>f?d.classList.add("future"):(d.classList.add("present"),h===i.h&&(a=d))}))})),this.previousBackground&&!this.previousBackground.closest("body")&&(this.previousBackground=null),a&&this.previousBackground){let c=this.previousBackground.getAttribute("data-background-hash"),h=a.getAttribute("data-background-hash");if(h&&h===c&&a!==this.previousBackground){this.element.classList.add("no-transition");const d=a.querySelector("video"),p=this.previousBackground.querySelector("video");if(d&&p){const f=d.parentNode;p.parentNode.appendChild(d),f.appendChild(p)}}}const l=a!==this.previousBackground;if(l&&this.previousBackground&&this.Reveal.slideContent.stopEmbeddedContent(this.previousBackground,{unloadIframes:!this.Reveal.slideContent.shouldPreload(this.previousBackground)}),l&&a){this.Reveal.slideContent.startEmbeddedContent(a);let c=a.querySelector(".slide-background-content");if(c){let h=c.style.backgroundImage||"";/\.gif/i.test(h)&&(c.style.backgroundImage="",window.getComputedStyle(c).opacity,c.style.backgroundImage=h)}this.previousBackground=a}s&&this.bubbleSlideContrastClassToElement(s,this.Reveal.getRevealElement()),setTimeout((()=>{this.element.classList.remove("no-transition")}),10)}updateParallax(){let e=this.Reveal.getIndices();if(this.Reveal.getConfig().parallaxBackgroundImage){let t,s,i=this.Reveal.getHorizontalSlides(),a=this.Reveal.getVerticalSlides(),r=this.element.style.backgroundSize.split(" ");r.length===1?t=s=parseInt(r[0],10):(t=parseInt(r[0],10),s=parseInt(r[1],10));let o,l,c=this.element.offsetWidth,h=i.length;o=typeof this.Reveal.getConfig().parallaxBackgroundHorizontal=="number"?this.Reveal.getConfig().parallaxBackgroundHorizontal:h>1?(t-c)/(h-1):0,l=o*e.h*-1;let d,p,f=this.element.offsetHeight,S=a.length;d=typeof this.Reveal.getConfig().parallaxBackgroundVertical=="number"?this.Reveal.getConfig().parallaxBackgroundVertical:(s-f)/(S-1),p=S>0?d*e.v:0,this.element.style.backgroundPosition=l+"px "+-p+"px"}}destroy(){this.element.remove()}},Oi=0,jr=class{constructor(e){this.Reveal=e}run(e,t){this.reset();let s=this.Reveal.getSlides(),i=s.indexOf(t),a=s.indexOf(e);if(e&&t&&e.hasAttribute("data-auto-animate")&&t.hasAttribute("data-auto-animate")&&e.getAttribute("data-auto-animate-id")===t.getAttribute("data-auto-animate-id")&&!(i>a?t:e).hasAttribute("data-auto-animate-restart")){this.autoAnimateStyleSheet=this.autoAnimateStyleSheet||wn();let r=this.getAutoAnimateOptions(t);e.dataset.autoAnimate="pending",t.dataset.autoAnimate="pending",r.slideDirection=i>a?"forward":"backward";let o=e.style.display==="none";o&&(e.style.display=this.Reveal.getConfig().display);let l=this.getAutoAnimatableElements(e,t).map((c=>this.autoAnimateElements(c.from,c.to,c.options||{},r,Oi++)));if(o&&(e.style.display="none"),t.dataset.autoAnimateUnmatched!=="false"&&this.Reveal.getConfig().autoAnimateUnmatched===!0){let c=.8*r.duration,h=.2*r.duration;this.getUnmatchedAutoAnimateElements(t).forEach((d=>{let p=this.getAutoAnimateOptions(d,r),f="unmatched";p.duration===r.duration&&p.delay===r.delay||(f="unmatched-"+Oi++,l.push(`[data-auto-animate="running"] [data-auto-animate-target="${f}"] { transition: opacity ${p.duration}s ease ${p.delay}s; }`)),d.dataset.autoAnimateTarget=f}),this),l.push(`[data-auto-animate="running"] [data-auto-animate-target="unmatched"] { transition: opacity ${c}s ease ${h}s; }`)}this.autoAnimateStyleSheet.innerHTML=l.join(""),requestAnimationFrame((()=>{this.autoAnimateStyleSheet&&(getComputedStyle(this.autoAnimateStyleSheet).fontWeight,t.dataset.autoAnimate="running")})),this.Reveal.dispatchEvent({type:"autoanimate",data:{fromSlide:e,toSlide:t,sheet:this.autoAnimateStyleSheet}})}}reset(){$(this.Reveal.getRevealElement(),'[data-auto-animate]:not([data-auto-animate=""])').forEach((e=>{e.dataset.autoAnimate=""})),$(this.Reveal.getRevealElement(),"[data-auto-animate-target]").forEach((e=>{delete e.dataset.autoAnimateTarget})),this.autoAnimateStyleSheet&&this.autoAnimateStyleSheet.parentNode&&(this.autoAnimateStyleSheet.parentNode.removeChild(this.autoAnimateStyleSheet),this.autoAnimateStyleSheet=null)}autoAnimateElements(e,t,s,i,a){e.dataset.autoAnimateTarget="",t.dataset.autoAnimateTarget=a;let r=this.getAutoAnimateOptions(t,i);s.delay!==void 0&&(r.delay=s.delay),s.duration!==void 0&&(r.duration=s.duration),s.easing!==void 0&&(r.easing=s.easing);let o=this.getAutoAnimatableProperties("from",e,s),l=this.getAutoAnimatableProperties("to",t,s);if(t.classList.contains("fragment")&&delete l.styles.opacity,s.translate!==!1||s.scale!==!1){let d=this.Reveal.getScale(),p={x:(o.x-l.x)/d,y:(o.y-l.y)/d,scaleX:o.width/l.width,scaleY:o.height/l.height};p.x=Math.round(1e3*p.x)/1e3,p.y=Math.round(1e3*p.y)/1e3,p.scaleX=Math.round(1e3*p.scaleX)/1e3,p.scaleX=Math.round(1e3*p.scaleX)/1e3;let f=s.translate!==!1&&(p.x!==0||p.y!==0),S=s.scale!==!1&&(p.scaleX!==0||p.scaleY!==0);if(f||S){let u=[];f&&u.push(`translate(${p.x}px, ${p.y}px)`),S&&u.push(`scale(${p.scaleX}, ${p.scaleY})`),o.styles.transform=u.join(" "),o.styles["transform-origin"]="top left",l.styles.transform="none"}}for(let d in l.styles){const p=l.styles[d],f=o.styles[d];p===f?delete l.styles[d]:(p.explicitValue===!0&&(l.styles[d]=p.value),f.explicitValue===!0&&(o.styles[d]=f.value))}let c="",h=Object.keys(l.styles);return h.length>0&&(o.styles.transition="none",l.styles.transition=`all ${r.duration}s ${r.easing} ${r.delay}s`,l.styles["transition-property"]=h.join(", "),l.styles["will-change"]=h.join(", "),c='[data-auto-animate-target="'+a+'"] {'+Object.keys(o.styles).map((d=>d+": "+o.styles[d]+" !important;")).join("")+'}[data-auto-animate="running"] [data-auto-animate-target="'+a+'"] {'+Object.keys(l.styles).map((d=>d+": "+l.styles[d]+" !important;")).join("")+"}"),c}getAutoAnimateOptions(e,t){let s={easing:this.Reveal.getConfig().autoAnimateEasing,duration:this.Reveal.getConfig().autoAnimateDuration,delay:0};if(s=wt(s,t),e.parentNode){let i=ae(e.parentNode,"[data-auto-animate-target]");i&&(s=this.getAutoAnimateOptions(i,s))}return e.dataset.autoAnimateEasing&&(s.easing=e.dataset.autoAnimateEasing),e.dataset.autoAnimateDuration&&(s.duration=parseFloat(e.dataset.autoAnimateDuration)),e.dataset.autoAnimateDelay&&(s.delay=parseFloat(e.dataset.autoAnimateDelay)),s}getAutoAnimatableProperties(e,t,s){let i=this.Reveal.getConfig(),a={styles:[]};if(s.translate!==!1||s.scale!==!1){let o;if(typeof s.measure=="function")o=s.measure(t);else if(i.center)o=t.getBoundingClientRect();else{let l=this.Reveal.getScale();o={x:t.offsetLeft*l,y:t.offsetTop*l,width:t.offsetWidth*l,height:t.offsetHeight*l}}a.x=o.x,a.y=o.y,a.width=o.width,a.height=o.height}const r=getComputedStyle(t);return(s.styles||i.autoAnimateStyles).forEach((o=>{let l;typeof o=="string"&&(o={property:o}),o.from!==void 0&&e==="from"?l={value:o.from,explicitValue:!0}:o.to!==void 0&&e==="to"?l={value:o.to,explicitValue:!0}:(o.property==="line-height"&&(l=parseFloat(r["line-height"])/parseFloat(r["font-size"])),isNaN(l)&&(l=r[o.property])),l!==""&&(a.styles[o.property]=l)})),a}getAutoAnimatableElements(e,t){let s=(typeof this.Reveal.getConfig().autoAnimateMatcher=="function"?this.Reveal.getConfig().autoAnimateMatcher:this.getAutoAnimatePairs).call(this,e,t),i=[];return s.filter(((a,r)=>{if(i.indexOf(a.to)===-1)return i.push(a.to),!0}))}getAutoAnimatePairs(e,t){let s=[];const i="h1, h2, h3, h4, h5, h6, p, li";return this.findAutoAnimateMatches(s,e,t,"[data-id]",(a=>a.nodeName+":::"+a.getAttribute("data-id"))),this.findAutoAnimateMatches(s,e,t,i,(a=>a.nodeName+":::"+a.textContent.trim())),this.findAutoAnimateMatches(s,e,t,"img, video, iframe",(a=>a.nodeName+":::"+(a.getAttribute("src")||a.getAttribute("data-src")))),this.findAutoAnimateMatches(s,e,t,"pre",(a=>a.nodeName+":::"+a.textContent.trim())),s.forEach((a=>{Ps(a.from,i)?a.options={scale:!1}:Ps(a.from,"pre")&&(a.options={scale:!1,styles:["width","height"]},this.findAutoAnimateMatches(s,a.from,a.to,".hljs .hljs-ln-code",(r=>r.textContent),{scale:!1,styles:[],measure:this.getLocalBoundingBox.bind(this)}),this.findAutoAnimateMatches(s,a.from,a.to,".hljs .hljs-ln-numbers[data-line-number]",(r=>r.getAttribute("data-line-number")),{scale:!1,styles:["width"],measure:this.getLocalBoundingBox.bind(this)}))}),this),s}getLocalBoundingBox(e){const t=this.Reveal.getScale();return{x:Math.round(e.offsetLeft*t*100)/100,y:Math.round(e.offsetTop*t*100)/100,width:Math.round(e.offsetWidth*t*100)/100,height:Math.round(e.offsetHeight*t*100)/100}}findAutoAnimateMatches(e,t,s,i,a,r){let o={},l={};[].slice.call(t.querySelectorAll(i)).forEach(((c,h)=>{const d=a(c);typeof d=="string"&&d.length&&(o[d]=o[d]||[],o[d].push(c))})),[].slice.call(s.querySelectorAll(i)).forEach(((c,h)=>{const d=a(c);let p;if(l[d]=l[d]||[],l[d].push(c),o[d]){const f=l[d].length-1,S=o[d].length-1;o[d][f]?(p=o[d][f],o[d][f]=null):o[d][S]&&(p=o[d][S],o[d][S]=null)}p&&e.push({from:p,to:c,options:r})}))}getUnmatchedAutoAnimateElements(e){return[].slice.call(e.children).reduce(((t,s)=>{const i=s.querySelector("[data-auto-animate-target]");return s.hasAttribute("data-auto-animate-target")||i||t.push(s),s.querySelector("[data-auto-animate-target]")&&(t=t.concat(this.getUnmatchedAutoAnimateElements(s))),t}),[])}},Br=class{constructor(e){this.Reveal=e,this.active=!1,this.activatedCallbacks=[],this.onScroll=this.onScroll.bind(this)}activate(){if(this.active)return;const e=this.Reveal.getState();this.active=!0,this.slideHTMLBeforeActivation=this.Reveal.getSlidesElement().innerHTML;const t=$(this.Reveal.getRevealElement(),Me),s=$(this.Reveal.getRevealElement(),".backgrounds>.slide-background");let i;this.viewportElement.classList.add("loading-scroll-mode","reveal-scroll");const a=window.getComputedStyle(this.viewportElement);a&&a.background&&(i=a.background);const r=[],o=t[0].parentNode;let l;const c=(h,d,p,f)=>{let S;if(l&&this.Reveal.shouldAutoAnimateBetween(l,h))S=document.createElement("div"),S.className="scroll-page-content scroll-auto-animate-page",S.style.display="none",l.closest(".scroll-page-content").parentNode.appendChild(S);else{const u=document.createElement("div");if(u.className="scroll-page",r.push(u),f&&s.length>d){const w=s[d],P=window.getComputedStyle(w);P&&P.background?u.style.background=P.background:i&&(u.style.background=i)}else i&&(u.style.background=i);const v=document.createElement("div");v.className="scroll-page-sticky",u.appendChild(v),S=document.createElement("div"),S.className="scroll-page-content",v.appendChild(S)}S.appendChild(h),h.classList.remove("past","future"),h.setAttribute("data-index-h",d),h.setAttribute("data-index-v",p),h.slideBackgroundElement&&(h.slideBackgroundElement.remove("past","future"),S.insertBefore(h.slideBackgroundElement,h)),l=h};t.forEach(((h,d)=>{this.Reveal.isVerticalStack(h)?h.querySelectorAll("section").forEach(((p,f)=>{c(p,d,f,!0)})):c(h,d,0)}),this),this.createProgressBar(),$(this.Reveal.getRevealElement(),".stack").forEach((h=>h.remove())),r.forEach((h=>o.appendChild(h))),this.Reveal.slideContent.layout(this.Reveal.getSlidesElement()),this.Reveal.layout(),this.Reveal.setState(e),this.activatedCallbacks.forEach((h=>h())),this.activatedCallbacks=[],this.restoreScrollPosition(),this.viewportElement.classList.remove("loading-scroll-mode"),this.viewportElement.addEventListener("scroll",this.onScroll,{passive:!0})}deactivate(){if(!this.active)return;const e=this.Reveal.getState();this.active=!1,this.viewportElement.removeEventListener("scroll",this.onScroll),this.viewportElement.classList.remove("reveal-scroll"),this.removeProgressBar(),this.Reveal.getSlidesElement().innerHTML=this.slideHTMLBeforeActivation,this.Reveal.sync(),this.Reveal.setState(e),this.slideHTMLBeforeActivation=null}toggle(e){typeof e=="boolean"?e?this.activate():this.deactivate():this.isActive()?this.deactivate():this.activate()}isActive(){return this.active}createProgressBar(){this.progressBar=document.createElement("div"),this.progressBar.className="scrollbar",this.progressBarInner=document.createElement("div"),this.progressBarInner.className="scrollbar-inner",this.progressBar.appendChild(this.progressBarInner),this.progressBarPlayhead=document.createElement("div"),this.progressBarPlayhead.className="scrollbar-playhead",this.progressBarInner.appendChild(this.progressBarPlayhead),this.viewportElement.insertBefore(this.progressBar,this.viewportElement.firstChild);const e=s=>{let i=(s.clientY-this.progressBarInner.getBoundingClientRect().top)/this.progressBarHeight;i=Math.max(Math.min(i,1),0),this.viewportElement.scrollTop=i*(this.viewportElement.scrollHeight-this.viewportElement.offsetHeight)},t=s=>{this.draggingProgressBar=!1,this.showProgressBar(),document.removeEventListener("mousemove",e),document.removeEventListener("mouseup",t)};this.progressBarInner.addEventListener("mousedown",(s=>{s.preventDefault(),this.draggingProgressBar=!0,document.addEventListener("mousemove",e),document.addEventListener("mouseup",t),e(s)}))}removeProgressBar(){this.progressBar&&(this.progressBar.remove(),this.progressBar=null)}layout(){this.isActive()&&(this.syncPages(),this.syncScrollPosition())}syncPages(){const e=this.Reveal.getConfig(),t=this.Reveal.getComputedSlideSize(window.innerWidth,window.innerHeight),s=this.Reveal.getScale(),i=e.scrollLayout==="compact",a=this.viewportElement.offsetHeight,r=t.height*s,o=i?r:a;this.scrollTriggerHeight=i?r:a,this.viewportElement.style.setProperty("--page-height",o+"px"),this.viewportElement.style.scrollSnapType=typeof e.scrollSnap=="string"?`y ${e.scrollSnap}`:"",this.slideTriggers=[];const l=Array.from(this.Reveal.getRevealElement().querySelectorAll(".scroll-page"));this.pages=l.map((c=>{const h=this.createPage({pageElement:c,slideElement:c.querySelector("section"),stickyElement:c.querySelector(".scroll-page-sticky"),contentElement:c.querySelector(".scroll-page-content"),backgroundElement:c.querySelector(".slide-background"),autoAnimateElements:c.querySelectorAll(".scroll-auto-animate-page"),autoAnimatePages:[]});h.pageElement.style.setProperty("--slide-height",e.center===!0?"auto":t.height+"px"),this.slideTriggers.push({page:h,activate:()=>this.activatePage(h),deactivate:()=>this.deactivatePage(h)}),this.createFragmentTriggersForPage(h),h.autoAnimateElements.length>0&&this.createAutoAnimateTriggersForPage(h);let d=Math.max(h.scrollTriggers.length-1,0);d+=h.autoAnimatePages.reduce(((p,f)=>p+Math.max(f.scrollTriggers.length-1,0)),h.autoAnimatePages.length),h.pageElement.querySelectorAll(".scroll-snap-point").forEach((p=>p.remove()));for(let p=0;p<d+1;p++){const f=document.createElement("div");f.className="scroll-snap-point",f.style.height=this.scrollTriggerHeight+"px",f.style.scrollSnapAlign=i?"center":"start",h.pageElement.appendChild(f),p===0&&(f.style.marginTop=-this.scrollTriggerHeight+"px")}return i&&h.scrollTriggers.length>0?(h.pageHeight=a,h.pageElement.style.setProperty("--page-height",a+"px")):(h.pageHeight=o,h.pageElement.style.removeProperty("--page-height")),h.scrollPadding=this.scrollTriggerHeight*d,h.totalHeight=h.pageHeight+h.scrollPadding,h.pageElement.style.setProperty("--page-scroll-padding",h.scrollPadding+"px"),d>0?(h.stickyElement.style.position="sticky",h.stickyElement.style.top=Math.max((a-h.pageHeight)/2,0)+"px"):(h.stickyElement.style.position="relative",h.pageElement.style.scrollSnapAlign=h.pageHeight<a?"center":"start"),h})),this.setTriggerRanges(),this.viewportElement.setAttribute("data-scrollbar",e.scrollProgress),e.scrollProgress&&this.totalScrollTriggerCount>1?(this.progressBar||this.createProgressBar(),this.syncProgressBar()):this.removeProgressBar()}setTriggerRanges(){this.totalScrollTriggerCount=this.slideTriggers.reduce(((t,s)=>t+Math.max(s.page.scrollTriggers.length,1)),0);let e=0;this.slideTriggers.forEach(((t,s)=>{t.range=[e,e+Math.max(t.page.scrollTriggers.length,1)/this.totalScrollTriggerCount];const i=(t.range[1]-t.range[0])/t.page.scrollTriggers.length;t.page.scrollTriggers.forEach(((a,r)=>{a.range=[e+r*i,e+(r+1)*i]})),e=t.range[1]})),this.slideTriggers[this.slideTriggers.length-1].range[1]=1}createFragmentTriggersForPage(e,t){t=t||e.slideElement;const s=this.Reveal.fragments.sort(t.querySelectorAll(".fragment"),!0);return s.length&&(e.fragments=this.Reveal.fragments.sort(t.querySelectorAll(".fragment:not(.disabled)")),e.scrollTriggers.push({activate:()=>{this.Reveal.fragments.update(-1,e.fragments,t)}}),s.forEach(((i,a)=>{e.scrollTriggers.push({activate:()=>{this.Reveal.fragments.update(a,e.fragments,t)}})}))),e.scrollTriggers.length}createAutoAnimateTriggersForPage(e){e.autoAnimateElements.length>0&&this.slideTriggers.push(...Array.from(e.autoAnimateElements).map(((t,s)=>{let i=this.createPage({slideElement:t.querySelector("section"),contentElement:t,backgroundElement:t.querySelector(".slide-background")});return this.createFragmentTriggersForPage(i,i.slideElement),e.autoAnimatePages.push(i),{page:i,activate:()=>this.activatePage(i),deactivate:()=>this.deactivatePage(i)}})))}createPage(e){return e.scrollTriggers=[],e.indexh=parseInt(e.slideElement.getAttribute("data-index-h"),10),e.indexv=parseInt(e.slideElement.getAttribute("data-index-v"),10),e}syncProgressBar(){this.progressBarInner.querySelectorAll(".scrollbar-slide").forEach((r=>r.remove()));const e=this.viewportElement.scrollHeight,t=this.viewportElement.offsetHeight,s=t/e;this.progressBarHeight=this.progressBarInner.offsetHeight,this.playheadHeight=Math.max(s*this.progressBarHeight,8),this.progressBarScrollableHeight=this.progressBarHeight-this.playheadHeight;const i=t/e*this.progressBarHeight,a=Math.min(i/8,4);this.progressBarPlayhead.style.height=this.playheadHeight-a+"px",i>6?this.slideTriggers.forEach((r=>{const{page:o}=r;o.progressBarSlide=document.createElement("div"),o.progressBarSlide.className="scrollbar-slide",o.progressBarSlide.style.top=r.range[0]*this.progressBarHeight+"px",o.progressBarSlide.style.height=(r.range[1]-r.range[0])*this.progressBarHeight-a+"px",o.progressBarSlide.classList.toggle("has-triggers",o.scrollTriggers.length>0),this.progressBarInner.appendChild(o.progressBarSlide),o.scrollTriggerElements=o.scrollTriggers.map(((l,c)=>{const h=document.createElement("div");return h.className="scrollbar-trigger",h.style.top=(l.range[0]-r.range[0])*this.progressBarHeight+"px",h.style.height=(l.range[1]-l.range[0])*this.progressBarHeight-a+"px",o.progressBarSlide.appendChild(h),c===0&&(h.style.display="none"),h}))})):this.pages.forEach((r=>r.progressBarSlide=null))}syncScrollPosition(){const e=this.viewportElement.offsetHeight,t=e/this.viewportElement.scrollHeight,s=this.viewportElement.scrollTop,i=this.viewportElement.scrollHeight-e,a=Math.max(Math.min(s/i,1),0),r=Math.max(Math.min((s+e/2)/this.viewportElement.scrollHeight,1),0);let o;this.slideTriggers.forEach((l=>{const{page:c}=l;a>=l.range[0]-2*t&&a<=l.range[1]+2*t&&!c.loaded?(c.loaded=!0,this.Reveal.slideContent.load(c.slideElement)):c.loaded&&(c.loaded=!1,this.Reveal.slideContent.unload(c.slideElement)),a>=l.range[0]&&a<=l.range[1]?(this.activateTrigger(l),o=l.page):l.active&&this.deactivateTrigger(l)})),o&&o.scrollTriggers.forEach((l=>{r>=l.range[0]&&r<=l.range[1]?this.activateTrigger(l):l.active&&this.deactivateTrigger(l)})),this.setProgressBarValue(s/(this.viewportElement.scrollHeight-e))}setProgressBarValue(e){this.progressBar&&(this.progressBarPlayhead.style.transform=`translateY(${e*this.progressBarScrollableHeight}px)`,this.getAllPages().filter((t=>t.progressBarSlide)).forEach((t=>{t.progressBarSlide.classList.toggle("active",t.active===!0),t.scrollTriggers.forEach(((s,i)=>{t.scrollTriggerElements[i].classList.toggle("active",t.active===!0&&s.active===!0)}))})),this.showProgressBar())}showProgressBar(){this.progressBar.classList.add("visible"),clearTimeout(this.hideProgressBarTimeout),this.Reveal.getConfig().scrollProgress!=="auto"||this.draggingProgressBar||(this.hideProgressBarTimeout=setTimeout((()=>{this.progressBar&&this.progressBar.classList.remove("visible")}),500))}prev(){this.viewportElement.scrollTop-=this.scrollTriggerHeight}next(){this.viewportElement.scrollTop+=this.scrollTriggerHeight}scrollToSlide(e){if(this.active){const t=this.getScrollTriggerBySlide(e);t&&(this.viewportElement.scrollTop=t.range[0]*(this.viewportElement.scrollHeight-this.viewportElement.offsetHeight))}else this.activatedCallbacks.push((()=>this.scrollToSlide(e)))}storeScrollPosition(){clearTimeout(this.storeScrollPositionTimeout),this.storeScrollPositionTimeout=setTimeout((()=>{sessionStorage.setItem("reveal-scroll-top",this.viewportElement.scrollTop),sessionStorage.setItem("reveal-scroll-origin",location.origin+location.pathname),this.storeScrollPositionTimeout=null}),50)}restoreScrollPosition(){const e=sessionStorage.getItem("reveal-scroll-top"),t=sessionStorage.getItem("reveal-scroll-origin");e&&t===location.origin+location.pathname&&(this.viewportElement.scrollTop=parseInt(e,10))}activatePage(e){if(!e.active){e.active=!0;const{slideElement:t,backgroundElement:s,contentElement:i,indexh:a,indexv:r}=e;i.style.display="block",t.classList.add("present"),s&&s.classList.add("present"),this.Reveal.setCurrentScrollPage(t,a,r),this.Reveal.backgrounds.bubbleSlideContrastClassToElement(t,this.viewportElement),Array.from(i.parentNode.querySelectorAll(".scroll-page-content")).forEach((o=>{o!==i&&(o.style.display="none")}))}}deactivatePage(e){e.active&&(e.active=!1,e.slideElement&&e.slideElement.classList.remove("present"),e.backgroundElement&&e.backgroundElement.classList.remove("present"))}activateTrigger(e){e.active||(e.active=!0,e.activate())}deactivateTrigger(e){e.active&&(e.active=!1,e.deactivate&&e.deactivate())}getSlideByIndices(e,t){const s=this.getAllPages().find((i=>i.indexh===e&&i.indexv===t));return s?s.slideElement:null}getScrollTriggerBySlide(e){return this.slideTriggers.find((t=>t.page.slideElement===e))}getAllPages(){return this.pages.flatMap((e=>[e,...e.autoAnimatePages||[]]))}onScroll(){this.syncScrollPosition(),this.storeScrollPosition()}get viewportElement(){return this.Reveal.getViewportElement()}},Mr=class{constructor(e){this.Reveal=e}async activate(){const e=this.Reveal.getConfig(),t=$(this.Reveal.getRevealElement(),tt),s=e.slideNumber&&/all|print/i.test(e.showSlideNumber),i=this.Reveal.getComputedSlideSize(window.innerWidth,window.innerHeight),a=Math.floor(i.width*(1+e.margin)),r=Math.floor(i.height*(1+e.margin)),o=i.width,l=i.height;await new Promise(requestAnimationFrame),wn("@page{size:"+a+"px "+r+"px; margin: 0px;}"),wn(".reveal section>img, .reveal section>video, .reveal section>iframe{max-width: "+o+"px; max-height:"+l+"px}"),document.documentElement.classList.add("reveal-print","print-pdf"),document.body.style.width=a+"px",document.body.style.height=r+"px";const c=this.Reveal.getViewportElement();let h;if(c){const u=window.getComputedStyle(c);u&&u.background&&(h=u.background)}await new Promise(requestAnimationFrame),this.Reveal.layoutSlideContents(o,l),await new Promise(requestAnimationFrame);const d=t.map((u=>u.scrollHeight)),p=[],f=t[0].parentNode;let S=1;t.forEach((function(u,v){if(u.classList.contains("stack")===!1){let w=(a-o)/2,P=(r-l)/2;const C=d[v];let T=Math.max(Math.ceil(C/r),1);T=Math.min(T,e.pdfMaxPagesPerSlide),(T===1&&e.center||u.classList.contains("center"))&&(P=Math.max((r-C)/2,0));const A=document.createElement("div");if(p.push(A),A.className="pdf-page",A.style.height=(r+e.pdfPageHeightOffset)*T+"px",h&&(A.style.background=h),A.appendChild(u),u.style.left=w+"px",u.style.top=P+"px",u.style.width=o+"px",this.Reveal.slideContent.layout(u),u.slideBackgroundElement&&A.insertBefore(u.slideBackgroundElement,u),e.showNotes){const k=this.Reveal.getSlideNotes(u);if(k){const R=typeof e.showNotes=="string"?e.showNotes:"inline",L=document.createElement("div");L.classList.add("speaker-notes"),L.classList.add("speaker-notes-pdf"),L.setAttribute("data-layout",R),L.innerHTML=k,R==="separate-page"?p.push(L):(L.style.left="8px",L.style.bottom="8px",L.style.width=a-16+"px",A.appendChild(L))}}if(s){const k=document.createElement("div");k.classList.add("slide-number"),k.classList.add("slide-number-pdf"),k.innerHTML=S++,A.appendChild(k)}if(e.pdfSeparateFragments){const k=this.Reveal.fragments.sort(A.querySelectorAll(".fragment"),!0);let N;k.forEach((function(R,L){N&&N.forEach((function(q){q.classList.remove("current-fragment")})),R.forEach((function(q){q.classList.add("visible","current-fragment")}),this);const b=A.cloneNode(!0);if(s){const q=L+1;b.querySelector(".slide-number-pdf").innerHTML+="."+q}p.push(b),N=R}),this),k.forEach((function(R){R.forEach((function(L){L.classList.remove("visible","current-fragment")}))}))}else $(A,".fragment:not(.fade-out)").forEach((function(k){k.classList.add("visible")}))}}),this),await new Promise(requestAnimationFrame),p.forEach((u=>f.appendChild(u))),this.Reveal.slideContent.layout(this.Reveal.getSlidesElement()),this.Reveal.dispatchEvent({type:"pdf-ready"}),c.classList.remove("loading-scroll-mode")}isActive(){return this.Reveal.getConfig().view==="print"}},Fr=class{constructor(e){this.Reveal=e}configure(e,t){e.fragments===!1?this.disable():t.fragments===!1&&this.enable()}disable(){$(this.Reveal.getSlidesElement(),".fragment").forEach((e=>{e.classList.add("visible"),e.classList.remove("current-fragment")}))}enable(){$(this.Reveal.getSlidesElement(),".fragment").forEach((e=>{e.classList.remove("visible"),e.classList.remove("current-fragment")}))}availableRoutes(){let e=this.Reveal.getCurrentSlide();if(e&&this.Reveal.getConfig().fragments){let t=e.querySelectorAll(".fragment:not(.disabled)"),s=e.querySelectorAll(".fragment:not(.disabled):not(.visible)");return{prev:t.length-s.length>0,next:!!s.length}}return{prev:!1,next:!1}}sort(e,t=!1){e=Array.from(e);let s=[],i=[],a=[];e.forEach((o=>{if(o.hasAttribute("data-fragment-index")){let l=parseInt(o.getAttribute("data-fragment-index"),10);s[l]||(s[l]=[]),s[l].push(o)}else i.push([o])})),s=s.concat(i);let r=0;return s.forEach((o=>{o.forEach((l=>{a.push(l),l.setAttribute("data-fragment-index",r)})),r++})),t===!0?s:a}sortAll(){this.Reveal.getHorizontalSlides().forEach((e=>{let t=$(e,"section");t.forEach(((s,i)=>{this.sort(s.querySelectorAll(".fragment"))}),this),t.length===0&&this.sort(e.querySelectorAll(".fragment"))}))}update(e,t,s=this.Reveal.getCurrentSlide()){let i={shown:[],hidden:[]};if(s&&this.Reveal.getConfig().fragments&&(t=t||this.sort(s.querySelectorAll(".fragment"))).length){let a=0;if(typeof e!="number"){let r=this.sort(s.querySelectorAll(".fragment.visible")).pop();r&&(e=parseInt(r.getAttribute("data-fragment-index")||0,10))}Array.from(t).forEach(((r,o)=>{if(r.hasAttribute("data-fragment-index")&&(o=parseInt(r.getAttribute("data-fragment-index"),10)),a=Math.max(a,o),o<=e){let l=r.classList.contains("visible");r.classList.add("visible"),r.classList.remove("current-fragment"),o===e&&(this.Reveal.announceStatus(this.Reveal.getStatusText(r)),r.classList.add("current-fragment"),this.Reveal.slideContent.startEmbeddedContent(r)),l||(i.shown.push(r),this.Reveal.dispatchEvent({target:r,type:"visible",bubbles:!1}))}else{let l=r.classList.contains("visible");r.classList.remove("visible"),r.classList.remove("current-fragment"),l&&(this.Reveal.slideContent.stopEmbeddedContent(r),i.hidden.push(r),this.Reveal.dispatchEvent({target:r,type:"hidden",bubbles:!1}))}})),e=typeof e=="number"?e:-1,e=Math.max(Math.min(e,a),-1),s.setAttribute("data-fragment",e)}return i.hidden.length&&this.Reveal.dispatchEvent({type:"fragmenthidden",data:{fragment:i.hidden[0],fragments:i.hidden}}),i.shown.length&&this.Reveal.dispatchEvent({type:"fragmentshown",data:{fragment:i.shown[0],fragments:i.shown}}),i}sync(e=this.Reveal.getCurrentSlide()){return this.sort(e.querySelectorAll(".fragment"))}goto(e,t=0){let s=this.Reveal.getCurrentSlide();if(s&&this.Reveal.getConfig().fragments){let i=this.sort(s.querySelectorAll(".fragment:not(.disabled)"));if(i.length){if(typeof e!="number"){let r=this.sort(s.querySelectorAll(".fragment:not(.disabled).visible")).pop();e=r?parseInt(r.getAttribute("data-fragment-index")||0,10):-1}e+=t;let a=this.update(e,i);return this.Reveal.controls.update(),this.Reveal.progress.update(),this.Reveal.getConfig().fragmentInURL&&this.Reveal.location.writeURL(),!(!a.shown.length&&!a.hidden.length)}}return!1}next(){return this.goto(null,1)}prev(){return this.goto(null,-1)}},zr=class{constructor(e){this.Reveal=e,this.active=!1,this.onSlideClicked=this.onSlideClicked.bind(this)}activate(){if(this.Reveal.getConfig().overview&&!this.Reveal.isScrollView()&&!this.isActive()){this.active=!0,this.Reveal.getRevealElement().classList.add("overview"),this.Reveal.cancelAutoSlide(),this.Reveal.getSlidesElement().appendChild(this.Reveal.getBackgroundsElement()),$(this.Reveal.getRevealElement(),tt).forEach((i=>{i.classList.contains("stack")||i.addEventListener("click",this.onSlideClicked,!0)}));const e=70,t=this.Reveal.getComputedSlideSize();this.overviewSlideWidth=t.width+e,this.overviewSlideHeight=t.height+e,this.Reveal.getConfig().rtl&&(this.overviewSlideWidth=-this.overviewSlideWidth),this.Reveal.updateSlidesVisibility(),this.layout(),this.update(),this.Reveal.layout();const s=this.Reveal.getIndices();this.Reveal.dispatchEvent({type:"overviewshown",data:{indexh:s.h,indexv:s.v,currentSlide:this.Reveal.getCurrentSlide()}})}}layout(){this.Reveal.getHorizontalSlides().forEach(((e,t)=>{e.setAttribute("data-index-h",t),ze(e,"translate3d("+t*this.overviewSlideWidth+"px, 0, 0)"),e.classList.contains("stack")&&$(e,"section").forEach(((s,i)=>{s.setAttribute("data-index-h",t),s.setAttribute("data-index-v",i),ze(s,"translate3d(0, "+i*this.overviewSlideHeight+"px, 0)")}))})),Array.from(this.Reveal.getBackgroundsElement().childNodes).forEach(((e,t)=>{ze(e,"translate3d("+t*this.overviewSlideWidth+"px, 0, 0)"),$(e,".slide-background").forEach(((s,i)=>{ze(s,"translate3d(0, "+i*this.overviewSlideHeight+"px, 0)")}))}))}update(){const e=Math.min(window.innerWidth,window.innerHeight),t=Math.max(e/5,150)/e,s=this.Reveal.getIndices();this.Reveal.transformSlides({overview:["scale("+t+")","translateX("+-s.h*this.overviewSlideWidth+"px)","translateY("+-s.v*this.overviewSlideHeight+"px)"].join(" ")})}deactivate(){if(this.Reveal.getConfig().overview){this.active=!1,this.Reveal.getRevealElement().classList.remove("overview"),this.Reveal.getRevealElement().classList.add("overview-deactivating"),setTimeout((()=>{this.Reveal.getRevealElement().classList.remove("overview-deactivating")}),1),this.Reveal.getRevealElement().appendChild(this.Reveal.getBackgroundsElement()),$(this.Reveal.getRevealElement(),tt).forEach((t=>{ze(t,""),t.removeEventListener("click",this.onSlideClicked,!0)})),$(this.Reveal.getBackgroundsElement(),".slide-background").forEach((t=>{ze(t,"")})),this.Reveal.transformSlides({overview:""});const e=this.Reveal.getIndices();this.Reveal.slide(e.h,e.v),this.Reveal.layout(),this.Reveal.cueAutoSlide(),this.Reveal.dispatchEvent({type:"overviewhidden",data:{indexh:e.h,indexv:e.v,currentSlide:this.Reveal.getCurrentSlide()}})}}toggle(e){typeof e=="boolean"?e?this.activate():this.deactivate():this.isActive()?this.deactivate():this.activate()}isActive(){return this.active}onSlideClicked(e){if(this.isActive()){e.preventDefault();let t=e.target;for(;t&&!t.nodeName.match(/section/gi);)t=t.parentNode;if(t&&!t.classList.contains("disabled")&&(this.deactivate(),t.nodeName.match(/section/gi))){let s=parseInt(t.getAttribute("data-index-h"),10),i=parseInt(t.getAttribute("data-index-v"),10);this.Reveal.slide(s,i)}}}},Dr=class{constructor(e){this.Reveal=e,this.shortcuts={},this.bindings={},this.onDocumentKeyDown=this.onDocumentKeyDown.bind(this)}configure(e,t){e.navigationMode==="linear"?(this.shortcuts["&#8594;  ,  &#8595;  ,  SPACE  ,  N  ,  L  ,  J"]="Next slide",this.shortcuts["&#8592;  ,  &#8593;  ,  P  ,  H  ,  K"]="Previous slide"):(this.shortcuts["N  ,  SPACE"]="Next slide",this.shortcuts["P  ,  Shift SPACE"]="Previous slide",this.shortcuts["&#8592;  ,  H"]="Navigate left",this.shortcuts["&#8594;  ,  L"]="Navigate right",this.shortcuts["&#8593;  ,  K"]="Navigate up",this.shortcuts["&#8595;  ,  J"]="Navigate down"),this.shortcuts["Alt + &#8592;/&#8593/&#8594;/&#8595;"]="Navigate without fragments",this.shortcuts["Shift + &#8592;/&#8593/&#8594;/&#8595;"]="Jump to first/last slide",this.shortcuts["B  ,  ."]="Pause",this.shortcuts.F="Fullscreen",this.shortcuts.G="Jump to slide",this.shortcuts["ESC, O"]="Slide overview"}bind(){document.addEventListener("keydown",this.onDocumentKeyDown,!1)}unbind(){document.removeEventListener("keydown",this.onDocumentKeyDown,!1)}addKeyBinding(e,t){typeof e=="object"&&e.keyCode?this.bindings[e.keyCode]={callback:t,key:e.key,description:e.description}:this.bindings[e]={callback:t,key:null,description:null}}removeKeyBinding(e){delete this.bindings[e]}triggerKey(e){this.onDocumentKeyDown({keyCode:e})}registerKeyboardShortcut(e,t){this.shortcuts[e]=t}getShortcuts(){return this.shortcuts}getBindings(){return this.bindings}onDocumentKeyDown(e){let t=this.Reveal.getConfig();if(typeof t.keyboardCondition=="function"&&t.keyboardCondition(e)===!1||t.keyboardCondition==="focused"&&!this.Reveal.isFocused())return!0;let s=e.keyCode,i=!this.Reveal.isAutoSliding();this.Reveal.onUserInput(e);let a=document.activeElement&&document.activeElement.isContentEditable===!0,r=document.activeElement&&document.activeElement.tagName&&/input|textarea/i.test(document.activeElement.tagName),o=document.activeElement&&document.activeElement.className&&/speaker-notes/i.test(document.activeElement.className),l=!([32,37,38,39,40,63,78,80,191].indexOf(e.keyCode)!==-1&&e.shiftKey||e.altKey)&&(e.shiftKey||e.altKey||e.ctrlKey||e.metaKey);if(a||r||o||l)return;let c,h=[66,86,190,191,112];if(typeof t.keyboard=="object")for(c in t.keyboard)t.keyboard[c]==="togglePause"&&h.push(parseInt(c,10));if(this.Reveal.isOverlayOpen()&&!["Escape","f","c","b","."].includes(e.key)||this.Reveal.isPaused()&&h.indexOf(s)===-1)return!1;let d=t.navigationMode==="linear"||!this.Reveal.hasHorizontalSlides()||!this.Reveal.hasVerticalSlides(),p=!1;if(typeof t.keyboard=="object"){for(c in t.keyboard)if(parseInt(c,10)===s){let f=t.keyboard[c];typeof f=="function"?f.apply(null,[e]):typeof f=="string"&&typeof this.Reveal[f]=="function"&&this.Reveal[f].call(),p=!0}}if(p===!1){for(c in this.bindings)if(parseInt(c,10)===s){let f=this.bindings[c].callback;typeof f=="function"?f.apply(null,[e]):typeof f=="string"&&typeof this.Reveal[f]=="function"&&this.Reveal[f].call(),p=!0}}p===!1&&(p=!0,s===80||s===33?this.Reveal.prev({skipFragments:e.altKey}):s===78||s===34?this.Reveal.next({skipFragments:e.altKey}):s===72||s===37?e.shiftKey?this.Reveal.slide(0):!this.Reveal.overview.isActive()&&d?t.rtl?this.Reveal.next({skipFragments:e.altKey}):this.Reveal.prev({skipFragments:e.altKey}):this.Reveal.left({skipFragments:e.altKey}):s===76||s===39?e.shiftKey?this.Reveal.slide(this.Reveal.getHorizontalSlides().length-1):!this.Reveal.overview.isActive()&&d?t.rtl?this.Reveal.prev({skipFragments:e.altKey}):this.Reveal.next({skipFragments:e.altKey}):this.Reveal.right({skipFragments:e.altKey}):s===75||s===38?e.shiftKey?this.Reveal.slide(void 0,0):!this.Reveal.overview.isActive()&&d?this.Reveal.prev({skipFragments:e.altKey}):this.Reveal.up({skipFragments:e.altKey}):s===74||s===40?e.shiftKey?this.Reveal.slide(void 0,Number.MAX_VALUE):!this.Reveal.overview.isActive()&&d?this.Reveal.next({skipFragments:e.altKey}):this.Reveal.down({skipFragments:e.altKey}):s===36?this.Reveal.slide(0):s===35?this.Reveal.slide(this.Reveal.getHorizontalSlides().length-1):s===32?(this.Reveal.overview.isActive()&&this.Reveal.overview.deactivate(),e.shiftKey?this.Reveal.prev({skipFragments:e.altKey}):this.Reveal.next({skipFragments:e.altKey})):[58,59,66,86,190].includes(s)||s===191&&!e.shiftKey?this.Reveal.togglePause():s===70?ua(t.embedded?this.Reveal.getViewportElement():document.documentElement):s===65?t.autoSlideStoppable&&this.Reveal.toggleAutoSlide(i):s===71?t.jumpToSlide&&this.Reveal.toggleJumpToSlide():s===67&&this.Reveal.isOverlayOpen()?this.Reveal.closeOverlay():s!==63&&s!==191||!e.shiftKey?s===112?this.Reveal.toggleHelp():p=!1:this.Reveal.toggleHelp()),p?e.preventDefault&&e.preventDefault():s!==27&&s!==79||(this.Reveal.closeOverlay()===!1&&this.Reveal.overview.toggle(),e.preventDefault&&e.preventDefault()),this.Reveal.cueAutoSlide()}},Kr=class{MAX_REPLACE_STATE_FREQUENCY=1e3;constructor(e){this.Reveal=e,this.writeURLTimeout=0,this.replaceStateTimestamp=0,this.onWindowHashChange=this.onWindowHashChange.bind(this)}bind(){window.addEventListener("hashchange",this.onWindowHashChange,!1)}unbind(){window.removeEventListener("hashchange",this.onWindowHashChange,!1)}getIndicesFromHash(e=window.location.hash,t={}){let s=e.replace(/^#\/?/,""),i=s.split("/");if(/^[0-9]*$/.test(i[0])||!s.length){const a=this.Reveal.getConfig();let r,o=a.hashOneBasedIndex||t.oneBasedIndex?1:0,l=parseInt(i[0],10)-o||0,c=parseInt(i[1],10)-o||0;return a.fragmentInURL&&(r=parseInt(i[2],10),isNaN(r)&&(r=void 0)),{h:l,v:c,f:r}}{let a,r;/\/[-\d]+$/g.test(s)&&(r=parseInt(s.split("/").pop(),10),r=isNaN(r)?void 0:r,s=s.split("/").shift());try{a=document.getElementById(decodeURIComponent(s)).closest(".slides section")}catch{}if(a)return{...this.Reveal.getIndices(a),f:r}}return null}readURL(){const e=this.Reveal.getIndices(),t=this.getIndicesFromHash();t?t.h===e.h&&t.v===e.v&&t.f===void 0||this.Reveal.slide(t.h,t.v,t.f):this.Reveal.slide(e.h||0,e.v||0)}writeURL(e){let t=this.Reveal.getConfig(),s=this.Reveal.getCurrentSlide();if(clearTimeout(this.writeURLTimeout),typeof e=="number")this.writeURLTimeout=setTimeout(this.writeURL,e);else if(s){let i=this.getHash();t.history?window.location.hash=i:t.hash&&(i==="/"?this.debouncedReplaceState(window.location.pathname+window.location.search):this.debouncedReplaceState("#"+i))}}replaceState(e){window.history.replaceState(null,null,e),this.replaceStateTimestamp=Date.now()}debouncedReplaceState(e){clearTimeout(this.replaceStateTimeout),Date.now()-this.replaceStateTimestamp>this.MAX_REPLACE_STATE_FREQUENCY?this.replaceState(e):this.replaceStateTimeout=setTimeout((()=>this.replaceState(e)),this.MAX_REPLACE_STATE_FREQUENCY)}getHash(e){let t="/",s=e||this.Reveal.getCurrentSlide(),i=s?s.getAttribute("id"):null;i&&(i=encodeURIComponent(i));let a=this.Reveal.getIndices(e);if(this.Reveal.getConfig().fragmentInURL||(a.f=void 0),typeof i=="string"&&i.length)t="/"+i,a.f>=0&&(t+="/"+a.f);else{let r=this.Reveal.getConfig().hashOneBasedIndex?1:0;(a.h>0||a.v>0||a.f>=0)&&(t+=a.h+r),(a.v>0||a.f>=0)&&(t+="/"+(a.v+r)),a.f>=0&&(t+="/"+a.f)}return t}onWindowHashChange(e){this.readURL()}},Hr=class{constructor(e){this.Reveal=e,this.onNavigateLeftClicked=this.onNavigateLeftClicked.bind(this),this.onNavigateRightClicked=this.onNavigateRightClicked.bind(this),this.onNavigateUpClicked=this.onNavigateUpClicked.bind(this),this.onNavigateDownClicked=this.onNavigateDownClicked.bind(this),this.onNavigatePrevClicked=this.onNavigatePrevClicked.bind(this),this.onNavigateNextClicked=this.onNavigateNextClicked.bind(this),this.onEnterFullscreen=this.onEnterFullscreen.bind(this)}render(){const e=this.Reveal.getConfig().rtl,t=this.Reveal.getRevealElement();this.element=document.createElement("aside"),this.element.className="controls",this.element.innerHTML=`<button class="navigate-left" aria-label="${e?"next slide":"previous slide"}"><div class="controls-arrow"></div></button>
+			<button class="navigate-right" aria-label="${e?"previous slide":"next slide"}"><div class="controls-arrow"></div></button>
+			<button class="navigate-up" aria-label="above slide"><div class="controls-arrow"></div></button>
+			<button class="navigate-down" aria-label="below slide"><div class="controls-arrow"></div></button>`,this.Reveal.getRevealElement().appendChild(this.element),this.controlsLeft=$(t,".navigate-left"),this.controlsRight=$(t,".navigate-right"),this.controlsUp=$(t,".navigate-up"),this.controlsDown=$(t,".navigate-down"),this.controlsPrev=$(t,".navigate-prev"),this.controlsNext=$(t,".navigate-next"),this.controlsFullscreen=$(t,".enter-fullscreen"),this.controlsRightArrow=this.element.querySelector(".navigate-right"),this.controlsLeftArrow=this.element.querySelector(".navigate-left"),this.controlsDownArrow=this.element.querySelector(".navigate-down")}configure(e,t){this.element.style.display=e.controls&&(e.controls!=="speaker-only"||this.Reveal.isSpeakerNotes())?"block":"none",this.element.setAttribute("data-controls-layout",e.controlsLayout),this.element.setAttribute("data-controls-back-arrows",e.controlsBackArrows)}bind(){let e=["touchstart","click"];ha&&(e=["touchstart"]),e.forEach((t=>{this.controlsLeft.forEach((s=>s.addEventListener(t,this.onNavigateLeftClicked,!1))),this.controlsRight.forEach((s=>s.addEventListener(t,this.onNavigateRightClicked,!1))),this.controlsUp.forEach((s=>s.addEventListener(t,this.onNavigateUpClicked,!1))),this.controlsDown.forEach((s=>s.addEventListener(t,this.onNavigateDownClicked,!1))),this.controlsPrev.forEach((s=>s.addEventListener(t,this.onNavigatePrevClicked,!1))),this.controlsNext.forEach((s=>s.addEventListener(t,this.onNavigateNextClicked,!1))),this.controlsFullscreen.forEach((s=>s.addEventListener(t,this.onEnterFullscreen,!1)))}))}unbind(){["touchstart","click"].forEach((e=>{this.controlsLeft.forEach((t=>t.removeEventListener(e,this.onNavigateLeftClicked,!1))),this.controlsRight.forEach((t=>t.removeEventListener(e,this.onNavigateRightClicked,!1))),this.controlsUp.forEach((t=>t.removeEventListener(e,this.onNavigateUpClicked,!1))),this.controlsDown.forEach((t=>t.removeEventListener(e,this.onNavigateDownClicked,!1))),this.controlsPrev.forEach((t=>t.removeEventListener(e,this.onNavigatePrevClicked,!1))),this.controlsNext.forEach((t=>t.removeEventListener(e,this.onNavigateNextClicked,!1))),this.controlsFullscreen.forEach((t=>t.removeEventListener(e,this.onEnterFullscreen,!1)))}))}update(){let e=this.Reveal.availableRoutes();[...this.controlsLeft,...this.controlsRight,...this.controlsUp,...this.controlsDown,...this.controlsPrev,...this.controlsNext].forEach((s=>{s.classList.remove("enabled","fragmented"),s.setAttribute("disabled","disabled")})),e.left&&this.controlsLeft.forEach((s=>{s.classList.add("enabled"),s.removeAttribute("disabled")})),e.right&&this.controlsRight.forEach((s=>{s.classList.add("enabled"),s.removeAttribute("disabled")})),e.up&&this.controlsUp.forEach((s=>{s.classList.add("enabled"),s.removeAttribute("disabled")})),e.down&&this.controlsDown.forEach((s=>{s.classList.add("enabled"),s.removeAttribute("disabled")})),(e.left||e.up)&&this.controlsPrev.forEach((s=>{s.classList.add("enabled"),s.removeAttribute("disabled")})),(e.right||e.down)&&this.controlsNext.forEach((s=>{s.classList.add("enabled"),s.removeAttribute("disabled")}));let t=this.Reveal.getCurrentSlide();if(t){let s=this.Reveal.fragments.availableRoutes();s.prev&&this.controlsPrev.forEach((r=>{r.classList.add("fragmented","enabled"),r.removeAttribute("disabled")})),s.next&&this.controlsNext.forEach((r=>{r.classList.add("fragmented","enabled"),r.removeAttribute("disabled")}));const i=this.Reveal.isVerticalSlide(t),a=i&&t.parentElement&&t.parentElement.querySelectorAll(":scope > section").length>1;i&&a?(s.prev&&this.controlsUp.forEach((r=>{r.classList.add("fragmented","enabled"),r.removeAttribute("disabled")})),s.next&&this.controlsDown.forEach((r=>{r.classList.add("fragmented","enabled"),r.removeAttribute("disabled")}))):(s.prev&&this.controlsLeft.forEach((r=>{r.classList.add("fragmented","enabled"),r.removeAttribute("disabled")})),s.next&&this.controlsRight.forEach((r=>{r.classList.add("fragmented","enabled"),r.removeAttribute("disabled")})))}if(this.Reveal.getConfig().controlsTutorial){let s=this.Reveal.getIndices();!this.Reveal.hasNavigatedVertically()&&e.down?this.controlsDownArrow.classList.add("highlight"):(this.controlsDownArrow.classList.remove("highlight"),this.Reveal.getConfig().rtl?!this.Reveal.hasNavigatedHorizontally()&&e.left&&s.v===0?this.controlsLeftArrow.classList.add("highlight"):this.controlsLeftArrow.classList.remove("highlight"):!this.Reveal.hasNavigatedHorizontally()&&e.right&&s.v===0?this.controlsRightArrow.classList.add("highlight"):this.controlsRightArrow.classList.remove("highlight"))}}destroy(){this.unbind(),this.element.remove()}onNavigateLeftClicked(e){e.preventDefault(),this.Reveal.onUserInput(),this.Reveal.getConfig().navigationMode==="linear"?this.Reveal.prev():this.Reveal.left()}onNavigateRightClicked(e){e.preventDefault(),this.Reveal.onUserInput(),this.Reveal.getConfig().navigationMode==="linear"?this.Reveal.next():this.Reveal.right()}onNavigateUpClicked(e){e.preventDefault(),this.Reveal.onUserInput(),this.Reveal.up()}onNavigateDownClicked(e){e.preventDefault(),this.Reveal.onUserInput(),this.Reveal.down()}onNavigatePrevClicked(e){e.preventDefault(),this.Reveal.onUserInput(),this.Reveal.prev()}onNavigateNextClicked(e){e.preventDefault(),this.Reveal.onUserInput(),this.Reveal.next()}onEnterFullscreen(e){const t=this.Reveal.getConfig(),s=this.Reveal.getViewportElement();ua(t.embedded?s:s.parentElement)}},Wr=class{constructor(e){this.Reveal=e,this.onProgressClicked=this.onProgressClicked.bind(this)}render(){this.element=document.createElement("div"),this.element.className="progress",this.Reveal.getRevealElement().appendChild(this.element),this.bar=document.createElement("span"),this.element.appendChild(this.bar)}configure(e,t){this.element.style.display=e.progress?"block":"none"}bind(){this.Reveal.getConfig().progress&&this.element&&this.element.addEventListener("click",this.onProgressClicked,!1)}unbind(){this.Reveal.getConfig().progress&&this.element&&this.element.removeEventListener("click",this.onProgressClicked,!1)}update(){if(this.Reveal.getConfig().progress&&this.bar){let e=this.Reveal.getProgress();this.Reveal.getTotalSlides()<2&&(e=0),this.bar.style.transform="scaleX("+e+")"}}getMaxWidth(){return this.Reveal.getRevealElement().offsetWidth}onProgressClicked(e){this.Reveal.onUserInput(e),e.preventDefault();let t=this.Reveal.getSlides(),s=t.length,i=Math.floor(e.clientX/this.getMaxWidth()*s);this.Reveal.getConfig().rtl&&(i=s-i);let a=this.Reveal.getIndices(t[i]);this.Reveal.slide(a.h,a.v)}destroy(){this.element.remove()}};class Vr{constructor(e){this.Reveal=e,this.lastMouseWheelStep=0,this.cursorHidden=!1,this.cursorInactiveTimeout=0,this.onDocumentCursorActive=this.onDocumentCursorActive.bind(this),this.onDocumentMouseScroll=this.onDocumentMouseScroll.bind(this)}configure(e,t){e.mouseWheel?document.addEventListener("wheel",this.onDocumentMouseScroll,!1):document.removeEventListener("wheel",this.onDocumentMouseScroll,!1),e.hideInactiveCursor?(document.addEventListener("mousemove",this.onDocumentCursorActive,!1),document.addEventListener("mousedown",this.onDocumentCursorActive,!1)):(this.showCursor(),document.removeEventListener("mousemove",this.onDocumentCursorActive,!1),document.removeEventListener("mousedown",this.onDocumentCursorActive,!1))}showCursor(){this.cursorHidden&&(this.cursorHidden=!1,this.Reveal.getRevealElement().style.cursor="")}hideCursor(){this.cursorHidden===!1&&(this.cursorHidden=!0,this.Reveal.getRevealElement().style.cursor="none")}destroy(){this.showCursor(),document.removeEventListener("wheel",this.onDocumentMouseScroll,!1),document.removeEventListener("mousemove",this.onDocumentCursorActive,!1),document.removeEventListener("mousedown",this.onDocumentCursorActive,!1)}onDocumentCursorActive(e){this.showCursor(),clearTimeout(this.cursorInactiveTimeout),this.cursorInactiveTimeout=setTimeout(this.hideCursor.bind(this),this.Reveal.getConfig().hideCursorTime)}onDocumentMouseScroll(e){if(Date.now()-this.lastMouseWheelStep>1e3){this.lastMouseWheelStep=Date.now();let t=e.detail||-e.wheelDelta;t>0?this.Reveal.next():t<0&&this.Reveal.prev()}}}const ji=(n,e)=>{const t=document.createElement("script");t.type="text/javascript",t.async=!1,t.defer=!1,t.src=n,typeof e=="function"&&(t.onload=t.onreadystatechange=i=>{(i.type==="load"||/loaded|complete/.test(t.readyState))&&(t.onload=t.onreadystatechange=t.onerror=null,e())},t.onerror=i=>{t.onload=t.onreadystatechange=t.onerror=null,e(new Error("Failed loading script: "+t.src+`
+`+i))});const s=document.querySelector("head");s.insertBefore(t,s.lastChild)};class Gr{constructor(e){this.Reveal=e,this.state="idle",this.registeredPlugins={},this.asyncDependencies=[]}load(e,t){return this.state="loading",e.forEach(this.registerPlugin.bind(this)),new Promise((s=>{let i=[],a=0;if(t.forEach((r=>{r.condition&&!r.condition()||(r.async?this.asyncDependencies.push(r):i.push(r))})),i.length){a=i.length;const r=o=>{o&&typeof o.callback=="function"&&o.callback(),--a==0&&this.initPlugins().then(s)};i.forEach((o=>{typeof o.id=="string"?(this.registerPlugin(o),r(o)):typeof o.src=="string"?ji(o.src,(()=>r(o))):(console.warn("Unrecognized plugin format",o),r())}))}else this.initPlugins().then(s)}))}initPlugins(){return new Promise((e=>{let t=Object.values(this.registeredPlugins),s=t.length;if(s===0)this.loadAsync().then(e);else{let i,a=()=>{--s==0?this.loadAsync().then(e):i()},r=0;i=()=>{let o=t[r++];if(typeof o.init=="function"){let l=o.init(this.Reveal);l&&typeof l.then=="function"?l.then(a):a()}else a()},i()}}))}loadAsync(){return this.state="loaded",this.asyncDependencies.length&&this.asyncDependencies.forEach((e=>{ji(e.src,e.callback)})),Promise.resolve()}registerPlugin(e){arguments.length===2&&typeof arguments[0]=="string"?(e=arguments[1]).id=arguments[0]:typeof e=="function"&&(e=e());let t=e.id;typeof t!="string"?console.warn("Unrecognized plugin format; can't find plugin.id",e):this.registeredPlugins[t]===void 0?(this.registeredPlugins[t]=e,this.state==="loaded"&&typeof e.init=="function"&&e.init(this.Reveal)):console.warn('reveal.js: "'+t+'" plugin has already been registered')}hasPlugin(e){return!!this.registeredPlugins[e]}getPlugin(e){return this.registeredPlugins[e]}getRegisteredPlugins(){return this.registeredPlugins}destroy(){Object.values(this.registeredPlugins).forEach((e=>{typeof e.destroy=="function"&&e.destroy()})),this.registeredPlugins={},this.asyncDependencies=[]}}class Qr{constructor(e){this.Reveal=e,this.onSlidesClicked=this.onSlidesClicked.bind(this),this.iframeTriggerSelector=null,this.mediaTriggerSelector="[data-preview-image], [data-preview-video]",this.stateProps=["previewIframe","previewImage","previewVideo","previewFit"],this.state={}}update(){this.Reveal.getConfig().previewLinks?this.iframeTriggerSelector="a[href]:not([data-preview-link=false]), [data-preview-link]:not(a):not([data-preview-link=false])":this.iframeTriggerSelector="[data-preview-link]:not([data-preview-link=false])";const e=this.Reveal.getSlidesElement().querySelectorAll(this.iframeTriggerSelector).length>0,t=this.Reveal.getSlidesElement().querySelectorAll(this.mediaTriggerSelector).length>0;e||t?this.Reveal.getSlidesElement().addEventListener("click",this.onSlidesClicked,!1):this.Reveal.getSlidesElement().removeEventListener("click",this.onSlidesClicked,!1)}createOverlay(e){this.dom=document.createElement("div"),this.dom.classList.add("r-overlay"),this.dom.classList.add(e),this.viewport=document.createElement("div"),this.viewport.classList.add("r-overlay-viewport"),this.dom.appendChild(this.viewport),this.Reveal.getRevealElement().appendChild(this.dom)}previewIframe(e){this.close(),this.state={previewIframe:e},this.createOverlay("r-overlay-preview"),this.dom.dataset.state="loading",this.viewport.innerHTML=`<header class="r-overlay-header">
+				<a class="r-overlay-button r-overlay-external" href="${e}" target="_blank"><span class="icon"></span></a>
+				<button class="r-overlay-button r-overlay-close"><span class="icon"></span></button>
+			</header>
+			<div class="r-overlay-spinner"></div>
+			<div class="r-overlay-content">
+				<iframe src="${e}"></iframe>
+				<small class="r-overlay-content-inner">
+					<span class="r-overlay-error x-frame-error">Unable to load iframe. This is likely due to the site's policy (x-frame-options).</span>
+				</small>
+			</div>`,this.dom.querySelector("iframe").addEventListener("load",(t=>{this.dom.dataset.state="loaded"}),!1),this.dom.querySelector(".r-overlay-close").addEventListener("click",(t=>{this.close(),t.preventDefault()}),!1),this.dom.querySelector(".r-overlay-external").addEventListener("click",(t=>{this.close()}),!1),this.Reveal.dispatchEvent({type:"previewiframe",data:{url:e}})}previewMedia(e,t,s){if(t!=="image"&&t!=="video")return void console.warn("Please specify a valid media type to preview (image|video)");this.close(),s=s||"scale-down",this.createOverlay("r-overlay-preview"),this.dom.dataset.state="loading",this.dom.dataset.previewFit=s,this.viewport.innerHTML=`<header class="r-overlay-header">
+				<button class="r-overlay-button r-overlay-close">Esc <span class="icon"></span></button>
+			</header>
+			<div class="r-overlay-spinner"></div>
+			<div class="r-overlay-content"></div>`;const i=this.dom.querySelector(".r-overlay-content");if(t==="image"){this.state={previewImage:e,previewFit:s};const a=document.createElement("img",{});a.src=e,i.appendChild(a),a.addEventListener("load",(()=>{this.dom.dataset.state="loaded"}),!1),a.addEventListener("error",(()=>{this.dom.dataset.state="error",i.innerHTML='<span class="r-overlay-error">Unable to load image.</span>'}),!1),this.dom.style.cursor="zoom-out",this.dom.addEventListener("click",(r=>{this.close()}),!1),this.Reveal.dispatchEvent({type:"previewimage",data:{url:e}})}else{if(t!=="video")throw new Error("Please specify a valid media type to preview");{this.state={previewVideo:e,previewFit:s};const a=document.createElement("video");a.autoplay=this.dom.dataset.previewAutoplay!=="false",a.controls=this.dom.dataset.previewControls!=="false",a.loop=this.dom.dataset.previewLoop==="true",a.muted=this.dom.dataset.previewMuted==="true",a.playsInline=!0,a.src=e,i.appendChild(a),a.addEventListener("loadeddata",(()=>{this.dom.dataset.state="loaded"}),!1),a.addEventListener("error",(()=>{this.dom.dataset.state="error",i.innerHTML='<span class="r-overlay-error">Unable to load video.</span>'}),!1),this.Reveal.dispatchEvent({type:"previewvideo",data:{url:e}})}}this.dom.querySelector(".r-overlay-close").addEventListener("click",(a=>{this.close(),a.preventDefault()}),!1)}previewImage(e,t){this.previewMedia(e,"image",t)}previewVideo(e,t){this.previewMedia(e,"video",t)}toggleHelp(e){typeof e=="boolean"?e?this.showHelp():this.close():this.dom?this.close():this.showHelp()}showHelp(){if(this.Reveal.getConfig().help){this.close(),this.createOverlay("r-overlay-help");let e='<p class="title">Keyboard Shortcuts</p>',t=this.Reveal.keyboard.getShortcuts(),s=this.Reveal.keyboard.getBindings();e+="<table><th>KEY</th><th>ACTION</th>";for(let i in t)e+=`<tr><td>${i}</td><td>${t[i]}</td></tr>`;for(let i in s)s[i].key&&s[i].description&&(e+=`<tr><td>${s[i].key}</td><td>${s[i].description}</td></tr>`);e+="</table>",this.viewport.innerHTML=`
+				<header class="r-overlay-header">
+					<button class="r-overlay-button r-overlay-close">Esc <span class="icon"></span></button>
+				</header>
+				<div class="r-overlay-content">
+					<div class="r-overlay-help-content">${e}</div>
+				</div>
+			`,this.dom.querySelector(".r-overlay-close").addEventListener("click",(i=>{this.close(),i.preventDefault()}),!1),this.Reveal.dispatchEvent({type:"showhelp"})}}isOpen(){return!!this.dom}close(){return!!this.dom&&(this.dom.remove(),this.dom=null,this.state={},this.Reveal.dispatchEvent({type:"closeoverlay"}),!0)}getState(){return this.state}setState(e){this.stateProps.every((t=>this.state[t]===e[t]))||(e.previewIframe?this.previewIframe(e.previewIframe):e.previewImage?this.previewImage(e.previewImage,e.previewFit):e.previewVideo?this.previewVideo(e.previewVideo,e.previewFit):this.close())}onSlidesClicked(e){const t=e.target,s=t.closest(this.iframeTriggerSelector),i=t.closest(this.mediaTriggerSelector);if(s){if(e.metaKey||e.shiftKey||e.altKey)return;let a=s.getAttribute("href")||s.getAttribute("data-preview-link");a&&(this.previewIframe(a),e.preventDefault())}else if(i){if(i.hasAttribute("data-preview-image")){let a=i.dataset.previewImage||i.getAttribute("src");a&&(this.previewImage(a,i.dataset.previewFit),e.preventDefault())}else if(i.hasAttribute("data-preview-video")){let a=i.dataset.previewVideo||i.getAttribute("src");if(!a){let r=i.querySelector("source");r&&(a=r.getAttribute("src"))}a&&(this.previewVideo(a,i.dataset.previewFit),e.preventDefault())}}}destroy(){this.close()}}let Jr=class{constructor(e){this.Reveal=e,this.touchStartX=0,this.touchStartY=0,this.touchStartCount=0,this.touchCaptured=!1,this.onPointerDown=this.onPointerDown.bind(this),this.onPointerMove=this.onPointerMove.bind(this),this.onPointerUp=this.onPointerUp.bind(this),this.onTouchStart=this.onTouchStart.bind(this),this.onTouchMove=this.onTouchMove.bind(this),this.onTouchEnd=this.onTouchEnd.bind(this)}bind(){let e=this.Reveal.getRevealElement();"onpointerdown"in window?(e.addEventListener("pointerdown",this.onPointerDown,!1),e.addEventListener("pointermove",this.onPointerMove,!1),e.addEventListener("pointerup",this.onPointerUp,!1)):window.navigator.msPointerEnabled?(e.addEventListener("MSPointerDown",this.onPointerDown,!1),e.addEventListener("MSPointerMove",this.onPointerMove,!1),e.addEventListener("MSPointerUp",this.onPointerUp,!1)):(e.addEventListener("touchstart",this.onTouchStart,!1),e.addEventListener("touchmove",this.onTouchMove,!1),e.addEventListener("touchend",this.onTouchEnd,!1))}unbind(){let e=this.Reveal.getRevealElement();e.removeEventListener("pointerdown",this.onPointerDown,!1),e.removeEventListener("pointermove",this.onPointerMove,!1),e.removeEventListener("pointerup",this.onPointerUp,!1),e.removeEventListener("MSPointerDown",this.onPointerDown,!1),e.removeEventListener("MSPointerMove",this.onPointerMove,!1),e.removeEventListener("MSPointerUp",this.onPointerUp,!1),e.removeEventListener("touchstart",this.onTouchStart,!1),e.removeEventListener("touchmove",this.onTouchMove,!1),e.removeEventListener("touchend",this.onTouchEnd,!1)}isSwipePrevented(e){if(Ps(e,"video[controls], audio[controls]"))return!0;for(;e&&typeof e.hasAttribute=="function";){if(e.hasAttribute("data-prevent-swipe"))return!0;e=e.parentNode}return!1}onTouchStart(e){if(this.touchCaptured=!1,this.isSwipePrevented(e.target))return!0;this.touchStartX=e.touches[0].clientX,this.touchStartY=e.touches[0].clientY,this.touchStartCount=e.touches.length}onTouchMove(e){if(this.isSwipePrevented(e.target))return!0;let t=this.Reveal.getConfig();if(this.touchCaptured)ha&&e.preventDefault();else{this.Reveal.onUserInput(e);let s=e.touches[0].clientX,i=e.touches[0].clientY;if(e.touches.length===1&&this.touchStartCount!==2){let a=this.Reveal.availableRoutes({includeFragments:!0}),r=s-this.touchStartX,o=i-this.touchStartY;r>40&&Math.abs(r)>Math.abs(o)?(this.touchCaptured=!0,t.navigationMode==="linear"?t.rtl?this.Reveal.next():this.Reveal.prev():this.Reveal.left()):r<-40&&Math.abs(r)>Math.abs(o)?(this.touchCaptured=!0,t.navigationMode==="linear"?t.rtl?this.Reveal.prev():this.Reveal.next():this.Reveal.right()):o>40&&a.up?(this.touchCaptured=!0,t.navigationMode==="linear"?this.Reveal.prev():this.Reveal.up()):o<-40&&a.down&&(this.touchCaptured=!0,t.navigationMode==="linear"?this.Reveal.next():this.Reveal.down()),t.embedded?(this.touchCaptured||this.Reveal.isVerticalSlide())&&e.preventDefault():e.preventDefault()}}}onTouchEnd(e){this.touchCaptured=!1}onPointerDown(e){e.pointerType!==e.MSPOINTER_TYPE_TOUCH&&e.pointerType!=="touch"||(e.touches=[{clientX:e.clientX,clientY:e.clientY}],this.onTouchStart(e))}onPointerMove(e){e.pointerType!==e.MSPOINTER_TYPE_TOUCH&&e.pointerType!=="touch"||(e.touches=[{clientX:e.clientX,clientY:e.clientY}],this.onTouchMove(e))}onPointerUp(e){e.pointerType!==e.MSPOINTER_TYPE_TOUCH&&e.pointerType!=="touch"||(e.touches=[{clientX:e.clientX,clientY:e.clientY}],this.onTouchEnd(e))}};const on="focus",Bi="blur";class Yr{constructor(e){this.Reveal=e,this.onRevealPointerDown=this.onRevealPointerDown.bind(this),this.onDocumentPointerDown=this.onDocumentPointerDown.bind(this)}configure(e,t){e.embedded?this.blur():(this.focus(),this.unbind())}bind(){this.Reveal.getConfig().embedded&&this.Reveal.getRevealElement().addEventListener("pointerdown",this.onRevealPointerDown,!1)}unbind(){this.Reveal.getRevealElement().removeEventListener("pointerdown",this.onRevealPointerDown,!1),document.removeEventListener("pointerdown",this.onDocumentPointerDown,!1)}focus(){this.state!==on&&(this.Reveal.getRevealElement().classList.add("focused"),document.addEventListener("pointerdown",this.onDocumentPointerDown,!1)),this.state=on}blur(){this.state!==Bi&&(this.Reveal.getRevealElement().classList.remove("focused"),document.removeEventListener("pointerdown",this.onDocumentPointerDown,!1)),this.state=Bi}isFocused(){return this.state===on}destroy(){this.Reveal.getRevealElement().classList.remove("focused")}onRevealPointerDown(e){this.focus()}onDocumentPointerDown(e){let t=ae(e.target,".reveal");t&&t===this.Reveal.getRevealElement()||this.blur()}}class Xr{constructor(e){this.Reveal=e}render(){this.element=document.createElement("div"),this.element.className="speaker-notes",this.element.setAttribute("data-prevent-swipe",""),this.element.setAttribute("tabindex","0"),this.Reveal.getRevealElement().appendChild(this.element)}configure(e,t){e.showNotes&&this.element.setAttribute("data-layout",typeof e.showNotes=="string"?e.showNotes:"inline")}update(){this.Reveal.getConfig().showNotes&&this.element&&this.Reveal.getCurrentSlide()&&!this.Reveal.isScrollView()&&!this.Reveal.isPrintView()&&(this.element.innerHTML=this.getSlideNotes()||'<span class="notes-placeholder">No notes on this slide.</span>')}updateVisibility(){this.Reveal.getConfig().showNotes&&this.hasNotes()&&!this.Reveal.isScrollView()&&!this.Reveal.isPrintView()?this.Reveal.getRevealElement().classList.add("show-notes"):this.Reveal.getRevealElement().classList.remove("show-notes")}hasNotes(){return this.Reveal.getSlidesElement().querySelectorAll("[data-notes], aside.notes").length>0}isSpeakerNotesWindow(){return!!window.location.search.match(/receiver/gi)}getSlideNotes(e=this.Reveal.getCurrentSlide()){if(e.hasAttribute("data-notes"))return e.getAttribute("data-notes");let t=e.querySelectorAll("aside.notes");return t?Array.from(t).map((s=>s.innerHTML)).join(`
+`):null}destroy(){this.element.remove()}}class Zr{constructor(e,t){this.diameter=100,this.diameter2=this.diameter/2,this.thickness=6,this.playing=!1,this.progress=0,this.progressOffset=1,this.container=e,this.progressCheck=t,this.canvas=document.createElement("canvas"),this.canvas.className="playback",this.canvas.width=this.diameter,this.canvas.height=this.diameter,this.canvas.style.width=this.diameter2+"px",this.canvas.style.height=this.diameter2+"px",this.context=this.canvas.getContext("2d"),this.container.appendChild(this.canvas),this.render()}setPlaying(e){const t=this.playing;this.playing=e,!t&&this.playing?this.animate():this.render()}animate(){const e=this.progress;this.progress=this.progressCheck(),e>.8&&this.progress<.2&&(this.progressOffset=this.progress),this.render(),this.playing&&requestAnimationFrame(this.animate.bind(this))}render(){let e=this.playing?this.progress:0,t=this.diameter2-this.thickness,s=this.diameter2,i=this.diameter2,a=28;this.progressOffset+=.1*(1-this.progressOffset);const r=-Math.PI/2+e*(2*Math.PI),o=-Math.PI/2+this.progressOffset*(2*Math.PI);this.context.save(),this.context.clearRect(0,0,this.diameter,this.diameter),this.context.beginPath(),this.context.arc(s,i,t+4,0,2*Math.PI,!1),this.context.fillStyle="rgba( 0, 0, 0, 0.4 )",this.context.fill(),this.context.beginPath(),this.context.arc(s,i,t,0,2*Math.PI,!1),this.context.lineWidth=this.thickness,this.context.strokeStyle="rgba( 255, 255, 255, 0.2 )",this.context.stroke(),this.playing&&(this.context.beginPath(),this.context.arc(s,i,t,o,r,!1),this.context.lineWidth=this.thickness,this.context.strokeStyle="#fff",this.context.stroke()),this.context.translate(s-14,i-14),this.playing?(this.context.fillStyle="#fff",this.context.fillRect(0,0,10,a),this.context.fillRect(18,0,10,a)):(this.context.beginPath(),this.context.translate(4,0),this.context.moveTo(0,0),this.context.lineTo(24,14),this.context.lineTo(0,a),this.context.fillStyle="#fff",this.context.fill()),this.context.restore()}on(e,t){this.canvas.addEventListener(e,t,!1)}off(e,t){this.canvas.removeEventListener(e,t,!1)}destroy(){this.playing=!1,this.canvas.parentNode&&this.container.removeChild(this.canvas)}}var eo={width:960,height:700,margin:.04,minScale:.2,maxScale:2,controls:!0,controlsTutorial:!0,controlsLayout:"bottom-right",controlsBackArrows:"faded",progress:!0,slideNumber:!1,showSlideNumber:"all",hashOneBasedIndex:!1,hash:!1,respondToHashChanges:!0,jumpToSlide:!0,history:!1,keyboard:!0,keyboardCondition:null,disableLayout:!1,overview:!0,center:!0,touch:!0,loop:!1,rtl:!1,navigationMode:"default",shuffle:!1,fragments:!0,fragmentInURL:!0,embedded:!1,help:!0,pause:!0,showNotes:!1,showHiddenSlides:!1,autoPlayMedia:null,preloadIframes:null,autoAnimate:!0,autoAnimateMatcher:null,autoAnimateEasing:"ease",autoAnimateDuration:1,autoAnimateUnmatched:!0,autoAnimateStyles:["opacity","color","background-color","padding","font-size","line-height","letter-spacing","border-width","border-color","border-radius","outline","outline-offset"],autoSlide:0,autoSlideStoppable:!0,autoSlideMethod:null,defaultTiming:null,mouseWheel:!1,previewLinks:!1,postMessage:!0,postMessageEvents:!1,focusBodyOnPageVisibilityChange:!0,transition:"slide",transitionSpeed:"default",backgroundTransition:"fade",parallaxBackgroundImage:"",parallaxBackgroundSize:"",parallaxBackgroundRepeat:"",parallaxBackgroundPosition:"",parallaxBackgroundHorizontal:null,parallaxBackgroundVertical:null,view:null,scrollLayout:"full",scrollSnap:"mandatory",scrollProgress:"auto",scrollActivationWidth:435,pdfMaxPagesPerSlide:Number.POSITIVE_INFINITY,pdfSeparateFragments:!0,pdfPageHeightOffset:-1,viewDistance:3,mobileViewDistance:2,display:"block",hideInactiveCursor:!0,hideCursorTime:5e3,sortFragmentsOnSync:!0,dependencies:[],plugins:[]};const ma="5.2.1";function fa(n,e){arguments.length<2&&(e=arguments[0],n=document.querySelector(".reveal"));const t={};let s,i,a,r,o,l={},c=!1,h=!1,d={hasNavigatedHorizontally:!1,hasNavigatedVertically:!1},p=[],f=1,S={layout:"",overview:""},u={},v="idle",w=0,P=0,C=-1,T=!1,A=new Nr(t),k=new $r(t),N=new qr(t),R=new jr(t),L=new Or(t),b=new Br(t),q=new Mr(t),I=new Fr(t),K=new zr(t),Y=new Dr(t),te=new Kr(t),se=new Hr(t),ye=new Wr(t),ts=new Vr(t),B=new Gr(t),z=new Qr(t),we=new Yr(t),je=new Jr(t),ie=new Xr(t);function ht(){c!==!1&&(h=!0,l.showHiddenSlides||$(u.wrapper,'section[data-visibility="hidden"]').forEach((m=>{const y=m.parentNode;y.childElementCount===1&&/section/i.test(y.nodeName)?y.remove():m.remove()})),(function(){u.slides.classList.add("no-transition"),Rt?u.wrapper.classList.add("no-hover"):u.wrapper.classList.remove("no-hover"),L.render(),k.render(),N.render(),se.render(),ye.render(),ie.render(),u.pauseOverlay=((m,y,x,_="")=>{let U=m.querySelectorAll("."+x);for(let W=0;W<U.length;W++){let Q=U[W];if(Q.parentNode===m)return Q}let D=document.createElement(y);return D.className=x,D.innerHTML=_,m.appendChild(D),D})(u.wrapper,"div","pause-overlay",l.controls?'<button class="resume-button">Resume presentation</button>':null),u.statusElement=(function(){let m=u.wrapper.querySelector(".aria-status");return m||(m=document.createElement("div"),m.style.position="absolute",m.style.height="1px",m.style.width="1px",m.style.overflow="hidden",m.style.clip="rect( 1px, 1px, 1px, 1px )",m.classList.add("aria-status"),m.setAttribute("aria-live","polite"),m.setAttribute("aria-atomic","true"),u.wrapper.appendChild(m)),m})(),u.wrapper.setAttribute("role","application")})(),l.postMessage&&window.addEventListener("message",Ui,!1),setInterval((()=>{(!b.isActive()&&u.wrapper.scrollTop!==0||u.wrapper.scrollLeft!==0)&&(u.wrapper.scrollTop=0,u.wrapper.scrollLeft=0)}),1e3),document.addEventListener("fullscreenchange",ds),document.addEventListener("webkitfullscreenchange",ds),Be().forEach((m=>{$(m,"section").forEach(((y,x)=>{x>0&&(y.classList.remove("present"),y.classList.remove("past"),y.classList.add("future"),y.setAttribute("aria-hidden","true"))}))})),ni(),L.update(!0),(function(){const m=l.view==="print",y=l.view==="scroll"||l.view==="reader";(m||y)&&(m?ns():je.unbind(),u.viewport.classList.add("loading-scroll-mode"),m?document.readyState==="complete"?q.activate():window.addEventListener("load",(()=>q.activate())):b.activate())})(),te.readURL(),setTimeout((()=>{u.slides.classList.remove("no-transition"),u.wrapper.classList.add("ready"),fe({type:"ready",data:{indexh:s,indexv:i,currentSlide:r}})}),1))}function Gs(m){u.statusElement.textContent=m}function ss(m){let y="";if(m.nodeType===3)y+=m.textContent;else if(m.nodeType===1){let x=m.getAttribute("aria-hidden"),_=window.getComputedStyle(m).display==="none";x==="true"||_||Array.from(m.childNodes).forEach((U=>{y+=ss(U)}))}return y=y.trim(),y===""?"":y+" "}function ni(m){const y={...l};if(typeof m=="object"&&wt(l,m),t.isReady()===!1)return;const x=u.wrapper.querySelectorAll(tt).length;u.wrapper.classList.remove(y.transition),u.wrapper.classList.add(l.transition),u.wrapper.setAttribute("data-transition-speed",l.transitionSpeed),u.wrapper.setAttribute("data-background-transition",l.backgroundTransition),u.viewport.style.setProperty("--slide-width",typeof l.width=="string"?l.width:l.width+"px"),u.viewport.style.setProperty("--slide-height",typeof l.height=="string"?l.height:l.height+"px"),l.shuffle&&Xs(),an(u.wrapper,"embedded",l.embedded),an(u.wrapper,"rtl",l.rtl),an(u.wrapper,"center",l.center),l.pause===!1&&Mt(),R.reset(),o&&(o.destroy(),o=null),x>1&&l.autoSlide&&l.autoSlideStoppable&&(o=new Zr(u.wrapper,(()=>Math.min(Math.max((Date.now()-C)/w,0),1))),o.on("click",Ur),T=!1),l.navigationMode!=="default"?u.wrapper.setAttribute("data-navigation-mode",l.navigationMode):u.wrapper.removeAttribute("data-navigation-mode"),ie.configure(l,y),we.configure(l,y),ts.configure(l,y),se.configure(l,y),ye.configure(l,y),Y.configure(l,y),I.configure(l,y),k.configure(l,y),gi()}function ii(){window.addEventListener("resize",Ci,!1),l.touch&&je.bind(),l.keyboard&&Y.bind(),l.progress&&ye.bind(),l.respondToHashChanges&&te.bind(),se.bind(),we.bind(),u.slides.addEventListener("click",Li,!1),u.slides.addEventListener("transitionend",Ei,!1),u.pauseOverlay.addEventListener("click",Mt,!1),l.focusBodyOnPageVisibilityChange&&document.addEventListener("visibilitychange",Ni,!1)}function ns(){je.unbind(),we.unbind(),Y.unbind(),se.unbind(),ye.unbind(),te.unbind(),window.removeEventListener("resize",Ci,!1),u.slides.removeEventListener("click",Li,!1),u.slides.removeEventListener("transitionend",Ei,!1),u.pauseOverlay.removeEventListener("click",Mt,!1)}function ai(m,y,x){n.addEventListener(m,y,x)}function ri(m,y,x){n.removeEventListener(m,y,x)}function Qs(m){typeof m.layout=="string"&&(S.layout=m.layout),typeof m.overview=="string"&&(S.overview=m.overview),S.layout?ze(u.slides,S.layout+" "+S.overview):ze(u.slides,S.overview)}function fe({target:m=u.wrapper,type:y,data:x,bubbles:_=!0}){let U=document.createEvent("HTMLEvents",1,2);return U.initEvent(y,_,!0),wt(U,x),m.dispatchEvent(U),m===u.wrapper&&li(y),U}function oi(m){fe({type:"slidechanged",data:{indexh:s,indexv:i,previousSlide:a,currentSlide:r,origin:m}})}function li(m,y){if(l.postMessageEvents&&window.parent!==window.self){let x={namespace:"reveal",eventName:m,state:_i()};wt(x,y),window.parent.postMessage(JSON.stringify(x),"*")}}function mt(){if(u.wrapper&&!q.isActive()){const m=u.viewport.offsetWidth,y=u.viewport.offsetHeight;if(!l.disableLayout){Rt&&!l.embedded&&document.documentElement.style.setProperty("--vh",.01*window.innerHeight+"px");const x=b.isActive()?is(m,y):is(),_=f;ci(l.width,l.height),u.slides.style.width=x.width+"px",u.slides.style.height=x.height+"px",f=Math.min(x.presentationWidth/x.width,x.presentationHeight/x.height),f=Math.max(f,l.minScale),f=Math.min(f,l.maxScale),f===1||b.isActive()?(u.slides.style.zoom="",u.slides.style.left="",u.slides.style.top="",u.slides.style.bottom="",u.slides.style.right="",Qs({layout:""})):(u.slides.style.zoom="",u.slides.style.left="50%",u.slides.style.top="50%",u.slides.style.bottom="auto",u.slides.style.right="auto",Qs({layout:"translate(-50%, -50%) scale("+f+")"}));const U=Array.from(u.wrapper.querySelectorAll(tt));for(let D=0,W=U.length;D<W;D++){const Q=U[D];Q.style.display!=="none"&&(l.center||Q.classList.contains("center")?Q.classList.contains("stack")?Q.style.top=0:Q.style.top=Math.max((x.height-Q.scrollHeight)/2,0)+"px":Q.style.top="")}_!==f&&fe({type:"resize",data:{oldScale:_,scale:f,size:x}})}(function(){if(u.wrapper&&!l.disableLayout&&!q.isActive()&&typeof l.scrollActivationWidth=="number"&&l.view!=="scroll"){const x=is();x.presentationWidth>0&&x.presentationWidth<=l.scrollActivationWidth?b.isActive()||(L.create(),b.activate()):b.isActive()&&b.deactivate()}})(),u.viewport.style.setProperty("--slide-scale",f),u.viewport.style.setProperty("--viewport-width",m+"px"),u.viewport.style.setProperty("--viewport-height",y+"px"),b.layout(),ye.update(),L.updateParallax(),K.isActive()&&K.update()}}function ci(m,y){$(u.slides,"section > .stretch, section > .r-stretch").forEach((x=>{let _=((U,D=0)=>{if(U){let W,Q=U.style.height;return U.style.height="0px",U.parentNode.style.height="auto",W=D-U.parentNode.offsetHeight,U.style.height=Q+"px",U.parentNode.style.removeProperty("height"),W}return D})(x,y);if(/(img|video)/gi.test(x.nodeName)){const U=x.naturalWidth||x.videoWidth,D=x.naturalHeight||x.videoHeight,W=Math.min(m/U,_/D);x.style.width=U*W+"px",x.style.height=D*W+"px"}else x.style.width=m+"px",x.style.height=_+"px"}))}function is(m,y){let x=l.width,_=l.height;l.disableLayout&&(x=u.slides.offsetWidth,_=u.slides.offsetHeight);const U={width:x,height:_,presentationWidth:m||u.wrapper.offsetWidth,presentationHeight:y||u.wrapper.offsetHeight};return U.presentationWidth-=U.presentationWidth*l.margin,U.presentationHeight-=U.presentationHeight*l.margin,typeof U.width=="string"&&/%$/.test(U.width)&&(U.width=parseInt(U.width,10)/100*U.presentationWidth),typeof U.height=="string"&&/%$/.test(U.height)&&(U.height=parseInt(U.height,10)/100*U.presentationHeight),U}function di(m,y){typeof m=="object"&&typeof m.setAttribute=="function"&&m.setAttribute("data-previous-indexv",y||0)}function ui(m){if(typeof m=="object"&&typeof m.setAttribute=="function"&&m.classList.contains("stack")){const y=m.hasAttribute("data-start-indexv")?"data-start-indexv":"data-previous-indexv";return parseInt(m.getAttribute(y)||0,10)}return 0}function Bt(m=r){return m&&m.parentNode&&!!m.parentNode.nodeName.match(/section/i)}function pi(){return!(!r||!Bt(r))&&!r.nextElementSibling}function hi(){return s===0&&i===0}function Js(){return!!r&&!r.nextElementSibling&&(!Bt(r)||!r.parentNode.nextElementSibling)}function mi(){if(l.pause){const m=u.wrapper.classList.contains("paused");as(),u.wrapper.classList.add("paused"),m===!1&&fe({type:"paused"})}}function Mt(){const m=u.wrapper.classList.contains("paused");u.wrapper.classList.remove("paused"),ft(),m&&fe({type:"resumed"})}function fi(m){typeof m=="boolean"?m?mi():Mt():Ft()?Mt():mi()}function Ft(){return u.wrapper.classList.contains("paused")}function Te(m,y,x,_){if(fe({type:"beforeslidechange",data:{indexh:m===void 0?s:m,indexv:y===void 0?i:y,origin:_}}).defaultPrevented)return;a=r;const U=u.wrapper.querySelectorAll(Me);if(b.isActive()){const pe=b.getSlideByIndices(m,y);return void(pe&&b.scrollToSlide(pe))}if(U.length===0)return;y!==void 0||K.isActive()||(y=ui(U[m])),a&&a.parentNode&&a.parentNode.classList.contains("stack")&&di(a.parentNode,i);const D=p.concat();p.length=0;let W=s||0,Q=i||0;s=vi(Me,m===void 0?s:m),i=vi(qi,y===void 0?i:y);let Ne=s!==W||i!==Q;Ne||(a=null);let Je=U[s],ce=Je.querySelectorAll("section");n.classList.toggle("is-vertical-slide",ce.length>1),r=ce[i]||Je;let ee=!1;Ne&&a&&r&&!K.isActive()&&(v="running",ee=Ys(a,r,W,Q),ee&&u.slides.classList.add("disable-slide-transitions")),Zs(),mt(),K.isActive()&&K.update(),x!==void 0&&I.goto(x),a&&a!==r&&(a.classList.remove("present"),a.setAttribute("aria-hidden","true"),hi()&&setTimeout((()=>{$(u.wrapper,Me+".stack").forEach((pe=>{di(pe,0)}))}),0));e:for(let pe=0,Er=p.length;pe<Er;pe++){for(let us=0;us<D.length;us++)if(D[us]===p[pe]){D.splice(us,1);continue e}u.viewport.classList.add(p[pe]),fe({type:p[pe]})}for(;D.length;)u.viewport.classList.remove(D.pop());Ne&&oi(_),!Ne&&a||(A.stopEmbeddedContent(a),A.startEmbeddedContent(r)),requestAnimationFrame((()=>{Gs(ss(r))})),ye.update(),se.update(),ie.update(),L.update(),L.updateParallax(),k.update(),I.update(),te.writeURL(),ft(),ee&&(setTimeout((()=>{u.slides.classList.remove("disable-slide-transitions")}),0),l.autoAnimate&&R.run(a,r))}function Ys(m,y,x,_){return m.hasAttribute("data-auto-animate")&&y.hasAttribute("data-auto-animate")&&m.getAttribute("data-auto-animate-id")===y.getAttribute("data-auto-animate-id")&&!(s>x||i>_?y:m).hasAttribute("data-auto-animate-restart")}function gi(){ns(),ii(),mt(),w=l.autoSlide,ft(),L.create(),te.writeURL(),l.sortFragmentsOnSync===!0&&I.sortAll(),se.update(),ye.update(),Zs(),ie.update(),ie.updateVisibility(),z.update(),L.update(!0),k.update(),A.formatEmbeddedContent(),l.autoPlayMedia===!1?A.stopEmbeddedContent(r,{unloadIframes:!1}):A.startEmbeddedContent(r),K.isActive()&&K.layout()}function Xs(m=Be()){m.forEach(((y,x)=>{let _=m[Math.floor(Math.random()*m.length)];_.parentNode===y.parentNode&&y.parentNode.insertBefore(y,_);let U=y.querySelectorAll("section");U.length&&Xs(U)}))}function vi(m,y){let x=$(u.wrapper,m),_=x.length,U=b.isActive()||q.isActive(),D=!1,W=!1;if(_){l.loop&&(y>=_&&(D=!0),(y%=_)<0&&(y=_+y,W=!0)),y=Math.max(Math.min(y,_-1),0);for(let ce=0;ce<_;ce++){let ee=x[ce],pe=l.rtl&&!Bt(ee);ee.classList.remove("past"),ee.classList.remove("present"),ee.classList.remove("future"),ee.setAttribute("hidden",""),ee.setAttribute("aria-hidden","true"),ee.querySelector("section")&&ee.classList.add("stack"),U?ee.classList.add("present"):ce<y?(ee.classList.add(pe?"future":"past"),l.fragments&&bi(ee)):ce>y?(ee.classList.add(pe?"past":"future"),l.fragments&&yi(ee)):ce===y&&l.fragments&&(D?yi(ee):W&&bi(ee))}let Q=x[y],Ne=Q.classList.contains("present");Q.classList.add("present"),Q.removeAttribute("hidden"),Q.removeAttribute("aria-hidden"),Ne||fe({target:Q,type:"visible",bubbles:!1});let Je=Q.getAttribute("data-state");Je&&(p=p.concat(Je.split(" ")))}else y=0;return y}function bi(m){$(m,".fragment").forEach((y=>{y.classList.add("visible"),y.classList.remove("current-fragment")}))}function yi(m){$(m,".fragment.visible").forEach((y=>{y.classList.remove("visible","current-fragment")}))}function Zs(){let m,y,x=Be(),_=x.length;if(_&&s!==void 0){let U=K.isActive()?10:l.viewDistance;Rt&&(U=K.isActive()?6:l.mobileViewDistance),q.isActive()&&(U=Number.MAX_VALUE);for(let D=0;D<_;D++){let W=x[D],Q=$(W,"section"),Ne=Q.length;if(m=Math.abs((s||0)-D)||0,l.loop&&(m=Math.abs(((s||0)-D)%(_-U))||0),m<U?A.load(W):A.unload(W),Ne){let Je=ui(W);for(let ce=0;ce<Ne;ce++){let ee=Q[ce];y=Math.abs(D===(s||0)?(i||0)-ce:ce-Je),m+y<U?A.load(ee):A.unload(ee)}}}Pi()?u.wrapper.classList.add("has-vertical-slides"):u.wrapper.classList.remove("has-vertical-slides"),Ai()?u.wrapper.classList.add("has-horizontal-slides"):u.wrapper.classList.remove("has-horizontal-slides")}}function Ce({includeFragments:m=!1}={}){let y=u.wrapper.querySelectorAll(Me),x=u.wrapper.querySelectorAll(qi),_={left:s>0,right:s<y.length-1,up:i>0,down:i<x.length-1};if(l.loop&&(y.length>1&&(_.left=!0,_.right=!0),x.length>1&&(_.up=!0,_.down=!0)),y.length>1&&l.navigationMode==="linear"&&(_.right=_.right||_.down,_.left=_.left||_.up),m===!0){let U=I.availableRoutes();_.left=_.left||U.prev,_.up=_.up||U.prev,_.down=_.down||U.next,_.right=_.right||U.next}if(l.rtl){let U=_.left;_.left=_.right,_.right=U}return _}function wi(m=r){let y=Be(),x=0;e:for(let _=0;_<y.length;_++){let U=y[_],D=U.querySelectorAll("section");for(let W=0;W<D.length;W++){if(D[W]===m)break e;D[W].dataset.visibility!=="uncounted"&&x++}if(U===m)break;U.classList.contains("stack")===!1&&U.dataset.visibility!=="uncounted"&&x++}return x}function Si(m){let y,x=s,_=i;if(m)if(b.isActive())x=parseInt(m.getAttribute("data-index-h"),10),m.getAttribute("data-index-v")&&(_=parseInt(m.getAttribute("data-index-v"),10));else{let U=Bt(m),D=U?m.parentNode:m,W=Be();x=Math.max(W.indexOf(D),0),_=void 0,U&&(_=Math.max($(m.parentNode,"section").indexOf(m),0))}if(!m&&r&&r.querySelectorAll(".fragment").length>0){let U=r.querySelector(".current-fragment");y=U&&U.hasAttribute("data-fragment-index")?parseInt(U.getAttribute("data-fragment-index"),10):r.querySelectorAll(".fragment.visible").length-1}return{h:x,v:_,f:y}}function en(){return $(u.wrapper,tt+':not(.stack):not([data-visibility="uncounted"])')}function Be(){return $(u.wrapper,Me)}function ki(){return $(u.wrapper,".slides>section>section")}function Ai(){return Be().length>1}function Pi(){return ki().length>1}function xi(){return en().length}function Ri(m,y){let x=Be()[m],_=x&&x.querySelectorAll("section");return _&&_.length&&typeof y=="number"?_?_[y]:void 0:x}function _i(){let m=Si();return{indexh:m.h,indexv:m.v,indexf:m.f,paused:Ft(),overview:K.isActive(),...z.getState()}}function ft(){if(as(),r&&l.autoSlide!==!1){let m=r.querySelector(".current-fragment[data-autoslide]"),y=m?m.getAttribute("data-autoslide"):null,x=r.parentNode?r.parentNode.getAttribute("data-autoslide"):null,_=r.getAttribute("data-autoslide");y?w=parseInt(y,10):_?w=parseInt(_,10):x?w=parseInt(x,10):(w=l.autoSlide,r.querySelectorAll(".fragment").length===0&&$(r,"video, audio").forEach((U=>{U.hasAttribute("data-autoplay")&&w&&1e3*U.duration/U.playbackRate>w&&(w=1e3*U.duration/U.playbackRate+1e3)}))),!w||T||Ft()||K.isActive()||Js()&&!I.availableRoutes().next&&l.loop!==!0||(P=setTimeout((()=>{typeof l.autoSlideMethod=="function"?l.autoSlideMethod():nn(),ft()}),w),C=Date.now()),o&&o.setPlaying(P!==-1)}}function as(){clearTimeout(P),P=-1}function rs(){w&&!T&&(T=!0,fe({type:"autoslidepaused"}),clearTimeout(P),o&&o.setPlaying(!1))}function os(){w&&T&&(T=!1,fe({type:"autoslideresumed"}),ft())}function ls({skipFragments:m=!1}={}){if(d.hasNavigatedHorizontally=!0,b.isActive())return b.prev();l.rtl?(K.isActive()||m||I.next()===!1)&&Ce().left&&Te(s+1,l.navigationMode==="grid"?i:void 0):(K.isActive()||m||I.prev()===!1)&&Ce().left&&Te(s-1,l.navigationMode==="grid"?i:void 0)}function cs({skipFragments:m=!1}={}){if(d.hasNavigatedHorizontally=!0,b.isActive())return b.next();l.rtl?(K.isActive()||m||I.prev()===!1)&&Ce().right&&Te(s-1,l.navigationMode==="grid"?i:void 0):(K.isActive()||m||I.next()===!1)&&Ce().right&&Te(s+1,l.navigationMode==="grid"?i:void 0)}function tn({skipFragments:m=!1}={}){if(b.isActive())return b.prev();(K.isActive()||m||I.prev()===!1)&&Ce().up&&Te(s,i-1)}function sn({skipFragments:m=!1}={}){if(d.hasNavigatedVertically=!0,b.isActive())return b.next();(K.isActive()||m||I.next()===!1)&&Ce().down&&Te(s,i+1)}function Ti({skipFragments:m=!1}={}){if(b.isActive())return b.prev();if(m||I.prev()===!1)if(Ce().up)tn({skipFragments:m});else{let y;if(y=l.rtl?$(u.wrapper,Me+".future").pop():$(u.wrapper,Me+".past").pop(),y&&y.classList.contains("stack")){let x=y.querySelectorAll("section").length-1||void 0;Te(s-1,x)}else l.rtl?cs({skipFragments:m}):ls({skipFragments:m})}}function nn({skipFragments:m=!1}={}){if(d.hasNavigatedHorizontally=!0,d.hasNavigatedVertically=!0,b.isActive())return b.next();if(m||I.next()===!1){let y=Ce();y.down&&y.right&&l.loop&&pi()&&(y.down=!1),y.down?sn({skipFragments:m}):l.rtl?ls({skipFragments:m}):cs({skipFragments:m})}}function Ui(m){let y=m.data;if(typeof y=="string"&&y.charAt(0)==="{"&&y.charAt(y.length-1)==="}"&&(y=JSON.parse(y),y.method&&typeof t[y.method]=="function"))if(Ir.test(y.method)===!1){const x=t[y.method].apply(t,y.args);li("callback",{method:y.method,result:x})}else console.warn('reveal.js: "'+y.method+'" is is blacklisted from the postMessage API')}function Ei(m){v==="running"&&/section/gi.test(m.target.nodeName)&&(v="idle",fe({type:"slidetransitionend",data:{indexh:s,indexv:i,previousSlide:a,currentSlide:r}}))}function Li(m){const y=ae(m.target,'a[href^="#"]');if(y){const x=y.getAttribute("href"),_=te.getIndicesFromHash(x);_&&(t.slide(_.h,_.v,_.f),m.preventDefault())}}function Ci(m){mt()}function Ni(m){document.hidden===!1&&document.activeElement!==document.body&&(typeof document.activeElement.blur=="function"&&document.activeElement.blur(),document.body.focus())}function ds(m){(document.fullscreenElement||document.webkitFullscreenElement)===u.wrapper&&(m.stopImmediatePropagation(),setTimeout((()=>{t.layout(),t.focus.focus()}),1))}function Ur(m){Js()&&l.loop===!1?(Te(0,0),os()):T?os():rs()}const Ii={VERSION:ma,initialize:function(m){if(!n)throw'Unable to find presentation root (<div class="reveal">).';if(c)throw"Reveal.js has already been initialized.";if(c=!0,u.wrapper=n,u.slides=n.querySelector(".slides"),!u.slides)throw'Unable to find slides container (<div class="slides">).';return l={...eo,...l,...e,...m,...$i()},/print-pdf/gi.test(window.location.search)&&(l.view="print"),(function(){l.embedded===!0?u.viewport=ae(n,".reveal-viewport")||n:(u.viewport=document.body,document.documentElement.classList.add("reveal-full-page")),u.viewport.classList.add("reveal-viewport")})(),window.addEventListener("load",mt,!1),B.load(l.plugins,l.dependencies).then(ht),new Promise((y=>t.on("ready",y)))},configure:ni,destroy:function(){c=!1,h!==!1&&(ns(),as(),ie.destroy(),we.destroy(),z.destroy(),B.destroy(),ts.destroy(),se.destroy(),ye.destroy(),L.destroy(),k.destroy(),N.destroy(),document.removeEventListener("fullscreenchange",ds),document.removeEventListener("webkitfullscreenchange",ds),document.removeEventListener("visibilitychange",Ni,!1),window.removeEventListener("message",Ui,!1),window.removeEventListener("load",mt,!1),u.pauseOverlay&&u.pauseOverlay.remove(),u.statusElement&&u.statusElement.remove(),document.documentElement.classList.remove("reveal-full-page"),u.wrapper.classList.remove("ready","center","has-horizontal-slides","has-vertical-slides"),u.wrapper.removeAttribute("data-transition-speed"),u.wrapper.removeAttribute("data-background-transition"),u.viewport.classList.remove("reveal-viewport"),u.viewport.style.removeProperty("--slide-width"),u.viewport.style.removeProperty("--slide-height"),u.slides.style.removeProperty("width"),u.slides.style.removeProperty("height"),u.slides.style.removeProperty("zoom"),u.slides.style.removeProperty("left"),u.slides.style.removeProperty("top"),u.slides.style.removeProperty("bottom"),u.slides.style.removeProperty("right"),u.slides.style.removeProperty("transform"),Array.from(u.wrapper.querySelectorAll(tt)).forEach((m=>{m.style.removeProperty("display"),m.style.removeProperty("top"),m.removeAttribute("hidden"),m.removeAttribute("aria-hidden")})))},sync:gi,syncSlide:function(m=r){L.sync(m),I.sync(m),A.load(m),L.update(),ie.update()},syncFragments:I.sync.bind(I),slide:Te,left:ls,right:cs,up:tn,down:sn,prev:Ti,next:nn,navigateLeft:ls,navigateRight:cs,navigateUp:tn,navigateDown:sn,navigatePrev:Ti,navigateNext:nn,navigateFragment:I.goto.bind(I),prevFragment:I.prev.bind(I),nextFragment:I.next.bind(I),on:ai,off:ri,addEventListener:ai,removeEventListener:ri,layout:mt,shuffle:Xs,availableRoutes:Ce,availableFragments:I.availableRoutes.bind(I),toggleHelp:z.toggleHelp.bind(z),toggleOverview:K.toggle.bind(K),toggleScrollView:b.toggle.bind(b),togglePause:fi,toggleAutoSlide:function(m){typeof m=="boolean"?m?os():rs():T?os():rs()},toggleJumpToSlide:function(m){typeof m=="boolean"?m?N.show():N.hide():N.isVisible()?N.hide():N.show()},isFirstSlide:hi,isLastSlide:Js,isLastVerticalSlide:pi,isVerticalSlide:Bt,isVerticalStack:function(m=r){return m.classList.contains(".stack")||m.querySelector("section")!==null},isPaused:Ft,isAutoSliding:function(){return!(!w||T)},isSpeakerNotes:ie.isSpeakerNotesWindow.bind(ie),isOverview:K.isActive.bind(K),isFocused:we.isFocused.bind(we),isOverlayOpen:z.isOpen.bind(z),isScrollView:b.isActive.bind(b),isPrintView:q.isActive.bind(q),isReady:()=>h,loadSlide:A.load.bind(A),unloadSlide:A.unload.bind(A),startEmbeddedContent:()=>A.startEmbeddedContent(r),stopEmbeddedContent:()=>A.stopEmbeddedContent(r,{unloadIframes:!1}),previewIframe:z.previewIframe.bind(z),previewImage:z.previewImage.bind(z),previewVideo:z.previewVideo.bind(z),showPreview:z.previewIframe.bind(z),hidePreview:z.close.bind(z),addEventListeners:ii,removeEventListeners:ns,dispatchEvent:fe,getState:_i,setState:function(m){if(typeof m=="object"){Te(bt(m.indexh),bt(m.indexv),bt(m.indexf));let y=bt(m.paused),x=bt(m.overview);typeof y=="boolean"&&y!==Ft()&&fi(y),typeof x=="boolean"&&x!==K.isActive()&&K.toggle(x),z.setState(m)}},getProgress:function(){let m=xi(),y=wi();if(r){let x=r.querySelectorAll(".fragment");x.length>0&&(y+=r.querySelectorAll(".fragment.visible").length/x.length*.9)}return Math.min(y/(m-1),1)},getIndices:Si,getSlidesAttributes:function(){return en().map((m=>{let y={};for(let x=0;x<m.attributes.length;x++){let _=m.attributes[x];y[_.name]=_.value}return y}))},getSlidePastCount:wi,getTotalSlides:xi,getSlide:Ri,getPreviousSlide:()=>a,getCurrentSlide:()=>r,getSlideBackground:function(m,y){let x=typeof m=="number"?Ri(m,y):m;if(x)return x.slideBackgroundElement},getSlideNotes:ie.getSlideNotes.bind(ie),getSlides:en,getHorizontalSlides:Be,getVerticalSlides:ki,hasHorizontalSlides:Ai,hasVerticalSlides:Pi,hasNavigatedHorizontally:()=>d.hasNavigatedHorizontally,hasNavigatedVertically:()=>d.hasNavigatedVertically,shouldAutoAnimateBetween:Ys,addKeyBinding:Y.addKeyBinding.bind(Y),removeKeyBinding:Y.removeKeyBinding.bind(Y),triggerKey:Y.triggerKey.bind(Y),registerKeyboardShortcut:Y.registerKeyboardShortcut.bind(Y),getComputedSlideSize:is,setCurrentScrollPage:function(m,y,x){let _=s||0;s=y,i=x;const U=r!==m;a=r,r=m,r&&a&&l.autoAnimate&&Ys(a,r,_,i)&&R.run(a,r),U&&(a&&(A.stopEmbeddedContent(a),A.stopEmbeddedContent(a.slideBackgroundElement)),A.startEmbeddedContent(r),A.startEmbeddedContent(r.slideBackgroundElement)),requestAnimationFrame((()=>{Gs(ss(r))})),oi()},getScale:()=>f,getConfig:()=>l,getQueryHash:$i,getSlidePath:te.getHash.bind(te),getRevealElement:()=>n,getSlidesElement:()=>u.slides,getViewportElement:()=>u.viewport,getBackgroundsElement:()=>L.element,registerPlugin:B.registerPlugin.bind(B),hasPlugin:B.hasPlugin.bind(B),getPlugin:B.getPlugin.bind(B),getPlugins:B.getRegisteredPlugins.bind(B)};return wt(t,{...Ii,announceStatus:Gs,getStatusText:ss,focus:we,scroll:b,progress:ye,controls:se,location:te,overview:K,keyboard:Y,fragments:I,backgrounds:L,slideContent:A,slideNumber:k,onUserInput:function(m){l.autoSlideStoppable&&rs()},closeOverlay:z.close.bind(z),updateSlidesVisibility:Zs,layoutSlideContents:ci,transformSlides:Qs,cueAutoSlide:ft,cancelAutoSlide:as}),Ii}let Fe=fa,Mi=[];Fe.initialize=n=>(Object.assign(Fe,new fa(document.querySelector(".reveal"),n)),Mi.map((e=>e(Fe))),Fe.initialize()),["configure","on","off","addEventListener","removeEventListener","registerPlugin"].forEach((n=>{Fe[n]=(...e)=>{Mi.push((t=>t[n].call(null,...e)))}})),Fe.isReady=()=>!1,Fe.VERSION=ma;function to(){return{async:!1,baseUrl:null,breaks:!1,extensions:null,gfm:!0,headerIds:!0,headerPrefix:"",highlight:null,hooks:null,langPrefix:"language-",mangle:!0,pedantic:!1,renderer:null,sanitize:!1,sanitizer:null,silent:!1,smartypants:!1,tokenizer:null,walkTokens:null,xhtml:!1}}let at={async:!1,baseUrl:null,breaks:!1,extensions:null,gfm:!0,headerIds:!0,headerPrefix:"",highlight:null,hooks:null,langPrefix:"language-",mangle:!0,pedantic:!1,renderer:null,sanitize:!1,sanitizer:null,silent:!1,smartypants:!1,tokenizer:null,walkTokens:null,xhtml:!1};const ga=/[&<>"']/,so=new RegExp(ga.source,"g"),va=/[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/,no=new RegExp(va.source,"g"),io={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},Fi=n=>io[n];function re(n,e){if(e){if(ga.test(n))return n.replace(so,Fi)}else if(va.test(n))return n.replace(no,Fi);return n}const ao=/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/gi;function ba(n){return n.replace(ao,((e,t)=>(t=t.toLowerCase())==="colon"?":":t.charAt(0)==="#"?t.charAt(1)==="x"?String.fromCharCode(parseInt(t.substring(2),16)):String.fromCharCode(+t.substring(1)):""))}const ro=/(^|[^\[])\^/g;function V(n,e){n=typeof n=="string"?n:n.source,e=e||"";const t={replace:(s,i)=>(i=(i=i.source||i).replace(ro,"$1"),n=n.replace(s,i),t),getRegex:()=>new RegExp(n,e)};return t}const oo=/[^\w:]/g,lo=/^$|^[a-z][a-z0-9+.-]*:|^[?#]/i;function zi(n,e,t){if(n){let s;try{s=decodeURIComponent(ba(t)).replace(oo,"").toLowerCase()}catch{return null}if(s.indexOf("javascript:")===0||s.indexOf("vbscript:")===0||s.indexOf("data:")===0)return null}e&&!lo.test(t)&&(t=(function(s,i){ps[" "+s]||(co.test(s)?ps[" "+s]=s+"/":ps[" "+s]=bs(s,"/",!0)),s=ps[" "+s];const a=s.indexOf(":")===-1;return i.substring(0,2)==="//"?a?i:s.replace(uo,"$1")+i:i.charAt(0)==="/"?a?i:s.replace(po,"$1")+i:s+i})(e,t));try{t=encodeURI(t).replace(/%25/g,"%")}catch{return null}return t}const ps={},co=/^[^:]+:\/*[^/]*$/,uo=/^([^:]+:)[\s\S]*$/,po=/^([^:]+:\/*[^/]*)[\s\S]*$/,xs={exec:function(){}};function Di(n,e){const t=n.replace(/\|/g,((i,a,r)=>{let o=!1,l=a;for(;--l>=0&&r[l]==="\\";)o=!o;return o?"|":" |"})).split(/ \|/);let s=0;if(t[0].trim()||t.shift(),t.length>0&&!t[t.length-1].trim()&&t.pop(),t.length>e)t.splice(e);else for(;t.length<e;)t.push("");for(;s<t.length;s++)t[s]=t[s].trim().replace(/\\\|/g,"|");return t}function bs(n,e,t){const s=n.length;if(s===0)return"";let i=0;for(;i<s;){const a=n.charAt(s-i-1);if(a!==e||t){if(a===e||!t)break;i++}else i++}return n.slice(0,s-i)}function Ki(n,e){if(e<1)return"";let t="";for(;e>1;)1&e&&(t+=n),e>>=1,n+=n;return t+n}function Hi(n,e,t,s){const i=e.href,a=e.title?re(e.title):null,r=n[1].replace(/\\([\[\]])/g,"$1");if(n[0].charAt(0)!=="!"){s.state.inLink=!0;const o={type:"link",raw:t,href:i,title:a,text:r,tokens:s.inlineTokens(r)};return s.state.inLink=!1,o}return{type:"image",raw:t,href:i,title:a,text:re(r)}}class Sn{constructor(e){this.options=e||at}space(e){const t=this.rules.block.newline.exec(e);if(t&&t[0].length>0)return{type:"space",raw:t[0]}}code(e){const t=this.rules.block.code.exec(e);if(t){const s=t[0].replace(/^ {1,4}/gm,"");return{type:"code",raw:t[0],codeBlockStyle:"indented",text:this.options.pedantic?s:bs(s,`
+`)}}}fences(e){const t=this.rules.block.fences.exec(e);if(t){const s=t[0],i=(function(a,r){const o=a.match(/^(\s+)(?:```)/);if(o===null)return r;const l=o[1];return r.split(`
+`).map((c=>{const h=c.match(/^\s+/);if(h===null)return c;const[d]=h;return d.length>=l.length?c.slice(l.length):c})).join(`
+`)})(s,t[3]||"");return{type:"code",raw:s,lang:t[2]?t[2].trim().replace(this.rules.inline._escapes,"$1"):t[2],text:i}}}heading(e){const t=this.rules.block.heading.exec(e);if(t){let s=t[2].trim();if(/#$/.test(s)){const i=bs(s,"#");this.options.pedantic?s=i.trim():i&&!/ $/.test(i)||(s=i.trim())}return{type:"heading",raw:t[0],depth:t[1].length,text:s,tokens:this.lexer.inline(s)}}}hr(e){const t=this.rules.block.hr.exec(e);if(t)return{type:"hr",raw:t[0]}}blockquote(e){const t=this.rules.block.blockquote.exec(e);if(t){const s=t[0].replace(/^ *>[ \t]?/gm,""),i=this.lexer.state.top;this.lexer.state.top=!0;const a=this.lexer.blockTokens(s);return this.lexer.state.top=i,{type:"blockquote",raw:t[0],tokens:a,text:s}}}list(e){let t=this.rules.block.list.exec(e);if(t){let s,i,a,r,o,l,c,h,d,p,f,S,u=t[1].trim();const v=u.length>1,w={type:"list",raw:"",ordered:v,start:v?+u.slice(0,-1):"",loose:!1,items:[]};u=v?`\\d{1,9}\\${u.slice(-1)}`:`\\${u}`,this.options.pedantic&&(u=v?u:"[*+-]");const P=new RegExp(`^( {0,3}${u})((?:[	 ][^\\n]*)?(?:\\n|$))`);for(;e&&(S=!1,t=P.exec(e))&&!this.rules.block.hr.test(e);){if(s=t[0],e=e.substring(s.length),h=t[2].split(`
+`,1)[0].replace(/^\t+/,(T=>" ".repeat(3*T.length))),d=e.split(`
+`,1)[0],this.options.pedantic?(r=2,f=h.trimLeft()):(r=t[2].search(/[^ ]/),r=r>4?1:r,f=h.slice(r),r+=t[1].length),l=!1,!h&&/^ *$/.test(d)&&(s+=d+`
+`,e=e.substring(d.length+1),S=!0),!S){const T=new RegExp(`^ {0,${Math.min(3,r-1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ 	][^\\n]*)?(?:\\n|$))`),A=new RegExp(`^ {0,${Math.min(3,r-1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`),k=new RegExp(`^ {0,${Math.min(3,r-1)}}(?:\`\`\`|~~~)`),N=new RegExp(`^ {0,${Math.min(3,r-1)}}#`);for(;e&&(p=e.split(`
+`,1)[0],d=p,this.options.pedantic&&(d=d.replace(/^ {1,4}(?=( {4})*[^ ])/g,"  ")),!k.test(d))&&!N.test(d)&&!T.test(d)&&!A.test(e);){if(d.search(/[^ ]/)>=r||!d.trim())f+=`
+`+d.slice(r);else{if(l||h.search(/[^ ]/)>=4||k.test(h)||N.test(h)||A.test(h))break;f+=`
+`+d}l||d.trim()||(l=!0),s+=p+`
+`,e=e.substring(p.length+1),h=d.slice(r)}}w.loose||(c?w.loose=!0:/\n *\n *$/.test(s)&&(c=!0)),this.options.gfm&&(i=/^\[[ xX]\] /.exec(f),i&&(a=i[0]!=="[ ] ",f=f.replace(/^\[[ xX]\] +/,""))),w.items.push({type:"list_item",raw:s,task:!!i,checked:a,loose:!1,text:f}),w.raw+=s}w.items[w.items.length-1].raw=s.trimRight(),w.items[w.items.length-1].text=f.trimRight(),w.raw=w.raw.trimRight();const C=w.items.length;for(o=0;o<C;o++)if(this.lexer.state.top=!1,w.items[o].tokens=this.lexer.blockTokens(w.items[o].text,[]),!w.loose){const T=w.items[o].tokens.filter((k=>k.type==="space")),A=T.length>0&&T.some((k=>/\n.*\n/.test(k.raw)));w.loose=A}if(w.loose)for(o=0;o<C;o++)w.items[o].loose=!0;return w}}html(e){const t=this.rules.block.html.exec(e);if(t){const s={type:"html",raw:t[0],pre:!this.options.sanitizer&&(t[1]==="pre"||t[1]==="script"||t[1]==="style"),text:t[0]};if(this.options.sanitize){const i=this.options.sanitizer?this.options.sanitizer(t[0]):re(t[0]);s.type="paragraph",s.text=i,s.tokens=this.lexer.inline(i)}return s}}def(e){const t=this.rules.block.def.exec(e);if(t){const s=t[1].toLowerCase().replace(/\s+/g," "),i=t[2]?t[2].replace(/^<(.*)>$/,"$1").replace(this.rules.inline._escapes,"$1"):"",a=t[3]?t[3].substring(1,t[3].length-1).replace(this.rules.inline._escapes,"$1"):t[3];return{type:"def",tag:s,raw:t[0],href:i,title:a}}}table(e){const t=this.rules.block.table.exec(e);if(t){const s={type:"table",header:Di(t[1]).map((i=>({text:i}))),align:t[2].replace(/^ *|\| *$/g,"").split(/ *\| */),rows:t[3]&&t[3].trim()?t[3].replace(/\n[ \t]*$/,"").split(`
+`):[]};if(s.header.length===s.align.length){s.raw=t[0];let i,a,r,o,l=s.align.length;for(i=0;i<l;i++)/^ *-+: *$/.test(s.align[i])?s.align[i]="right":/^ *:-+: *$/.test(s.align[i])?s.align[i]="center":/^ *:-+ *$/.test(s.align[i])?s.align[i]="left":s.align[i]=null;for(l=s.rows.length,i=0;i<l;i++)s.rows[i]=Di(s.rows[i],s.header.length).map((c=>({text:c})));for(l=s.header.length,a=0;a<l;a++)s.header[a].tokens=this.lexer.inline(s.header[a].text);for(l=s.rows.length,a=0;a<l;a++)for(o=s.rows[a],r=0;r<o.length;r++)o[r].tokens=this.lexer.inline(o[r].text);return s}}}lheading(e){const t=this.rules.block.lheading.exec(e);if(t)return{type:"heading",raw:t[0],depth:t[2].charAt(0)==="="?1:2,text:t[1],tokens:this.lexer.inline(t[1])}}paragraph(e){const t=this.rules.block.paragraph.exec(e);if(t){const s=t[1].charAt(t[1].length-1)===`
+`?t[1].slice(0,-1):t[1];return{type:"paragraph",raw:t[0],text:s,tokens:this.lexer.inline(s)}}}text(e){const t=this.rules.block.text.exec(e);if(t)return{type:"text",raw:t[0],text:t[0],tokens:this.lexer.inline(t[0])}}escape(e){const t=this.rules.inline.escape.exec(e);if(t)return{type:"escape",raw:t[0],text:re(t[1])}}tag(e){const t=this.rules.inline.tag.exec(e);if(t)return!this.lexer.state.inLink&&/^<a /i.test(t[0])?this.lexer.state.inLink=!0:this.lexer.state.inLink&&/^<\/a>/i.test(t[0])&&(this.lexer.state.inLink=!1),!this.lexer.state.inRawBlock&&/^<(pre|code|kbd|script)(\s|>)/i.test(t[0])?this.lexer.state.inRawBlock=!0:this.lexer.state.inRawBlock&&/^<\/(pre|code|kbd|script)(\s|>)/i.test(t[0])&&(this.lexer.state.inRawBlock=!1),{type:this.options.sanitize?"text":"html",raw:t[0],inLink:this.lexer.state.inLink,inRawBlock:this.lexer.state.inRawBlock,text:this.options.sanitize?this.options.sanitizer?this.options.sanitizer(t[0]):re(t[0]):t[0]}}link(e){const t=this.rules.inline.link.exec(e);if(t){const s=t[2].trim();if(!this.options.pedantic&&/^</.test(s)){if(!/>$/.test(s))return;const r=bs(s.slice(0,-1),"\\");if((s.length-r.length)%2==0)return}else{const r=(function(o,l){if(o.indexOf(l[1])===-1)return-1;const c=o.length;let h=0,d=0;for(;d<c;d++)if(o[d]==="\\")d++;else if(o[d]===l[0])h++;else if(o[d]===l[1]&&(h--,h<0))return d;return-1})(t[2],"()");if(r>-1){const o=(t[0].indexOf("!")===0?5:4)+t[1].length+r;t[2]=t[2].substring(0,r),t[0]=t[0].substring(0,o).trim(),t[3]=""}}let i=t[2],a="";if(this.options.pedantic){const r=/^([^'"]*[^\s])\s+(['"])(.*)\2/.exec(i);r&&(i=r[1],a=r[3])}else a=t[3]?t[3].slice(1,-1):"";return i=i.trim(),/^</.test(i)&&(i=this.options.pedantic&&!/>$/.test(s)?i.slice(1):i.slice(1,-1)),Hi(t,{href:i&&i.replace(this.rules.inline._escapes,"$1"),title:a&&a.replace(this.rules.inline._escapes,"$1")},t[0],this.lexer)}}reflink(e,t){let s;if((s=this.rules.inline.reflink.exec(e))||(s=this.rules.inline.nolink.exec(e))){let i=(s[2]||s[1]).replace(/\s+/g," ");if(i=t[i.toLowerCase()],!i){const a=s[0].charAt(0);return{type:"text",raw:a,text:a}}return Hi(s,i,s[0],this.lexer)}}emStrong(e,t,s=""){let i=this.rules.inline.emStrong.lDelim.exec(e);if(!i||i[3]&&s.match(/[\p{L}\p{N}]/u))return;const a=i[1]||i[2]||"";if(!a||a&&(s===""||this.rules.inline.punctuation.exec(s))){const r=i[0].length-1;let o,l,c=r,h=0;const d=i[0][0]==="*"?this.rules.inline.emStrong.rDelimAst:this.rules.inline.emStrong.rDelimUnd;for(d.lastIndex=0,t=t.slice(-1*e.length+r);(i=d.exec(t))!=null;){if(o=i[1]||i[2]||i[3]||i[4]||i[5]||i[6],!o)continue;if(l=o.length,i[3]||i[4]){c+=l;continue}if((i[5]||i[6])&&r%3&&!((r+l)%3)){h+=l;continue}if(c-=l,c>0)continue;l=Math.min(l,l+c+h);const p=e.slice(0,r+i.index+(i[0].length-o.length)+l);if(Math.min(r,l)%2){const S=p.slice(1,-1);return{type:"em",raw:p,text:S,tokens:this.lexer.inlineTokens(S)}}const f=p.slice(2,-2);return{type:"strong",raw:p,text:f,tokens:this.lexer.inlineTokens(f)}}}}codespan(e){const t=this.rules.inline.code.exec(e);if(t){let s=t[2].replace(/\n/g," ");const i=/[^ ]/.test(s),a=/^ /.test(s)&&/ $/.test(s);return i&&a&&(s=s.substring(1,s.length-1)),s=re(s,!0),{type:"codespan",raw:t[0],text:s}}}br(e){const t=this.rules.inline.br.exec(e);if(t)return{type:"br",raw:t[0]}}del(e){const t=this.rules.inline.del.exec(e);if(t)return{type:"del",raw:t[0],text:t[2],tokens:this.lexer.inlineTokens(t[2])}}autolink(e,t){const s=this.rules.inline.autolink.exec(e);if(s){let i,a;return s[2]==="@"?(i=re(this.options.mangle?t(s[1]):s[1]),a="mailto:"+i):(i=re(s[1]),a=i),{type:"link",raw:s[0],text:i,href:a,tokens:[{type:"text",raw:i,text:i}]}}}url(e,t){let s;if(s=this.rules.inline.url.exec(e)){let i,a;if(s[2]==="@")i=re(this.options.mangle?t(s[0]):s[0]),a="mailto:"+i;else{let r;do r=s[0],s[0]=this.rules.inline._backpedal.exec(s[0])[0];while(r!==s[0]);i=re(s[0]),a=s[1]==="www."?"http://"+s[0]:s[0]}return{type:"link",raw:s[0],text:i,href:a,tokens:[{type:"text",raw:i,text:i}]}}}inlineText(e,t){const s=this.rules.inline.text.exec(e);if(s){let i;return i=this.lexer.state.inRawBlock?this.options.sanitize?this.options.sanitizer?this.options.sanitizer(s[0]):re(s[0]):s[0]:re(this.options.smartypants?t(s[0]):s[0]),{type:"text",raw:s[0],text:i}}}}const j={newline:/^(?: *(?:\n|$))+/,code:/^( {4}[^\n]+(?:\n(?: *(?:\n|$))*)?)+/,fences:/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/,hr:/^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/,heading:/^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/,blockquote:/^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,list:/^( {0,3}bull)([ \t][^\n]+?)?(?:\n|$)/,html:"^ {0,3}(?:<(script|pre|style|textarea)[\\s>][\\s\\S]*?(?:</\\1>[^\\n]*\\n+|$)|comment[^\\n]*(\\n+|$)|<\\?[\\s\\S]*?(?:\\?>\\n*|$)|<![A-Z][\\s\\S]*?(?:>\\n*|$)|<!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]>\\n*|$)|</?(tag)(?: +|\\n|/?>)[\\s\\S]*?(?:(?:\\n *)+\\n|$)|<(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n *)+\\n|$)|</(?!script|pre|style|textarea)[a-z][\\w-]*\\s*>(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n *)+\\n|$))",def:/^ {0,3}\[(label)\]: *(?:\n *)?([^<\s][^\s]*|<.*?>)(?:(?: +(?:\n *)?| *\n *)(title))? *(?:\n+|$)/,table:xs,lheading:/^((?:.|\n(?!\n))+?)\n {0,3}(=+|-+) *(?:\n+|$)/,_paragraph:/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/,text:/^[^\n]+/,_label:/(?!\s*\])(?:\\.|[^\[\]\\])+/,_title:/(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))/};j.def=V(j.def).replace("label",j._label).replace("title",j._title).getRegex(),j.bullet=/(?:[*+-]|\d{1,9}[.)])/,j.listItemStart=V(/^( *)(bull) */).replace("bull",j.bullet).getRegex(),j.list=V(j.list).replace(/bull/g,j.bullet).replace("hr","\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))").replace("def","\\n+(?="+j.def.source+")").getRegex(),j._tag="address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul",j._comment=/<!--(?!-?>)[\s\S]*?(?:-->|$)/,j.html=V(j.html,"i").replace("comment",j._comment).replace("tag",j._tag).replace("attribute",/ +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=<>`]+)?/).getRegex(),j.paragraph=V(j._paragraph).replace("hr",j.hr).replace("heading"," {0,3}#{1,6} ").replace("|lheading","").replace("|table","").replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)]) ").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag",j._tag).getRegex(),j.blockquote=V(j.blockquote).replace("paragraph",j.paragraph).getRegex(),j.normal={...j},j.gfm={...j.normal,table:"^ *([^\\n ].*\\|.*)\\n {0,3}(?:\\| *)?(:?-+:? *(?:\\| *:?-+:? *)*)(?:\\| *)?(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)"},j.gfm.table=V(j.gfm.table).replace("hr",j.hr).replace("heading"," {0,3}#{1,6} ").replace("blockquote"," {0,3}>").replace("code"," {4}[^\\n]").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)]) ").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag",j._tag).getRegex(),j.gfm.paragraph=V(j._paragraph).replace("hr",j.hr).replace("heading"," {0,3}#{1,6} ").replace("|lheading","").replace("table",j.gfm.table).replace("blockquote"," {0,3}>").replace("fences"," {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n").replace("list"," {0,3}(?:[*+-]|1[.)]) ").replace("html","</?(?:tag)(?: +|\\n|/?>)|<(?:script|pre|style|textarea|!--)").replace("tag",j._tag).getRegex(),j.pedantic={...j.normal,html:V(`^ *(?:comment *(?:\\n|\\s*$)|<(tag)[\\s\\S]+?</\\1> *(?:\\n{2,}|\\s*$)|<tag(?:"[^"]*"|'[^']*'|\\s[^'"/>\\s]*)*?/?> *(?:\\n{2,}|\\s*$))`).replace("comment",j._comment).replace(/tag/g,"(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b").getRegex(),def:/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +(["(][^\n]+[")]))? *(?:\n+|$)/,heading:/^(#{1,6})(.*)(?:\n+|$)/,fences:xs,lheading:/^(.+?)\n {0,3}(=+|-+) *(?:\n+|$)/,paragraph:V(j.normal._paragraph).replace("hr",j.hr).replace("heading",` *#{1,6} *[^
+]`).replace("lheading",j.lheading).replace("blockquote"," {0,3}>").replace("|fences","").replace("|list","").replace("|html","").getRegex()};const E={escape:/^\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/,autolink:/^<(scheme:[^\s\x00-\x1f<>]*|email)>/,url:xs,tag:"^comment|^</[a-zA-Z][\\w:-]*\\s*>|^<[a-zA-Z][\\w-]*(?:attribute)*?\\s*/?>|^<\\?[\\s\\S]*?\\?>|^<![a-zA-Z]+\\s[\\s\\S]*?>|^<!\\[CDATA\\[[\\s\\S]*?\\]\\]>",link:/^!?\[(label)\]\(\s*(href)(?:\s+(title))?\s*\)/,reflink:/^!?\[(label)\]\[(ref)\]/,nolink:/^!?\[(ref)\](?:\[\])?/,reflinkSearch:"reflink|nolink(?!\\()",emStrong:{lDelim:/^(?:\*+(?:([punct_])|[^\s*]))|^_+(?:([punct*])|([^\s_]))/,rDelimAst:/^(?:[^_*\\]|\\.)*?\_\_(?:[^_*\\]|\\.)*?\*(?:[^_*\\]|\\.)*?(?=\_\_)|(?:[^*\\]|\\.)+(?=[^*])|[punct_](\*+)(?=[\s]|$)|(?:[^punct*_\s\\]|\\.)(\*+)(?=[punct_\s]|$)|[punct_\s](\*+)(?=[^punct*_\s])|[\s](\*+)(?=[punct_])|[punct_](\*+)(?=[punct_])|(?:[^punct*_\s\\]|\\.)(\*+)(?=[^punct*_\s])/,rDelimUnd:/^(?:[^_*\\]|\\.)*?\*\*(?:[^_*\\]|\\.)*?\_(?:[^_*\\]|\\.)*?(?=\*\*)|(?:[^_\\]|\\.)+(?=[^_])|[punct*](\_+)(?=[\s]|$)|(?:[^punct*_\s\\]|\\.)(\_+)(?=[punct*\s]|$)|[punct*\s](\_+)(?=[^punct*_\s])|[\s](\_+)(?=[punct*])|[punct*](\_+)(?=[punct*])/},code:/^(`+)([^`]|[^`][\s\S]*?[^`])\1(?!`)/,br:/^( {2,}|\\)\n(?!\s*$)/,del:xs,text:/^(`+|[^`])(?:(?= {2,}\n)|[\s\S]*?(?:(?=[\\<!\[`*_]|\b_|$)|[^ ](?= {2,}\n)))/,punctuation:/^([\spunctuation])/};function ho(n){return n.replace(/---/g,"—").replace(/--/g,"–").replace(/(^|[-\u2014/(\[{"\s])'/g,"$1‘").replace(/'/g,"’").replace(/(^|[-\u2014/(\[{\u2018\s])"/g,"$1“").replace(/"/g,"”").replace(/\.{3}/g,"…")}function Wi(n){let e,t,s="";const i=n.length;for(e=0;e<i;e++)t=n.charCodeAt(e),Math.random()>.5&&(t="x"+t.toString(16)),s+="&#"+t+";";return s}E._punctuation="!\"#$%&'()+\\-.,/:;<=>?@\\[\\]`^{|}~",E.punctuation=V(E.punctuation).replace(/punctuation/g,E._punctuation).getRegex(),E.blockSkip=/\[[^\]]*?\]\([^\)]*?\)|`[^`]*?`|<[^>]*?>/g,E.escapedEmSt=/(?:^|[^\\])(?:\\\\)*\\[*_]/g,E._comment=V(j._comment).replace("(?:-->|$)","-->").getRegex(),E.emStrong.lDelim=V(E.emStrong.lDelim).replace(/punct/g,E._punctuation).getRegex(),E.emStrong.rDelimAst=V(E.emStrong.rDelimAst,"g").replace(/punct/g,E._punctuation).getRegex(),E.emStrong.rDelimUnd=V(E.emStrong.rDelimUnd,"g").replace(/punct/g,E._punctuation).getRegex(),E._escapes=/\\([!"#$%&'()*+,\-./:;<=>?@\[\]\\^_`{|}~])/g,E._scheme=/[a-zA-Z][a-zA-Z0-9+.-]{1,31}/,E._email=/[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/,E.autolink=V(E.autolink).replace("scheme",E._scheme).replace("email",E._email).getRegex(),E._attribute=/\s+[a-zA-Z:_][\w.:-]*(?:\s*=\s*"[^"]*"|\s*=\s*'[^']*'|\s*=\s*[^\s"'=<>`]+)?/,E.tag=V(E.tag).replace("comment",E._comment).replace("attribute",E._attribute).getRegex(),E._label=/(?:\[(?:\\.|[^\[\]\\])*\]|\\.|`[^`]*`|[^\[\]\\`])*?/,E._href=/<(?:\\.|[^\n<>\\])+>|[^\s\x00-\x1f]*/,E._title=/"(?:\\"?|[^"\\])*"|'(?:\\'?|[^'\\])*'|\((?:\\\)?|[^)\\])*\)/,E.link=V(E.link).replace("label",E._label).replace("href",E._href).replace("title",E._title).getRegex(),E.reflink=V(E.reflink).replace("label",E._label).replace("ref",j._label).getRegex(),E.nolink=V(E.nolink).replace("ref",j._label).getRegex(),E.reflinkSearch=V(E.reflinkSearch,"g").replace("reflink",E.reflink).replace("nolink",E.nolink).getRegex(),E.normal={...E},E.pedantic={...E.normal,strong:{start:/^__|\*\*/,middle:/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,endAst:/\*\*(?!\*)/g,endUnd:/__(?!_)/g},em:{start:/^_|\*/,middle:/^()\*(?=\S)([\s\S]*?\S)\*(?!\*)|^_(?=\S)([\s\S]*?\S)_(?!_)/,endAst:/\*(?!\*)/g,endUnd:/_(?!_)/g},link:V(/^!?\[(label)\]\((.*?)\)/).replace("label",E._label).getRegex(),reflink:V(/^!?\[(label)\]\s*\[([^\]]*)\]/).replace("label",E._label).getRegex()},E.gfm={...E.normal,escape:V(E.escape).replace("])","~|])").getRegex(),_extended_email:/[A-Za-z0-9._+-]+(@)[a-zA-Z0-9-_]+(?:\.[a-zA-Z0-9-_]*[a-zA-Z0-9])+(?![-_])/,url:/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/,_backpedal:/(?:[^?!.,:;*_'"~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_'"~)]+(?!$))+/,del:/^(~~?)(?=[^\s~])([\s\S]*?[^\s~])\1(?=[^~]|$)/,text:/^([`~]+|[^`~])(?:(?= {2,}\n)|(?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)|[\s\S]*?(?:(?=[\\<!\[`*~_]|\b_|https?:\/\/|ftp:\/\/|www\.|$)|[^ ](?= {2,}\n)|[^a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-](?=[a-zA-Z0-9.!#$%&'*+\/=?_`{\|}~-]+@)))/},E.gfm.url=V(E.gfm.url,"i").replace("email",E.gfm._extended_email).getRegex(),E.breaks={...E.gfm,br:V(E.br).replace("{2,}","*").getRegex(),text:V(E.gfm.text).replace("\\b_","\\b_| {2,}\\n").replace(/\{2,\}/g,"*").getRegex()};class Ke{constructor(e){this.tokens=[],this.tokens.links=Object.create(null),this.options=e||at,this.options.tokenizer=this.options.tokenizer||new Sn,this.tokenizer=this.options.tokenizer,this.tokenizer.options=this.options,this.tokenizer.lexer=this,this.inlineQueue=[],this.state={inLink:!1,inRawBlock:!1,top:!0};const t={block:j.normal,inline:E.normal};this.options.pedantic?(t.block=j.pedantic,t.inline=E.pedantic):this.options.gfm&&(t.block=j.gfm,this.options.breaks?t.inline=E.breaks:t.inline=E.gfm),this.tokenizer.rules=t}static get rules(){return{block:j,inline:E}}static lex(e,t){return new Ke(t).lex(e)}static lexInline(e,t){return new Ke(t).inlineTokens(e)}lex(e){let t;for(e=e.replace(/\r\n|\r/g,`
+`),this.blockTokens(e,this.tokens);t=this.inlineQueue.shift();)this.inlineTokens(t.src,t.tokens);return this.tokens}blockTokens(e,t=[]){let s,i,a,r;for(e=this.options.pedantic?e.replace(/\t/g,"    ").replace(/^ +$/gm,""):e.replace(/^( *)(\t+)/gm,((o,l,c)=>l+"    ".repeat(c.length)));e;)if(!(this.options.extensions&&this.options.extensions.block&&this.options.extensions.block.some((o=>!!(s=o.call({lexer:this},e,t))&&(e=e.substring(s.raw.length),t.push(s),!0)))))if(s=this.tokenizer.space(e))e=e.substring(s.raw.length),s.raw.length===1&&t.length>0?t[t.length-1].raw+=`
+`:t.push(s);else if(s=this.tokenizer.code(e))e=e.substring(s.raw.length),i=t[t.length-1],!i||i.type!=="paragraph"&&i.type!=="text"?t.push(s):(i.raw+=`
+`+s.raw,i.text+=`
+`+s.text,this.inlineQueue[this.inlineQueue.length-1].src=i.text);else if(s=this.tokenizer.fences(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.heading(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.hr(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.blockquote(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.list(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.html(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.def(e))e=e.substring(s.raw.length),i=t[t.length-1],!i||i.type!=="paragraph"&&i.type!=="text"?this.tokens.links[s.tag]||(this.tokens.links[s.tag]={href:s.href,title:s.title}):(i.raw+=`
+`+s.raw,i.text+=`
+`+s.raw,this.inlineQueue[this.inlineQueue.length-1].src=i.text);else if(s=this.tokenizer.table(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.lheading(e))e=e.substring(s.raw.length),t.push(s);else{if(a=e,this.options.extensions&&this.options.extensions.startBlock){let o=1/0;const l=e.slice(1);let c;this.options.extensions.startBlock.forEach((function(h){c=h.call({lexer:this},l),typeof c=="number"&&c>=0&&(o=Math.min(o,c))})),o<1/0&&o>=0&&(a=e.substring(0,o+1))}if(this.state.top&&(s=this.tokenizer.paragraph(a)))i=t[t.length-1],r&&i.type==="paragraph"?(i.raw+=`
+`+s.raw,i.text+=`
+`+s.text,this.inlineQueue.pop(),this.inlineQueue[this.inlineQueue.length-1].src=i.text):t.push(s),r=a.length!==e.length,e=e.substring(s.raw.length);else if(s=this.tokenizer.text(e))e=e.substring(s.raw.length),i=t[t.length-1],i&&i.type==="text"?(i.raw+=`
+`+s.raw,i.text+=`
+`+s.text,this.inlineQueue.pop(),this.inlineQueue[this.inlineQueue.length-1].src=i.text):t.push(s);else if(e){const o="Infinite loop on byte: "+e.charCodeAt(0);if(this.options.silent){console.error(o);break}throw new Error(o)}}return this.state.top=!0,t}inline(e,t=[]){return this.inlineQueue.push({src:e,tokens:t}),t}inlineTokens(e,t=[]){let s,i,a,r,o,l,c=e;if(this.tokens.links){const h=Object.keys(this.tokens.links);if(h.length>0)for(;(r=this.tokenizer.rules.inline.reflinkSearch.exec(c))!=null;)h.includes(r[0].slice(r[0].lastIndexOf("[")+1,-1))&&(c=c.slice(0,r.index)+"["+Ki("a",r[0].length-2)+"]"+c.slice(this.tokenizer.rules.inline.reflinkSearch.lastIndex))}for(;(r=this.tokenizer.rules.inline.blockSkip.exec(c))!=null;)c=c.slice(0,r.index)+"["+Ki("a",r[0].length-2)+"]"+c.slice(this.tokenizer.rules.inline.blockSkip.lastIndex);for(;(r=this.tokenizer.rules.inline.escapedEmSt.exec(c))!=null;)c=c.slice(0,r.index+r[0].length-2)+"++"+c.slice(this.tokenizer.rules.inline.escapedEmSt.lastIndex),this.tokenizer.rules.inline.escapedEmSt.lastIndex--;for(;e;)if(o||(l=""),o=!1,!(this.options.extensions&&this.options.extensions.inline&&this.options.extensions.inline.some((h=>!!(s=h.call({lexer:this},e,t))&&(e=e.substring(s.raw.length),t.push(s),!0)))))if(s=this.tokenizer.escape(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.tag(e))e=e.substring(s.raw.length),i=t[t.length-1],i&&s.type==="text"&&i.type==="text"?(i.raw+=s.raw,i.text+=s.text):t.push(s);else if(s=this.tokenizer.link(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.reflink(e,this.tokens.links))e=e.substring(s.raw.length),i=t[t.length-1],i&&s.type==="text"&&i.type==="text"?(i.raw+=s.raw,i.text+=s.text):t.push(s);else if(s=this.tokenizer.emStrong(e,c,l))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.codespan(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.br(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.del(e))e=e.substring(s.raw.length),t.push(s);else if(s=this.tokenizer.autolink(e,Wi))e=e.substring(s.raw.length),t.push(s);else if(this.state.inLink||!(s=this.tokenizer.url(e,Wi))){if(a=e,this.options.extensions&&this.options.extensions.startInline){let h=1/0;const d=e.slice(1);let p;this.options.extensions.startInline.forEach((function(f){p=f.call({lexer:this},d),typeof p=="number"&&p>=0&&(h=Math.min(h,p))})),h<1/0&&h>=0&&(a=e.substring(0,h+1))}if(s=this.tokenizer.inlineText(a,ho))e=e.substring(s.raw.length),s.raw.slice(-1)!=="_"&&(l=s.raw.slice(-1)),o=!0,i=t[t.length-1],i&&i.type==="text"?(i.raw+=s.raw,i.text+=s.text):t.push(s);else if(e){const h="Infinite loop on byte: "+e.charCodeAt(0);if(this.options.silent){console.error(h);break}throw new Error(h)}}else e=e.substring(s.raw.length),t.push(s);return t}}class kn{constructor(e){this.options=e||at}code(e,t,s){const i=(t||"").match(/\S*/)[0];if(this.options.highlight){const a=this.options.highlight(e,i);a!=null&&a!==e&&(s=!0,e=a)}return e=e.replace(/\n$/,"")+`
+`,i?'<pre><code class="'+this.options.langPrefix+re(i)+'">'+(s?e:re(e,!0))+`</code></pre>
+`:"<pre><code>"+(s?e:re(e,!0))+`</code></pre>
+`}blockquote(e){return`<blockquote>
+${e}</blockquote>
+`}html(e){return e}heading(e,t,s,i){return this.options.headerIds?`<h${t} id="${this.options.headerPrefix+i.slug(s)}">${e}</h${t}>
+`:`<h${t}>${e}</h${t}>
+`}hr(){return this.options.xhtml?`<hr/>
+`:`<hr>
+`}list(e,t,s){const i=t?"ol":"ul";return"<"+i+(t&&s!==1?' start="'+s+'"':"")+`>
+`+e+"</"+i+`>
+`}listitem(e){return`<li>${e}</li>
+`}checkbox(e){return"<input "+(e?'checked="" ':"")+'disabled="" type="checkbox"'+(this.options.xhtml?" /":"")+"> "}paragraph(e){return`<p>${e}</p>
+`}table(e,t){return t&&(t=`<tbody>${t}</tbody>`),`<table>
+<thead>
+`+e+`</thead>
+`+t+`</table>
+`}tablerow(e){return`<tr>
+${e}</tr>
+`}tablecell(e,t){const s=t.header?"th":"td";return(t.align?`<${s} align="${t.align}">`:`<${s}>`)+e+`</${s}>
+`}strong(e){return`<strong>${e}</strong>`}em(e){return`<em>${e}</em>`}codespan(e){return`<code>${e}</code>`}br(){return this.options.xhtml?"<br/>":"<br>"}del(e){return`<del>${e}</del>`}link(e,t,s){if((e=zi(this.options.sanitize,this.options.baseUrl,e))===null)return s;let i='<a href="'+e+'"';return t&&(i+=' title="'+t+'"'),i+=">"+s+"</a>",i}image(e,t,s){if((e=zi(this.options.sanitize,this.options.baseUrl,e))===null)return s;let i=`<img src="${e}" alt="${s}"`;return t&&(i+=` title="${t}"`),i+=this.options.xhtml?"/>":">",i}text(e){return e}}class ya{strong(e){return e}em(e){return e}codespan(e){return e}del(e){return e}html(e){return e}text(e){return e}link(e,t,s){return""+s}image(e,t,s){return""+s}br(){return""}}class wa{constructor(){this.seen={}}serialize(e){return e.toLowerCase().trim().replace(/<[!\/a-z].*?>/gi,"").replace(/[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g,"").replace(/\s/g,"-")}getNextSafeSlug(e,t){let s=e,i=0;if(this.seen.hasOwnProperty(s)){i=this.seen[e];do i++,s=e+"-"+i;while(this.seen.hasOwnProperty(s))}return t||(this.seen[e]=i,this.seen[s]=0),s}slug(e,t={}){const s=this.serialize(e);return this.getNextSafeSlug(s,t.dryrun)}}class He{constructor(e){this.options=e||at,this.options.renderer=this.options.renderer||new kn,this.renderer=this.options.renderer,this.renderer.options=this.options,this.textRenderer=new ya,this.slugger=new wa}static parse(e,t){return new He(t).parse(e)}static parseInline(e,t){return new He(t).parseInline(e)}parse(e,t=!0){let s,i,a,r,o,l,c,h,d,p,f,S,u,v,w,P,C,T,A,k="";const N=e.length;for(s=0;s<N;s++)if(p=e[s],this.options.extensions&&this.options.extensions.renderers&&this.options.extensions.renderers[p.type]&&(A=this.options.extensions.renderers[p.type].call({parser:this},p),A!==!1||!["space","hr","heading","code","table","blockquote","list","html","paragraph","text"].includes(p.type)))k+=A||"";else switch(p.type){case"space":continue;case"hr":k+=this.renderer.hr();continue;case"heading":k+=this.renderer.heading(this.parseInline(p.tokens),p.depth,ba(this.parseInline(p.tokens,this.textRenderer)),this.slugger);continue;case"code":k+=this.renderer.code(p.text,p.lang,p.escaped);continue;case"table":for(h="",c="",r=p.header.length,i=0;i<r;i++)c+=this.renderer.tablecell(this.parseInline(p.header[i].tokens),{header:!0,align:p.align[i]});for(h+=this.renderer.tablerow(c),d="",r=p.rows.length,i=0;i<r;i++){for(l=p.rows[i],c="",o=l.length,a=0;a<o;a++)c+=this.renderer.tablecell(this.parseInline(l[a].tokens),{header:!1,align:p.align[a]});d+=this.renderer.tablerow(c)}k+=this.renderer.table(h,d);continue;case"blockquote":d=this.parse(p.tokens),k+=this.renderer.blockquote(d);continue;case"list":for(f=p.ordered,S=p.start,u=p.loose,r=p.items.length,d="",i=0;i<r;i++)w=p.items[i],P=w.checked,C=w.task,v="",w.task&&(T=this.renderer.checkbox(P),u?w.tokens.length>0&&w.tokens[0].type==="paragraph"?(w.tokens[0].text=T+" "+w.tokens[0].text,w.tokens[0].tokens&&w.tokens[0].tokens.length>0&&w.tokens[0].tokens[0].type==="text"&&(w.tokens[0].tokens[0].text=T+" "+w.tokens[0].tokens[0].text)):w.tokens.unshift({type:"text",text:T}):v+=T),v+=this.parse(w.tokens,u),d+=this.renderer.listitem(v,C,P);k+=this.renderer.list(d,f,S);continue;case"html":k+=this.renderer.html(p.text);continue;case"paragraph":k+=this.renderer.paragraph(this.parseInline(p.tokens));continue;case"text":for(d=p.tokens?this.parseInline(p.tokens):p.text;s+1<N&&e[s+1].type==="text";)p=e[++s],d+=`
+`+(p.tokens?this.parseInline(p.tokens):p.text);k+=t?this.renderer.paragraph(d):d;continue;default:{const R='Token with "'+p.type+'" type was not found.';if(this.options.silent)return void console.error(R);throw new Error(R)}}return k}parseInline(e,t){t=t||this.renderer;let s,i,a,r="";const o=e.length;for(s=0;s<o;s++)if(i=e[s],this.options.extensions&&this.options.extensions.renderers&&this.options.extensions.renderers[i.type]&&(a=this.options.extensions.renderers[i.type].call({parser:this},i),a!==!1||!["escape","html","link","image","strong","em","codespan","br","del","text"].includes(i.type)))r+=a||"";else switch(i.type){case"escape":case"text":r+=t.text(i.text);break;case"html":r+=t.html(i.text);break;case"link":r+=t.link(i.href,i.title,this.parseInline(i.tokens,t));break;case"image":r+=t.image(i.href,i.title,i.text);break;case"strong":r+=t.strong(this.parseInline(i.tokens,t));break;case"em":r+=t.em(this.parseInline(i.tokens,t));break;case"codespan":r+=t.codespan(i.text);break;case"br":r+=t.br();break;case"del":r+=t.del(this.parseInline(i.tokens,t));break;default:{const l='Token with "'+i.type+'" type was not found.';if(this.options.silent)return void console.error(l);throw new Error(l)}}return r}}class ln{constructor(e){this.options=e||at}static passThroughHooks=new Set(["preprocess","postprocess"]);preprocess(e){return e}postprocess(e){return e}}function Sa(n,e){return(t,s,i)=>{typeof s=="function"&&(i=s,s=null);const a={...s},r=(function(o,l,c){return h=>{if(h.message+=`
+Please report this to https://github.com/markedjs/marked.`,o){const d="<p>An error occurred:</p><pre>"+re(h.message+"",!0)+"</pre>";return l?Promise.resolve(d):c?void c(null,d):d}if(l)return Promise.reject(h);if(!c)throw h;c(h)}})((s={...O.defaults,...a}).silent,s.async,i);if(t==null)return r(new Error("marked(): input parameter is undefined or null"));if(typeof t!="string")return r(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(t)+", string expected"));if((function(o){o&&o.sanitize&&!o.silent&&console.warn("marked(): sanitize and sanitizer parameters are deprecated since version 0.7.0, should not be used and will be removed in the future. Read more here: https://marked.js.org/#/USING_ADVANCED.md#options")})(s),s.hooks&&(s.hooks.options=s),i){const o=s.highlight;let l;try{s.hooks&&(t=s.hooks.preprocess(t)),l=n(t,s)}catch(d){return r(d)}const c=function(d){let p;if(!d)try{s.walkTokens&&O.walkTokens(l,s.walkTokens),p=e(l,s),s.hooks&&(p=s.hooks.postprocess(p))}catch(f){d=f}return s.highlight=o,d?r(d):i(null,p)};if(!o||o.length<3||(delete s.highlight,!l.length))return c();let h=0;return O.walkTokens(l,(function(d){d.type==="code"&&(h++,setTimeout((()=>{o(d.text,d.lang,(function(p,f){if(p)return c(p);f!=null&&f!==d.text&&(d.text=f,d.escaped=!0),h--,h===0&&c()}))}),0))})),void(h===0&&c())}if(s.async)return Promise.resolve(s.hooks?s.hooks.preprocess(t):t).then((o=>n(o,s))).then((o=>s.walkTokens?Promise.all(O.walkTokens(o,s.walkTokens)).then((()=>o)):o)).then((o=>e(o,s))).then((o=>s.hooks?s.hooks.postprocess(o):o)).catch(r);try{s.hooks&&(t=s.hooks.preprocess(t));const o=n(t,s);s.walkTokens&&O.walkTokens(o,s.walkTokens);let l=e(o,s);return s.hooks&&(l=s.hooks.postprocess(l)),l}catch(o){return r(o)}}}function O(n,e,t){return Sa(Ke.lex,He.parse)(n,e,t)}O.options=O.setOptions=function(n){var e;return O.defaults={...O.defaults,...n},e=O.defaults,at=e,O},O.getDefaults=to,O.defaults=at,O.use=function(...n){const e=O.defaults.extensions||{renderers:{},childTokens:{}};n.forEach((t=>{const s={...t};if(s.async=O.defaults.async||s.async||!1,t.extensions&&(t.extensions.forEach((i=>{if(!i.name)throw new Error("extension name required");if(i.renderer){const a=e.renderers[i.name];e.renderers[i.name]=a?function(...r){let o=i.renderer.apply(this,r);return o===!1&&(o=a.apply(this,r)),o}:i.renderer}if(i.tokenizer){if(!i.level||i.level!=="block"&&i.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");e[i.level]?e[i.level].unshift(i.tokenizer):e[i.level]=[i.tokenizer],i.start&&(i.level==="block"?e.startBlock?e.startBlock.push(i.start):e.startBlock=[i.start]:i.level==="inline"&&(e.startInline?e.startInline.push(i.start):e.startInline=[i.start]))}i.childTokens&&(e.childTokens[i.name]=i.childTokens)})),s.extensions=e),t.renderer){const i=O.defaults.renderer||new kn;for(const a in t.renderer){const r=i[a];i[a]=(...o)=>{let l=t.renderer[a].apply(i,o);return l===!1&&(l=r.apply(i,o)),l}}s.renderer=i}if(t.tokenizer){const i=O.defaults.tokenizer||new Sn;for(const a in t.tokenizer){const r=i[a];i[a]=(...o)=>{let l=t.tokenizer[a].apply(i,o);return l===!1&&(l=r.apply(i,o)),l}}s.tokenizer=i}if(t.hooks){const i=O.defaults.hooks||new ln;for(const a in t.hooks){const r=i[a];ln.passThroughHooks.has(a)?i[a]=o=>{if(O.defaults.async)return Promise.resolve(t.hooks[a].call(i,o)).then((c=>r.call(i,c)));const l=t.hooks[a].call(i,o);return r.call(i,l)}:i[a]=(...o)=>{let l=t.hooks[a].apply(i,o);return l===!1&&(l=r.apply(i,o)),l}}s.hooks=i}if(t.walkTokens){const i=O.defaults.walkTokens;s.walkTokens=function(a){let r=[];return r.push(t.walkTokens.call(this,a)),i&&(r=r.concat(i.call(this,a))),r}}O.setOptions(s)}))},O.walkTokens=function(n,e){let t=[];for(const s of n)switch(t=t.concat(e.call(O,s)),s.type){case"table":for(const i of s.header)t=t.concat(O.walkTokens(i.tokens,e));for(const i of s.rows)for(const a of i)t=t.concat(O.walkTokens(a.tokens,e));break;case"list":t=t.concat(O.walkTokens(s.items,e));break;default:O.defaults.extensions&&O.defaults.extensions.childTokens&&O.defaults.extensions.childTokens[s.type]?O.defaults.extensions.childTokens[s.type].forEach((function(i){t=t.concat(O.walkTokens(s[i],e))})):s.tokens&&(t=t.concat(O.walkTokens(s.tokens,e)))}return t},O.parseInline=Sa(Ke.lexInline,He.parseInline),O.Parser=He,O.parser=He.parse,O.Renderer=kn,O.TextRenderer=ya,O.Lexer=Ke,O.lexer=Ke.lex,O.Tokenizer=Sn,O.Slugger=wa,O.Hooks=ln,O.parse=O,O.options,O.setOptions,O.use,O.walkTokens,O.parseInline,He.parse,Ke.lex;const mo=()=>{let n,e,t=null;function s(){if(t&&!t.closed)t.focus();else{if(t=window.open("about:blank","reveal.js - Notes","width=1100,height=700"),t.marked=O,t.document.write(`<!--
+	NOTE: You need to build the notes plugin after making changes to this file.
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - Speaker View</title>
+
+		<style>
+			body {
+				font-family: Helvetica;
+				font-size: 18px;
+			}
+
+			#current-slide,
+			#upcoming-slide,
+			#speaker-controls {
+				padding: 6px;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+			}
+
+			#current-slide iframe,
+			#upcoming-slide iframe {
+				width: 100%;
+				height: 100%;
+				border: 1px solid #ddd;
+			}
+
+			#current-slide .label,
+			#upcoming-slide .label {
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				z-index: 2;
+			}
+
+			#connection-status {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 20;
+				padding: 30% 20% 20% 20%;
+				font-size: 18px;
+				color: #222;
+				background: #fff;
+				text-align: center;
+				box-sizing: border-box;
+				line-height: 1.4;
+			}
+
+			.overlay-element {
+				height: 34px;
+				line-height: 34px;
+				padding: 0 10px;
+				text-shadow: none;
+				background: rgba( 220, 220, 220, 0.8 );
+				color: #222;
+				font-size: 14px;
+			}
+
+			.overlay-element.interactive:hover {
+				background: rgba( 220, 220, 220, 1 );
+			}
+
+			#current-slide {
+				position: absolute;
+				width: 60%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				padding-right: 0;
+			}
+
+			#upcoming-slide {
+				position: absolute;
+				width: 40%;
+				height: 40%;
+				right: 0;
+				top: 0;
+			}
+
+			/* Speaker controls */
+			#speaker-controls {
+				position: absolute;
+				top: 40%;
+				right: 0;
+				width: 40%;
+				height: 60%;
+				overflow: auto;
+				font-size: 18px;
+			}
+
+				.speaker-controls-time.hidden,
+				.speaker-controls-notes.hidden {
+					display: none;
+				}
+
+				.speaker-controls-time .label,
+				.speaker-controls-pace .label,
+				.speaker-controls-notes .label {
+					text-transform: uppercase;
+					font-weight: normal;
+					font-size: 0.66em;
+					color: #666;
+					margin: 0;
+				}
+
+				.speaker-controls-time, .speaker-controls-pace {
+					border-bottom: 1px solid rgba( 200, 200, 200, 0.5 );
+					margin-bottom: 10px;
+					padding: 10px 16px;
+					padding-bottom: 20px;
+					cursor: pointer;
+				}
+
+				.speaker-controls-time .reset-button {
+					opacity: 0;
+					float: right;
+					color: #666;
+					text-decoration: none;
+				}
+				.speaker-controls-time:hover .reset-button {
+					opacity: 1;
+				}
+
+				.speaker-controls-time .timer,
+				.speaker-controls-time .clock {
+					width: 50%;
+				}
+
+				.speaker-controls-time .timer,
+				.speaker-controls-time .clock,
+				.speaker-controls-time .pacing .hours-value,
+				.speaker-controls-time .pacing .minutes-value,
+				.speaker-controls-time .pacing .seconds-value {
+					font-size: 1.9em;
+				}
+
+				.speaker-controls-time .timer {
+					float: left;
+				}
+
+				.speaker-controls-time .clock {
+					float: right;
+					text-align: right;
+				}
+
+				.speaker-controls-time span.mute {
+					opacity: 0.3;
+				}
+
+				.speaker-controls-time .pacing-title {
+					margin-top: 5px;
+				}
+
+				.speaker-controls-time .pacing.ahead {
+					color: blue;
+				}
+
+				.speaker-controls-time .pacing.on-track {
+					color: green;
+				}
+
+				.speaker-controls-time .pacing.behind {
+					color: red;
+				}
+
+				.speaker-controls-notes {
+					padding: 10px 16px;
+				}
+
+				.speaker-controls-notes .value {
+					margin-top: 5px;
+					line-height: 1.4;
+					font-size: 1.2em;
+				}
+
+			/* Layout selector */
+			#speaker-layout {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				color: #222;
+				z-index: 10;
+			}
+				#speaker-layout select {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					border: 0;
+					box-shadow: 0;
+					cursor: pointer;
+					opacity: 0;
+
+					font-size: 1em;
+					background-color: transparent;
+
+					-moz-appearance: none;
+					-webkit-appearance: none;
+					-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				}
+
+				#speaker-layout select:focus {
+					outline: none;
+					box-shadow: none;
+				}
+
+			.clear {
+				clear: both;
+			}
+
+			/* Speaker layout: Wide */
+			body[data-speaker-layout="wide"] #current-slide,
+			body[data-speaker-layout="wide"] #upcoming-slide {
+				width: 50%;
+				height: 45%;
+				padding: 6px;
+			}
+
+			body[data-speaker-layout="wide"] #current-slide {
+				top: 0;
+				left: 0;
+			}
+
+			body[data-speaker-layout="wide"] #upcoming-slide {
+				top: 0;
+				left: 50%;
+			}
+
+			body[data-speaker-layout="wide"] #speaker-controls {
+				top: 45%;
+				left: 0;
+				width: 100%;
+				height: 50%;
+				font-size: 1.25em;
+			}
+
+			/* Speaker layout: Tall */
+			body[data-speaker-layout="tall"] #current-slide,
+			body[data-speaker-layout="tall"] #upcoming-slide {
+				width: 45%;
+				height: 50%;
+				padding: 6px;
+			}
+
+			body[data-speaker-layout="tall"] #current-slide {
+				top: 0;
+				left: 0;
+			}
+
+			body[data-speaker-layout="tall"] #upcoming-slide {
+				top: 50%;
+				left: 0;
+			}
+
+			body[data-speaker-layout="tall"] #speaker-controls {
+				padding-top: 40px;
+				top: 0;
+				left: 45%;
+				width: 55%;
+				height: 100%;
+				font-size: 1.25em;
+			}
+
+			/* Speaker layout: Notes only */
+			body[data-speaker-layout="notes-only"] #current-slide,
+			body[data-speaker-layout="notes-only"] #upcoming-slide {
+				display: none;
+			}
+
+			body[data-speaker-layout="notes-only"] #speaker-controls {
+				padding-top: 40px;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				font-size: 1.25em;
+			}
+
+			@media screen and (max-width: 1080px) {
+				body[data-speaker-layout="default"] #speaker-controls {
+					font-size: 16px;
+				}
+			}
+
+			@media screen and (max-width: 900px) {
+				body[data-speaker-layout="default"] #speaker-controls {
+					font-size: 14px;
+				}
+			}
+
+			@media screen and (max-width: 800px) {
+				body[data-speaker-layout="default"] #speaker-controls {
+					font-size: 12px;
+				}
+			}
+
+		</style>
+	</head>
+
+	<body>
+
+		<div id="connection-status">Loading speaker view...</div>
+
+		<div id="current-slide"></div>
+		<div id="upcoming-slide"><span class="overlay-element label">Upcoming</span></div>
+		<div id="speaker-controls">
+			<div class="speaker-controls-time">
+				<h4 class="label">Time <span class="reset-button">Click to Reset</span></h4>
+				<div class="clock">
+					<span class="clock-value">0:00 AM</span>
+				</div>
+				<div class="timer">
+					<span class="hours-value">00</span><span class="minutes-value">:00</span><span class="seconds-value">:00</span>
+				</div>
+				<div class="clear"></div>
+
+				<h4 class="label pacing-title" style="display: none">Pacing – Time to finish current slide</h4>
+				<div class="pacing" style="display: none">
+					<span class="hours-value">00</span><span class="minutes-value">:00</span><span class="seconds-value">:00</span>
+				</div>
+			</div>
+
+			<div class="speaker-controls-notes hidden">
+				<h4 class="label">Notes</h4>
+				<div class="value"></div>
+			</div>
+		</div>
+		<div id="speaker-layout" class="overlay-element interactive">
+			<span class="speaker-layout-label"></span>
+			<select class="speaker-layout-dropdown"></select>
+		</div>
+
+		<script>
+
+			(function() {
+
+				var notes,
+					notesValue,
+					currentState,
+					currentSlide,
+					upcomingSlide,
+					layoutLabel,
+					layoutDropdown,
+					pendingCalls = {},
+					lastRevealApiCallId = 0,
+					connected = false
+
+				var connectionStatus = document.querySelector( '#connection-status' );
+
+				var SPEAKER_LAYOUTS = {
+					'default': 'Default',
+					'wide': 'Wide',
+					'tall': 'Tall',
+					'notes-only': 'Notes only'
+				};
+
+				setupLayout();
+
+				let openerOrigin;
+
+				try {
+					openerOrigin = window.opener.location.origin;
+				}
+				catch ( error ) { console.warn( error ) }
+
+				// In order to prevent XSS, the speaker view will only run if its
+				// opener has the same origin as itself
+				if( window.location.origin !== openerOrigin ) {
+					connectionStatus.innerHTML = 'Cross origin error.<br>The speaker window can only be opened from the same origin.';
+					return;
+				}
+
+				var connectionTimeout = setTimeout( function() {
+					connectionStatus.innerHTML = 'Error connecting to main window.<br>Please try closing and reopening the speaker view.';
+				}, 5000 );
+
+				window.addEventListener( 'message', function( event ) {
+
+					// Validate the origin of all messages to avoid parsing messages
+					// that aren't meant for us. Ignore when running off file:// so
+					// that the speaker view continues to work without a web server.
+					if( window.location.origin !== event.origin && window.location.origin !== 'file://' ) {
+						return
+					}
+
+					clearTimeout( connectionTimeout );
+					connectionStatus.style.display = 'none';
+
+					var data = JSON.parse( event.data );
+
+					// The overview mode is only useful to the reveal.js instance
+					// where navigation occurs so we don't sync it
+					if( data.state ) delete data.state.overview;
+
+					// Messages sent by the notes plugin inside of the main window
+					if( data && data.namespace === 'reveal-notes' ) {
+						if( data.type === 'connect' ) {
+							handleConnectMessage( data );
+						}
+						else if( data.type === 'state' ) {
+							handleStateMessage( data );
+						}
+						else if( data.type === 'return' ) {
+							pendingCalls[data.callId](data.result);
+							delete pendingCalls[data.callId];
+						}
+					}
+					// Messages sent by the reveal.js inside of the current slide preview
+					else if( data && data.namespace === 'reveal' ) {
+						const supportedEvents = [
+							'slidechanged',
+							'fragmentshown',
+							'fragmenthidden',
+							'paused',
+							'resumed',
+							'previewiframe',
+							'previewimage',
+							'previewvideo',
+							'closeoverlay'
+						];
+
+						if( /ready/.test( data.eventName ) ) {
+							// Send a message back to notify that the handshake is complete
+							window.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'connected'} ), '*' );
+						}
+						else if( supportedEvents.includes( data.eventName ) && currentState !== JSON.stringify( data.state ) ) {
+							dispatchStateToMainWindow( data.state );
+						}
+					}
+
+				} );
+
+				/**
+				 * Updates the presentation in the main window to match the state
+				 * of the presentation in the notes window.
+				 */
+				const dispatchStateToMainWindow = debounce(( state ) => {
+					window.opener.postMessage( JSON.stringify({ method: 'setState', args: [ state ]} ), '*' );
+				}, 500);
+
+				/**
+				 * Asynchronously calls the Reveal.js API of the main frame.
+				 */
+				function callRevealApi( methodName, methodArguments, callback ) {
+
+					var callId = ++lastRevealApiCallId;
+					pendingCalls[callId] = callback;
+					window.opener.postMessage( JSON.stringify( {
+						namespace: 'reveal-notes',
+						type: 'call',
+						callId: callId,
+						methodName: methodName,
+						arguments: methodArguments
+					} ), '*' );
+
+				}
+
+				/**
+				 * Called when the main window is trying to establish a
+				 * connection.
+				 */
+				function handleConnectMessage( data ) {
+
+					if( connected === false ) {
+						connected = true;
+
+						setupIframes( data );
+						setupKeyboard();
+						setupNotes();
+						setupTimer();
+						setupHeartbeat();
+					}
+
+				}
+
+				/**
+				 * Called when the main window sends an updated state.
+				 */
+				function handleStateMessage( data ) {
+
+					// Store the most recently set state to avoid circular loops
+					// applying the same state
+					currentState = JSON.stringify( data.state );
+
+					// No need for updating the notes in case of fragment changes
+					if ( data.notes ) {
+						notes.classList.remove( 'hidden' );
+						notesValue.style.whiteSpace = data.whitespace;
+						if( data.markdown ) {
+							notesValue.innerHTML = marked( data.notes );
+						}
+						else {
+							notesValue.innerHTML = data.notes;
+						}
+					}
+					else {
+						notes.classList.add( 'hidden' );
+					}
+
+					// Don't show lightboxes in the upcoming slide
+					const { previewVideo, previewImage, previewIframe, ...upcomingState } = data.state;
+
+					// Update the note slides
+					currentSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ data.state ] }), '*' );
+					upcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'setState', args: [ upcomingState ] }), '*' );
+					upcomingSlide.contentWindow.postMessage( JSON.stringify({ method: 'next' }), '*' );
+
+				}
+
+				// Limit to max one state update per X ms
+				handleStateMessage = debounce( handleStateMessage, 200 );
+
+				/**
+				 * Forward keyboard events to the current slide window.
+				 * This enables keyboard events to work even if focus
+				 * isn't set on the current slide iframe.
+				 *
+				 * Block F5 default handling, it reloads and disconnects
+				 * the speaker notes window.
+				 */
+				function setupKeyboard() {
+
+					document.addEventListener( 'keydown', function( event ) {
+						if( event.keyCode === 116 || ( event.metaKey && event.keyCode === 82 ) ) {
+							event.preventDefault();
+							return false;
+						}
+						currentSlide.contentWindow.postMessage( JSON.stringify({ method: 'triggerKey', args: [ event.keyCode ] }), '*' );
+					} );
+
+				}
+
+				/**
+				 * Creates the preview iframes.
+				 */
+				function setupIframes( data ) {
+
+					var params = [
+						'receiver',
+						'progress=false',
+						'history=false',
+						'transition=none',
+						'autoSlide=0',
+						'backgroundTransition=none'
+					].join( '&' );
+
+					var urlSeparator = /\\?/.test(data.url) ? '&' : '?';
+					var hash = '#/' + data.state.indexh + '/' + data.state.indexv;
+					var currentURL = data.url + urlSeparator + params + '&scrollActivationWidth=false&postMessageEvents=true' + hash;
+					var upcomingURL = data.url + urlSeparator + params + '&scrollActivationWidth=false&controls=false' + hash;
+
+					currentSlide = document.createElement( 'iframe' );
+					currentSlide.setAttribute( 'width', 1280 );
+					currentSlide.setAttribute( 'height', 1024 );
+					currentSlide.setAttribute( 'src', currentURL );
+					document.querySelector( '#current-slide' ).appendChild( currentSlide );
+
+					upcomingSlide = document.createElement( 'iframe' );
+					upcomingSlide.setAttribute( 'width', 640 );
+					upcomingSlide.setAttribute( 'height', 512 );
+					upcomingSlide.setAttribute( 'src', upcomingURL );
+					document.querySelector( '#upcoming-slide' ).appendChild( upcomingSlide );
+
+				}
+
+				/**
+				 * Setup the notes UI.
+				 */
+				function setupNotes() {
+
+					notes = document.querySelector( '.speaker-controls-notes' );
+					notesValue = document.querySelector( '.speaker-controls-notes .value' );
+
+				}
+
+				/**
+				 * We send out a heartbeat at all times to ensure we can
+				 * reconnect with the main presentation window after reloads.
+				 */
+				function setupHeartbeat() {
+
+					setInterval( () => {
+						window.opener.postMessage( JSON.stringify({ namespace: 'reveal-notes', type: 'heartbeat'} ), '*' );
+					}, 1000 );
+
+				}
+
+				function getTimings( callback ) {
+
+					callRevealApi( 'getSlidesAttributes', [], function ( slideAttributes ) {
+						callRevealApi( 'getConfig', [], function ( config ) {
+							var totalTime = config.totalTime;
+							var minTimePerSlide = config.minimumTimePerSlide || 0;
+							var defaultTiming = config.defaultTiming;
+							if ((defaultTiming == null) && (totalTime == null)) {
+								callback(null);
+								return;
+							}
+							// Setting totalTime overrides defaultTiming
+							if (totalTime) {
+								defaultTiming = 0;
+							}
+							var timings = [];
+							for ( var i in slideAttributes ) {
+								var slide = slideAttributes[ i ];
+								var timing = defaultTiming;
+								if( slide.hasOwnProperty( 'data-timing' )) {
+									var t = slide[ 'data-timing' ];
+									timing = parseInt(t);
+									if( isNaN(timing) ) {
+										console.warn("Could not parse timing '" + t + "' of slide " + i + "; using default of " + defaultTiming);
+										timing = defaultTiming;
+									}
+								}
+								timings.push(timing);
+							}
+							if ( totalTime ) {
+								// After we've allocated time to individual slides, we summarize it and
+								// subtract it from the total time
+								var remainingTime = totalTime - timings.reduce( function(a, b) { return a + b; }, 0 );
+								// The remaining time is divided by the number of slides that have 0 seconds
+								// allocated at the moment, giving the average time-per-slide on the remaining slides
+								var remainingSlides = (timings.filter( function(x) { return x == 0 }) ).length
+								var timePerSlide = Math.round( remainingTime / remainingSlides, 0 )
+								// And now we replace every zero-value timing with that average
+								timings = timings.map( function(x) { return (x==0 ? timePerSlide : x) } );
+							}
+							var slidesUnderMinimum = timings.filter( function(x) { return (x < minTimePerSlide) } ).length
+							if ( slidesUnderMinimum ) {
+								message = "The pacing time for " + slidesUnderMinimum + " slide(s) is under the configured minimum of " + minTimePerSlide + " seconds. Check the data-timing attribute on individual slides, or consider increasing the totalTime or minimumTimePerSlide configuration options (or removing some slides).";
+								alert(message);
+							}
+							callback( timings );
+						} );
+					} );
+
+				}
+
+				/**
+				 * Return the number of seconds allocated for presenting
+				 * all slides up to and including this one.
+				 */
+				function getTimeAllocated( timings, callback ) {
+
+					callRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {
+						var allocated = 0;
+						for (var i in timings.slice(0, currentSlide + 1)) {
+							allocated += timings[i];
+						}
+						callback( allocated );
+					} );
+
+				}
+
+				/**
+				 * Create the timer and clock and start updating them
+				 * at an interval.
+				 */
+				function setupTimer() {
+
+					var start = new Date(),
+					timeEl = document.querySelector( '.speaker-controls-time' ),
+					clockEl = timeEl.querySelector( '.clock-value' ),
+					hoursEl = timeEl.querySelector( '.hours-value' ),
+					minutesEl = timeEl.querySelector( '.minutes-value' ),
+					secondsEl = timeEl.querySelector( '.seconds-value' ),
+					pacingTitleEl = timeEl.querySelector( '.pacing-title' ),
+					pacingEl = timeEl.querySelector( '.pacing' ),
+					pacingHoursEl = pacingEl.querySelector( '.hours-value' ),
+					pacingMinutesEl = pacingEl.querySelector( '.minutes-value' ),
+					pacingSecondsEl = pacingEl.querySelector( '.seconds-value' );
+
+					var timings = null;
+					getTimings( function ( _timings ) {
+
+						timings = _timings;
+						if (_timings !== null) {
+							pacingTitleEl.style.removeProperty('display');
+							pacingEl.style.removeProperty('display');
+						}
+
+						// Update once directly
+						_updateTimer();
+
+						// Then update every second
+						setInterval( _updateTimer, 1000 );
+
+					} );
+
+
+					function _resetTimer() {
+
+						if (timings == null) {
+							start = new Date();
+							_updateTimer();
+						}
+						else {
+							// Reset timer to beginning of current slide
+							getTimeAllocated( timings, function ( slideEndTimingSeconds ) {
+								var slideEndTiming = slideEndTimingSeconds * 1000;
+								callRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {
+									var currentSlideTiming = timings[currentSlide] * 1000;
+									var previousSlidesTiming = slideEndTiming - currentSlideTiming;
+									var now = new Date();
+									start = new Date(now.getTime() - previousSlidesTiming);
+									_updateTimer();
+								} );
+							} );
+						}
+
+					}
+
+					timeEl.addEventListener( 'click', function() {
+						_resetTimer();
+						return false;
+					} );
+
+					function _displayTime( hrEl, minEl, secEl, time) {
+
+						var sign = Math.sign(time) == -1 ? "-" : "";
+						time = Math.abs(Math.round(time / 1000));
+						var seconds = time % 60;
+						var minutes = Math.floor( time / 60 ) % 60 ;
+						var hours = Math.floor( time / ( 60 * 60 )) ;
+						hrEl.innerHTML = sign + zeroPadInteger( hours );
+						if (hours == 0) {
+							hrEl.classList.add( 'mute' );
+						}
+						else {
+							hrEl.classList.remove( 'mute' );
+						}
+						minEl.innerHTML = ':' + zeroPadInteger( minutes );
+						if (hours == 0 && minutes == 0) {
+							minEl.classList.add( 'mute' );
+						}
+						else {
+							minEl.classList.remove( 'mute' );
+						}
+						secEl.innerHTML = ':' + zeroPadInteger( seconds );
+					}
+
+					function _updateTimer() {
+
+						var diff, hours, minutes, seconds,
+						now = new Date();
+
+						diff = now.getTime() - start.getTime();
+
+						clockEl.innerHTML = now.toLocaleTimeString( 'en-US', { hour12: true, hour: '2-digit', minute:'2-digit' } );
+						_displayTime( hoursEl, minutesEl, secondsEl, diff );
+						if (timings !== null) {
+							_updatePacing(diff);
+						}
+
+					}
+
+					function _updatePacing(diff) {
+
+						getTimeAllocated( timings, function ( slideEndTimingSeconds ) {
+							var slideEndTiming = slideEndTimingSeconds * 1000;
+
+							callRevealApi( 'getSlidePastCount', [], function ( currentSlide ) {
+								var currentSlideTiming = timings[currentSlide] * 1000;
+								var timeLeftCurrentSlide = slideEndTiming - diff;
+								if (timeLeftCurrentSlide < 0) {
+									pacingEl.className = 'pacing behind';
+								}
+								else if (timeLeftCurrentSlide < currentSlideTiming) {
+									pacingEl.className = 'pacing on-track';
+								}
+								else {
+									pacingEl.className = 'pacing ahead';
+								}
+								_displayTime( pacingHoursEl, pacingMinutesEl, pacingSecondsEl, timeLeftCurrentSlide );
+							} );
+						} );
+					}
+
+				}
+
+				/**
+				 * Sets up the speaker view layout and layout selector.
+				 */
+				function setupLayout() {
+
+					layoutDropdown = document.querySelector( '.speaker-layout-dropdown' );
+					layoutLabel = document.querySelector( '.speaker-layout-label' );
+
+					// Render the list of available layouts
+					for( var id in SPEAKER_LAYOUTS ) {
+						var option = document.createElement( 'option' );
+						option.setAttribute( 'value', id );
+						option.textContent = SPEAKER_LAYOUTS[ id ];
+						layoutDropdown.appendChild( option );
+					}
+
+					// Monitor the dropdown for changes
+					layoutDropdown.addEventListener( 'change', function( event ) {
+
+						setLayout( layoutDropdown.value );
+
+					}, false );
+
+					// Restore any currently persisted layout
+					setLayout( getLayout() );
+
+				}
+
+				/**
+				 * Sets a new speaker view layout. The layout is persisted
+				 * in local storage.
+				 */
+				function setLayout( value ) {
+
+					var title = SPEAKER_LAYOUTS[ value ];
+
+					layoutLabel.innerHTML = 'Layout' + ( title ? ( ': ' + title ) : '' );
+					layoutDropdown.value = value;
+
+					document.body.setAttribute( 'data-speaker-layout', value );
+
+					// Persist locally
+					if( supportsLocalStorage() ) {
+						window.localStorage.setItem( 'reveal-speaker-layout', value );
+					}
+
+				}
+
+				/**
+				 * Returns the ID of the most recently set speaker layout
+				 * or our default layout if none has been set.
+				 */
+				function getLayout() {
+
+					if( supportsLocalStorage() ) {
+						var layout = window.localStorage.getItem( 'reveal-speaker-layout' );
+						if( layout ) {
+							return layout;
+						}
+					}
+
+					// Default to the first record in the layouts hash
+					for( var id in SPEAKER_LAYOUTS ) {
+						return id;
+					}
+
+				}
+
+				function supportsLocalStorage() {
+
+					try {
+						localStorage.setItem('test', 'test');
+						localStorage.removeItem('test');
+						return true;
+					}
+					catch( e ) {
+						return false;
+					}
+
+				}
+
+				function zeroPadInteger( num ) {
+
+					var str = '00' + parseInt( num );
+					return str.substring( str.length - 2 );
+
+				}
+
+				/**
+				 * Limits the frequency at which a function can be called.
+				 */
+				function debounce( fn, ms ) {
+
+					var lastTime = 0,
+						timeout;
+
+					return function() {
+
+						var args = arguments;
+						var context = this;
+
+						clearTimeout( timeout );
+
+						var timeSinceLastCall = Date.now() - lastTime;
+						if( timeSinceLastCall > ms ) {
+							fn.apply( context, args );
+							lastTime = Date.now();
+						}
+						else {
+							timeout = setTimeout( function() {
+								fn.apply( context, args );
+								lastTime = Date.now();
+							}, ms - timeSinceLastCall );
+						}
+
+					}
+
+				}
+
+			})();
+
+		<\/script>
+	</body>
+</html>`),!t)return void alert("Speaker view popup failed to open. Please make sure popups are allowed and reopen the speaker view.");(function(){const o=e.getConfig().url,l=typeof o=="string"?o:window.location.protocol+"//"+window.location.host+window.location.pathname+window.location.search;n=setInterval((function(){t.postMessage(JSON.stringify({namespace:"reveal-notes",type:"connect",state:e.getState(),url:l}),"*")}),500),window.addEventListener("message",a)})()}}function i(o){let l=e.getCurrentSlide(),c=l.querySelectorAll("aside.notes"),h=l.querySelector(".current-fragment"),d={namespace:"reveal-notes",type:"state",notes:"",markdown:!1,whitespace:"normal",state:e.getState()};if(l.hasAttribute("data-notes")&&(d.notes=l.getAttribute("data-notes"),d.whitespace="pre-wrap"),h){let p=h.querySelector("aside.notes");p?(d.notes=p.innerHTML,d.markdown=typeof p.getAttribute("data-markdown")=="string",c=null):h.hasAttribute("data-notes")&&(d.notes=h.getAttribute("data-notes"),d.whitespace="pre-wrap",c=null)}c&&c.length&&(c=Array.from(c).filter((p=>p.closest(".fragment")===null)),d.notes=c.map((p=>p.innerHTML)).join(`
+`),d.markdown=c[0]&&typeof c[0].getAttribute("data-markdown")=="string"),t.postMessage(JSON.stringify(d),"*")}function a(o){if((function(l){try{return window.location.origin===l.source.location.origin}catch{return!1}})(o))try{let l=JSON.parse(o.data);l&&l.namespace==="reveal-notes"&&l.type==="connected"?(clearInterval(n),r()):l&&l.namespace==="reveal-notes"&&l.type==="call"&&(function(c,h,d){let p=e[c].apply(e,h);t.postMessage(JSON.stringify({namespace:"reveal-notes",type:"return",result:p,callId:d}),"*")})(l.methodName,l.arguments,l.callId)}catch{}}function r(){e.on("slidechanged",i),e.on("fragmentshown",i),e.on("fragmenthidden",i),e.on("overviewhidden",i),e.on("overviewshown",i),e.on("paused",i),e.on("resumed",i),e.on("previewiframe",i),e.on("previewimage",i),e.on("previewvideo",i),e.on("closeoverlay",i),i()}return{id:"notes",init:function(o){e=o,/receiver/i.test(window.location.search)||(window.location.search.match(/(\?|\&)notes/gi)!==null?s():window.addEventListener("message",(l=>{if(!t&&typeof l.data=="string"){let h;try{h=JSON.parse(l.data)}catch{}h&&h.namespace==="reveal-notes"&&h.type==="heartbeat"&&(c=l.source,t&&!t.closed?t.focus():(t=c,window.addEventListener("message",a),r()))}var c})),e.addKeyBinding({keyCode:83,key:"S",description:"Speaker notes view"},(function(){s()})))},open:s}};/*!
+ * Handles finding a text string anywhere in the slides and showing the next occurrence to the user
+ * by navigatating to that slide and highlighting it.
+ *
+ * @author Jon Snyder <snyder.jon@gmail.com>, February 2013
+ */const fo=()=>{let n,e,t,s,i,a,r;function o(){e=document.createElement("div"),e.classList.add("searchbox"),e.style.position="absolute",e.style.top="10px",e.style.right="10px",e.style.zIndex=10,e.innerHTML=`<input type="search" class="searchinput" placeholder="Search..." style="vertical-align: top;"/>
+		</span>`,t=e.querySelector(".searchinput"),t.style.width="240px",t.style.fontSize="14px",t.style.padding="4px 6px",t.style.color="#000",t.style.background="#fff",t.style.borderRadius="2px",t.style.border="0",t.style.outline="0",t.style.boxShadow="0 2px 18px rgba(0, 0, 0, 0.2)",t.style["-webkit-appearance"]="none",n.getRevealElement().appendChild(e),t.addEventListener("keyup",(function(p){p.keyCode===13?(p.preventDefault(),(function(){if(a){var f=t.value;f===""?(r&&r.remove(),s=null):(r=new d("slidecontent"),s=r.apply(f),i=0)}s&&(s.length&&s.length<=i&&(i=0),s.length>i&&(n.slide(s[i].h,s[i].v),i++))})(),a=!1):a=!0}),!1),c()}function l(){e||o(),e.style.display="inline",t.focus(),t.select()}function c(){e||o(),e.style.display="none",r&&r.remove()}function h(){e||o(),e.style.display!=="inline"?l():c()}function d(p,f){var S=document.getElementById(p)||document.body,u=f||"EM",v=new RegExp("^(?:"+u+"|SCRIPT|FORM)$"),w=["#ff6","#a0ffff","#9f9","#f99","#f6f"],P=[],C=0,T="",A=[];this.setRegex=function(k){k=k.trim(),T=new RegExp("("+k+")","i")},this.getRegex=function(){return T.toString().replace(/^\/\\b\(|\)\\b\/i$/g,"").replace(/\|/g," ")},this.hiliteWords=function(k){if(k!=null&&k&&T&&!v.test(k.nodeName)){if(k.hasChildNodes())for(var N=0;N<k.childNodes.length;N++)this.hiliteWords(k.childNodes[N]);var R,L;if(k.nodeType==3&&(R=k.nodeValue)&&(L=T.exec(R))){for(var b=k;b!=null&&b.nodeName!="SECTION";)b=b.parentNode;var q=n.getIndices(b),I=A.length,K=!1;for(N=0;N<I;N++)A[N].h===q.h&&A[N].v===q.v&&(K=!0);K||A.push(q),P[L[0].toLowerCase()]||(P[L[0].toLowerCase()]=w[C++%w.length]);var Y=document.createElement(u);Y.appendChild(document.createTextNode(L[0])),Y.style.backgroundColor=P[L[0].toLowerCase()],Y.style.fontStyle="inherit",Y.style.color="#000";var te=k.splitText(L.index);te.nodeValue=te.nodeValue.substring(L[0].length),k.parentNode.insertBefore(Y,te)}}},this.remove=function(){for(var k,N=document.getElementsByTagName(u);N.length&&(k=N[0]);)k.parentNode.replaceChild(k.firstChild,k)},this.apply=function(k){if(k!=null&&k)return this.remove(),this.setRegex(k),this.hiliteWords(S),A}}return{id:"search",init:p=>{n=p,n.registerKeyboardShortcut("CTRL + Shift + F","Search"),document.addEventListener("keydown",(function(f){f.key=="F"&&(f.ctrlKey||f.metaKey)&&(f.preventDefault(),h())}),!1)},open:l,close:c,toggle:h}},ka=()=>{let n,e={messageStyle:"none",tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre","code"]},skipStartupTypeset:!0};return{id:"mathjax2",init:function(t){n=t;let s=n.getConfig().mathjax2||n.getConfig().math||{},i={...e,...s},a=(i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js")+"?config="+(i.config||"TeX-AMS_HTML-full");i.tex2jax={...e.tex2jax,...s.tex2jax},i.mathjax=i.config=null,(function(r,o){let l=document.querySelector("head"),c=document.createElement("script");c.type="text/javascript",c.src=r;let h=()=>{typeof o=="function"&&(o.call(),o=null)};c.onload=h,c.onreadystatechange=()=>{this.readyState==="loaded"&&h()},l.appendChild(c)})(a,(function(){MathJax.Hub.Config(i),MathJax.Hub.Queue(["Typeset",MathJax.Hub,n.getRevealElement()]),MathJax.Hub.Queue(n.layout),n.on("slidechanged",(function(r){MathJax.Hub.Queue(["Typeset",MathJax.Hub,r.currentSlide])}))}))}}},go=ka;/*!
+ * This plugin is a wrapper for the MathJax2,
+ * MathJax3 and KaTeX typesetter plugins.
+ */var vo=Plugin=Object.assign(go(),{KaTeX:()=>{let n,e={version:"latest",delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredTags:["script","noscript","style","textarea","pre","code"]};const t=s=>new Promise(((i,a)=>{const r=document.createElement("script");r.type="text/javascript",r.onload=i,r.onerror=a,r.src=s,document.head.append(r)}));return{id:"katex",init:function(s){n=s;let i=n.getConfig().katex||{},a={...e,...i};const{local:r,version:o,extensions:l,...c}=a;let h=a.local||"https://cdn.jsdelivr.net/npm/katex",d=a.local?"":"@"+a.version,p=h+d+"/dist/katex.min.css",f=h+d+"/dist/contrib/mhchem.min.js",S=h+d+"/dist/contrib/auto-render.min.js",u=[h+d+"/dist/katex.min.js"];a.extensions&&a.extensions.includes("mhchem")&&u.push(f),u.push(S);const v=()=>{renderMathInElement(s.getSlidesElement(),c),n.layout()};(w=>{let P=document.createElement("link");P.rel="stylesheet",P.href=w,document.head.appendChild(P)})(p),(async function(w){for(const P of w)await t(P)})(u).then((()=>{n.isReady()?v():n.on("ready",v.bind(this))}))}}},MathJax2:ka,MathJax3:()=>{let n,e={tex:{inlineMath:[["$","$"],["\\(","\\)"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]},startup:{ready:()=>{MathJax.startup.defaultReady(),MathJax.startup.promise.then((()=>{n.layout()}))}}};return{id:"mathjax3",init:function(t){n=t;let s=n.getConfig().mathjax3||{},i={...e,...s};i.tex={...e.tex,...s.tex},i.options={...e.options,...s.options},i.startup={...e.startup,...s.startup};let a=i.mathjax||"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";i.mathjax=null,window.MathJax=i,(function(r,o){let l=document.createElement("script");l.type="text/javascript",l.id="MathJax-script",l.src=r,l.async=!0,l.onload=()=>{typeof o=="function"&&(o.call(),o=null)},document.head.appendChild(l)})(a,(function(){n.addEventListener("slidechanged",(function(r){MathJax.typeset()}))}))}}}});const Cn=Symbol.for("yaml.alias"),An=Symbol.for("yaml.document"),Ve=Symbol.for("yaml.map"),Aa=Symbol.for("yaml.pair"),Le=Symbol.for("yaml.scalar"),Ct=Symbol.for("yaml.seq"),be=Symbol.for("yaml.node.type"),Qe=n=>!!n&&typeof n=="object"&&n[be]===Cn,lt=n=>!!n&&typeof n=="object"&&n[be]===An,Nt=n=>!!n&&typeof n=="object"&&n[be]===Ve,J=n=>!!n&&typeof n=="object"&&n[be]===Aa,G=n=>!!n&&typeof n=="object"&&n[be]===Le,It=n=>!!n&&typeof n=="object"&&n[be]===Ct;function X(n){if(n&&typeof n=="object")switch(n[be]){case Ve:case Ct:return!0}return!1}function Z(n){if(n&&typeof n=="object")switch(n[be]){case Cn:case Ve:case Le:case Ct:return!0}return!1}const Pa=n=>(G(n)||X(n))&&!!n.anchor,ue=Symbol("break visit"),xa=Symbol("skip children"),Ee=Symbol("remove node");function ct(n,e){const t=Ra(e);lt(n)?St(null,n.contents,t,Object.freeze([n]))===Ee&&(n.contents=null):St(null,n,t,Object.freeze([]))}ct.BREAK=ue;ct.SKIP=xa;ct.REMOVE=Ee;function St(n,e,t,s){const i=_a(n,e,t,s);if(Z(i)||J(i))return Ta(n,s,i),St(n,i,t,s);if(typeof i!="symbol"){if(X(e)){s=Object.freeze(s.concat(e));for(let a=0;a<e.items.length;++a){const r=St(a,e.items[a],t,s);if(typeof r=="number")a=r-1;else{if(r===ue)return ue;r===Ee&&(e.items.splice(a,1),a-=1)}}}else if(J(e)){s=Object.freeze(s.concat(e));const a=St("key",e.key,t,s);if(a===ue)return ue;a===Ee&&(e.key=null);const r=St("value",e.value,t,s);if(r===ue)return ue;r===Ee&&(e.value=null)}}return i}async function Es(n,e){const t=Ra(e);lt(n)?await kt(null,n.contents,t,Object.freeze([n]))===Ee&&(n.contents=null):await kt(null,n,t,Object.freeze([]))}Es.BREAK=ue;Es.SKIP=xa;Es.REMOVE=Ee;async function kt(n,e,t,s){const i=await _a(n,e,t,s);if(Z(i)||J(i))return Ta(n,s,i),kt(n,i,t,s);if(typeof i!="symbol"){if(X(e)){s=Object.freeze(s.concat(e));for(let a=0;a<e.items.length;++a){const r=await kt(a,e.items[a],t,s);if(typeof r=="number")a=r-1;else{if(r===ue)return ue;r===Ee&&(e.items.splice(a,1),a-=1)}}}else if(J(e)){s=Object.freeze(s.concat(e));const a=await kt("key",e.key,t,s);if(a===ue)return ue;a===Ee&&(e.key=null);const r=await kt("value",e.value,t,s);if(r===ue)return ue;r===Ee&&(e.value=null)}}return i}function Ra(n){return typeof n=="object"&&(n.Collection||n.Node||n.Value)?Object.assign({Alias:n.Node,Map:n.Node,Scalar:n.Node,Seq:n.Node},n.Value&&{Map:n.Value,Scalar:n.Value,Seq:n.Value},n.Collection&&{Map:n.Collection,Seq:n.Collection},n):n}function _a(n,e,t,s){if(typeof t=="function")return t(n,e,s);if(Nt(e))return t.Map?.(n,e,s);if(It(e))return t.Seq?.(n,e,s);if(J(e))return t.Pair?.(n,e,s);if(G(e))return t.Scalar?.(n,e,s);if(Qe(e))return t.Alias?.(n,e,s)}function Ta(n,e,t){const s=e[e.length-1];if(X(s))s.items[n]=t;else if(J(s))n==="key"?s.key=t:s.value=t;else if(lt(s))s.contents=t;else{const i=Qe(s)?"alias":"scalar";throw new Error(`Cannot replace node with ${i} parent`)}}const bo={"!":"%21",",":"%2C","[":"%5B","]":"%5D","{":"%7B","}":"%7D"},yo=n=>n.replace(/[!,[\]{}]/g,e=>bo[e]);class de{constructor(e,t){this.docStart=null,this.docEnd=!1,this.yaml=Object.assign({},de.defaultYaml,e),this.tags=Object.assign({},de.defaultTags,t)}clone(){const e=new de(this.yaml,this.tags);return e.docStart=this.docStart,e}atDocument(){const e=new de(this.yaml,this.tags);switch(this.yaml.version){case"1.1":this.atNextDocument=!0;break;case"1.2":this.atNextDocument=!1,this.yaml={explicit:de.defaultYaml.explicit,version:"1.2"},this.tags=Object.assign({},de.defaultTags);break}return e}add(e,t){this.atNextDocument&&(this.yaml={explicit:de.defaultYaml.explicit,version:"1.1"},this.tags=Object.assign({},de.defaultTags),this.atNextDocument=!1);const s=e.trim().split(/[ \t]+/),i=s.shift();switch(i){case"%TAG":{if(s.length!==2&&(t(0,"%TAG directive should contain exactly two parts"),s.length<2))return!1;const[a,r]=s;return this.tags[a]=r,!0}case"%YAML":{if(this.yaml.explicit=!0,s.length!==1)return t(0,"%YAML directive should contain exactly one part"),!1;const[a]=s;if(a==="1.1"||a==="1.2")return this.yaml.version=a,!0;{const r=/^\d+\.\d+$/.test(a);return t(6,`Unsupported YAML version ${a}`,r),!1}}default:return t(0,`Unknown directive ${i}`,!0),!1}}tagName(e,t){if(e==="!")return"!";if(e[0]!=="!")return t(`Not a valid tag: ${e}`),null;if(e[1]==="<"){const r=e.slice(2,-1);return r==="!"||r==="!!"?(t(`Verbatim tags aren't resolved, so ${e} is invalid.`),null):(e[e.length-1]!==">"&&t("Verbatim tags must end with a >"),r)}const[,s,i]=e.match(/^(.*!)([^!]*)$/s);i||t(`The ${e} tag has no suffix`);const a=this.tags[s];if(a)try{return a+decodeURIComponent(i)}catch(r){return t(String(r)),null}return s==="!"?e:(t(`Could not resolve tag: ${e}`),null)}tagString(e){for(const[t,s]of Object.entries(this.tags))if(e.startsWith(s))return t+yo(e.substring(s.length));return e[0]==="!"?e:`!<${e}>`}toString(e){const t=this.yaml.explicit?[`%YAML ${this.yaml.version||"1.2"}`]:[],s=Object.entries(this.tags);let i;if(e&&s.length>0&&Z(e.contents)){const a={};ct(e.contents,(r,o)=>{Z(o)&&o.tag&&(a[o.tag]=!0)}),i=Object.keys(a)}else i=[];for(const[a,r]of s)a==="!!"&&r==="tag:yaml.org,2002:"||(!e||i.some(o=>o.startsWith(r)))&&t.push(`%TAG ${a} ${r}`);return t.join(`
+`)}}de.defaultYaml={explicit:!1,version:"1.2"};de.defaultTags={"!!":"tag:yaml.org,2002:"};function Ua(n){if(/[\x00-\x19\s,[\]{}]/.test(n)){const t=`Anchor must not contain whitespace or control characters: ${JSON.stringify(n)}`;throw new Error(t)}return!0}function Ea(n){const e=new Set;return ct(n,{Value(t,s){s.anchor&&e.add(s.anchor)}}),e}function La(n,e){for(let t=1;;++t){const s=`${n}${t}`;if(!e.has(s))return s}}function wo(n,e){const t=[],s=new Map;let i=null;return{onAnchor:a=>{t.push(a),i??(i=Ea(n));const r=La(e,i);return i.add(r),r},setAnchors:()=>{for(const a of t){const r=s.get(a);if(typeof r=="object"&&r.anchor&&(G(r.node)||X(r.node)))r.node.anchor=r.anchor;else{const o=new Error("Failed to resolve repeated object (this should not happen)");throw o.source=a,o}}},sourceObjects:s}}function At(n,e,t,s){if(s&&typeof s=="object")if(Array.isArray(s))for(let i=0,a=s.length;i<a;++i){const r=s[i],o=At(n,s,String(i),r);o===void 0?delete s[i]:o!==r&&(s[i]=o)}else if(s instanceof Map)for(const i of Array.from(s.keys())){const a=s.get(i),r=At(n,s,i,a);r===void 0?s.delete(i):r!==a&&s.set(i,r)}else if(s instanceof Set)for(const i of Array.from(s)){const a=At(n,s,i,i);a===void 0?s.delete(i):a!==i&&(s.delete(i),s.add(a))}else for(const[i,a]of Object.entries(s)){const r=At(n,s,i,a);r===void 0?delete s[i]:r!==a&&(s[i]=r)}return n.call(e,t,s)}function ve(n,e,t){if(Array.isArray(n))return n.map((s,i)=>ve(s,String(i),t));if(n&&typeof n.toJSON=="function"){if(!t||!Pa(n))return n.toJSON(e,t);const s={aliasCount:0,count:1,res:void 0};t.anchors.set(n,s),t.onCreate=a=>{s.res=a,delete t.onCreate};const i=n.toJSON(e,t);return t.onCreate&&t.onCreate(i),i}return typeof n=="bigint"&&!t?.keep?Number(n):n}class Nn{constructor(e){Object.defineProperty(this,be,{value:e})}clone(){const e=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return this.range&&(e.range=this.range.slice()),e}toJS(e,{mapAsMap:t,maxAliasCount:s,onAnchor:i,reviver:a}={}){if(!lt(e))throw new TypeError("A document argument is required");const r={anchors:new Map,doc:e,keep:!0,mapAsMap:t===!0,mapKeyWarned:!1,maxAliasCount:typeof s=="number"?s:100},o=ve(this,"",r);if(typeof i=="function")for(const{count:l,res:c}of r.anchors.values())i(c,l);return typeof a=="function"?At(a,{"":o},"",o):o}}class Ls extends Nn{constructor(e){super(Cn),this.source=e,Object.defineProperty(this,"tag",{set(){throw new Error("Alias nodes cannot have tags")}})}resolve(e,t){let s;t?.aliasResolveCache?s=t.aliasResolveCache:(s=[],ct(e,{Node:(a,r)=>{(Qe(r)||Pa(r))&&s.push(r)}}),t&&(t.aliasResolveCache=s));let i;for(const a of s){if(a===this)break;a.anchor===this.source&&(i=a)}return i}toJSON(e,t){if(!t)return{source:this.source};const{anchors:s,doc:i,maxAliasCount:a}=t,r=this.resolve(i,t);if(!r){const l=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new ReferenceError(l)}let o=s.get(r);if(o||(ve(r,null,t),o=s.get(r)),!o||o.res===void 0){const l="This should not happen: Alias anchor was not resolved?";throw new ReferenceError(l)}if(a>=0&&(o.count+=1,o.aliasCount===0&&(o.aliasCount=ys(i,r,s)),o.count*o.aliasCount>a)){const l="Excessive alias count indicates a resource exhaustion attack";throw new ReferenceError(l)}return o.res}toString(e,t,s){const i=`*${this.source}`;if(e){if(Ua(this.source),e.options.verifyAliasOrder&&!e.anchors.has(this.source)){const a=`Unresolved alias (the anchor must be set before the alias): ${this.source}`;throw new Error(a)}if(e.implicitKey)return`${i} `}return i}}function ys(n,e,t){if(Qe(e)){const s=e.resolve(n),i=t&&s&&t.get(s);return i?i.count*i.aliasCount:0}else if(X(e)){let s=0;for(const i of e.items){const a=ys(n,i,t);a>s&&(s=a)}return s}else if(J(e)){const s=ys(n,e.key,t),i=ys(n,e.value,t);return Math.max(s,i)}return 1}const Ca=n=>!n||typeof n!="function"&&typeof n!="object";class M extends Nn{constructor(e){super(Le),this.value=e}toJSON(e,t){return t?.keep?this.value:ve(this.value,e,t)}toString(){return String(this.value)}}M.BLOCK_FOLDED="BLOCK_FOLDED";M.BLOCK_LITERAL="BLOCK_LITERAL";M.PLAIN="PLAIN";M.QUOTE_DOUBLE="QUOTE_DOUBLE";M.QUOTE_SINGLE="QUOTE_SINGLE";const So="tag:yaml.org,2002:";function ko(n,e,t){if(e){const s=t.filter(a=>a.tag===e),i=s.find(a=>!a.format)??s[0];if(!i)throw new Error(`Tag ${e} not found`);return i}return t.find(s=>s.identify?.(n)&&!s.format)}function Ht(n,e,t){if(lt(n)&&(n=n.contents),Z(n))return n;if(J(n)){const d=t.schema[Ve].createNode?.(t.schema,null,t);return d.items.push(n),d}(n instanceof String||n instanceof Number||n instanceof Boolean||typeof BigInt<"u"&&n instanceof BigInt)&&(n=n.valueOf());const{aliasDuplicateObjects:s,onAnchor:i,onTagObj:a,schema:r,sourceObjects:o}=t;let l;if(s&&n&&typeof n=="object"){if(l=o.get(n),l)return l.anchor??(l.anchor=i(n)),new Ls(l.anchor);l={anchor:null,node:null},o.set(n,l)}e?.startsWith("!!")&&(e=So+e.slice(2));let c=ko(n,e,r.tags);if(!c){if(n&&typeof n.toJSON=="function"&&(n=n.toJSON()),!n||typeof n!="object"){const d=new M(n);return l&&(l.node=d),d}c=n instanceof Map?r[Ve]:Symbol.iterator in Object(n)?r[Ct]:r[Ve]}a&&(a(c),delete t.onTagObj);const h=c?.createNode?c.createNode(t.schema,n,t):typeof c?.nodeClass?.from=="function"?c.nodeClass.from(t.schema,n,t):new M(n);return e?h.tag=e:c.default||(h.tag=c.tag),l&&(l.node=h),h}function Rs(n,e,t){let s=t;for(let i=e.length-1;i>=0;--i){const a=e[i];if(typeof a=="number"&&Number.isInteger(a)&&a>=0){const r=[];r[a]=s,s=r}else s=new Map([[a,s]])}return Ht(s,void 0,{aliasDuplicateObjects:!1,keepUndefined:!1,onAnchor:()=>{throw new Error("This should not happen, please report a bug.")},schema:n,sourceObjects:new Map})}const Dt=n=>n==null||typeof n=="object"&&!!n[Symbol.iterator]().next().done;class Na extends Nn{constructor(e,t){super(e),Object.defineProperty(this,"schema",{value:t,configurable:!0,enumerable:!1,writable:!0})}clone(e){const t=Object.create(Object.getPrototypeOf(this),Object.getOwnPropertyDescriptors(this));return e&&(t.schema=e),t.items=t.items.map(s=>Z(s)||J(s)?s.clone(e):s),this.range&&(t.range=this.range.slice()),t}addIn(e,t){if(Dt(e))this.add(t);else{const[s,...i]=e,a=this.get(s,!0);if(X(a))a.addIn(i,t);else if(a===void 0&&this.schema)this.set(s,Rs(this.schema,i,t));else throw new Error(`Expected YAML collection at ${s}. Remaining path: ${i}`)}}deleteIn(e){const[t,...s]=e;if(s.length===0)return this.delete(t);const i=this.get(t,!0);if(X(i))return i.deleteIn(s);throw new Error(`Expected YAML collection at ${t}. Remaining path: ${s}`)}getIn(e,t){const[s,...i]=e,a=this.get(s,!0);return i.length===0?!t&&G(a)?a.value:a:X(a)?a.getIn(i,t):void 0}hasAllNullValues(e){return this.items.every(t=>{if(!J(t))return!1;const s=t.value;return s==null||e&&G(s)&&s.value==null&&!s.commentBefore&&!s.comment&&!s.tag})}hasIn(e){const[t,...s]=e;if(s.length===0)return this.has(t);const i=this.get(t,!0);return X(i)?i.hasIn(s):!1}setIn(e,t){const[s,...i]=e;if(i.length===0)this.set(s,t);else{const a=this.get(s,!0);if(X(a))a.setIn(i,t);else if(a===void 0&&this.schema)this.set(s,Rs(this.schema,i,t));else throw new Error(`Expected YAML collection at ${s}. Remaining path: ${i}`)}}}const Ao=n=>n.replace(/^(?!$)(?: $)?/gm,"#");function $e(n,e){return/^\n+$/.test(n)?n.substring(1):e?n.replace(/^(?! *$)/gm,e):n}const st=(n,e,t)=>n.endsWith(`
+`)?$e(t,e):t.includes(`
+`)?`
+`+$e(t,e):(n.endsWith(" ")?"":" ")+t,Ia="flow",Pn="block",ws="quoted";function Cs(n,e,t="flow",{indentAtStart:s,lineWidth:i=80,minContentWidth:a=20,onFold:r,onOverflow:o}={}){if(!i||i<0)return n;i<a&&(a=0);const l=Math.max(1+a,1+i-e.length);if(n.length<=l)return n;const c=[],h={};let d=i-e.length;typeof s=="number"&&(s>i-Math.max(2,a)?c.push(0):d=i-s);let p,f,S=!1,u=-1,v=-1,w=-1;t===Pn&&(u=Vi(n,u,e.length),u!==-1&&(d=u+l));for(let C;C=n[u+=1];){if(t===ws&&C==="\\"){switch(v=u,n[u+1]){case"x":u+=3;break;case"u":u+=5;break;case"U":u+=9;break;default:u+=1}w=u}if(C===`
+`)t===Pn&&(u=Vi(n,u,e.length)),d=u+e.length+l,p=void 0;else{if(C===" "&&f&&f!==" "&&f!==`
+`&&f!=="	"){const T=n[u+1];T&&T!==" "&&T!==`
+`&&T!=="	"&&(p=u)}if(u>=d)if(p)c.push(p),d=p+l,p=void 0;else if(t===ws){for(;f===" "||f==="	";)f=C,C=n[u+=1],S=!0;const T=u>w+1?u-2:v-1;if(h[T])return n;c.push(T),h[T]=!0,d=T+l,p=void 0}else S=!0}f=C}if(S&&o&&o(),c.length===0)return n;r&&r();let P=n.slice(0,c[0]);for(let C=0;C<c.length;++C){const T=c[C],A=c[C+1]||n.length;T===0?P=`
+${e}${n.slice(0,A)}`:(t===ws&&h[T]&&(P+=`${n[T]}\\`),P+=`
+${e}${n.slice(T+1,A)}`)}return P}function Vi(n,e,t){let s=e,i=e+1,a=n[i];for(;a===" "||a==="	";)if(e<i+t)a=n[++e];else{do a=n[++e];while(a&&a!==`
+`);s=e,i=e+1,a=n[i]}return s}const Ns=(n,e)=>({indentAtStart:e?n.indent.length:n.indentAtStart,lineWidth:n.options.lineWidth,minContentWidth:n.options.minContentWidth}),Is=n=>/^(%|---|\.\.\.)/m.test(n);function Po(n,e,t){if(!e||e<0)return!1;const s=e-t,i=n.length;if(i<=s)return!1;for(let a=0,r=0;a<i;++a)if(n[a]===`
+`){if(a-r>s)return!0;if(r=a+1,i-r<=s)return!1}return!0}function Kt(n,e){const t=JSON.stringify(n);if(e.options.doubleQuotedAsJSON)return t;const{implicitKey:s}=e,i=e.options.doubleQuotedMinMultiLineLength,a=e.indent||(Is(n)?"  ":"");let r="",o=0;for(let l=0,c=t[l];c;c=t[++l])if(c===" "&&t[l+1]==="\\"&&t[l+2]==="n"&&(r+=t.slice(o,l)+"\\ ",l+=1,o=l,c="\\"),c==="\\")switch(t[l+1]){case"u":{r+=t.slice(o,l);const h=t.substr(l+2,4);switch(h){case"0000":r+="\\0";break;case"0007":r+="\\a";break;case"000b":r+="\\v";break;case"001b":r+="\\e";break;case"0085":r+="\\N";break;case"00a0":r+="\\_";break;case"2028":r+="\\L";break;case"2029":r+="\\P";break;default:h.substr(0,2)==="00"?r+="\\x"+h.substr(2):r+=t.substr(l,6)}l+=5,o=l+1}break;case"n":if(s||t[l+2]==='"'||t.length<i)l+=1;else{for(r+=t.slice(o,l)+`
+
+`;t[l+2]==="\\"&&t[l+3]==="n"&&t[l+4]!=='"';)r+=`
+`,l+=2;r+=a,t[l+2]===" "&&(r+="\\"),l+=1,o=l+1}break;default:l+=1}return r=o?r+t.slice(o):t,s?r:Cs(r,a,ws,Ns(e,!1))}function xn(n,e){if(e.options.singleQuote===!1||e.implicitKey&&n.includes(`
+`)||/[ \t]\n|\n[ \t]/.test(n))return Kt(n,e);const t=e.indent||(Is(n)?"  ":""),s="'"+n.replace(/'/g,"''").replace(/\n+/g,`$&
+${t}`)+"'";return e.implicitKey?s:Cs(s,t,Ia,Ns(e,!1))}function Pt(n,e){const{singleQuote:t}=e.options;let s;if(t===!1)s=Kt;else{const i=n.includes('"'),a=n.includes("'");i&&!a?s=xn:a&&!i?s=Kt:s=t?xn:Kt}return s(n,e)}let Rn;try{Rn=new RegExp(`(^|(?<!
+))
++(?!
+|$)`,"g")}catch{Rn=/\n+(?!\n|$)/g}function Ss({comment:n,type:e,value:t},s,i,a){const{blockQuote:r,commentString:o,lineWidth:l}=s.options;if(!r||/\n[\t ]+$/.test(t))return Pt(t,s);const c=s.indent||(s.forceBlockIndent||Is(t)?"  ":""),h=r==="literal"?!0:r==="folded"||e===M.BLOCK_FOLDED?!1:e===M.BLOCK_LITERAL?!0:!Po(t,l,c.length);if(!t)return h?`|
+`:`>
+`;let d,p;for(p=t.length;p>0;--p){const A=t[p-1];if(A!==`
+`&&A!=="	"&&A!==" ")break}let f=t.substring(p);const S=f.indexOf(`
+`);S===-1?d="-":t===f||S!==f.length-1?(d="+",a&&a()):d="",f&&(t=t.slice(0,-f.length),f[f.length-1]===`
+`&&(f=f.slice(0,-1)),f=f.replace(Rn,`$&${c}`));let u=!1,v,w=-1;for(v=0;v<t.length;++v){const A=t[v];if(A===" ")u=!0;else if(A===`
+`)w=v;else break}let P=t.substring(0,w<v?w+1:v);P&&(t=t.substring(P.length),P=P.replace(/\n+/g,`$&${c}`));let T=(u?c?"2":"1":"")+d;if(n&&(T+=" "+o(n.replace(/ ?[\r\n]+/g," ")),i&&i()),!h){const A=t.replace(/\n+/g,`
+$&`).replace(/(?:^|\n)([\t ].*)(?:([\n\t ]*)\n(?![\n\t ]))?/g,"$1$2").replace(/\n+/g,`$&${c}`);let k=!1;const N=Ns(s,!0);r!=="folded"&&e!==M.BLOCK_FOLDED&&(N.onOverflow=()=>{k=!0});const R=Cs(`${P}${A}${f}`,c,Pn,N);if(!k)return`>${T}
+${c}${R}`}return t=t.replace(/\n+/g,`$&${c}`),`|${T}
+${c}${P}${t}${f}`}function xo(n,e,t,s){const{type:i,value:a}=n,{actualString:r,implicitKey:o,indent:l,indentStep:c,inFlow:h}=e;if(o&&a.includes(`
+`)||h&&/[[\]{},]/.test(a))return Pt(a,e);if(/^[\n\t ,[\]{}#&*!|>'"%@`]|^[?-]$|^[?-][ \t]|[\n:][ \t]|[ \t]\n|[\n\t ]#|[\n\t :]$/.test(a))return o||h||!a.includes(`
+`)?Pt(a,e):Ss(n,e,t,s);if(!o&&!h&&i!==M.PLAIN&&a.includes(`
+`))return Ss(n,e,t,s);if(Is(a)){if(l==="")return e.forceBlockIndent=!0,Ss(n,e,t,s);if(o&&l===c)return Pt(a,e)}const d=a.replace(/\n+/g,`$&
+${l}`);if(r){const p=u=>u.default&&u.tag!=="tag:yaml.org,2002:str"&&u.test?.test(d),{compat:f,tags:S}=e.doc.schema;if(S.some(p)||f?.some(p))return Pt(a,e)}return o?d:Cs(d,l,Ia,Ns(e,!1))}function Qt(n,e,t,s){const{implicitKey:i,inFlow:a}=e,r=typeof n.value=="string"?n:Object.assign({},n,{value:String(n.value)});let{type:o}=n;o!==M.QUOTE_DOUBLE&&/[\x00-\x08\x0b-\x1f\x7f-\x9f\u{D800}-\u{DFFF}]/u.test(r.value)&&(o=M.QUOTE_DOUBLE);const l=h=>{switch(h){case M.BLOCK_FOLDED:case M.BLOCK_LITERAL:return i||a?Pt(r.value,e):Ss(r,e,t,s);case M.QUOTE_DOUBLE:return Kt(r.value,e);case M.QUOTE_SINGLE:return xn(r.value,e);case M.PLAIN:return xo(r,e,t,s);default:return null}};let c=l(o);if(c===null){const{defaultKeyType:h,defaultStringType:d}=e.options,p=i&&h||d;if(c=l(p),c===null)throw new Error(`Unsupported default string type ${p}`)}return c}function $a(n,e){const t=Object.assign({blockQuote:!0,commentString:Ao,defaultKeyType:null,defaultStringType:"PLAIN",directives:null,doubleQuotedAsJSON:!1,doubleQuotedMinMultiLineLength:40,falseStr:"false",flowCollectionPadding:!0,indentSeq:!0,lineWidth:80,minContentWidth:20,nullStr:"null",simpleKeys:!1,singleQuote:null,trueStr:"true",verifyAliasOrder:!0},n.schema.toStringOptions,e);let s;switch(t.collectionStyle){case"block":s=!1;break;case"flow":s=!0;break;default:s=null}return{anchors:new Set,doc:n,flowCollectionPadding:t.flowCollectionPadding?" ":"",indent:"",indentStep:typeof t.indent=="number"?" ".repeat(t.indent):"  ",inFlow:s,options:t}}function Ro(n,e){if(e.tag){const i=n.filter(a=>a.tag===e.tag);if(i.length>0)return i.find(a=>a.format===e.format)??i[0]}let t,s;if(G(e)){s=e.value;let i=n.filter(a=>a.identify?.(s));if(i.length>1){const a=i.filter(r=>r.test);a.length>0&&(i=a)}t=i.find(a=>a.format===e.format)??i.find(a=>!a.format)}else s=e,t=n.find(i=>i.nodeClass&&s instanceof i.nodeClass);if(!t){const i=s?.constructor?.name??(s===null?"null":typeof s);throw new Error(`Tag not resolved for ${i} value`)}return t}function _o(n,e,{anchors:t,doc:s}){if(!s.directives)return"";const i=[],a=(G(n)||X(n))&&n.anchor;a&&Ua(a)&&(t.add(a),i.push(`&${a}`));const r=n.tag??(e.default?null:e.tag);return r&&i.push(s.directives.tagString(r)),i.join(" ")}function Et(n,e,t,s){if(J(n))return n.toString(e,t,s);if(Qe(n)){if(e.doc.directives)return n.toString(e);if(e.resolvedAliases?.has(n))throw new TypeError("Cannot stringify circular structure without alias nodes");e.resolvedAliases?e.resolvedAliases.add(n):e.resolvedAliases=new Set([n]),n=n.resolve(e.doc)}let i;const a=Z(n)?n:e.doc.createNode(n,{onTagObj:l=>i=l});i??(i=Ro(e.doc.schema.tags,a));const r=_o(a,i,e);r.length>0&&(e.indentAtStart=(e.indentAtStart??0)+r.length+1);const o=typeof i.stringify=="function"?i.stringify(a,e,t,s):G(a)?Qt(a,e,t,s):a.toString(e,t,s);return r?G(a)||o[0]==="{"||o[0]==="["?`${r} ${o}`:`${r}
+${e.indent}${o}`:o}function To({key:n,value:e},t,s,i){const{allNullValues:a,doc:r,indent:o,indentStep:l,options:{commentString:c,indentSeq:h,simpleKeys:d}}=t;let p=Z(n)&&n.comment||null;if(d){if(p)throw new Error("With simple keys, key nodes cannot have comments");if(X(n)||!Z(n)&&typeof n=="object"){const N="With simple keys, collection cannot be used as a key value";throw new Error(N)}}let f=!d&&(!n||p&&e==null&&!t.inFlow||X(n)||(G(n)?n.type===M.BLOCK_FOLDED||n.type===M.BLOCK_LITERAL:typeof n=="object"));t=Object.assign({},t,{allNullValues:!1,implicitKey:!f&&(d||!a),indent:o+l});let S=!1,u=!1,v=Et(n,t,()=>S=!0,()=>u=!0);if(!f&&!t.inFlow&&v.length>1024){if(d)throw new Error("With simple keys, single line scalar must not span more than 1024 characters");f=!0}if(t.inFlow){if(a||e==null)return S&&s&&s(),v===""?"?":f?`? ${v}`:v}else if(a&&!d||e==null&&f)return v=`? ${v}`,p&&!S?v+=st(v,t.indent,c(p)):u&&i&&i(),v;S&&(p=null),f?(p&&(v+=st(v,t.indent,c(p))),v=`? ${v}
+${o}:`):(v=`${v}:`,p&&(v+=st(v,t.indent,c(p))));let w,P,C;Z(e)?(w=!!e.spaceBefore,P=e.commentBefore,C=e.comment):(w=!1,P=null,C=null,e&&typeof e=="object"&&(e=r.createNode(e))),t.implicitKey=!1,!f&&!p&&G(e)&&(t.indentAtStart=v.length+1),u=!1,!h&&l.length>=2&&!t.inFlow&&!f&&It(e)&&!e.flow&&!e.tag&&!e.anchor&&(t.indent=t.indent.substring(2));let T=!1;const A=Et(e,t,()=>T=!0,()=>u=!0);let k=" ";if(p||w||P){if(k=w?`
+`:"",P){const N=c(P);k+=`
+${$e(N,t.indent)}`}A===""&&!t.inFlow?k===`
+`&&(k=`
+
+`):k+=`
+${t.indent}`}else if(!f&&X(e)){const N=A[0],R=A.indexOf(`
+`),L=R!==-1,b=t.inFlow??e.flow??e.items.length===0;if(L||!b){let q=!1;if(L&&(N==="&"||N==="!")){let I=A.indexOf(" ");N==="&"&&I!==-1&&I<R&&A[I+1]==="!"&&(I=A.indexOf(" ",I+1)),(I===-1||R<I)&&(q=!0)}q||(k=`
+${t.indent}`)}}else(A===""||A[0]===`
+`)&&(k="");return v+=k+A,t.inFlow?T&&s&&s():C&&!T?v+=st(v,t.indent,c(C)):u&&i&&i(),v}function qa(n,e){(n==="debug"||n==="warn")&&console.warn(e)}const hs="<<",qe={identify:n=>n===hs||typeof n=="symbol"&&n.description===hs,default:"key",tag:"tag:yaml.org,2002:merge",test:/^<<$/,resolve:()=>Object.assign(new M(Symbol(hs)),{addToJSMap:Oa}),stringify:()=>hs},Uo=(n,e)=>(qe.identify(e)||G(e)&&(!e.type||e.type===M.PLAIN)&&qe.identify(e.value))&&n?.doc.schema.tags.some(t=>t.tag===qe.tag&&t.default);function Oa(n,e,t){if(t=n&&Qe(t)?t.resolve(n.doc):t,It(t))for(const s of t.items)cn(n,e,s);else if(Array.isArray(t))for(const s of t)cn(n,e,s);else cn(n,e,t)}function cn(n,e,t){const s=n&&Qe(t)?t.resolve(n.doc):t;if(!Nt(s))throw new Error("Merge sources must be maps or map aliases");const i=s.toJSON(null,n,Map);for(const[a,r]of i)e instanceof Map?e.has(a)||e.set(a,r):e instanceof Set?e.add(a):Object.prototype.hasOwnProperty.call(e,a)||Object.defineProperty(e,a,{value:r,writable:!0,enumerable:!0,configurable:!0});return e}function ja(n,e,{key:t,value:s}){if(Z(t)&&t.addToJSMap)t.addToJSMap(n,e,s);else if(Uo(n,t))Oa(n,e,s);else{const i=ve(t,"",n);if(e instanceof Map)e.set(i,ve(s,i,n));else if(e instanceof Set)e.add(i);else{const a=Eo(t,i,n),r=ve(s,a,n);a in e?Object.defineProperty(e,a,{value:r,writable:!0,enumerable:!0,configurable:!0}):e[a]=r}}return e}function Eo(n,e,t){if(e===null)return"";if(typeof e!="object")return String(e);if(Z(n)&&t?.doc){const s=$a(t.doc,{});s.anchors=new Set;for(const a of t.anchors.keys())s.anchors.add(a.anchor);s.inFlow=!0,s.inStringifyKey=!0;const i=n.toString(s);if(!t.mapKeyWarned){let a=JSON.stringify(i);a.length>40&&(a=a.substring(0,36)+'..."'),qa(t.doc.options.logLevel,`Keys with collection values will be stringified due to JS Object restrictions: ${a}. Set mapAsMap: true to use object keys.`),t.mapKeyWarned=!0}return i}return JSON.stringify(e)}function In(n,e,t){const s=Ht(n,void 0,t),i=Ht(e,void 0,t);return new le(s,i)}class le{constructor(e,t=null){Object.defineProperty(this,be,{value:Aa}),this.key=e,this.value=t}clone(e){let{key:t,value:s}=this;return Z(t)&&(t=t.clone(e)),Z(s)&&(s=s.clone(e)),new le(t,s)}toJSON(e,t){const s=t?.mapAsMap?new Map:{};return ja(t,s,this)}toString(e,t,s){return e?.doc?To(this,e,t,s):JSON.stringify(this)}}function Ba(n,e,t){return(e.inFlow??n.flow?Co:Lo)(n,e,t)}function Lo({comment:n,items:e},t,{blockItemPrefix:s,flowChars:i,itemIndent:a,onChompKeep:r,onComment:o}){const{indent:l,options:{commentString:c}}=t,h=Object.assign({},t,{indent:a,type:null});let d=!1;const p=[];for(let S=0;S<e.length;++S){const u=e[S];let v=null;if(Z(u))!d&&u.spaceBefore&&p.push(""),_s(t,p,u.commentBefore,d),u.comment&&(v=u.comment);else if(J(u)){const P=Z(u.key)?u.key:null;P&&(!d&&P.spaceBefore&&p.push(""),_s(t,p,P.commentBefore,d))}d=!1;let w=Et(u,h,()=>v=null,()=>d=!0);v&&(w+=st(w,a,c(v))),d&&v&&(d=!1),p.push(s+w)}let f;if(p.length===0)f=i.start+i.end;else{f=p[0];for(let S=1;S<p.length;++S){const u=p[S];f+=u?`
+${l}${u}`:`
+`}}return n?(f+=`
+`+$e(c(n),l),o&&o()):d&&r&&r(),f}function Co({items:n},e,{flowChars:t,itemIndent:s}){const{indent:i,indentStep:a,flowCollectionPadding:r,options:{commentString:o}}=e;s+=a;const l=Object.assign({},e,{indent:s,inFlow:!0,type:null});let c=!1,h=0;const d=[];for(let S=0;S<n.length;++S){const u=n[S];let v=null;if(Z(u))u.spaceBefore&&d.push(""),_s(e,d,u.commentBefore,!1),u.comment&&(v=u.comment);else if(J(u)){const P=Z(u.key)?u.key:null;P&&(P.spaceBefore&&d.push(""),_s(e,d,P.commentBefore,!1),P.comment&&(c=!0));const C=Z(u.value)?u.value:null;C?(C.comment&&(v=C.comment),C.commentBefore&&(c=!0)):u.value==null&&P?.comment&&(v=P.comment)}v&&(c=!0);let w=Et(u,l,()=>v=null);S<n.length-1&&(w+=","),v&&(w+=st(w,s,o(v))),!c&&(d.length>h||w.includes(`
+`))&&(c=!0),d.push(w),h=d.length}const{start:p,end:f}=t;if(d.length===0)return p+f;if(!c){const S=d.reduce((u,v)=>u+v.length+2,2);c=e.options.lineWidth>0&&S>e.options.lineWidth}if(c){let S=p;for(const u of d)S+=u?`
+${a}${i}${u}`:`
+`;return`${S}
+${i}${f}`}else return`${p}${r}${d.join(" ")}${r}${f}`}function _s({indent:n,options:{commentString:e}},t,s,i){if(s&&i&&(s=s.replace(/^\n+/,"")),s){const a=$e(e(s),n);t.push(a.trimStart())}}function nt(n,e){const t=G(e)?e.value:e;for(const s of n)if(J(s)&&(s.key===e||s.key===t||G(s.key)&&s.key.value===t))return s}class me extends Na{static get tagName(){return"tag:yaml.org,2002:map"}constructor(e){super(Ve,e),this.items=[]}static from(e,t,s){const{keepUndefined:i,replacer:a}=s,r=new this(e),o=(l,c)=>{if(typeof a=="function")c=a.call(t,l,c);else if(Array.isArray(a)&&!a.includes(l))return;(c!==void 0||i)&&r.items.push(In(l,c,s))};if(t instanceof Map)for(const[l,c]of t)o(l,c);else if(t&&typeof t=="object")for(const l of Object.keys(t))o(l,t[l]);return typeof e.sortMapEntries=="function"&&r.items.sort(e.sortMapEntries),r}add(e,t){let s;J(e)?s=e:!e||typeof e!="object"||!("key"in e)?s=new le(e,e?.value):s=new le(e.key,e.value);const i=nt(this.items,s.key),a=this.schema?.sortMapEntries;if(i){if(!t)throw new Error(`Key ${s.key} already set`);G(i.value)&&Ca(s.value)?i.value.value=s.value:i.value=s.value}else if(a){const r=this.items.findIndex(o=>a(s,o)<0);r===-1?this.items.push(s):this.items.splice(r,0,s)}else this.items.push(s)}delete(e){const t=nt(this.items,e);return t?this.items.splice(this.items.indexOf(t),1).length>0:!1}get(e,t){const i=nt(this.items,e)?.value;return(!t&&G(i)?i.value:i)??void 0}has(e){return!!nt(this.items,e)}set(e,t){this.add(new le(e,t),!0)}toJSON(e,t,s){const i=s?new s:t?.mapAsMap?new Map:{};t?.onCreate&&t.onCreate(i);for(const a of this.items)ja(t,i,a);return i}toString(e,t,s){if(!e)return JSON.stringify(this);for(const i of this.items)if(!J(i))throw new Error(`Map items must all be pairs; found ${JSON.stringify(i)} instead`);return!e.allNullValues&&this.hasAllNullValues(!1)&&(e=Object.assign({},e,{allNullValues:!0})),Ba(this,e,{blockItemPrefix:"",flowChars:{start:"{",end:"}"},itemIndent:e.indent||"",onChompKeep:s,onComment:t})}}const $t={collection:"map",default:!0,nodeClass:me,tag:"tag:yaml.org,2002:map",resolve(n,e){return Nt(n)||e("Expected a mapping for this tag"),n},createNode:(n,e,t)=>me.from(n,e,t)};class Ge extends Na{static get tagName(){return"tag:yaml.org,2002:seq"}constructor(e){super(Ct,e),this.items=[]}add(e){this.items.push(e)}delete(e){const t=ms(e);return typeof t!="number"?!1:this.items.splice(t,1).length>0}get(e,t){const s=ms(e);if(typeof s!="number")return;const i=this.items[s];return!t&&G(i)?i.value:i}has(e){const t=ms(e);return typeof t=="number"&&t<this.items.length}set(e,t){const s=ms(e);if(typeof s!="number")throw new Error(`Expected a valid index, not ${e}.`);const i=this.items[s];G(i)&&Ca(t)?i.value=t:this.items[s]=t}toJSON(e,t){const s=[];t?.onCreate&&t.onCreate(s);let i=0;for(const a of this.items)s.push(ve(a,String(i++),t));return s}toString(e,t,s){return e?Ba(this,e,{blockItemPrefix:"- ",flowChars:{start:"[",end:"]"},itemIndent:(e.indent||"")+"  ",onChompKeep:s,onComment:t}):JSON.stringify(this)}static from(e,t,s){const{replacer:i}=s,a=new this(e);if(t&&Symbol.iterator in Object(t)){let r=0;for(let o of t){if(typeof i=="function"){const l=t instanceof Set?o:String(r++);o=i.call(t,l,o)}a.items.push(Ht(o,void 0,s))}}return a}}function ms(n){let e=G(n)?n.value:n;return e&&typeof e=="string"&&(e=Number(e)),typeof e=="number"&&Number.isInteger(e)&&e>=0?e:null}const qt={collection:"seq",default:!0,nodeClass:Ge,tag:"tag:yaml.org,2002:seq",resolve(n,e){return It(n)||e("Expected a sequence for this tag"),n},createNode:(n,e,t)=>Ge.from(n,e,t)},$s={identify:n=>typeof n=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:n=>n,stringify(n,e,t,s){return e=Object.assign({actualString:!0},e),Qt(n,e,t,s)}},qs={identify:n=>n==null,createNode:()=>new M(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^(?:~|[Nn]ull|NULL)?$/,resolve:()=>new M(null),stringify:({source:n},e)=>typeof n=="string"&&qs.test.test(n)?n:e.options.nullStr},$n={identify:n=>typeof n=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:[Tt]rue|TRUE|[Ff]alse|FALSE)$/,resolve:n=>new M(n[0]==="t"||n[0]==="T"),stringify({source:n,value:e},t){if(n&&$n.test.test(n)){const s=n[0]==="t"||n[0]==="T";if(e===s)return n}return e?t.options.trueStr:t.options.falseStr}};function xe({format:n,minFractionDigits:e,tag:t,value:s}){if(typeof s=="bigint")return String(s);const i=typeof s=="number"?s:Number(s);if(!isFinite(i))return isNaN(i)?".nan":i<0?"-.inf":".inf";let a=JSON.stringify(s);if(!n&&e&&(!t||t==="tag:yaml.org,2002:float")&&/^\d/.test(a)){let r=a.indexOf(".");r<0&&(r=a.length,a+=".");let o=e-(a.length-r-1);for(;o-- >0;)a+="0"}return a}const Ma={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\.(?:inf|Inf|INF)|\.nan|\.NaN|\.NAN)$/,resolve:n=>n.slice(-3).toLowerCase()==="nan"?NaN:n[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:xe},Fa={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:\.[0-9]+|[0-9]+(?:\.[0-9]*)?)[eE][-+]?[0-9]+$/,resolve:n=>parseFloat(n),stringify(n){const e=Number(n.value);return isFinite(e)?e.toExponential():xe(n)}},za={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:\.[0-9]+|[0-9]+\.[0-9]*)$/,resolve(n){const e=new M(parseFloat(n)),t=n.indexOf(".");return t!==-1&&n[n.length-1]==="0"&&(e.minFractionDigits=n.length-t-1),e},stringify:xe},Os=n=>typeof n=="bigint"||Number.isInteger(n),qn=(n,e,t,{intAsBigInt:s})=>s?BigInt(n):parseInt(n.substring(e),t);function Da(n,e,t){const{value:s}=n;return Os(s)&&s>=0?t+s.toString(e):xe(n)}const Ka={identify:n=>Os(n)&&n>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^0o[0-7]+$/,resolve:(n,e,t)=>qn(n,2,8,t),stringify:n=>Da(n,8,"0o")},Ha={identify:Os,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9]+$/,resolve:(n,e,t)=>qn(n,0,10,t),stringify:xe},Wa={identify:n=>Os(n)&&n>=0,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^0x[0-9a-fA-F]+$/,resolve:(n,e,t)=>qn(n,2,16,t),stringify:n=>Da(n,16,"0x")},No=[$t,qt,$s,qs,$n,Ka,Ha,Wa,Ma,Fa,za];function Gi(n){return typeof n=="bigint"||Number.isInteger(n)}const fs=({value:n})=>JSON.stringify(n),Io=[{identify:n=>typeof n=="string",default:!0,tag:"tag:yaml.org,2002:str",resolve:n=>n,stringify:fs},{identify:n=>n==null,createNode:()=>new M(null),default:!0,tag:"tag:yaml.org,2002:null",test:/^null$/,resolve:()=>null,stringify:fs},{identify:n=>typeof n=="boolean",default:!0,tag:"tag:yaml.org,2002:bool",test:/^true$|^false$/,resolve:n=>n==="true",stringify:fs},{identify:Gi,default:!0,tag:"tag:yaml.org,2002:int",test:/^-?(?:0|[1-9][0-9]*)$/,resolve:(n,e,{intAsBigInt:t})=>t?BigInt(n):parseInt(n,10),stringify:({value:n})=>Gi(n)?n.toString():JSON.stringify(n)},{identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^-?(?:0|[1-9][0-9]*)(?:\.[0-9]*)?(?:[eE][-+]?[0-9]+)?$/,resolve:n=>parseFloat(n),stringify:fs}],$o={default:!0,tag:"",test:/^/,resolve(n,e){return e(`Unresolved plain scalar ${JSON.stringify(n)}`),n}},qo=[$t,qt].concat(Io,$o),On={identify:n=>n instanceof Uint8Array,default:!1,tag:"tag:yaml.org,2002:binary",resolve(n,e){if(typeof atob=="function"){const t=atob(n.replace(/[\n\r]/g,"")),s=new Uint8Array(t.length);for(let i=0;i<t.length;++i)s[i]=t.charCodeAt(i);return s}else return e("This environment does not support reading binary tags; either Buffer or atob is required"),n},stringify({comment:n,type:e,value:t},s,i,a){if(!t)return"";const r=t;let o;if(typeof btoa=="function"){let l="";for(let c=0;c<r.length;++c)l+=String.fromCharCode(r[c]);o=btoa(l)}else throw new Error("This environment does not support writing binary tags; either Buffer or btoa is required");if(e??(e=M.BLOCK_LITERAL),e!==M.QUOTE_DOUBLE){const l=Math.max(s.options.lineWidth-s.indent.length,s.options.minContentWidth),c=Math.ceil(o.length/l),h=new Array(c);for(let d=0,p=0;d<c;++d,p+=l)h[d]=o.substr(p,l);o=h.join(e===M.BLOCK_LITERAL?`
+`:" ")}return Qt({comment:n,type:e,value:o},s,i,a)}};function Va(n,e){if(It(n))for(let t=0;t<n.items.length;++t){let s=n.items[t];if(!J(s)){if(Nt(s)){s.items.length>1&&e("Each pair must have its own sequence indicator");const i=s.items[0]||new le(new M(null));if(s.commentBefore&&(i.key.commentBefore=i.key.commentBefore?`${s.commentBefore}
+${i.key.commentBefore}`:s.commentBefore),s.comment){const a=i.value??i.key;a.comment=a.comment?`${s.comment}
+${a.comment}`:s.comment}s=i}n.items[t]=J(s)?s:new le(s)}}else e("Expected a sequence for this tag");return n}function Ga(n,e,t){const{replacer:s}=t,i=new Ge(n);i.tag="tag:yaml.org,2002:pairs";let a=0;if(e&&Symbol.iterator in Object(e))for(let r of e){typeof s=="function"&&(r=s.call(e,String(a++),r));let o,l;if(Array.isArray(r))if(r.length===2)o=r[0],l=r[1];else throw new TypeError(`Expected [key, value] tuple: ${r}`);else if(r&&r instanceof Object){const c=Object.keys(r);if(c.length===1)o=c[0],l=r[o];else throw new TypeError(`Expected tuple with one key, not ${c.length} keys`)}else o=r;i.items.push(In(o,l,t))}return i}const jn={collection:"seq",default:!1,tag:"tag:yaml.org,2002:pairs",resolve:Va,createNode:Ga};class _t extends Ge{constructor(){super(),this.add=me.prototype.add.bind(this),this.delete=me.prototype.delete.bind(this),this.get=me.prototype.get.bind(this),this.has=me.prototype.has.bind(this),this.set=me.prototype.set.bind(this),this.tag=_t.tag}toJSON(e,t){if(!t)return super.toJSON(e);const s=new Map;t?.onCreate&&t.onCreate(s);for(const i of this.items){let a,r;if(J(i)?(a=ve(i.key,"",t),r=ve(i.value,a,t)):a=ve(i,"",t),s.has(a))throw new Error("Ordered maps must not include duplicate keys");s.set(a,r)}return s}static from(e,t,s){const i=Ga(e,t,s),a=new this;return a.items=i.items,a}}_t.tag="tag:yaml.org,2002:omap";const Bn={collection:"seq",identify:n=>n instanceof Map,nodeClass:_t,default:!1,tag:"tag:yaml.org,2002:omap",resolve(n,e){const t=Va(n,e),s=[];for(const{key:i}of t.items)G(i)&&(s.includes(i.value)?e(`Ordered maps must not include duplicate keys: ${i.value}`):s.push(i.value));return Object.assign(new _t,t)},createNode:(n,e,t)=>_t.from(n,e,t)};function Qa({value:n,source:e},t){return e&&(n?Ja:Ya).test.test(e)?e:n?t.options.trueStr:t.options.falseStr}const Ja={identify:n=>n===!0,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:Y|y|[Yy]es|YES|[Tt]rue|TRUE|[Oo]n|ON)$/,resolve:()=>new M(!0),stringify:Qa},Ya={identify:n=>n===!1,default:!0,tag:"tag:yaml.org,2002:bool",test:/^(?:N|n|[Nn]o|NO|[Ff]alse|FALSE|[Oo]ff|OFF)$/,resolve:()=>new M(!1),stringify:Qa},Oo={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^(?:[-+]?\.(?:inf|Inf|INF)|\.nan|\.NaN|\.NAN)$/,resolve:n=>n.slice(-3).toLowerCase()==="nan"?NaN:n[0]==="-"?Number.NEGATIVE_INFINITY:Number.POSITIVE_INFINITY,stringify:xe},jo={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"EXP",test:/^[-+]?(?:[0-9][0-9_]*)?(?:\.[0-9_]*)?[eE][-+]?[0-9]+$/,resolve:n=>parseFloat(n.replace(/_/g,"")),stringify(n){const e=Number(n.value);return isFinite(e)?e.toExponential():xe(n)}},Bo={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",test:/^[-+]?(?:[0-9][0-9_]*)?\.[0-9_]*$/,resolve(n){const e=new M(parseFloat(n.replace(/_/g,""))),t=n.indexOf(".");if(t!==-1){const s=n.substring(t+1).replace(/_/g,"");s[s.length-1]==="0"&&(e.minFractionDigits=s.length)}return e},stringify:xe},Jt=n=>typeof n=="bigint"||Number.isInteger(n);function js(n,e,t,{intAsBigInt:s}){const i=n[0];if((i==="-"||i==="+")&&(e+=1),n=n.substring(e).replace(/_/g,""),s){switch(t){case 2:n=`0b${n}`;break;case 8:n=`0o${n}`;break;case 16:n=`0x${n}`;break}const r=BigInt(n);return i==="-"?BigInt(-1)*r:r}const a=parseInt(n,t);return i==="-"?-1*a:a}function Mn(n,e,t){const{value:s}=n;if(Jt(s)){const i=s.toString(e);return s<0?"-"+t+i.substr(1):t+i}return xe(n)}const Mo={identify:Jt,default:!0,tag:"tag:yaml.org,2002:int",format:"BIN",test:/^[-+]?0b[0-1_]+$/,resolve:(n,e,t)=>js(n,2,2,t),stringify:n=>Mn(n,2,"0b")},Fo={identify:Jt,default:!0,tag:"tag:yaml.org,2002:int",format:"OCT",test:/^[-+]?0[0-7_]+$/,resolve:(n,e,t)=>js(n,1,8,t),stringify:n=>Mn(n,8,"0")},zo={identify:Jt,default:!0,tag:"tag:yaml.org,2002:int",test:/^[-+]?[0-9][0-9_]*$/,resolve:(n,e,t)=>js(n,0,10,t),stringify:xe},Do={identify:Jt,default:!0,tag:"tag:yaml.org,2002:int",format:"HEX",test:/^[-+]?0x[0-9a-fA-F_]+$/,resolve:(n,e,t)=>js(n,2,16,t),stringify:n=>Mn(n,16,"0x")};class Tt extends me{constructor(e){super(e),this.tag=Tt.tag}add(e){let t;J(e)?t=e:e&&typeof e=="object"&&"key"in e&&"value"in e&&e.value===null?t=new le(e.key,null):t=new le(e,null),nt(this.items,t.key)||this.items.push(t)}get(e,t){const s=nt(this.items,e);return!t&&J(s)?G(s.key)?s.key.value:s.key:s}set(e,t){if(typeof t!="boolean")throw new Error(`Expected boolean value for set(key, value) in a YAML set, not ${typeof t}`);const s=nt(this.items,e);s&&!t?this.items.splice(this.items.indexOf(s),1):!s&&t&&this.items.push(new le(e))}toJSON(e,t){return super.toJSON(e,t,Set)}toString(e,t,s){if(!e)return JSON.stringify(this);if(this.hasAllNullValues(!0))return super.toString(Object.assign({},e,{allNullValues:!0}),t,s);throw new Error("Set items must all have null values")}static from(e,t,s){const{replacer:i}=s,a=new this(e);if(t&&Symbol.iterator in Object(t))for(let r of t)typeof i=="function"&&(r=i.call(t,r,r)),a.items.push(In(r,null,s));return a}}Tt.tag="tag:yaml.org,2002:set";const Fn={collection:"map",identify:n=>n instanceof Set,nodeClass:Tt,default:!1,tag:"tag:yaml.org,2002:set",createNode:(n,e,t)=>Tt.from(n,e,t),resolve(n,e){if(Nt(n)){if(n.hasAllNullValues(!0))return Object.assign(new Tt,n);e("Set items must all have null values")}else e("Expected a mapping for this tag");return n}};function zn(n,e){const t=n[0],s=t==="-"||t==="+"?n.substring(1):n,i=r=>e?BigInt(r):Number(r),a=s.replace(/_/g,"").split(":").reduce((r,o)=>r*i(60)+i(o),i(0));return t==="-"?i(-1)*a:a}function Xa(n){let{value:e}=n,t=r=>r;if(typeof e=="bigint")t=r=>BigInt(r);else if(isNaN(e)||!isFinite(e))return xe(n);let s="";e<0&&(s="-",e*=t(-1));const i=t(60),a=[e%i];return e<60?a.unshift(0):(e=(e-a[0])/i,a.unshift(e%i),e>=60&&(e=(e-a[0])/i,a.unshift(e))),s+a.map(r=>String(r).padStart(2,"0")).join(":").replace(/000000\d*$/,"")}const Za={identify:n=>typeof n=="bigint"||Number.isInteger(n),default:!0,tag:"tag:yaml.org,2002:int",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+$/,resolve:(n,e,{intAsBigInt:t})=>zn(n,t),stringify:Xa},er={identify:n=>typeof n=="number",default:!0,tag:"tag:yaml.org,2002:float",format:"TIME",test:/^[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\.[0-9_]*$/,resolve:n=>zn(n,!1),stringify:Xa},Bs={identify:n=>n instanceof Date,default:!0,tag:"tag:yaml.org,2002:timestamp",test:RegExp("^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})(?:(?:t|T|[ \\t]+)([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2}(\\.[0-9]+)?)(?:[ \\t]*(Z|[-+][012]?[0-9](?::[0-9]{2})?))?)?$"),resolve(n){const e=n.match(Bs.test);if(!e)throw new Error("!!timestamp expects a date, starting with yyyy-mm-dd");const[,t,s,i,a,r,o]=e.map(Number),l=e[7]?Number((e[7]+"00").substr(1,3)):0;let c=Date.UTC(t,s-1,i,a||0,r||0,o||0,l);const h=e[8];if(h&&h!=="Z"){let d=zn(h,!1);Math.abs(d)<30&&(d*=60),c-=6e4*d}return new Date(c)},stringify:({value:n})=>n?.toISOString().replace(/(T00:00:00)?\.000Z$/,"")??""},Qi=[$t,qt,$s,qs,Ja,Ya,Mo,Fo,zo,Do,Oo,jo,Bo,On,qe,Bn,jn,Fn,Za,er,Bs],Ji=new Map([["core",No],["failsafe",[$t,qt,$s]],["json",qo],["yaml11",Qi],["yaml-1.1",Qi]]),Yi={binary:On,bool:$n,float:za,floatExp:Fa,floatNaN:Ma,floatTime:er,int:Ha,intHex:Wa,intOct:Ka,intTime:Za,map:$t,merge:qe,null:qs,omap:Bn,pairs:jn,seq:qt,set:Fn,timestamp:Bs},Ko={"tag:yaml.org,2002:binary":On,"tag:yaml.org,2002:merge":qe,"tag:yaml.org,2002:omap":Bn,"tag:yaml.org,2002:pairs":jn,"tag:yaml.org,2002:set":Fn,"tag:yaml.org,2002:timestamp":Bs};function dn(n,e,t){const s=Ji.get(e);if(s&&!n)return t&&!s.includes(qe)?s.concat(qe):s.slice();let i=s;if(!i)if(Array.isArray(n))i=[];else{const a=Array.from(Ji.keys()).filter(r=>r!=="yaml11").map(r=>JSON.stringify(r)).join(", ");throw new Error(`Unknown schema "${e}"; use one of ${a} or define customTags array`)}if(Array.isArray(n))for(const a of n)i=i.concat(a);else typeof n=="function"&&(i=n(i.slice()));return t&&(i=i.concat(qe)),i.reduce((a,r)=>{const o=typeof r=="string"?Yi[r]:r;if(!o){const l=JSON.stringify(r),c=Object.keys(Yi).map(h=>JSON.stringify(h)).join(", ");throw new Error(`Unknown custom tag ${l}; use one of ${c}`)}return a.includes(o)||a.push(o),a},[])}const Ho=(n,e)=>n.key<e.key?-1:n.key>e.key?1:0;class Ms{constructor({compat:e,customTags:t,merge:s,resolveKnownTags:i,schema:a,sortMapEntries:r,toStringDefaults:o}){this.compat=Array.isArray(e)?dn(e,"compat"):e?dn(null,e):null,this.name=typeof a=="string"&&a||"core",this.knownTags=i?Ko:{},this.tags=dn(t,this.name,s),this.toStringOptions=o??null,Object.defineProperty(this,Ve,{value:$t}),Object.defineProperty(this,Le,{value:$s}),Object.defineProperty(this,Ct,{value:qt}),this.sortMapEntries=typeof r=="function"?r:r===!0?Ho:null}clone(){const e=Object.create(Ms.prototype,Object.getOwnPropertyDescriptors(this));return e.tags=this.tags.slice(),e}}function Wo(n,e){const t=[];let s=e.directives===!0;if(e.directives!==!1&&n.directives){const l=n.directives.toString(n);l?(t.push(l),s=!0):n.directives.docStart&&(s=!0)}s&&t.push("---");const i=$a(n,e),{commentString:a}=i.options;if(n.commentBefore){t.length!==1&&t.unshift("");const l=a(n.commentBefore);t.unshift($e(l,""))}let r=!1,o=null;if(n.contents){if(Z(n.contents)){if(n.contents.spaceBefore&&s&&t.push(""),n.contents.commentBefore){const h=a(n.contents.commentBefore);t.push($e(h,""))}i.forceBlockIndent=!!n.comment,o=n.contents.comment}const l=o?void 0:()=>r=!0;let c=Et(n.contents,i,()=>o=null,l);o&&(c+=st(c,"",a(o))),(c[0]==="|"||c[0]===">")&&t[t.length-1]==="---"?t[t.length-1]=`--- ${c}`:t.push(c)}else t.push(Et(n.contents,i));if(n.directives?.docEnd)if(n.comment){const l=a(n.comment);l.includes(`
+`)?(t.push("..."),t.push($e(l,""))):t.push(`... ${l}`)}else t.push("...");else{let l=n.comment;l&&r&&(l=l.replace(/^\n+/,"")),l&&((!r||o)&&t[t.length-1]!==""&&t.push(""),t.push($e(a(l),"")))}return t.join(`
+`)+`
+`}class Ot{constructor(e,t,s){this.commentBefore=null,this.comment=null,this.errors=[],this.warnings=[],Object.defineProperty(this,be,{value:An});let i=null;typeof t=="function"||Array.isArray(t)?i=t:s===void 0&&t&&(s=t,t=void 0);const a=Object.assign({intAsBigInt:!1,keepSourceTokens:!1,logLevel:"warn",prettyErrors:!0,strict:!0,stringKeys:!1,uniqueKeys:!0,version:"1.2"},s);this.options=a;let{version:r}=a;s?._directives?(this.directives=s._directives.atDocument(),this.directives.yaml.explicit&&(r=this.directives.yaml.version)):this.directives=new de({version:r}),this.setSchema(r,s),this.contents=e===void 0?null:this.createNode(e,i,s)}clone(){const e=Object.create(Ot.prototype,{[be]:{value:An}});return e.commentBefore=this.commentBefore,e.comment=this.comment,e.errors=this.errors.slice(),e.warnings=this.warnings.slice(),e.options=Object.assign({},this.options),this.directives&&(e.directives=this.directives.clone()),e.schema=this.schema.clone(),e.contents=Z(this.contents)?this.contents.clone(e.schema):this.contents,this.range&&(e.range=this.range.slice()),e}add(e){gt(this.contents)&&this.contents.add(e)}addIn(e,t){gt(this.contents)&&this.contents.addIn(e,t)}createAlias(e,t){if(!e.anchor){const s=Ea(this);e.anchor=!t||s.has(t)?La(t||"a",s):t}return new Ls(e.anchor)}createNode(e,t,s){let i;if(typeof t=="function")e=t.call({"":e},"",e),i=t;else if(Array.isArray(t)){const v=P=>typeof P=="number"||P instanceof String||P instanceof Number,w=t.filter(v).map(String);w.length>0&&(t=t.concat(w)),i=t}else s===void 0&&t&&(s=t,t=void 0);const{aliasDuplicateObjects:a,anchorPrefix:r,flow:o,keepUndefined:l,onTagObj:c,tag:h}=s??{},{onAnchor:d,setAnchors:p,sourceObjects:f}=wo(this,r||"a"),S={aliasDuplicateObjects:a??!0,keepUndefined:l??!1,onAnchor:d,onTagObj:c,replacer:i,schema:this.schema,sourceObjects:f},u=Ht(e,h,S);return o&&X(u)&&(u.flow=!0),p(),u}createPair(e,t,s={}){const i=this.createNode(e,null,s),a=this.createNode(t,null,s);return new le(i,a)}delete(e){return gt(this.contents)?this.contents.delete(e):!1}deleteIn(e){return Dt(e)?this.contents==null?!1:(this.contents=null,!0):gt(this.contents)?this.contents.deleteIn(e):!1}get(e,t){return X(this.contents)?this.contents.get(e,t):void 0}getIn(e,t){return Dt(e)?!t&&G(this.contents)?this.contents.value:this.contents:X(this.contents)?this.contents.getIn(e,t):void 0}has(e){return X(this.contents)?this.contents.has(e):!1}hasIn(e){return Dt(e)?this.contents!==void 0:X(this.contents)?this.contents.hasIn(e):!1}set(e,t){this.contents==null?this.contents=Rs(this.schema,[e],t):gt(this.contents)&&this.contents.set(e,t)}setIn(e,t){Dt(e)?this.contents=t:this.contents==null?this.contents=Rs(this.schema,Array.from(e),t):gt(this.contents)&&this.contents.setIn(e,t)}setSchema(e,t={}){typeof e=="number"&&(e=String(e));let s;switch(e){case"1.1":this.directives?this.directives.yaml.version="1.1":this.directives=new de({version:"1.1"}),s={resolveKnownTags:!1,schema:"yaml-1.1"};break;case"1.2":case"next":this.directives?this.directives.yaml.version=e:this.directives=new de({version:e}),s={resolveKnownTags:!0,schema:"core"};break;case null:this.directives&&delete this.directives,s=null;break;default:{const i=JSON.stringify(e);throw new Error(`Expected '1.1', '1.2' or null as first argument, but found: ${i}`)}}if(t.schema instanceof Object)this.schema=t.schema;else if(s)this.schema=new Ms(Object.assign(s,t));else throw new Error("With a null YAML version, the { schema: Schema } option is required")}toJS({json:e,jsonArg:t,mapAsMap:s,maxAliasCount:i,onAnchor:a,reviver:r}={}){const o={anchors:new Map,doc:this,keep:!e,mapAsMap:s===!0,mapKeyWarned:!1,maxAliasCount:typeof i=="number"?i:100},l=ve(this.contents,t??"",o);if(typeof a=="function")for(const{count:c,res:h}of o.anchors.values())a(h,c);return typeof r=="function"?At(r,{"":l},"",l):l}toJSON(e,t){return this.toJS({json:!0,jsonArg:e,mapAsMap:!1,onAnchor:t})}toString(e={}){if(this.errors.length>0)throw new Error("Document with errors cannot be stringified");if("indent"in e&&(!Number.isInteger(e.indent)||Number(e.indent)<=0)){const t=JSON.stringify(e.indent);throw new Error(`"indent" option must be a positive integer, not ${t}`)}return Wo(this,e)}}function gt(n){if(X(n))return!0;throw new Error("Expected a YAML collection as document contents")}class Dn extends Error{constructor(e,t,s,i){super(),this.name=e,this.code=s,this.message=i,this.pos=t}}class it extends Dn{constructor(e,t,s){super("YAMLParseError",e,t,s)}}class tr extends Dn{constructor(e,t,s){super("YAMLWarning",e,t,s)}}const Ts=(n,e)=>t=>{if(t.pos[0]===-1)return;t.linePos=t.pos.map(o=>e.linePos(o));const{line:s,col:i}=t.linePos[0];t.message+=` at line ${s}, column ${i}`;let a=i-1,r=n.substring(e.lineStarts[s-1],e.lineStarts[s]).replace(/[\n\r]+$/,"");if(a>=60&&r.length>80){const o=Math.min(a-39,r.length-79);r="…"+r.substring(o),a-=o-1}if(r.length>80&&(r=r.substring(0,79)+"…"),s>1&&/^ *$/.test(r.substring(0,a))){let o=n.substring(e.lineStarts[s-2],e.lineStarts[s-1]);o.length>80&&(o=o.substring(0,79)+`…
+`),r=o+r}if(/[^ ]/.test(r)){let o=1;const l=t.linePos[1];l&&l.line===s&&l.col>i&&(o=Math.max(1,Math.min(l.col-i,80-a)));const c=" ".repeat(a)+"^".repeat(o);t.message+=`:
+
+${r}
+${c}
+`}};function Lt(n,{flow:e,indicator:t,next:s,offset:i,onError:a,parentIndent:r,startOnNewline:o}){let l=!1,c=o,h=o,d="",p="",f=!1,S=!1,u=null,v=null,w=null,P=null,C=null,T=null,A=null;for(const R of n)switch(S&&(R.type!=="space"&&R.type!=="newline"&&R.type!=="comma"&&a(R.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),S=!1),u&&(c&&R.type!=="comment"&&R.type!=="newline"&&a(u,"TAB_AS_INDENT","Tabs are not allowed as indentation"),u=null),R.type){case"space":!e&&(t!=="doc-start"||s?.type!=="flow-collection")&&R.source.includes("	")&&(u=R),h=!0;break;case"comment":{h||a(R,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");const L=R.source.substring(1)||" ";d?d+=p+L:d=L,p="",c=!1;break}case"newline":c?d?d+=R.source:(!T||t!=="seq-item-ind")&&(l=!0):p+=R.source,c=!0,f=!0,(v||w)&&(P=R),h=!0;break;case"anchor":v&&a(R,"MULTIPLE_ANCHORS","A node can have at most one anchor"),R.source.endsWith(":")&&a(R.offset+R.source.length-1,"BAD_ALIAS","Anchor ending in : is ambiguous",!0),v=R,A??(A=R.offset),c=!1,h=!1,S=!0;break;case"tag":{w&&a(R,"MULTIPLE_TAGS","A node can have at most one tag"),w=R,A??(A=R.offset),c=!1,h=!1,S=!0;break}case t:(v||w)&&a(R,"BAD_PROP_ORDER",`Anchors and tags must be after the ${R.source} indicator`),T&&a(R,"UNEXPECTED_TOKEN",`Unexpected ${R.source} in ${e??"collection"}`),T=R,c=t==="seq-item-ind"||t==="explicit-key-ind",h=!1;break;case"comma":if(e){C&&a(R,"UNEXPECTED_TOKEN",`Unexpected , in ${e}`),C=R,c=!1,h=!1;break}default:a(R,"UNEXPECTED_TOKEN",`Unexpected ${R.type} token`),c=!1,h=!1}const k=n[n.length-1],N=k?k.offset+k.source.length:i;return S&&s&&s.type!=="space"&&s.type!=="newline"&&s.type!=="comma"&&(s.type!=="scalar"||s.source!=="")&&a(s.offset,"MISSING_CHAR","Tags and anchors must be separated from the next token by white space"),u&&(c&&u.indent<=r||s?.type==="block-map"||s?.type==="block-seq")&&a(u,"TAB_AS_INDENT","Tabs are not allowed as indentation"),{comma:C,found:T,spaceBefore:l,comment:d,hasNewline:f,anchor:v,tag:w,newlineAfterProp:P,end:N,start:A??N}}function Wt(n){if(!n)return null;switch(n.type){case"alias":case"scalar":case"double-quoted-scalar":case"single-quoted-scalar":if(n.source.includes(`
+`))return!0;if(n.end){for(const e of n.end)if(e.type==="newline")return!0}return!1;case"flow-collection":for(const e of n.items){for(const t of e.start)if(t.type==="newline")return!0;if(e.sep){for(const t of e.sep)if(t.type==="newline")return!0}if(Wt(e.key)||Wt(e.value))return!0}return!1;default:return!0}}function _n(n,e,t){if(e?.type==="flow-collection"){const s=e.end[0];s.indent===n&&(s.source==="]"||s.source==="}")&&Wt(e)&&t(s,"BAD_INDENT","Flow end indicator should be more indented than parent",!0)}}function sr(n,e,t){const{uniqueKeys:s}=n.options;if(s===!1)return!1;const i=typeof s=="function"?s:(a,r)=>a===r||G(a)&&G(r)&&a.value===r.value;return e.some(a=>i(a.key,t))}const Xi="All mapping items must start at the same column";function Vo({composeNode:n,composeEmptyNode:e},t,s,i,a){const r=a?.nodeClass??me,o=new r(t.schema);t.atRoot&&(t.atRoot=!1);let l=s.offset,c=null;for(const h of s.items){const{start:d,key:p,sep:f,value:S}=h,u=Lt(d,{indicator:"explicit-key-ind",next:p??f?.[0],offset:l,onError:i,parentIndent:s.indent,startOnNewline:!0}),v=!u.found;if(v){if(p&&(p.type==="block-seq"?i(l,"BLOCK_AS_IMPLICIT_KEY","A block sequence may not be used as an implicit map key"):"indent"in p&&p.indent!==s.indent&&i(l,"BAD_INDENT",Xi)),!u.anchor&&!u.tag&&!f){c=u.end,u.comment&&(o.comment?o.comment+=`
+`+u.comment:o.comment=u.comment);continue}(u.newlineAfterProp||Wt(p))&&i(p??d[d.length-1],"MULTILINE_IMPLICIT_KEY","Implicit keys need to be on a single line")}else u.found?.indent!==s.indent&&i(l,"BAD_INDENT",Xi);t.atKey=!0;const w=u.end,P=p?n(t,p,u,i):e(t,w,d,null,u,i);t.schema.compat&&_n(s.indent,p,i),t.atKey=!1,sr(t,o.items,P)&&i(w,"DUPLICATE_KEY","Map keys must be unique");const C=Lt(f??[],{indicator:"map-value-ind",next:S,offset:P.range[2],onError:i,parentIndent:s.indent,startOnNewline:!p||p.type==="block-scalar"});if(l=C.end,C.found){v&&(S?.type==="block-map"&&!C.hasNewline&&i(l,"BLOCK_AS_IMPLICIT_KEY","Nested mappings are not allowed in compact mappings"),t.options.strict&&u.start<C.found.offset-1024&&i(P.range,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit block mapping key"));const T=S?n(t,S,C,i):e(t,l,f,null,C,i);t.schema.compat&&_n(s.indent,S,i),l=T.range[2];const A=new le(P,T);t.options.keepSourceTokens&&(A.srcToken=h),o.items.push(A)}else{v&&i(P.range,"MISSING_CHAR","Implicit map keys need to be followed by map values"),C.comment&&(P.comment?P.comment+=`
+`+C.comment:P.comment=C.comment);const T=new le(P);t.options.keepSourceTokens&&(T.srcToken=h),o.items.push(T)}}return c&&c<l&&i(c,"IMPOSSIBLE","Map comment with trailing content"),o.range=[s.offset,l,c??l],o}function Go({composeNode:n,composeEmptyNode:e},t,s,i,a){const r=a?.nodeClass??Ge,o=new r(t.schema);t.atRoot&&(t.atRoot=!1),t.atKey&&(t.atKey=!1);let l=s.offset,c=null;for(const{start:h,value:d}of s.items){const p=Lt(h,{indicator:"seq-item-ind",next:d,offset:l,onError:i,parentIndent:s.indent,startOnNewline:!0});if(!p.found)if(p.anchor||p.tag||d)d&&d.type==="block-seq"?i(p.end,"BAD_INDENT","All sequence items must start at the same column"):i(l,"MISSING_CHAR","Sequence item without - indicator");else{c=p.end,p.comment&&(o.comment=p.comment);continue}const f=d?n(t,d,p,i):e(t,p.end,h,null,p,i);t.schema.compat&&_n(s.indent,d,i),l=f.range[2],o.items.push(f)}return o.range=[s.offset,l,c??l],o}function Yt(n,e,t,s){let i="";if(n){let a=!1,r="";for(const o of n){const{source:l,type:c}=o;switch(c){case"space":a=!0;break;case"comment":{t&&!a&&s(o,"MISSING_CHAR","Comments must be separated from other tokens by white space characters");const h=l.substring(1)||" ";i?i+=r+h:i=h,r="";break}case"newline":i&&(r+=l),a=!0;break;default:s(o,"UNEXPECTED_TOKEN",`Unexpected ${c} at node end`)}e+=l.length}}return{comment:i,offset:e}}const un="Block collections are not allowed within flow collections",pn=n=>n&&(n.type==="block-map"||n.type==="block-seq");function Qo({composeNode:n,composeEmptyNode:e},t,s,i,a){const r=s.start.source==="{",o=r?"flow map":"flow sequence",l=a?.nodeClass??(r?me:Ge),c=new l(t.schema);c.flow=!0;const h=t.atRoot;h&&(t.atRoot=!1),t.atKey&&(t.atKey=!1);let d=s.offset+s.start.source.length;for(let v=0;v<s.items.length;++v){const w=s.items[v],{start:P,key:C,sep:T,value:A}=w,k=Lt(P,{flow:o,indicator:"explicit-key-ind",next:C??T?.[0],offset:d,onError:i,parentIndent:s.indent,startOnNewline:!1});if(!k.found){if(!k.anchor&&!k.tag&&!T&&!A){v===0&&k.comma?i(k.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${o}`):v<s.items.length-1&&i(k.start,"UNEXPECTED_TOKEN",`Unexpected empty item in ${o}`),k.comment&&(c.comment?c.comment+=`
+`+k.comment:c.comment=k.comment),d=k.end;continue}!r&&t.options.strict&&Wt(C)&&i(C,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line")}if(v===0)k.comma&&i(k.comma,"UNEXPECTED_TOKEN",`Unexpected , in ${o}`);else if(k.comma||i(k.start,"MISSING_CHAR",`Missing , between ${o} items`),k.comment){let N="";e:for(const R of P)switch(R.type){case"comma":case"space":break;case"comment":N=R.source.substring(1);break e;default:break e}if(N){let R=c.items[c.items.length-1];J(R)&&(R=R.value??R.key),R.comment?R.comment+=`
+`+N:R.comment=N,k.comment=k.comment.substring(N.length+1)}}if(!r&&!T&&!k.found){const N=A?n(t,A,k,i):e(t,k.end,T,null,k,i);c.items.push(N),d=N.range[2],pn(A)&&i(N.range,"BLOCK_IN_FLOW",un)}else{t.atKey=!0;const N=k.end,R=C?n(t,C,k,i):e(t,N,P,null,k,i);pn(C)&&i(R.range,"BLOCK_IN_FLOW",un),t.atKey=!1;const L=Lt(T??[],{flow:o,indicator:"map-value-ind",next:A,offset:R.range[2],onError:i,parentIndent:s.indent,startOnNewline:!1});if(L.found){if(!r&&!k.found&&t.options.strict){if(T)for(const I of T){if(I===L.found)break;if(I.type==="newline"){i(I,"MULTILINE_IMPLICIT_KEY","Implicit keys of flow sequence pairs need to be on a single line");break}}k.start<L.found.offset-1024&&i(L.found,"KEY_OVER_1024_CHARS","The : indicator must be at most 1024 chars after the start of an implicit flow sequence key")}}else A&&("source"in A&&A.source&&A.source[0]===":"?i(A,"MISSING_CHAR",`Missing space after : in ${o}`):i(L.start,"MISSING_CHAR",`Missing , or : between ${o} items`));const b=A?n(t,A,L,i):L.found?e(t,L.end,T,null,L,i):null;b?pn(A)&&i(b.range,"BLOCK_IN_FLOW",un):L.comment&&(R.comment?R.comment+=`
+`+L.comment:R.comment=L.comment);const q=new le(R,b);if(t.options.keepSourceTokens&&(q.srcToken=w),r){const I=c;sr(t,I.items,R)&&i(N,"DUPLICATE_KEY","Map keys must be unique"),I.items.push(q)}else{const I=new me(t.schema);I.flow=!0,I.items.push(q);const K=(b??R).range;I.range=[R.range[0],K[1],K[2]],c.items.push(I)}d=b?b.range[2]:L.end}}const p=r?"}":"]",[f,...S]=s.end;let u=d;if(f&&f.source===p)u=f.offset+f.source.length;else{const v=o[0].toUpperCase()+o.substring(1),w=h?`${v} must end with a ${p}`:`${v} in block collection must be sufficiently indented and end with a ${p}`;i(d,h?"MISSING_CHAR":"BAD_INDENT",w),f&&f.source.length!==1&&S.unshift(f)}if(S.length>0){const v=Yt(S,u,t.options.strict,i);v.comment&&(c.comment?c.comment+=`
+`+v.comment:c.comment=v.comment),c.range=[s.offset,u,v.offset]}else c.range=[s.offset,u,u];return c}function hn(n,e,t,s,i,a){const r=t.type==="block-map"?Vo(n,e,t,s,a):t.type==="block-seq"?Go(n,e,t,s,a):Qo(n,e,t,s,a),o=r.constructor;return i==="!"||i===o.tagName?(r.tag=o.tagName,r):(i&&(r.tag=i),r)}function Jo(n,e,t,s,i){const a=s.tag,r=a?e.directives.tagName(a.source,p=>i(a,"TAG_RESOLVE_FAILED",p)):null;if(t.type==="block-seq"){const{anchor:p,newlineAfterProp:f}=s,S=p&&a?p.offset>a.offset?p:a:p??a;S&&(!f||f.offset<S.offset)&&i(S,"MISSING_CHAR","Missing newline after block sequence props")}const o=t.type==="block-map"?"map":t.type==="block-seq"?"seq":t.start.source==="{"?"map":"seq";if(!a||!r||r==="!"||r===me.tagName&&o==="map"||r===Ge.tagName&&o==="seq")return hn(n,e,t,i,r);let l=e.schema.tags.find(p=>p.tag===r&&p.collection===o);if(!l){const p=e.schema.knownTags[r];if(p&&p.collection===o)e.schema.tags.push(Object.assign({},p,{default:!1})),l=p;else return p?i(a,"BAD_COLLECTION_TYPE",`${p.tag} used for ${o} collection, but expects ${p.collection??"scalar"}`,!0):i(a,"TAG_RESOLVE_FAILED",`Unresolved tag: ${r}`,!0),hn(n,e,t,i,r)}const c=hn(n,e,t,i,r,l),h=l.resolve?.(c,p=>i(a,"TAG_RESOLVE_FAILED",p),e.options)??c,d=Z(h)?h:new M(h);return d.range=c.range,d.tag=r,l?.format&&(d.format=l.format),d}function nr(n,e,t){const s=e.offset,i=Yo(e,n.options.strict,t);if(!i)return{value:"",type:null,comment:"",range:[s,s,s]};const a=i.mode===">"?M.BLOCK_FOLDED:M.BLOCK_LITERAL,r=e.source?Xo(e.source):[];let o=r.length;for(let u=r.length-1;u>=0;--u){const v=r[u][1];if(v===""||v==="\r")o=u;else break}if(o===0){const u=i.chomp==="+"&&r.length>0?`
+`.repeat(Math.max(1,r.length-1)):"";let v=s+i.length;return e.source&&(v+=e.source.length),{value:u,type:a,comment:i.comment,range:[s,v,v]}}let l=e.indent+i.indent,c=e.offset+i.length,h=0;for(let u=0;u<o;++u){const[v,w]=r[u];if(w===""||w==="\r")i.indent===0&&v.length>l&&(l=v.length);else{v.length<l&&t(c+v.length,"MISSING_CHAR","Block scalars with more-indented leading empty lines must use an explicit indentation indicator"),i.indent===0&&(l=v.length),h=u,l===0&&!n.atRoot&&t(c,"BAD_INDENT","Block scalar values in collections must be indented");break}c+=v.length+w.length+1}for(let u=r.length-1;u>=o;--u)r[u][0].length>l&&(o=u+1);let d="",p="",f=!1;for(let u=0;u<h;++u)d+=r[u][0].slice(l)+`
+`;for(let u=h;u<o;++u){let[v,w]=r[u];c+=v.length+w.length+1;const P=w[w.length-1]==="\r";if(P&&(w=w.slice(0,-1)),w&&v.length<l){const T=`Block scalar lines must not be less indented than their ${i.indent?"explicit indentation indicator":"first line"}`;t(c-w.length-(P?2:1),"BAD_INDENT",T),v=""}a===M.BLOCK_LITERAL?(d+=p+v.slice(l)+w,p=`
+`):v.length>l||w[0]==="	"?(p===" "?p=`
+`:!f&&p===`
+`&&(p=`
+
+`),d+=p+v.slice(l)+w,p=`
+`,f=!0):w===""?p===`
+`?d+=`
+`:p=`
+`:(d+=p+w,p=" ",f=!1)}switch(i.chomp){case"-":break;case"+":for(let u=o;u<r.length;++u)d+=`
+`+r[u][0].slice(l);d[d.length-1]!==`
+`&&(d+=`
+`);break;default:d+=`
+`}const S=s+i.length+e.source.length;return{value:d,type:a,comment:i.comment,range:[s,S,S]}}function Yo({offset:n,props:e},t,s){if(e[0].type!=="block-scalar-header")return s(e[0],"IMPOSSIBLE","Block scalar header not found"),null;const{source:i}=e[0],a=i[0];let r=0,o="",l=-1;for(let p=1;p<i.length;++p){const f=i[p];if(!o&&(f==="-"||f==="+"))o=f;else{const S=Number(f);!r&&S?r=S:l===-1&&(l=n+p)}}l!==-1&&s(l,"UNEXPECTED_TOKEN",`Block scalar header includes extra characters: ${i}`);let c=!1,h="",d=i.length;for(let p=1;p<e.length;++p){const f=e[p];switch(f.type){case"space":c=!0;case"newline":d+=f.source.length;break;case"comment":t&&!c&&s(f,"MISSING_CHAR","Comments must be separated from other tokens by white space characters"),d+=f.source.length,h=f.source.substring(1);break;case"error":s(f,"UNEXPECTED_TOKEN",f.message),d+=f.source.length;break;default:{const S=`Unexpected token in block scalar header: ${f.type}`;s(f,"UNEXPECTED_TOKEN",S);const u=f.source;u&&typeof u=="string"&&(d+=u.length)}}}return{mode:a,indent:r,chomp:o,comment:h,length:d}}function Xo(n){const e=n.split(/\n( *)/),t=e[0],s=t.match(/^( *)/),a=[s?.[1]?[s[1],t.slice(s[1].length)]:["",t]];for(let r=1;r<e.length;r+=2)a.push([e[r],e[r+1]]);return a}function ir(n,e,t){const{offset:s,type:i,source:a,end:r}=n;let o,l;const c=(p,f,S)=>t(s+p,f,S);switch(i){case"scalar":o=M.PLAIN,l=Zo(a,c);break;case"single-quoted-scalar":o=M.QUOTE_SINGLE,l=el(a,c);break;case"double-quoted-scalar":o=M.QUOTE_DOUBLE,l=tl(a,c);break;default:return t(n,"UNEXPECTED_TOKEN",`Expected a flow scalar value, but found: ${i}`),{value:"",type:null,comment:"",range:[s,s+a.length,s+a.length]}}const h=s+a.length,d=Yt(r,h,e,t);return{value:l,type:o,comment:d.comment,range:[s,h,d.offset]}}function Zo(n,e){let t="";switch(n[0]){case"	":t="a tab character";break;case",":t="flow indicator character ,";break;case"%":t="directive indicator character %";break;case"|":case">":{t=`block scalar indicator ${n[0]}`;break}case"@":case"`":{t=`reserved character ${n[0]}`;break}}return t&&e(0,"BAD_SCALAR_START",`Plain value cannot start with ${t}`),ar(n)}function el(n,e){return(n[n.length-1]!=="'"||n.length===1)&&e(n.length,"MISSING_CHAR","Missing closing 'quote"),ar(n.slice(1,-1)).replace(/''/g,"'")}function ar(n){let e,t;try{e=new RegExp(`(.*?)(?<![ 	])[ 	]*\r?
+`,"sy"),t=new RegExp(`[ 	]*(.*?)(?:(?<![ 	])[ 	]*)?\r?
+`,"sy")}catch{e=/(.*?)[ \t]*\r?\n/sy,t=/[ \t]*(.*?)[ \t]*\r?\n/sy}let s=e.exec(n);if(!s)return n;let i=s[1],a=" ",r=e.lastIndex;for(t.lastIndex=r;s=t.exec(n);)s[1]===""?a===`
+`?i+=a:a=`
+`:(i+=a+s[1],a=" "),r=t.lastIndex;const o=/[ \t]*(.*)/sy;return o.lastIndex=r,s=o.exec(n),i+a+(s?.[1]??"")}function tl(n,e){let t="";for(let s=1;s<n.length-1;++s){const i=n[s];if(!(i==="\r"&&n[s+1]===`
+`))if(i===`
+`){const{fold:a,offset:r}=sl(n,s);t+=a,s=r}else if(i==="\\"){let a=n[++s];const r=nl[a];if(r)t+=r;else if(a===`
+`)for(a=n[s+1];a===" "||a==="	";)a=n[++s+1];else if(a==="\r"&&n[s+1]===`
+`)for(a=n[++s+1];a===" "||a==="	";)a=n[++s+1];else if(a==="x"||a==="u"||a==="U"){const o={x:2,u:4,U:8}[a];t+=il(n,s+1,o,e),s+=o}else{const o=n.substr(s-1,2);e(s-1,"BAD_DQ_ESCAPE",`Invalid escape sequence ${o}`),t+=o}}else if(i===" "||i==="	"){const a=s;let r=n[s+1];for(;r===" "||r==="	";)r=n[++s+1];r!==`
+`&&!(r==="\r"&&n[s+2]===`
+`)&&(t+=s>a?n.slice(a,s+1):i)}else t+=i}return(n[n.length-1]!=='"'||n.length===1)&&e(n.length,"MISSING_CHAR",'Missing closing "quote'),t}function sl(n,e){let t="",s=n[e+1];for(;(s===" "||s==="	"||s===`
+`||s==="\r")&&!(s==="\r"&&n[e+2]!==`
+`);)s===`
+`&&(t+=`
+`),e+=1,s=n[e+1];return t||(t=" "),{fold:t,offset:e}}const nl={0:"\0",a:"\x07",b:"\b",e:"\x1B",f:"\f",n:`
+`,r:"\r",t:"	",v:"\v",N:"",_:" ",L:"\u2028",P:"\u2029"," ":" ",'"':'"',"/":"/","\\":"\\","	":"	"};function il(n,e,t,s){const i=n.substr(e,t),r=i.length===t&&/^[0-9a-fA-F]+$/.test(i)?parseInt(i,16):NaN;if(isNaN(r)){const o=n.substr(e-2,t+2);return s(e-2,"BAD_DQ_ESCAPE",`Invalid escape sequence ${o}`),o}return String.fromCodePoint(r)}function rr(n,e,t,s){const{value:i,type:a,comment:r,range:o}=e.type==="block-scalar"?nr(n,e,s):ir(e,n.options.strict,s),l=t?n.directives.tagName(t.source,d=>s(t,"TAG_RESOLVE_FAILED",d)):null;let c;n.options.stringKeys&&n.atKey?c=n.schema[Le]:l?c=al(n.schema,i,l,t,s):e.type==="scalar"?c=rl(n,i,e,s):c=n.schema[Le];let h;try{const d=c.resolve(i,p=>s(t??e,"TAG_RESOLVE_FAILED",p),n.options);h=G(d)?d:new M(d)}catch(d){const p=d instanceof Error?d.message:String(d);s(t??e,"TAG_RESOLVE_FAILED",p),h=new M(i)}return h.range=o,h.source=i,a&&(h.type=a),l&&(h.tag=l),c.format&&(h.format=c.format),r&&(h.comment=r),h}function al(n,e,t,s,i){if(t==="!")return n[Le];const a=[];for(const o of n.tags)if(!o.collection&&o.tag===t)if(o.default&&o.test)a.push(o);else return o;for(const o of a)if(o.test?.test(e))return o;const r=n.knownTags[t];return r&&!r.collection?(n.tags.push(Object.assign({},r,{default:!1,test:void 0})),r):(i(s,"TAG_RESOLVE_FAILED",`Unresolved tag: ${t}`,t!=="tag:yaml.org,2002:str"),n[Le])}function rl({atKey:n,directives:e,schema:t},s,i,a){const r=t.tags.find(o=>(o.default===!0||n&&o.default==="key")&&o.test?.test(s))||t[Le];if(t.compat){const o=t.compat.find(l=>l.default&&l.test?.test(s))??t[Le];if(r.tag!==o.tag){const l=e.tagString(r.tag),c=e.tagString(o.tag),h=`Value may be parsed as either ${l} or ${c}`;a(i,"TAG_RESOLVE_FAILED",h,!0)}}return r}function ol(n,e,t){if(e){t??(t=e.length);for(let s=t-1;s>=0;--s){let i=e[s];switch(i.type){case"space":case"comment":case"newline":n-=i.source.length;continue}for(i=e[++s];i?.type==="space";)n+=i.source.length,i=e[++s];break}}return n}const ll={composeNode:or,composeEmptyNode:Kn};function or(n,e,t,s){const i=n.atKey,{spaceBefore:a,comment:r,anchor:o,tag:l}=t;let c,h=!0;switch(e.type){case"alias":c=cl(n,e,s),(o||l)&&s(e,"ALIAS_PROPS","An alias node must not specify any properties");break;case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"block-scalar":c=rr(n,e,l,s),o&&(c.anchor=o.source.substring(1));break;case"block-map":case"block-seq":case"flow-collection":c=Jo(ll,n,e,t,s),o&&(c.anchor=o.source.substring(1));break;default:{const d=e.type==="error"?e.message:`Unsupported token (type: ${e.type})`;s(e,"UNEXPECTED_TOKEN",d),c=Kn(n,e.offset,void 0,null,t,s),h=!1}}return o&&c.anchor===""&&s(o,"BAD_ALIAS","Anchor cannot be an empty string"),i&&n.options.stringKeys&&(!G(c)||typeof c.value!="string"||c.tag&&c.tag!=="tag:yaml.org,2002:str")&&s(l??e,"NON_STRING_KEY","With stringKeys, all keys must be strings"),a&&(c.spaceBefore=!0),r&&(e.type==="scalar"&&e.source===""?c.comment=r:c.commentBefore=r),n.options.keepSourceTokens&&h&&(c.srcToken=e),c}function Kn(n,e,t,s,{spaceBefore:i,comment:a,anchor:r,tag:o,end:l},c){const h={type:"scalar",offset:ol(e,t,s),indent:-1,source:""},d=rr(n,h,o,c);return r&&(d.anchor=r.source.substring(1),d.anchor===""&&c(r,"BAD_ALIAS","Anchor cannot be an empty string")),i&&(d.spaceBefore=!0),a&&(d.comment=a,d.range[2]=l),d}function cl({options:n},{offset:e,source:t,end:s},i){const a=new Ls(t.substring(1));a.source===""&&i(e,"BAD_ALIAS","Alias cannot be an empty string"),a.source.endsWith(":")&&i(e+t.length-1,"BAD_ALIAS","Alias ending in : is ambiguous",!0);const r=e+t.length,o=Yt(s,r,n.strict,i);return a.range=[e,r,o.offset],o.comment&&(a.comment=o.comment),a}function dl(n,e,{offset:t,start:s,value:i,end:a},r){const o=Object.assign({_directives:e},n),l=new Ot(void 0,o),c={atKey:!1,atRoot:!0,directives:l.directives,options:l.options,schema:l.schema},h=Lt(s,{indicator:"doc-start",next:i??a?.[0],offset:t,onError:r,parentIndent:0,startOnNewline:!0});h.found&&(l.directives.docStart=!0,i&&(i.type==="block-map"||i.type==="block-seq")&&!h.hasNewline&&r(h.end,"MISSING_CHAR","Block collection cannot start on same line with directives-end marker")),l.contents=i?or(c,i,h,r):Kn(c,h.end,s,null,h,r);const d=l.contents.range[2],p=Yt(a,d,!1,r);return p.comment&&(l.comment=p.comment),l.range=[t,d,p.offset],l}function zt(n){if(typeof n=="number")return[n,n+1];if(Array.isArray(n))return n.length===2?n:[n[0],n[1]];const{offset:e,source:t}=n;return[e,e+(typeof t=="string"?t.length:1)]}function Zi(n){let e="",t=!1,s=!1;for(let i=0;i<n.length;++i){const a=n[i];switch(a[0]){case"#":e+=(e===""?"":s?`
+
+`:`
+`)+(a.substring(1)||" "),t=!0,s=!1;break;case"%":n[i+1]?.[0]!=="#"&&(i+=1),t=!1;break;default:t||(s=!0),t=!1}}return{comment:e,afterEmptyLine:s}}class Hn{constructor(e={}){this.doc=null,this.atDirectives=!1,this.prelude=[],this.errors=[],this.warnings=[],this.onError=(t,s,i,a)=>{const r=zt(t);a?this.warnings.push(new tr(r,s,i)):this.errors.push(new it(r,s,i))},this.directives=new de({version:e.version||"1.2"}),this.options=e}decorate(e,t){const{comment:s,afterEmptyLine:i}=Zi(this.prelude);if(s){const a=e.contents;if(t)e.comment=e.comment?`${e.comment}
+${s}`:s;else if(i||e.directives.docStart||!a)e.commentBefore=s;else if(X(a)&&!a.flow&&a.items.length>0){let r=a.items[0];J(r)&&(r=r.key);const o=r.commentBefore;r.commentBefore=o?`${s}
+${o}`:s}else{const r=a.commentBefore;a.commentBefore=r?`${s}
+${r}`:s}}t?(Array.prototype.push.apply(e.errors,this.errors),Array.prototype.push.apply(e.warnings,this.warnings)):(e.errors=this.errors,e.warnings=this.warnings),this.prelude=[],this.errors=[],this.warnings=[]}streamInfo(){return{comment:Zi(this.prelude).comment,directives:this.directives,errors:this.errors,warnings:this.warnings}}*compose(e,t=!1,s=-1){for(const i of e)yield*this.next(i);yield*this.end(t,s)}*next(e){switch(e.type){case"directive":this.directives.add(e.source,(t,s,i)=>{const a=zt(e);a[0]+=t,this.onError(a,"BAD_DIRECTIVE",s,i)}),this.prelude.push(e.source),this.atDirectives=!0;break;case"document":{const t=dl(this.options,this.directives,e,this.onError);this.atDirectives&&!t.directives.docStart&&this.onError(e,"MISSING_CHAR","Missing directives-end/doc-start indicator line"),this.decorate(t,!1),this.doc&&(yield this.doc),this.doc=t,this.atDirectives=!1;break}case"byte-order-mark":case"space":break;case"comment":case"newline":this.prelude.push(e.source);break;case"error":{const t=e.source?`${e.message}: ${JSON.stringify(e.source)}`:e.message,s=new it(zt(e),"UNEXPECTED_TOKEN",t);this.atDirectives||!this.doc?this.errors.push(s):this.doc.errors.push(s);break}case"doc-end":{if(!this.doc){const s="Unexpected doc-end without preceding document";this.errors.push(new it(zt(e),"UNEXPECTED_TOKEN",s));break}this.doc.directives.docEnd=!0;const t=Yt(e.end,e.offset+e.source.length,this.doc.options.strict,this.onError);if(this.decorate(this.doc,!0),t.comment){const s=this.doc.comment;this.doc.comment=s?`${s}
+${t.comment}`:t.comment}this.doc.range[2]=t.offset;break}default:this.errors.push(new it(zt(e),"UNEXPECTED_TOKEN",`Unsupported token ${e.type}`))}}*end(e=!1,t=-1){if(this.doc)this.decorate(this.doc,!0),yield this.doc,this.doc=null;else if(e){const s=Object.assign({_directives:this.directives},this.options),i=new Ot(void 0,s);this.atDirectives&&this.onError(t,"MISSING_CHAR","Missing directives-end indicator line"),i.range=[0,t,t],this.decorate(i,!1),yield i}}}function ul(n,e=!0,t){if(n){const s=(i,a,r)=>{const o=typeof i=="number"?i:Array.isArray(i)?i[0]:i.offset;if(t)t(o,a,r);else throw new it([o,o+1],a,r)};switch(n.type){case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return ir(n,e,s);case"block-scalar":return nr({options:{strict:e}},n,s)}}return null}function pl(n,e){const{implicitKey:t=!1,indent:s,inFlow:i=!1,offset:a=-1,type:r="PLAIN"}=e,o=Qt({type:r,value:n},{implicitKey:t,indent:s>0?" ".repeat(s):"",inFlow:i,options:{blockQuote:!0,lineWidth:-1}}),l=e.end??[{type:"newline",offset:-1,indent:s,source:`
+`}];switch(o[0]){case"|":case">":{const c=o.indexOf(`
+`),h=o.substring(0,c),d=o.substring(c+1)+`
+`,p=[{type:"block-scalar-header",offset:a,indent:s,source:h}];return lr(p,l)||p.push({type:"newline",offset:-1,indent:s,source:`
+`}),{type:"block-scalar",offset:a,indent:s,props:p,source:d}}case'"':return{type:"double-quoted-scalar",offset:a,indent:s,source:o,end:l};case"'":return{type:"single-quoted-scalar",offset:a,indent:s,source:o,end:l};default:return{type:"scalar",offset:a,indent:s,source:o,end:l}}}function hl(n,e,t={}){let{afterKey:s=!1,implicitKey:i=!1,inFlow:a=!1,type:r}=t,o="indent"in n?n.indent:null;if(s&&typeof o=="number"&&(o+=2),!r)switch(n.type){case"single-quoted-scalar":r="QUOTE_SINGLE";break;case"double-quoted-scalar":r="QUOTE_DOUBLE";break;case"block-scalar":{const c=n.props[0];if(c.type!=="block-scalar-header")throw new Error("Invalid block scalar header");r=c.source[0]===">"?"BLOCK_FOLDED":"BLOCK_LITERAL";break}default:r="PLAIN"}const l=Qt({type:r,value:e},{implicitKey:i||o===null,indent:o!==null&&o>0?" ".repeat(o):"",inFlow:a,options:{blockQuote:!0,lineWidth:-1}});switch(l[0]){case"|":case">":ml(n,l);break;case'"':mn(n,l,"double-quoted-scalar");break;case"'":mn(n,l,"single-quoted-scalar");break;default:mn(n,l,"scalar")}}function ml(n,e){const t=e.indexOf(`
+`),s=e.substring(0,t),i=e.substring(t+1)+`
+`;if(n.type==="block-scalar"){const a=n.props[0];if(a.type!=="block-scalar-header")throw new Error("Invalid block scalar header");a.source=s,n.source=i}else{const{offset:a}=n,r="indent"in n?n.indent:-1,o=[{type:"block-scalar-header",offset:a,indent:r,source:s}];lr(o,"end"in n?n.end:void 0)||o.push({type:"newline",offset:-1,indent:r,source:`
+`});for(const l of Object.keys(n))l!=="type"&&l!=="offset"&&delete n[l];Object.assign(n,{type:"block-scalar",indent:r,props:o,source:i})}}function lr(n,e){if(e)for(const t of e)switch(t.type){case"space":case"comment":n.push(t);break;case"newline":return n.push(t),!0}return!1}function mn(n,e,t){switch(n.type){case"scalar":case"double-quoted-scalar":case"single-quoted-scalar":n.type=t,n.source=e;break;case"block-scalar":{const s=n.props.slice(1);let i=e.length;n.props[0].type==="block-scalar-header"&&(i-=n.props[0].source.length);for(const a of s)a.offset+=i;delete n.props,Object.assign(n,{type:t,source:e,end:s});break}case"block-map":case"block-seq":{const i={type:"newline",offset:n.offset+e.length,indent:n.indent,source:`
+`};delete n.items,Object.assign(n,{type:t,source:e,end:[i]});break}default:{const s="indent"in n?n.indent:-1,i="end"in n&&Array.isArray(n.end)?n.end.filter(a=>a.type==="space"||a.type==="comment"||a.type==="newline"):[];for(const a of Object.keys(n))a!=="type"&&a!=="offset"&&delete n[a];Object.assign(n,{type:t,indent:s,source:e,end:i})}}}const fl=n=>"type"in n?Us(n):ks(n);function Us(n){switch(n.type){case"block-scalar":{let e="";for(const t of n.props)e+=Us(t);return e+n.source}case"block-map":case"block-seq":{let e="";for(const t of n.items)e+=ks(t);return e}case"flow-collection":{let e=n.start.source;for(const t of n.items)e+=ks(t);for(const t of n.end)e+=t.source;return e}case"document":{let e=ks(n);if(n.end)for(const t of n.end)e+=t.source;return e}default:{let e=n.source;if("end"in n&&n.end)for(const t of n.end)e+=t.source;return e}}}function ks({start:n,key:e,sep:t,value:s}){let i="";for(const a of n)i+=a.source;if(e&&(i+=Us(e)),t)for(const a of t)i+=a.source;return s&&(i+=Us(s)),i}const Tn=Symbol("break visit"),gl=Symbol("skip children"),cr=Symbol("remove item");function rt(n,e){"type"in n&&n.type==="document"&&(n={start:n.start,value:n.value}),dr(Object.freeze([]),n,e)}rt.BREAK=Tn;rt.SKIP=gl;rt.REMOVE=cr;rt.itemAtPath=(n,e)=>{let t=n;for(const[s,i]of e){const a=t?.[s];if(a&&"items"in a)t=a.items[i];else return}return t};rt.parentCollection=(n,e)=>{const t=rt.itemAtPath(n,e.slice(0,-1)),s=e[e.length-1][0],i=t?.[s];if(i&&"items"in i)return i;throw new Error("Parent collection not found")};function dr(n,e,t){let s=t(e,n);if(typeof s=="symbol")return s;for(const i of["key","value"]){const a=e[i];if(a&&"items"in a){for(let r=0;r<a.items.length;++r){const o=dr(Object.freeze(n.concat([[i,r]])),a.items[r],t);if(typeof o=="number")r=o-1;else{if(o===Tn)return Tn;o===cr&&(a.items.splice(r,1),r-=1)}}typeof s=="function"&&i==="key"&&(s=s(e,n))}}return typeof s=="function"?s(e,n):s}const Fs="\uFEFF",zs="",Ds="",Vt="",vl=n=>!!n&&"items"in n,bl=n=>!!n&&(n.type==="scalar"||n.type==="single-quoted-scalar"||n.type==="double-quoted-scalar"||n.type==="block-scalar");function yl(n){switch(n){case Fs:return"<BOM>";case zs:return"<DOC>";case Ds:return"<FLOW_END>";case Vt:return"<SCALAR>";default:return JSON.stringify(n)}}function ur(n){switch(n){case Fs:return"byte-order-mark";case zs:return"doc-mode";case Ds:return"flow-error-end";case Vt:return"scalar";case"---":return"doc-start";case"...":return"doc-end";case"":case`
+`:case`\r
+`:return"newline";case"-":return"seq-item-ind";case"?":return"explicit-key-ind";case":":return"map-value-ind";case"{":return"flow-map-start";case"}":return"flow-map-end";case"[":return"flow-seq-start";case"]":return"flow-seq-end";case",":return"comma"}switch(n[0]){case" ":case"	":return"space";case"#":return"comment";case"%":return"directive-line";case"*":return"alias";case"&":return"anchor";case"!":return"tag";case"'":return"single-quoted-scalar";case'"':return"double-quoted-scalar";case"|":case">":return"block-scalar-header"}return null}const wl=Object.freeze(Object.defineProperty({__proto__:null,BOM:Fs,DOCUMENT:zs,FLOW_END:Ds,SCALAR:Vt,createScalarToken:pl,isCollection:vl,isScalar:bl,prettyToken:yl,resolveAsScalar:ul,setScalarValue:hl,stringify:fl,tokenType:ur,visit:rt},Symbol.toStringTag,{value:"Module"}));function Se(n){switch(n){case void 0:case" ":case`
+`:case"\r":case"	":return!0;default:return!1}}const ea=new Set("0123456789ABCDEFabcdef"),Sl=new Set("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-#;/?:@&=+$_.!~*'()"),gs=new Set(",[]{}"),kl=new Set(` ,[]{}
+\r	`),fn=n=>!n||kl.has(n);class pr{constructor(){this.atEnd=!1,this.blockScalarIndent=-1,this.blockScalarKeep=!1,this.buffer="",this.flowKey=!1,this.flowLevel=0,this.indentNext=0,this.indentValue=0,this.lineEndPos=null,this.next=null,this.pos=0}*lex(e,t=!1){if(e){if(typeof e!="string")throw TypeError("source is not a string");this.buffer=this.buffer?this.buffer+e:e,this.lineEndPos=null}this.atEnd=!t;let s=this.next??"stream";for(;s&&(t||this.hasChars(1));)s=yield*this.parseNext(s)}atLineEnd(){let e=this.pos,t=this.buffer[e];for(;t===" "||t==="	";)t=this.buffer[++e];return!t||t==="#"||t===`
+`?!0:t==="\r"?this.buffer[e+1]===`
+`:!1}charAt(e){return this.buffer[this.pos+e]}continueScalar(e){let t=this.buffer[e];if(this.indentNext>0){let s=0;for(;t===" ";)t=this.buffer[++s+e];if(t==="\r"){const i=this.buffer[s+e+1];if(i===`
+`||!i&&!this.atEnd)return e+s+1}return t===`
+`||s>=this.indentNext||!t&&!this.atEnd?e+s:-1}if(t==="-"||t==="."){const s=this.buffer.substr(e,3);if((s==="---"||s==="...")&&Se(this.buffer[e+3]))return-1}return e}getLine(){let e=this.lineEndPos;return(typeof e!="number"||e!==-1&&e<this.pos)&&(e=this.buffer.indexOf(`
+`,this.pos),this.lineEndPos=e),e===-1?this.atEnd?this.buffer.substring(this.pos):null:(this.buffer[e-1]==="\r"&&(e-=1),this.buffer.substring(this.pos,e))}hasChars(e){return this.pos+e<=this.buffer.length}setNext(e){return this.buffer=this.buffer.substring(this.pos),this.pos=0,this.lineEndPos=null,this.next=e,null}peek(e){return this.buffer.substr(this.pos,e)}*parseNext(e){switch(e){case"stream":return yield*this.parseStream();case"line-start":return yield*this.parseLineStart();case"block-start":return yield*this.parseBlockStart();case"doc":return yield*this.parseDocument();case"flow":return yield*this.parseFlowCollection();case"quoted-scalar":return yield*this.parseQuotedScalar();case"block-scalar":return yield*this.parseBlockScalar();case"plain-scalar":return yield*this.parsePlainScalar()}}*parseStream(){let e=this.getLine();if(e===null)return this.setNext("stream");if(e[0]===Fs&&(yield*this.pushCount(1),e=e.substring(1)),e[0]==="%"){let t=e.length,s=e.indexOf("#");for(;s!==-1;){const a=e[s-1];if(a===" "||a==="	"){t=s-1;break}else s=e.indexOf("#",s+1)}for(;;){const a=e[t-1];if(a===" "||a==="	")t-=1;else break}const i=(yield*this.pushCount(t))+(yield*this.pushSpaces(!0));return yield*this.pushCount(e.length-i),this.pushNewline(),"stream"}if(this.atLineEnd()){const t=yield*this.pushSpaces(!0);return yield*this.pushCount(e.length-t),yield*this.pushNewline(),"stream"}return yield zs,yield*this.parseLineStart()}*parseLineStart(){const e=this.charAt(0);if(!e&&!this.atEnd)return this.setNext("line-start");if(e==="-"||e==="."){if(!this.atEnd&&!this.hasChars(4))return this.setNext("line-start");const t=this.peek(3);if((t==="---"||t==="...")&&Se(this.charAt(3)))return yield*this.pushCount(3),this.indentValue=0,this.indentNext=0,t==="---"?"doc":"stream"}return this.indentValue=yield*this.pushSpaces(!1),this.indentNext>this.indentValue&&!Se(this.charAt(1))&&(this.indentNext=this.indentValue),yield*this.parseBlockStart()}*parseBlockStart(){const[e,t]=this.peek(2);if(!t&&!this.atEnd)return this.setNext("block-start");if((e==="-"||e==="?"||e===":")&&Se(t)){const s=(yield*this.pushCount(1))+(yield*this.pushSpaces(!0));return this.indentNext=this.indentValue+1,this.indentValue+=s,yield*this.parseBlockStart()}return"doc"}*parseDocument(){yield*this.pushSpaces(!0);const e=this.getLine();if(e===null)return this.setNext("doc");let t=yield*this.pushIndicators();switch(e[t]){case"#":yield*this.pushCount(e.length-t);case void 0:return yield*this.pushNewline(),yield*this.parseLineStart();case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel=1,"flow";case"}":case"]":return yield*this.pushCount(1),"doc";case"*":return yield*this.pushUntil(fn),"doc";case'"':case"'":return yield*this.parseQuotedScalar();case"|":case">":return t+=yield*this.parseBlockScalarHeader(),t+=yield*this.pushSpaces(!0),yield*this.pushCount(e.length-t),yield*this.pushNewline(),yield*this.parseBlockScalar();default:return yield*this.parsePlainScalar()}}*parseFlowCollection(){let e,t,s=-1;do e=yield*this.pushNewline(),e>0?(t=yield*this.pushSpaces(!1),this.indentValue=s=t):t=0,t+=yield*this.pushSpaces(!0);while(e+t>0);const i=this.getLine();if(i===null)return this.setNext("flow");if((s!==-1&&s<this.indentNext&&i[0]!=="#"||s===0&&(i.startsWith("---")||i.startsWith("..."))&&Se(i[3]))&&!(s===this.indentNext-1&&this.flowLevel===1&&(i[0]==="]"||i[0]==="}")))return this.flowLevel=0,yield Ds,yield*this.parseLineStart();let a=0;for(;i[a]===",";)a+=yield*this.pushCount(1),a+=yield*this.pushSpaces(!0),this.flowKey=!1;switch(a+=yield*this.pushIndicators(),i[a]){case void 0:return"flow";case"#":return yield*this.pushCount(i.length-a),"flow";case"{":case"[":return yield*this.pushCount(1),this.flowKey=!1,this.flowLevel+=1,"flow";case"}":case"]":return yield*this.pushCount(1),this.flowKey=!0,this.flowLevel-=1,this.flowLevel?"flow":"doc";case"*":return yield*this.pushUntil(fn),"flow";case'"':case"'":return this.flowKey=!0,yield*this.parseQuotedScalar();case":":{const r=this.charAt(1);if(this.flowKey||Se(r)||r===",")return this.flowKey=!1,yield*this.pushCount(1),yield*this.pushSpaces(!0),"flow"}default:return this.flowKey=!1,yield*this.parsePlainScalar()}}*parseQuotedScalar(){const e=this.charAt(0);let t=this.buffer.indexOf(e,this.pos+1);if(e==="'")for(;t!==-1&&this.buffer[t+1]==="'";)t=this.buffer.indexOf("'",t+2);else for(;t!==-1;){let a=0;for(;this.buffer[t-1-a]==="\\";)a+=1;if(a%2===0)break;t=this.buffer.indexOf('"',t+1)}const s=this.buffer.substring(0,t);let i=s.indexOf(`
+`,this.pos);if(i!==-1){for(;i!==-1;){const a=this.continueScalar(i+1);if(a===-1)break;i=s.indexOf(`
+`,a)}i!==-1&&(t=i-(s[i-1]==="\r"?2:1))}if(t===-1){if(!this.atEnd)return this.setNext("quoted-scalar");t=this.buffer.length}return yield*this.pushToIndex(t+1,!1),this.flowLevel?"flow":"doc"}*parseBlockScalarHeader(){this.blockScalarIndent=-1,this.blockScalarKeep=!1;let e=this.pos;for(;;){const t=this.buffer[++e];if(t==="+")this.blockScalarKeep=!0;else if(t>"0"&&t<="9")this.blockScalarIndent=Number(t)-1;else if(t!=="-")break}return yield*this.pushUntil(t=>Se(t)||t==="#")}*parseBlockScalar(){let e=this.pos-1,t=0,s;e:for(let a=this.pos;s=this.buffer[a];++a)switch(s){case" ":t+=1;break;case`
+`:e=a,t=0;break;case"\r":{const r=this.buffer[a+1];if(!r&&!this.atEnd)return this.setNext("block-scalar");if(r===`
+`)break}default:break e}if(!s&&!this.atEnd)return this.setNext("block-scalar");if(t>=this.indentNext){this.blockScalarIndent===-1?this.indentNext=t:this.indentNext=this.blockScalarIndent+(this.indentNext===0?1:this.indentNext);do{const a=this.continueScalar(e+1);if(a===-1)break;e=this.buffer.indexOf(`
+`,a)}while(e!==-1);if(e===-1){if(!this.atEnd)return this.setNext("block-scalar");e=this.buffer.length}}let i=e+1;for(s=this.buffer[i];s===" ";)s=this.buffer[++i];if(s==="	"){for(;s==="	"||s===" "||s==="\r"||s===`
+`;)s=this.buffer[++i];e=i-1}else if(!this.blockScalarKeep)do{let a=e-1,r=this.buffer[a];r==="\r"&&(r=this.buffer[--a]);const o=a;for(;r===" ";)r=this.buffer[--a];if(r===`
+`&&a>=this.pos&&a+1+t>o)e=a;else break}while(!0);return yield Vt,yield*this.pushToIndex(e+1,!0),yield*this.parseLineStart()}*parsePlainScalar(){const e=this.flowLevel>0;let t=this.pos-1,s=this.pos-1,i;for(;i=this.buffer[++s];)if(i===":"){const a=this.buffer[s+1];if(Se(a)||e&&gs.has(a))break;t=s}else if(Se(i)){let a=this.buffer[s+1];if(i==="\r"&&(a===`
+`?(s+=1,i=`
+`,a=this.buffer[s+1]):t=s),a==="#"||e&&gs.has(a))break;if(i===`
+`){const r=this.continueScalar(s+1);if(r===-1)break;s=Math.max(s,r-2)}}else{if(e&&gs.has(i))break;t=s}return!i&&!this.atEnd?this.setNext("plain-scalar"):(yield Vt,yield*this.pushToIndex(t+1,!0),e?"flow":"doc")}*pushCount(e){return e>0?(yield this.buffer.substr(this.pos,e),this.pos+=e,e):0}*pushToIndex(e,t){const s=this.buffer.slice(this.pos,e);return s?(yield s,this.pos+=s.length,s.length):(t&&(yield""),0)}*pushIndicators(){switch(this.charAt(0)){case"!":return(yield*this.pushTag())+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"&":return(yield*this.pushUntil(fn))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators());case"-":case"?":case":":{const e=this.flowLevel>0,t=this.charAt(1);if(Se(t)||e&&gs.has(t))return e?this.flowKey&&(this.flowKey=!1):this.indentNext=this.indentValue+1,(yield*this.pushCount(1))+(yield*this.pushSpaces(!0))+(yield*this.pushIndicators())}}return 0}*pushTag(){if(this.charAt(1)==="<"){let e=this.pos+2,t=this.buffer[e];for(;!Se(t)&&t!==">";)t=this.buffer[++e];return yield*this.pushToIndex(t===">"?e+1:e,!1)}else{let e=this.pos+1,t=this.buffer[e];for(;t;)if(Sl.has(t))t=this.buffer[++e];else if(t==="%"&&ea.has(this.buffer[e+1])&&ea.has(this.buffer[e+2]))t=this.buffer[e+=3];else break;return yield*this.pushToIndex(e,!1)}}*pushNewline(){const e=this.buffer[this.pos];return e===`
+`?yield*this.pushCount(1):e==="\r"&&this.charAt(1)===`
+`?yield*this.pushCount(2):0}*pushSpaces(e){let t=this.pos-1,s;do s=this.buffer[++t];while(s===" "||e&&s==="	");const i=t-this.pos;return i>0&&(yield this.buffer.substr(this.pos,i),this.pos=t),i}*pushUntil(e){let t=this.pos,s=this.buffer[t];for(;!e(s);)s=this.buffer[++t];return yield*this.pushToIndex(t,!1)}}class hr{constructor(){this.lineStarts=[],this.addNewLine=e=>this.lineStarts.push(e),this.linePos=e=>{let t=0,s=this.lineStarts.length;for(;t<s;){const a=t+s>>1;this.lineStarts[a]<e?t=a+1:s=a}if(this.lineStarts[t]===e)return{line:t+1,col:1};if(t===0)return{line:0,col:e};const i=this.lineStarts[t-1];return{line:t,col:e-i+1}}}}function De(n,e){for(let t=0;t<n.length;++t)if(n[t].type===e)return!0;return!1}function ta(n){for(let e=0;e<n.length;++e)switch(n[e].type){case"space":case"comment":case"newline":break;default:return e}return-1}function mr(n){switch(n?.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":case"flow-collection":return!0;default:return!1}}function vs(n){switch(n.type){case"document":return n.start;case"block-map":{const e=n.items[n.items.length-1];return e.sep??e.start}case"block-seq":return n.items[n.items.length-1].start;default:return[]}}function vt(n){if(n.length===0)return[];let e=n.length;e:for(;--e>=0;)switch(n[e].type){case"doc-start":case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":case"newline":break e}for(;n[++e]?.type==="space";);return n.splice(e,n.length)}function sa(n){if(n.start.type==="flow-seq-start")for(const e of n.items)e.sep&&!e.value&&!De(e.start,"explicit-key-ind")&&!De(e.sep,"map-value-ind")&&(e.key&&(e.value=e.key),delete e.key,mr(e.value)?e.value.end?Array.prototype.push.apply(e.value.end,e.sep):e.value.end=e.sep:Array.prototype.push.apply(e.start,e.sep),delete e.sep)}class Wn{constructor(e){this.atNewLine=!0,this.atScalar=!1,this.indent=0,this.offset=0,this.onKeyLine=!1,this.stack=[],this.source="",this.type="",this.lexer=new pr,this.onNewLine=e}*parse(e,t=!1){this.onNewLine&&this.offset===0&&this.onNewLine(0);for(const s of this.lexer.lex(e,t))yield*this.next(s);t||(yield*this.end())}*next(e){if(this.source=e,this.atScalar){this.atScalar=!1,yield*this.step(),this.offset+=e.length;return}const t=ur(e);if(t)if(t==="scalar")this.atNewLine=!1,this.atScalar=!0,this.type="scalar";else{switch(this.type=t,yield*this.step(),t){case"newline":this.atNewLine=!0,this.indent=0,this.onNewLine&&this.onNewLine(this.offset+e.length);break;case"space":this.atNewLine&&e[0]===" "&&(this.indent+=e.length);break;case"explicit-key-ind":case"map-value-ind":case"seq-item-ind":this.atNewLine&&(this.indent+=e.length);break;case"doc-mode":case"flow-error-end":return;default:this.atNewLine=!1}this.offset+=e.length}else{const s=`Not a YAML token: ${e}`;yield*this.pop({type:"error",offset:this.offset,message:s,source:e}),this.offset+=e.length}}*end(){for(;this.stack.length>0;)yield*this.pop()}get sourceToken(){return{type:this.type,offset:this.offset,indent:this.indent,source:this.source}}*step(){const e=this.peek(1);if(this.type==="doc-end"&&(!e||e.type!=="doc-end")){for(;this.stack.length>0;)yield*this.pop();this.stack.push({type:"doc-end",offset:this.offset,source:this.source});return}if(!e)return yield*this.stream();switch(e.type){case"document":return yield*this.document(e);case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return yield*this.scalar(e);case"block-scalar":return yield*this.blockScalar(e);case"block-map":return yield*this.blockMap(e);case"block-seq":return yield*this.blockSequence(e);case"flow-collection":return yield*this.flowCollection(e);case"doc-end":return yield*this.documentEnd(e)}yield*this.pop()}peek(e){return this.stack[this.stack.length-e]}*pop(e){const t=e??this.stack.pop();if(!t)yield{type:"error",offset:this.offset,source:"",message:"Tried to pop an empty stack"};else if(this.stack.length===0)yield t;else{const s=this.peek(1);switch(t.type==="block-scalar"?t.indent="indent"in s?s.indent:0:t.type==="flow-collection"&&s.type==="document"&&(t.indent=0),t.type==="flow-collection"&&sa(t),s.type){case"document":s.value=t;break;case"block-scalar":s.props.push(t);break;case"block-map":{const i=s.items[s.items.length-1];if(i.value){s.items.push({start:[],key:t,sep:[]}),this.onKeyLine=!0;return}else if(i.sep)i.value=t;else{Object.assign(i,{key:t,sep:[]}),this.onKeyLine=!i.explicitKey;return}break}case"block-seq":{const i=s.items[s.items.length-1];i.value?s.items.push({start:[],value:t}):i.value=t;break}case"flow-collection":{const i=s.items[s.items.length-1];!i||i.value?s.items.push({start:[],key:t,sep:[]}):i.sep?i.value=t:Object.assign(i,{key:t,sep:[]});return}default:yield*this.pop(),yield*this.pop(t)}if((s.type==="document"||s.type==="block-map"||s.type==="block-seq")&&(t.type==="block-map"||t.type==="block-seq")){const i=t.items[t.items.length-1];i&&!i.sep&&!i.value&&i.start.length>0&&ta(i.start)===-1&&(t.indent===0||i.start.every(a=>a.type!=="comment"||a.indent<t.indent))&&(s.type==="document"?s.end=i.start:s.items.push({start:i.start}),t.items.splice(-1,1))}}}*stream(){switch(this.type){case"directive-line":yield{type:"directive",offset:this.offset,source:this.source};return;case"byte-order-mark":case"space":case"comment":case"newline":yield this.sourceToken;return;case"doc-mode":case"doc-start":{const e={type:"document",offset:this.offset,start:[]};this.type==="doc-start"&&e.start.push(this.sourceToken),this.stack.push(e);return}}yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML stream`,source:this.source}}*document(e){if(e.value)return yield*this.lineEnd(e);switch(this.type){case"doc-start":{ta(e.start)!==-1?(yield*this.pop(),yield*this.step()):e.start.push(this.sourceToken);return}case"anchor":case"tag":case"space":case"comment":case"newline":e.start.push(this.sourceToken);return}const t=this.startBlockValue(e);t?this.stack.push(t):yield{type:"error",offset:this.offset,message:`Unexpected ${this.type} token in YAML document`,source:this.source}}*scalar(e){if(this.type==="map-value-ind"){const t=vs(this.peek(2)),s=vt(t);let i;e.end?(i=e.end,i.push(this.sourceToken),delete e.end):i=[this.sourceToken];const a={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:s,key:e,sep:i}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=a}else yield*this.lineEnd(e)}*blockScalar(e){switch(this.type){case"space":case"comment":case"newline":e.props.push(this.sourceToken);return;case"scalar":if(e.source=this.source,this.atNewLine=!0,this.indent=0,this.onNewLine){let t=this.source.indexOf(`
+`)+1;for(;t!==0;)this.onNewLine(this.offset+t),t=this.source.indexOf(`
+`,t)+1}yield*this.pop();break;default:yield*this.pop(),yield*this.step()}}*blockMap(e){const t=e.items[e.items.length-1];switch(this.type){case"newline":if(this.onKeyLine=!1,t.value){const s="end"in t.value?t.value.end:void 0;(Array.isArray(s)?s[s.length-1]:void 0)?.type==="comment"?s?.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"space":case"comment":if(t.value)e.items.push({start:[this.sourceToken]});else if(t.sep)t.sep.push(this.sourceToken);else{if(this.atIndentedComment(t.start,e.indent)){const i=e.items[e.items.length-2]?.value?.end;if(Array.isArray(i)){Array.prototype.push.apply(i,t.start),i.push(this.sourceToken),e.items.pop();return}}t.start.push(this.sourceToken)}return}if(this.indent>=e.indent){const s=!this.onKeyLine&&this.indent===e.indent,i=s&&(t.sep||t.explicitKey)&&this.type!=="seq-item-ind";let a=[];if(i&&t.sep&&!t.value){const r=[];for(let o=0;o<t.sep.length;++o){const l=t.sep[o];switch(l.type){case"newline":r.push(o);break;case"space":break;case"comment":l.indent>e.indent&&(r.length=0);break;default:r.length=0}}r.length>=2&&(a=t.sep.splice(r[1]))}switch(this.type){case"anchor":case"tag":i||t.value?(a.push(this.sourceToken),e.items.push({start:a}),this.onKeyLine=!0):t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"explicit-key-ind":!t.sep&&!t.explicitKey?(t.start.push(this.sourceToken),t.explicitKey=!0):i||t.value?(a.push(this.sourceToken),e.items.push({start:a,explicitKey:!0})):this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken],explicitKey:!0}]}),this.onKeyLine=!0;return;case"map-value-ind":if(t.explicitKey)if(t.sep)if(t.value)e.items.push({start:[],key:null,sep:[this.sourceToken]});else if(De(t.sep,"map-value-ind"))this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:a,key:null,sep:[this.sourceToken]}]});else if(mr(t.key)&&!De(t.sep,"newline")){const r=vt(t.start),o=t.key,l=t.sep;l.push(this.sourceToken),delete t.key,delete t.sep,this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:r,key:o,sep:l}]})}else a.length>0?t.sep=t.sep.concat(a,this.sourceToken):t.sep.push(this.sourceToken);else if(De(t.start,"newline"))Object.assign(t,{key:null,sep:[this.sourceToken]});else{const r=vt(t.start);this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:r,key:null,sep:[this.sourceToken]}]})}else t.sep?t.value||i?e.items.push({start:a,key:null,sep:[this.sourceToken]}):De(t.sep,"map-value-ind")?this.stack.push({type:"block-map",offset:this.offset,indent:this.indent,items:[{start:[],key:null,sep:[this.sourceToken]}]}):t.sep.push(this.sourceToken):Object.assign(t,{key:null,sep:[this.sourceToken]});this.onKeyLine=!0;return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{const r=this.flowScalar(this.type);i||t.value?(e.items.push({start:a,key:r,sep:[]}),this.onKeyLine=!0):t.sep?this.stack.push(r):(Object.assign(t,{key:r,sep:[]}),this.onKeyLine=!0);return}default:{const r=this.startBlockValue(e);if(r){if(r.type==="block-seq"){if(!t.explicitKey&&t.sep&&!De(t.sep,"newline")){yield*this.pop({type:"error",offset:this.offset,message:"Unexpected block-seq-ind on same line with key",source:this.source});return}}else s&&e.items.push({start:a});this.stack.push(r);return}}}}yield*this.pop(),yield*this.step()}*blockSequence(e){const t=e.items[e.items.length-1];switch(this.type){case"newline":if(t.value){const s="end"in t.value?t.value.end:void 0;(Array.isArray(s)?s[s.length-1]:void 0)?.type==="comment"?s?.push(this.sourceToken):e.items.push({start:[this.sourceToken]})}else t.start.push(this.sourceToken);return;case"space":case"comment":if(t.value)e.items.push({start:[this.sourceToken]});else{if(this.atIndentedComment(t.start,e.indent)){const i=e.items[e.items.length-2]?.value?.end;if(Array.isArray(i)){Array.prototype.push.apply(i,t.start),i.push(this.sourceToken),e.items.pop();return}}t.start.push(this.sourceToken)}return;case"anchor":case"tag":if(t.value||this.indent<=e.indent)break;t.start.push(this.sourceToken);return;case"seq-item-ind":if(this.indent!==e.indent)break;t.value||De(t.start,"seq-item-ind")?e.items.push({start:[this.sourceToken]}):t.start.push(this.sourceToken);return}if(this.indent>e.indent){const s=this.startBlockValue(e);if(s){this.stack.push(s);return}}yield*this.pop(),yield*this.step()}*flowCollection(e){const t=e.items[e.items.length-1];if(this.type==="flow-error-end"){let s;do yield*this.pop(),s=this.peek(1);while(s&&s.type==="flow-collection")}else if(e.end.length===0){switch(this.type){case"comma":case"explicit-key-ind":!t||t.sep?e.items.push({start:[this.sourceToken]}):t.start.push(this.sourceToken);return;case"map-value-ind":!t||t.value?e.items.push({start:[],key:null,sep:[this.sourceToken]}):t.sep?t.sep.push(this.sourceToken):Object.assign(t,{key:null,sep:[this.sourceToken]});return;case"space":case"comment":case"newline":case"anchor":case"tag":!t||t.value?e.items.push({start:[this.sourceToken]}):t.sep?t.sep.push(this.sourceToken):t.start.push(this.sourceToken);return;case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":{const i=this.flowScalar(this.type);!t||t.value?e.items.push({start:[],key:i,sep:[]}):t.sep?this.stack.push(i):Object.assign(t,{key:i,sep:[]});return}case"flow-map-end":case"flow-seq-end":e.end.push(this.sourceToken);return}const s=this.startBlockValue(e);s?this.stack.push(s):(yield*this.pop(),yield*this.step())}else{const s=this.peek(2);if(s.type==="block-map"&&(this.type==="map-value-ind"&&s.indent===e.indent||this.type==="newline"&&!s.items[s.items.length-1].sep))yield*this.pop(),yield*this.step();else if(this.type==="map-value-ind"&&s.type!=="flow-collection"){const i=vs(s),a=vt(i);sa(e);const r=e.end.splice(1,e.end.length);r.push(this.sourceToken);const o={type:"block-map",offset:e.offset,indent:e.indent,items:[{start:a,key:e,sep:r}]};this.onKeyLine=!0,this.stack[this.stack.length-1]=o}else yield*this.lineEnd(e)}}flowScalar(e){if(this.onNewLine){let t=this.source.indexOf(`
+`)+1;for(;t!==0;)this.onNewLine(this.offset+t),t=this.source.indexOf(`
+`,t)+1}return{type:e,offset:this.offset,indent:this.indent,source:this.source}}startBlockValue(e){switch(this.type){case"alias":case"scalar":case"single-quoted-scalar":case"double-quoted-scalar":return this.flowScalar(this.type);case"block-scalar-header":return{type:"block-scalar",offset:this.offset,indent:this.indent,props:[this.sourceToken],source:""};case"flow-map-start":case"flow-seq-start":return{type:"flow-collection",offset:this.offset,indent:this.indent,start:this.sourceToken,items:[],end:[]};case"seq-item-ind":return{type:"block-seq",offset:this.offset,indent:this.indent,items:[{start:[this.sourceToken]}]};case"explicit-key-ind":{this.onKeyLine=!0;const t=vs(e),s=vt(t);return s.push(this.sourceToken),{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:s,explicitKey:!0}]}}case"map-value-ind":{this.onKeyLine=!0;const t=vs(e),s=vt(t);return{type:"block-map",offset:this.offset,indent:this.indent,items:[{start:s,key:null,sep:[this.sourceToken]}]}}}return null}atIndentedComment(e,t){return this.type!=="comment"||this.indent<=t?!1:e.every(s=>s.type==="newline"||s.type==="space")}*documentEnd(e){this.type!=="doc-mode"&&(e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop()))}*lineEnd(e){switch(this.type){case"comma":case"doc-start":case"doc-end":case"flow-seq-end":case"flow-map-end":case"map-value-ind":yield*this.pop(),yield*this.step();break;case"newline":this.onKeyLine=!1;case"space":case"comment":default:e.end?e.end.push(this.sourceToken):e.end=[this.sourceToken],this.type==="newline"&&(yield*this.pop())}}}function fr(n){const e=n.prettyErrors!==!1;return{lineCounter:n.lineCounter||e&&new hr||null,prettyErrors:e}}function Al(n,e={}){const{lineCounter:t,prettyErrors:s}=fr(e),i=new Wn(t?.addNewLine),a=new Hn(e),r=Array.from(a.compose(i.parse(n)));if(s&&t)for(const o of r)o.errors.forEach(Ts(n,t)),o.warnings.forEach(Ts(n,t));return r.length>0?r:Object.assign([],{empty:!0},a.streamInfo())}function gr(n,e={}){const{lineCounter:t,prettyErrors:s}=fr(e),i=new Wn(t?.addNewLine),a=new Hn(e);let r=null;for(const o of a.compose(i.parse(n),!0,n.length))if(!r)r=o;else if(r.options.logLevel!=="silent"){r.errors.push(new it(o.range.slice(0,2),"MULTIPLE_DOCS","Source contains multiple documents; please use YAML.parseAllDocuments()"));break}return s&&t&&(r.errors.forEach(Ts(n,t)),r.warnings.forEach(Ts(n,t))),r}function Pl(n,e,t){let s;typeof e=="function"?s=e:t===void 0&&e&&typeof e=="object"&&(t=e);const i=gr(n,t);if(!i)return null;if(i.warnings.forEach(a=>qa(i.options.logLevel,a)),i.errors.length>0){if(i.options.logLevel!=="silent")throw i.errors[0];i.errors=[]}return i.toJS(Object.assign({reviver:s},t))}function xl(n,e,t){let s=null;if(typeof e=="function"||Array.isArray(e)?s=e:t===void 0&&e&&(t=e),typeof t=="string"&&(t=t.length),typeof t=="number"){const i=Math.round(t);t=i<1?void 0:i>8?{indent:8}:{indent:i}}if(n===void 0){const{keepUndefined:i}=t??e??{};if(!i)return}return lt(n)&&!s?n.toString(t):new Ot(n,s,t).toString(t)}const Ks=Object.freeze(Object.defineProperty({__proto__:null,Alias:Ls,CST:wl,Composer:Hn,Document:Ot,Lexer:pr,LineCounter:hr,Pair:le,Parser:Wn,Scalar:M,Schema:Ms,YAMLError:Dn,YAMLMap:me,YAMLParseError:it,YAMLSeq:Ge,YAMLWarning:tr,isAlias:Qe,isCollection:X,isDocument:lt,isMap:Nt,isNode:Z,isPair:J,isScalar:G,isSeq:It,parse:Pl,parseAllDocuments:Al,parseDocument:gr,stringify:xl,visit:ct,visitAsync:Es},Symbol.toStringTag,{value:"Module"})),Rl=`version: 1
+coreCount: 42
+backupCount: 32
+coreTotalSeconds: 2370
+backupTotalSeconds: 0
+slides:
+  - id: title
+    section: title
+    title: "Secure Single Password Authentication Protocols in Distributed Systems"
+    route: core
+    estimatedSeconds: 30
+    sourceRefs:
+      - "presentation.config.yaml#lines-1-17"
+      - "source-material/thesis/MSc.tex#lines-54-63"
+    formulas: []
+    visual: "Minimal title composition with the supplied Koç University logo and a restrained user-provider-service network motif."
+    citation: "Presentation configuration; thesis title page."
+    speakerNotes:
+      main: "This thesis asks how one remembered password can support many independent services while the supporting state remains updateable and available."
+      cues:
+        - "Introduce the thesis as a progression from password separation to threshold storage, updates, and resilience."
+        - "State that every security claim will retain its corruption, endpoint, channel, and availability assumptions."
+      transition: "I will begin with the ordinary authentication problem that motivates this line of work."
+      skip: "No; this is the formal opening."
+      jury: "What is the thesis's single central contribution?"
+      pointer: "backup-references"
+
+  - id: problem-daily-authentication
+    section: password-problem
+    title: "Authentication is a daily activity"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "BUILD_REVEAL_DEFENSE.md#lines-13-17"
+      - "source-material/thesis/Prelude/Relatedworks.tex#prelude:related-work/lines-3-7"
+    formulas: []
+    visual: "A centered user surrounded by generic service cards revealed in small groups; no commercial logos or usage statistics."
+    citation: "Defense narrative; Thesis, Related Work."
+    speakerNotes:
+      main: "A single person repeatedly authenticates to many independent services, so credential handling is a routine systems problem."
+      cues:
+        - "Use familiar service categories without implying a measured account count."
+        - "Keep the opening qualitative; the deck intentionally avoids unreliable password-use statistics."
+      transition: "That repeated task creates a simple but uncomfortable choice: reuse one password, or maintain many."
+      skip: "Yes; combine with problem-two-strategies if time is tight."
+      jury: "Why avoid numerical password-use statistics here?"
+      pointer: "backup-references"
+
+  - id: problem-two-strategies
+    section: password-problem
+    title: "One password or many passwords?"
+    route: core
+    estimatedSeconds: 40
+    sourceRefs:
+      - "BUILD_REVEAL_DEFENSE.md#lines-229-238"
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-7-11"
+    formulas: []
+    visual: "A two-branch path from many accounts: password reuse versus a distinct password per service, with burden and compromise propagation shown visually."
+    citation: "Thesis, Related Work §rw:spa-family."
+    speakerNotes:
+      main: "Password reuse reduces memory burden, while distinct credentials better isolate compromise but increase maintenance and recovery work."
+      cues:
+        - "Do not imply that every user follows either extreme."
+        - "Frame both branches as understandable responses to the same usability pressure."
+      transition: "The trade-off is therefore not convenience versus security in the abstract, but daily effort versus compromise isolation."
+      skip: "Yes; retain problem-strategy-comparison as the synthesis."
+      jury: "Does the thesis model human password choice?"
+      pointer: "backup-references"
+
+  - id: problem-strategy-comparison
+    section: password-problem
+    title: "The tension is convenience versus isolation"
+    route: core
+    estimatedSeconds: 40
+    sourceRefs:
+      - "BUILD_REVEAL_DEFENSE.md#lines-240-253"
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-7-17"
+    formulas: []
+    visual: "A balanced two-column comparison of reuse and distinct-password strategies, ending in the need for a management layer."
+    citation: "Defense narrative; Thesis, Related Work §rw:spa-family."
+    speakerNotes:
+      main: "Neither extreme removes the need to manage credentials; it only moves the burden or the compromise boundary."
+      cues:
+        - "Reuse is easy but can propagate one disclosure."
+        - "Distinct passwords isolate better but increase reset, recovery, and memory work."
+        - "This tension motivates a credential-management layer rather than a moral judgment about users."
+      transition: "The strongest practical answer today is the password manager."
+      skip: "No; this slide states the motivating trade-off."
+      jury: "Is password reuse itself part of the formal adversarial model?"
+      pointer: "backup-references"
+
+  - id: problem-password-manager
+    section: password-problem
+    title: "The practical answer is a password manager"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "BUILD_REVEAL_DEFENSE.md#lines-255-265"
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-11-13"
+    formulas: []
+    visual: "Many site-specific credentials converge on an encrypted vault protected by one master secret."
+    citation: "Defense narrative; Thesis, Related Work §rw:spa-family."
+    speakerNotes:
+      main: "Password managers are a strong usability solution that place site credentials behind one managed vault."
+      cues:
+        - "Acknowledge them positively and explicitly."
+        - "The thesis explores a different storage and trust design point; it does not argue that password managers are generally insecure."
+      transition: "Password managers themselves commonly choose between a local vault and cloud-synchronized encrypted state."
+      skip: "No; this prevents a false comparison premise."
+      jury: "Why develop SPA if password managers already work well?"
+      pointer: "backup-references"
+
+  - id: problem-local-cloud-managers
+    section: password-problem
+    title: "Password managers commonly use two storage models"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "problem-password-manager"
+    sourceRefs:
+      - "BUILD_REVEAL_DEFENSE.md#lines-267-285"
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-11-13"
+    formulas: []
+    visual: "Balanced local-vault and cloud-synchronized-vault panels with portability, backup, availability, and metadata boundaries."
+    citation: "Defense narrative; Thesis, Related Work §rw:spa-family."
+    speakerNotes:
+      main: "Local and cloud-synchronized vaults make different portability, availability, backup, and metadata trade-offs."
+      cues:
+        - "Neither panel is labeled insecure."
+        - "The comparison establishes a design space, not a winner."
+      transition: "SPA asks whether the remembered password can sit at yet another point in that design space."
+      skip: "Yes; summarize both models on the password-manager slide if needed."
+      jury: "Is UpSPA intended to replace every password manager deployment?"
+      pointer: "backup-references"
+
+  - id: problem-research-question
+    section: password-problem
+    title: "A different design point"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "BUILD_REVEAL_DEFENSE.md#lines-287-301"
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-7-19"
+    formulas: []
+    visual: "One large research question followed by a restrained reveal of Single Password Authentication (SPA)."
+    citation: "Thesis, Related Work §rw:spa-family."
+    speakerNotes:
+      main: "SPA preserves one memorable password while keeping that password and reusable deterministic derivatives away from login servers."
+      cues:
+        - "Emphasize the ordinary login-server interface."
+        - "The password-protected helper state is the architectural change."
+      transition: "The research line then adds threshold distribution, updates, and finally resilient state recovery."
+      skip: "No; this is the bridge into the thesis lineage."
+      jury: "What exactly does a login server receive instead of the password?"
+      pointer: "backup-notation"
+
+  - id: lineage-overview
+    section: spa-lineage
+    title: "The research line adds one missing capability at a time"
+    route: core
+    estimatedSeconds: 55
+    sourceRefs:
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-9-19"
+      - "source-material/thesis/references.bib#entries-acar2013single-icsler2017threshold-Isler2018DiSPP-UpSPA"
+      - "source-material/thesis/Prelude/Introduction/Publications.tex#lines-7-23"
+    formulas: []
+    visual: "Timeline: SPA → TSPA → UpSPA → RoUpSPA, with one capability phrase and verified author-year/status citation per node."
+    citation: "Acar, Belenkiy & Küpçü, 2013; İşler & Küpçü, 2017; UpSPA ePrint 2026/784; RoUpSPA manuscript submitted to ACM TOPS."
+    speakerNotes:
+      main: "The lineage moves from one helper, to a threshold helper set, to an update lifecycle, and then to quorum completion and stale-replica recovery."
+      cues:
+        - "SPA separates the password from login servers."
+        - "TSPA distributes the helper role."
+        - "UpSPA adds secret and password update; RoUpSPA adds resilience."
+      transition: "First, SPA establishes the basic separation between a login server and a helper."
+      skip: "No; this is the roadmap for both technical chapters."
+      jury: "What publication status can be claimed for UpSPA and RoUpSPA?"
+      pointer: "backup-references"
+
+  - id: lineage-spa
+    section: spa-lineage
+    title: "SPA separates the password from the login server"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-7-13"
+      - "source-material/thesis/references.bib#entry-acar2013single"
+    formulas: []
+    visual: "User, one helper storage provider, and one login server; arrows distinguish secret recovery from login-server authentication."
+    citation: "Acar, Belenkiy & Küpçü, Computer Networks, 2013; Thesis §rw:spa-family."
+    speakerNotes:
+      main: "SPA gives each service high-entropy authentication material while a separate helper protects the corresponding secret under the one remembered password."
+      cues:
+        - "The login server never receives the user's password."
+        - "The single-helper collusion boundary remains important."
+        - "SPA did not define the distributed update lifecycle developed in this thesis."
+      transition: "TSPA strengthens the helper boundary by distributing it across multiple providers."
+      skip: "No; this establishes the baseline architecture."
+      jury: "Why is collusion between the helper and login server dangerous?"
+      pointer: "backup-references"
+
+  - id: lineage-tspa
+    section: spa-lineage
+    title: "TSPA distributes the helper role"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-15-17"
+      - "source-material/thesis/references.bib#entry-icsler2017threshold"
+    formulas:
+      - '\\text{authentication requires at least } t_{\\mathrm{sp}} \\text{ valid providers}'
+    visual: "Replace the single helper with SP₁…SPₙ and highlight an active threshold t_sp; keep the login server outside the TOPRF interaction."
+    citation: "İşler & Küpçü, Threshold Single Password Authentication, 2017; Thesis §rw:spa-family."
+    speakerNotes:
+      main: "TSPA makes secret recovery depend on threshold-many provider contributions, moving the offline-test boundary to the login server plus at least t_sp providers."
+      cues:
+        - "Provider-specific OPRF outputs protect the secret shares."
+        - "Fewer than t_sp providers cannot reconstruct the authentication secret."
+        - "TSPA still concentrates on registration and authentication."
+      transition: "The remaining gap is not another login mechanism; it is the lifecycle of changing passwords and account secrets safely."
+      skip: "No; the threshold distinction is used throughout the thesis."
+      jury: "Why is ordinary secret sharing without an OPRF insufficient?"
+      pointer: "backup-references"
+
+  - id: lineage-gap-and-thesis
+    section: spa-lineage
+    title: "The missing piece is a credential lifecycle"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "source-material/thesis/Prelude/Relatedworks.tex#rw:spa-family/lines-17-19"
+      - "source-material/thesis/Prelude/Introduction/Outline.tex#lines-1-45"
+    formulas: []
+    visual: "Contrast SPA/TSPA's registration-authentication path with Setup, Registration, Authentication, Secret Update, and Password Update; reveal RoUpSPA as the resilience layer."
+    citation: "Thesis, Related Work §rw:spa-family; Thesis Outline and Contributions."
+    speakerNotes:
+      main: "UpSPA adds an explicit five-phase credential lifecycle, and RoUpSPA then changes the availability and recovery rules around that same cryptographic core."
+      cues:
+        - "Secret update rotates one service's authentication secret."
+        - "Password update re-protects compact root state."
+        - "RoUpSPA addresses providers that are temporarily unavailable or stale."
+      transition: "We can now examine the first main contribution: the UpSPA construction."
+      skip: "No; this slide states the thesis gap and contribution split."
+      jury: "Why are secret update and password update separate phases?"
+      pointer: "backup-upspa-challenges-full"
+
+  - id: upspa-overview
+    section: upspa
+    title: "UpSPA turns threshold SPA into a five-phase framework"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#sec:upspa-system-and-threat-model/lines-19-88"
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#sec:upspa-construction/lines-1-24"
+    formulas: []
+    visual: "Three anchors - one remembered password, service-specific high-entropy state, and native updates - over a subtle five-phase lifecycle."
+    citation: "Thesis, UpSPA system design and construction."
+    speakerNotes:
+      main: "UpSPA preserves the threshold password boundary while adding first-class account-secret and password updates."
+      cues:
+        - "It retains ordinary login-server deployment."
+        - "The construction separates a compact root from per-service account state."
+        - "State-changing phases use a fully available provider baseline."
+      transition: "The architecture is easiest to understand by separating what the client, login server, and storage providers can see."
+      skip: "No; this opens the main technical contribution."
+      jury: "What does 'fully available baseline' mean precisely?"
+      pointer: "backup-upspa-threat-model-full"
+
+  - id: upspa-parties
+    section: upspa
+    title: "Three roles separate password recovery from service authentication"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-overview"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-system-model/lines-20-58"
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-system-design/lines-60-89"
+    formulas:
+      - '1 \\le t_{\\mathrm{sp}} \\le n_{\\mathrm{sp}}'
+    visual: "Trust-boundary diagram with User U, storage providers SP_i, and independent login servers LS_j; color password-derived traffic separately from service login traffic."
+    citation: "Thesis, UpSPA system model and design."
+    speakerNotes:
+      main: "The client remembers one password, the storage providers help recover protected state, and each login server verifies a high-entropy service credential rather than the password."
+      cues:
+        - "Storage providers hold encrypted records and TOPRF shares."
+        - "A login server is not a storage provider and never receives the password."
+        - "Security depends on fewer than t_sp storage providers colluding with the login server."
+      transition: "The cleanest way to see what these parties store is to split the client state into root and account layers."
+      skip: "No; the trust boundaries define every later security claim."
+      jury: "Which parties must collude to mount an offline password test?"
+      pointer: "backup-upspa-threat-model-full"
+
+  - id: upspa-two-layer-state
+    section: upspa
+    title: "A compact root unlocks independent per-service account records"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-system-design/lines-60-89"
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#sec:upspa-construction/lines-25-113"
+    formulas:
+      - 'cid=\\operatorname{Enc}_{F_K(pwd)}(ssk\\parallel R^{sp}\\parallel K_0)'
+      - 'SUid_{l,i,j}=H(R^{sp}\\parallel ls_j\\parallel i)'
+      - 'c_j=\\operatorname{Enc}_{K_0}(R^{ls_j}\\parallel ctr_{ac}),\\quad vInfo_j=H(R^{ls_j}\\parallel ls_j)'
+    visual: "Nested state diagram: password-derived TOPRF output opens cid; K_0 then opens each service-specific c_j, while vInfo_j authenticates the login-server binding."
+    citation: "Thesis, UpSPA construction and state definitions."
+    speakerNotes:
+      main: "The password protects only a compact root, while K_0 protects independently addressable service records whose identifiers do not reveal the login-server name."
+      cues:
+        - "R^sp derives unlinkable provider-side identifiers."
+        - "R^{ls_j} is the high-entropy service secret material."
+        - "ctr_ac orders account versions for updates."
+      transition: "This two-layer organization supports the same five lifecycle phases without exposing the service map to providers."
+      skip: "No; these exact objects recur in every protocol phase."
+      jury: "Why is the login-server identity hashed into both SUid and vInfo?"
+      pointer: "backup-upspa-setup-full"
+
+  - id: upspa-setup
+    section: upspa
+    title: "Setup creates the threshold root at every provider"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-setup"
+    formulas:
+      - 'c_{id}\\leftarrow Enc_{F_K(pwd)}(ssk\\parallel R_{sp}\\parallel K_0)'
+    visual: "Seven-step editable setup lane ending in all-provider success."
+    citation: "Thesis, UpSPA Setup figure."
+    speakerNotes:
+      main: "Setup creates one signing key, one hidden routing secret, one account key, and provider-specific TOPRF shares, then installs the master record at every provider."
+      cues:
+        - "Keep the exact generation and encryption order visible."
+        - "The fully available baseline declares success only after all n_sp providers accept."
+        - "There is no Store/Discard subphase in Setup."
+      transition: "The only password-dependent primitive used to reopen this record is the threshold OPRF."
+      skip: "Do not skip; this slide defines every root-state symbol."
+      jury: "Why does Setup require all providers when later authentication needs only t_sp?"
+      pointer: "backup-upspa-setup-full"
+
+  - id: upspa-toprf-interaction
+    section: upspa
+    title: "Threshold OPRF opens the master record without revealing the password"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#toprf"
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#toprf"
+    formulas:
+      - 'F_K(pwd)\\leftarrow TOPRF(pwd,\\{k_i\\}_{i\\in[t_{sp}]})'
+    visual: "Four-step blind, evaluate, combine, derive interaction."
+    citation: "Thesis, UpSPA preliminaries/construction and security analysis."
+    speakerNotes:
+      main: "The user combines threshold contributions to obtain F_K(pwd); providers learn neither the password nor the final output."
+      cues:
+        - "This is an explanatory abstraction, not a substitute for the formal TOPRF definition."
+        - "Fewer than t_sp contributions are insufficient."
+        - "Later phase slides refer back to this interaction instead of repeating it."
+      transition: "With that primitive fixed, every operational phase begins with the same identification step."
+      skip: "May compress the four arrows, but retain all three privacy/threshold properties."
+      jury: "What does one provider see during a TOPRF session?"
+      pointer: "backup-upspa-threat-model-full"
+
+  - id: upspa-identification
+    section: upspa
+    title: "Identification recovers the compact root—or fails safely"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#identification"
+    formulas:
+      - 'Dec_{F_K(pwd)}(c_{id})=(ssk,R_{sp},K_0)'
+    visual: "Reusable four-step root-opening flow with a separate fail-closed panel."
+    citation: "Thesis, UpSPA phase preambles and identification/root opening."
+    speakerNotes:
+      main: "Identification is the shared preamble: read the root, run TOPRF, and decrypt c_id before any account or login-server action."
+      cues:
+        - "Wrong password or too few valid responses stops the phase."
+        - "Authenticated-decryption failure is terminal."
+        - "No partial account write or login-server request occurs on failure."
+      transition: "Registration uses the recovered root to create one hidden account family."
+      skip: "No; this removes repetition from every following phase."
+      jury: "What prevents a wrong password from reaching a login server as a verification attempt?"
+      pointer: "backup-upspa-authentication-full"
+
+  - id: upspa-lifecycle
+    section: upspa
+    title: "The lifecycle has two read paths and three state-changing paths"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-setup"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#sec:upspa-construction/lines-25-620"
+    formulas: []
+    visual: "Five-node lifecycle: Setup → Registration → Authentication, with Secret Update looping on one account and Password Update rotating the root; mark Setup, Registration, and both updates as all-provider writes."
+    citation: "Thesis, UpSPA construction, Figures fig:upspa-setup through fig:upspa-password-update."
+    speakerNotes:
+      main: "Setup creates the root, registration adds an account, authentication reads it, secret update rotates one service secret, and password update rekeys the root."
+      cues:
+        - "Authentication needs threshold-many valid provider responses."
+        - "In the baseline, every state-changing phase waits for all n_sp providers."
+        - "The phase boundary includes the final Store acknowledgements in the thesis construction."
+      transition: "I will now show the four phase mechanics that matter for correctness, starting with registration."
+      skip: "If time is short, keep this overview and skip directly to the two update slides."
+      jury: "Which phases change root state, and which change only one account record?"
+      pointer: "backup-upspa-setup-full"
+
+  - id: upspa-registration
+    section: upspa
+    title: "Registration binds a fresh service secret to one hidden account family"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-registration/lines-178-258"
+    formulas:
+      - 'SUid_{l,i,j}=H(R^{sp}\\parallel ls_j\\parallel i)'
+      - 'c_j=\\operatorname{Enc}_{K_0}(R^{ls_j}\\parallel ctr_{ac})'
+    visual: "Four-lane message flow: client recovers root via TOPRF, creates service state, stores provider-indexed encrypted records, then registers the derived high-entropy credential at LS_j."
+    citation: "Thesis, UpSPA Registration, Figure fig:upspa-registration."
+    speakerNotes:
+      main: "After threshold recovery of the compact root, the client creates fresh service randomness, encrypts the account record under K_0, and stores provider-specific records before completing login-server registration."
+      cues:
+        - "Provider index i prevents cross-provider record linking."
+        - "The storage provider sees a pseudonymous key and ciphertext, not ls_j."
+        - "Completion includes all required Store acknowledgements in the authoritative thesis flow."
+      transition: "Authentication reuses that structure but is read-only and therefore needs only a threshold of valid responses."
+      skip: "May compress to the creation, storage, and login-server binding steps."
+      jury: "What prevents a storage provider from learning which service is being registered?"
+      pointer: "backup-upspa-registration-full"
+
+  - id: upspa-authentication
+    section: upspa
+    title: "Authentication reconstructs the credential without sending the password"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-authentication/lines-260-362"
+    formulas:
+      - 'y=F_K(pwd)\\quad\\text{from }t_{\\mathrm{sp}}\\text{ valid TOPRF responses}'
+    visual: "Read-only sequence: blind password input → threshold TOPRF responses → decrypt cid → fetch/decrypt account record → challenge-response with LS_j."
+    citation: "Thesis, UpSPA Authentication, Figure fig:upspa-authentication."
+    speakerNotes:
+      main: "The client blinds the password for the TOPRF, reconstructs the password-dependent key from t_sp valid responses, opens the root and account records, and authenticates with the recovered high-entropy secret."
+      cues:
+        - "No provider learns the clear password or TOPRF output."
+        - "The login server verifies the derived service credential, not the password."
+        - "Authentication is read-only; no provider repair occurs in UpSPA."
+      transition: "The novelty becomes clearest when either the service secret or the remembered password must change."
+      skip: "No; this is the principal user-facing operation."
+      jury: "Why can authentication tolerate unavailable providers while registration cannot?"
+      pointer: "backup-upspa-authentication-full"
+
+  - id: upspa-secret-update
+    section: upspa
+    title: "Secret update rotates one login-server credential"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-secret-update"
+    formulas:
+      - 'ctr_{ac,new}=ctr_{ac,max}+1'
+      - 'vInfo_{j,new}=H(R^{ls_j}_{new}\\parallel ls_j)'
+    visual: "Identification, current-account read, replacement, LS authorization, and provider finalization."
+    citation: "Thesis, UpSPA Secret Update figure."
+    speakerNotes:
+      main: "Secret Update replaces exactly one service secret and account ciphertext while preserving the root, password, and every other account."
+      cues:
+        - "Select the maximum valid current account counter before incrementing it."
+        - "The login server validates the old-to-new verifier transition."
+        - "Providers map the LS result to Store/Discard after all pending acknowledgements."
+      transition: "Password Update changes the opposite layer: root protection without touching account ciphertexts."
+      skip: "May summarize the read preamble as Identification, but retain update scope and finalization."
+      jury: "Which values remain unchanged during Secret Update?"
+      pointer: "backup-upspa-secret-update-full"
+
+  - id: upspa-password-update
+    section: upspa
+    title: "Password update rewraps the compact root—not every account"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-password-update"
+    formulas:
+      - 'c_{id,new}=Enc_{F_{K_{new}}(pwd_{new})}(ssk\\parallel R_{sp}\\parallel K_0)'
+      - '\\sigma_i=Sign_{ssk}(uid\\parallel c_{id,new}\\parallel k_{i,new}\\parallel time\\parallel i)'
+    visual: "Identification followed by fresh TOPRF material, exact signed provider replacements, and all-provider finalization."
+    citation: "Thesis, UpSPA Password Update figure."
+    speakerNotes:
+      main: "Password Update generates fresh TOPRF material and re-encrypts only c_id; K_0, account ciphertexts, and login-server verifiers are unchanged."
+      cues:
+        - "Use the exact signed field order from the final construction figure."
+        - "The provider index i is included in the signature."
+        - "No login server participates."
+      transition: "The two update phases therefore have deliberately disjoint scopes."
+      skip: "Do not skip the exact replacement tuple."
+      jury: "Why can every account ciphertext remain unchanged after the password changes?"
+      pointer: "backup-upspa-password-update-full"
+
+  - id: upspa-two-updates
+    section: upspa
+    title: "Secret update and password update rotate different layers"
+    route: core
+    estimatedSeconds: 40
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-secret-update/lines-364-498"
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-password-update/lines-500-606"
+    formulas:
+      - '\\mathrm{SecretUpdate}: R^{ls_j}\\leftarrow R^{ls_j}_{new}'
+      - '\\mathrm{PasswordUpdate}: (K,\\{k_i\\},cid)\\leftarrow(K_{new},\\{k_{i,new}\\},cid_{new})'
+    visual: "Side-by-side layer diagram: Secret Update replaces one account leaf; Password Update replaces the TOPRF key/shares and root ciphertext while preserving service records."
+    citation: "Thesis, UpSPA Secret Update and Password Update."
+    speakerNotes:
+      main: "A secret update rotates exactly one service credential, whereas a password update creates a fresh TOPRF key and shares and re-encrypts the compact root under the new password."
+      cues:
+        - "The other service records do not change during secret update."
+        - "Password update does not require re-registering every login server."
+        - "Both are all-provider state changes in the UpSPA availability model."
+      transition: "Those mechanics are meaningful only relative to the corruption and collusion model."
+      skip: "No; native update support is the main distinction from TSPA."
+      jury: "Does password update merely re-encrypt cid, or does it also rotate TOPRF material?"
+      pointer: "backup-upspa-secret-update-full"
+
+  - id: upspa-threat-model
+    section: upspa
+    title: "Security tolerates fewer than t_sp corrupted providers"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-threat-model/lines-91-132"
+    formulas:
+      - '|\\mathcal{C}_{SP}|<t_{\\mathrm{sp}}'
+    visual: "Corruption matrix across client, login server, and storage providers; emphasize the prohibited login-server-plus-threshold-provider coalition and distinguish online guessing from offline testing."
+    citation: "Thesis, UpSPA threat model."
+    speakerNotes:
+      main: "The security target is resistance to offline password testing when the adversary controls a login server and fewer than t_sp storage providers; online attempts remain rate-limitable."
+      cues:
+        - "Network control is modeled, so authenticity cannot rely on the channel alone."
+        - "Threshold corruption is the decisive boundary for reconstructing password-dependent state."
+        - "Denial of service is outside the confidentiality guarantee."
+      transition: "Meeting this model while supporting mutable state creates four concrete design challenges."
+      skip: "No; all theorem claims are conditional on this boundary."
+      jury: "What changes if t_sp or more providers collude with the login server?"
+      pointer: "backup-upspa-threat-model-full"
+
+  - id: upspa-design-challenges
+    section: upspa
+    title: "Updates add consistency and binding obligations to password hardening"
+    route: core
+    estimatedSeconds: 45
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-design-challenges/lines-134-177"
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-password-update/lines-500-606"
+    formulas:
+      - '\\sigma_i=\\operatorname{Sign}_{ssk}(Uid\\parallel cid_{new}\\parallel k_{i,new}\\parallel time\\parallel i)'
+    visual: "Four challenge cards: password privacy, hidden service mapping, authenticated mutable state, and replay/version control; annotate provider index i inside the signed password-update tuple."
+    citation: "Thesis, UpSPA design challenges and Password Update figure."
+    speakerNotes:
+      main: "The construction must hide the password and account map while also ensuring that each provider accepts only authenticated, fresh state intended for that provider."
+      cues:
+        - "The formal password-update figure signs Uid, cid_new, k_i,new, time, and i in that order."
+        - "The surrounding prose omits i, so the figure is the exact protocol authority."
+        - "Fresh TOPRF material prevents a password change from inheriting the old root key."
+      transition: "The proof isolates these obligations as bad events and then replaces the remaining secrets game by game."
+      skip: "May abbreviate the four cards, but retain the signed tuple."
+      jury: "Why must provider index i be signed?"
+      pointer: "backup-upspa-challenges-full"
+
+  - id: upspa-security
+    section: upspa
+    title: "The UpSPA proof reduces privacy to standard primitives"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#thm:upspa-security/lines-55-87"
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#bad-events/lines-741-827"
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#final-bound/lines-1213-1251"
+    formulas:
+      - '\\epsilon_{bad}=q_{dec}\\operatorname{Adv}_{AE}^{int-ctxt}+q_{kb}\\operatorname{Adv}_{AE}^{kb}+q_{vk}\\operatorname{Adv}_{Sign}^{euf-cma}+\\operatorname{Adv}_{H}^{cr}'
+      - '\\operatorname{Adv}_{real/ideal}\\le 2\\epsilon_{bad}+\\operatorname{Adv}_{TOPRF}^{prf}+q_{id}\\operatorname{Adv}_{AE}^{ind-cpa}+q_{sp}\\operatorname{Adv}_{AE}^{ind-cpa}'
+    visual: "Hybrid ladder from real to ideal: exclude forgery/collision/decryption bad events, replace TOPRF output, then hide root and account plaintexts; end on the displayed advantage bound."
+    citation: "Thesis, UpSPA Security Theorem thm:upspa-security and final hybrid bound."
+    speakerNotes:
+      main: "Conditioned on no integrity, key-binding, signature, or collision bad event, the proof replaces the TOPRF and encrypted plaintexts until the adversary's view is ideal."
+      cues:
+        - "Assumptions are TOPRF PRF and receiver-input-obliviousness, AE confidentiality/integrity/key-binding, EUF-CMA signatures, and collision-resistant hashing."
+        - "The displayed final bound contains the PRF and two AE confidentiality terms."
+        - "The source theorem discusses receiver-input obliviousness, but the final displayed bound has no explicit RIO term; I do not add one."
+      transition: "UpSPA gives the desired cryptographic lifecycle, but its all-provider writes create the availability problem addressed by RoUpSPA."
+      skip: "No; state the proof shape and bound, not every game hop."
+      jury: "Why does the theorem mention RIO when the final displayed bound omits an explicit RIO term?"
+      pointer: "backup-upspa-advantage-bound"
+
+  - id: roupspa-motivation
+    section: roupspa
+    title: "All-provider writes turn one outage into a blocked update"
+    route: core
+    estimatedSeconds: 60
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-system-model/lines-15-92"
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#sec:upspa-construction/lines-25-620"
+    formulas: []
+    visual: "Before/after availability strip: UpSPA write waits for every SP_i; RoUpSPA write completes at a quorum while unavailable replicas become explicitly stale."
+    citation: "Thesis, RoUpSPA system model; UpSPA construction."
+    speakerNotes:
+      main: "UpSPA's confidentiality threshold survives provider outages, but its state-changing phases do not; RoUpSPA makes replica freshness explicit and lets durable writes complete at a quorum."
+      cues:
+        - "The objective is availability under temporary omission, not weaker authentication."
+        - "A provider that misses a completed write is stale for that record family."
+        - "Synchronization is a separate storage-maintenance operation."
+      transition: "The cryptographic core stays recognizable; counters, shared identifiers, and quorum rules are the decisive changes."
+      skip: "No; this is the reason the resilient construction exists."
+      jury: "Why is threshold authentication alone insufficient for update availability?"
+      pointer: "backup-roupspa-setup-full"
+
+  - id: roupspa-what-changes
+    section: roupspa
+    title: "RoUpSPA adds versioned replicated records, not a new password primitive"
+    route: core
+    estimatedSeconds: 60
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-system-design/lines-94-129"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#sec:roupspa-construction-thesis/lines-1-45"
+    formulas:
+      - 'SUid_{l,j}=H(R^{sp}\\parallel ls_j)'
+      - 'root:\\ ctr_{id},\\qquad account:\\ ctr_{ac}'
+    visual: "Delta diagram over UpSPA: remove provider index from the shared account-family handle, add signed root/account counters, active-versus-stale replica status, and q_sp write/sync quorums."
+    citation: "Thesis, RoUpSPA system design and construction."
+    speakerNotes:
+      main: "RoUpSPA keeps the TOPRF and two-layer encryption design, but gives replicas a common family handle and signed counters so a quorum can identify one freshest valid version."
+      cues:
+        - "ctr_id versions the identification root; ctr_ac versions an account."
+        - "The shared SUid enables repair across providers without revealing ls_j."
+        - "Signatures authorize every record replacement."
+      transition: "These changes work only under a stronger numerical relation between read and write quorums."
+      skip: "No; this slide is the compact UpSPA-to-RoUpSPA delta."
+      jury: "Does a shared SUid let providers identify the underlying login server?"
+      pointer: "backup-roupspa-setup-full"
+
+  - id: roupspa-threshold-quorum
+    section: roupspa
+    title: "Authentication threshold and storage quorum serve different purposes"
+    route: core
+    estimatedSeconds: 75
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#eq:roupspa-quorum-condition/lines-8-22"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-system-model/lines-15-92"
+    formulas:
+      - '1\\le t_{\\mathrm{sp}}\\le q_{\\mathrm{sp}}\\le n_{\\mathrm{sp}}'
+      - 't_{\\mathrm{sp}}>\\frac{n_{\\mathrm{sp}}}{2}'
+      - '2q_{\\mathrm{sp}}-n_{\\mathrm{sp}}>t_{\\mathrm{sp}}-1'
+    visual: "Two concentric gauges: t_sp is the active cryptographic threshold for reads; q_sp is the durable write/synchronization quorum; place the three inequalities between them."
+    citation: "Thesis, RoUpSPA quorum condition eq:roupspa-quorum-condition."
+    speakerNotes:
+      main: "t_sp controls how many valid active shares authentication needs, while q_sp controls how many durable replicas complete a write or synchronization."
+      cues:
+        - "The majority condition on t_sp preserves the corruption boundary."
+        - "The last inequality guarantees more than t_sp minus one replicas in any write-read quorum intersection."
+        - "Choosing q_sp equal to t_sp is not automatically sufficient."
+      transition: "The intersection inequality is the bridge from these parameters to freshness."
+      skip: "No; retain all three inequalities exactly."
+      jury: "For a given n_sp and t_sp, what is the smallest admissible q_sp?"
+      pointer: "backup-roupspa-active-threshold"
+
+  - id: roupspa-quorum-intersection
+    section: roupspa
+    title: "Every completed write meets a later quorum in an honest holder"
+    route: core
+    estimatedSeconds: 75
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#thm:quorum-consistency/lines-436-468"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#cor:no-rollback/lines-470-480"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#cor:no-divergent-commits/lines-482-495"
+    formulas:
+      - '|W\\cap R|\\ge 2q_{\\mathrm{sp}}-n_{\\mathrm{sp}}>t_{\\mathrm{sp}}-1'
+    visual: "Overlapping W and R quorum circles with an intersection containing at least t_sp nodes; color at most t_sp-1 corrupt nodes and leave one necessarily honest latest-record holder."
+    citation: "Thesis, Theorem thm:quorum-consistency and its no-rollback/no-divergence corollaries."
+    speakerNotes:
+      main: "Because the intersection has more nodes than the adversary may corrupt, at least one honest response carries the latest completed signed record into every later synchronization quorum."
+      cues:
+        - "Counters order valid records within one serialized record family."
+        - "Signatures prevent the adversary from fabricating a higher valid version."
+        - "The theorem concerns completed operations under the construction's serialization assumptions."
+      transition: "That theorem supports completed-state safety, but the phase boundary still needs to be stated precisely."
+      skip: "No; this is the central RoUpSPA consistency argument."
+      jury: "Where exactly does the honest-holder conclusion use the corruption threshold?"
+      pointer: "backup-roupspa-quorum-proof"
+
+  - id: roupspa-phase-semantics
+    section: roupspa
+    title: "Quorum completion is precise; interrupted writes remain an explicit boundary"
+    route: core
+    estimatedSeconds: 75
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics/lines-684-732"
+      - "source-material/roupspa-paper/sections/4_Protocol.tex#completion-semantics"
+      - "presentation/SOURCE_CONFLICTS.md#RoUpSPA-partial-write-semantics"
+    formulas: []
+    visual: "Three-step commit lane: LS Prepare → q_sp durable provider writes → terminal LS Store; below it, an interrupted branch marks partial provider state as unresolved rather than silently rolled back."
+    citation: "Thesis, RoUpSPA record binding and completion semantics; source conflict register."
+    speakerNotes:
+      main: "The successful path is Prepare, then q_sp durable signed writes, then terminal Store; the safety theorem is for completed phases, while the sources disagree on what fully resolves a failed partial direct write."
+      cues:
+        - "The thesis phase bodies say Discard/Fail when a quorum is not obtained."
+        - "The paper/preamble instead requires retrying the exact write after any provider accepts."
+        - "There is no demonstrated automatic rollback mechanism, so I do not claim crash atomicity."
+      transition: "With that boundary explicit, we can separate the normal read path from the repair path."
+      skip: "No; this prevents overclaiming the resilience result."
+      jury: "Can a client safely abandon an update after only one provider durably accepts it?"
+      pointer: "backup-roupspa-authorized-writes"
+
+  - id: roupspa-registration
+    section: roupspa
+    title: "RoUpSPA registration authorizes the account before quorum storage"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-registration"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics"
+    formulas:
+      - '\\sigma_{ac}=Sign_{ssk}(uid\\parallel SUid_{l,j}\\parallel c_{sp}\\parallel ctr_{ac})'
+    visual: "Active identification, candidate construction, LS Prepare, q_sp durable writes, and terminal Store/Discard."
+    citation: "Thesis, RoUpSPA Registration and completion semantics."
+    speakerNotes:
+      main: "The final RoUpSPA order is login-server Prepare first, then the signed provider record is durably written at q_sp providers, then the terminal decision is sent."
+      cues:
+        - "Do not describe this as UpSPA with a quorum badge."
+        - "Every counted provider acknowledgement follows a durable matching write."
+        - "A provider that misses the completed account write becomes STALE for that family."
+      transition: "Secret Update keeps the same Prepare-before-write discipline but advances an existing account counter."
+      skip: "No; this is the first concrete resilient write phase."
+      jury: "Why is LS Prepare ordered before provider mutation?"
+      pointer: "backup-roupspa-registration-full"
+
+  - id: roupspa-secret-update
+    section: roupspa
+    title: "RoUpSPA secret update uses LS Prepare before quorum mutation"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-secret-update"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics"
+    formulas:
+      - '\\sigma_{ac,new}=Sign_{ssk}(uid\\parallel SUid_{l,j}\\parallel c_{sp,new}\\parallel ctr_{ac,new})'
+    visual: "Current-state read, signed counter increment, LS Prepare, q_sp durable write, terminal Store/Discard."
+    citation: "Thesis, RoUpSPA Secret Update and completion semantics."
+    speakerNotes:
+      main: "RoUpSPA Secret Update first validates the old/new verifier transition, then obtains q_sp durable account replacements, then sends the matching terminal decision."
+      cues:
+        - "The replacement counter is exactly the current maximum plus one."
+        - "The exact signed tuple binds uid, shared account family, ciphertext, and counter."
+        - "There is no invented final login-server acknowledgement."
+      transition: "These phase mechanics require an explicit threat and liveness boundary."
+      skip: "May compress the shared identification preamble, but not the Prepare/write/terminal order."
+      jury: "What makes a lagging replica stale after a completed update?"
+      pointer: "backup-roupspa-secret-update-full"
+
+  - id: roupspa-threat-challenges
+    section: roupspa
+    title: "Resilience adds stale-state and authorization obligations"
+    route: core
+    estimatedSeconds: 50
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-threat-model"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-design-challenges"
+    formulas:
+      - '|\\mathcal C_{SP}|\\le t_{sp}-1'
+    visual: "Two columns separating inherited threat assumptions from new resilience challenges."
+    citation: "Thesis, RoUpSPA threat model and design challenges."
+    speakerNotes:
+      main: "The resilience layer must authorize shared-namespace writes, distinguish valid from current state, and repair stale replicas without plaintext."
+      cues:
+        - "The adversary remains static and malicious."
+        - "Signatures authorize; counters and ACTIVE/STALE rules establish freshness."
+        - "Repair uses signed ciphertext evidence, not passwords or TOPRF outputs."
+      transition: "The resulting guarantee is completed-phase safety plus conditional liveness."
+      skip: "No; it prevents interpreting RoUpSPA as general consensus."
+      jury: "Why is a shared account handle not itself write authorization?"
+      pointer: "backup-roupspa-challenges-full"
+
+  - id: roupspa-read-and-authentication
+    section: roupspa
+    title: "Authentication reads only active replicas and performs no repair"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-threshold-quorum"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-authentication/lines-323-406"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#completion-and-synchronization/lines-65-92"
+    formulas:
+      - '\\#\\{\\text{valid active responses}\\}\\ge t_{\\mathrm{sp}}'
+    visual: "Authentication sequence with stale replicas visibly filtered out; t_sp active root responses and t_sp active account responses feed the existing TOPRF/decryption path, with no write-back arrow."
+    citation: "Thesis, RoUpSPA Authentication, Figure fig:roupspa-authentication."
+    speakerNotes:
+      main: "A normal login selects valid active replicas for each required family, reconstructs at threshold, and never attempts repair inside the authentication phase."
+      cues:
+        - "A stale but correctly signed record is not an active response."
+        - "Root and account families may have different active provider sets."
+        - "Keeping repair separate preserves a simple read-only login path."
+      transition: "Repair is instead handled by synchronization over signed ciphertext records."
+      skip: "May compress after the UpSPA authentication slide, but retain the no-repair point."
+      jury: "Can an old but validly signed record contribute to t_sp?"
+      pointer: "backup-roupspa-authentication-full"
+
+  - id: roupspa-synchronization
+    section: roupspa
+    title: "Synchronization copies the unique freshest signed ciphertext"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-phase-semantics"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#storage-provider-synchronization-and-repair/lines-163-191"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#synchronization-and-counter-consistency/lines-367-495"
+    formulas:
+      - '\\#R=q_{\\mathrm{sp}},\\qquad record^*=\\operatorname*{arg\\,max}_{record\\in R} ctr(record)'
+    visual: "Repair flow: collect q_sp signed candidates → reject invalid or tied-distinct maxima → choose the unique largest counter → copy ciphertext/signature to stale providers; retain each provider's own TOPRF share."
+    citation: "Thesis, RoUpSPA storage-provider synchronization and consistency proof."
+    speakerNotes:
+      main: "Synchronization is storage-layer maintenance: it obtains a quorum of valid records, selects the unique largest counter, and propagates that signed ciphertext without learning the password or plaintext."
+      cues:
+        - "It performs no TOPRF evaluation and no decryption."
+        - "A provider keeps its own TOPRF share; shares are never copied."
+        - "Distinct valid records at the same largest counter are rejected."
+      transition: "The threat model now includes stale-state manipulation as well as the original password attacks."
+      skip: "No; synchronization is the mechanism that turns quorum completion into later availability."
+      jury: "Why is copying another provider's TOPRF share forbidden even during repair?"
+      pointer: "backup-roupspa-synchronization-full"
+
+  - id: roupspa-threat-and-boundary
+    section: roupspa
+    title: "RoUpSPA adds stale-state adversaries without promising universal liveness"
+    route: core
+    estimatedSeconds: 60
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-threat-model/lines-131-191"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-design-challenges/lines-193-222"
+    formulas:
+      - '|\\mathcal{C}_{SP}|<t_{\\mathrm{sp}}'
+    visual: "Boundary matrix: confidentiality/offline resistance, signed freshness, and completed-state consistency are in scope; denial of service, insufficient active replicas, and unresolved interrupted writes are outside guaranteed liveness."
+    citation: "Thesis, RoUpSPA threat model and design challenges."
+    speakerNotes:
+      main: "The adversary may delay, replay, omit, or corrupt replica traffic, but cannot forge higher signed counters; progress still requires enough reachable active providers and correctly completed phase boundaries."
+      cues:
+        - "Fewer than t_sp providers may be corrupted."
+        - "A write or synchronization may fail when q_sp is unavailable."
+        - "The construction gives safety for completed phases, not asynchronous consensus or guaranteed termination."
+      transition: "The proof combines the original password-privacy hybrids with deterministic quorum consistency."
+      skip: "No; this is the safe interpretation of the theorem."
+      jury: "Is RoUpSPA a Byzantine consensus protocol?"
+      pointer: "backup-roupspa-challenges-full"
+
+  - id: roupspa-security
+    section: roupspa
+    title: "The resilient proof adds TOPRF RIO and quorum consistency terms"
+    route: core
+    estimatedSeconds: 60
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#thm:roupspa-security/lines-101-128"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#bad-events/lines-169-240"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#final-bound/lines-535-582"
+    formulas:
+      - '\\epsilon_{bad}^{Ro}=q_{dec}\\operatorname{Adv}_{AE}^{int-ctxt}+q_{kb}\\operatorname{Adv}_{AE}^{kb}+q_{vk}\\operatorname{Adv}_{Sign}^{euf-cma}+\\operatorname{Adv}_{H}^{cr}'
+      - '\\operatorname{Adv}_{real/ideal}\\le 2\\epsilon_{bad}^{Ro}+q_K\\operatorname{Adv}_{TOPRF}^{prf}+q_T\\operatorname{Adv}_{TOPRF}^{rio}+q_{id}\\operatorname{Adv}_{AE}^{ind-cpa}+q_{ac}\\operatorname{Adv}_{AE}^{ind-cpa}'
+    visual: "Five-game proof ladder G0-G5: rule out bad events, randomize TOPRF evaluations, simulate RIO transcripts, hide identification plaintexts, hide account plaintexts, then attach the quorum theorem."
+    citation: "Thesis, RoUpSPA Security Theorem thm:roupspa-security and final bound."
+    speakerNotes:
+      main: "The RoUpSPA proof makes both TOPRF PRF and receiver-input-obliviousness costs explicit, then hides identification and account plaintexts while quorum lemmas preserve completed-state freshness."
+      cues:
+        - "G1 replaces full TOPRF evaluations; G2 simulates receiver-input-oblivious transcripts."
+        - "G3 and G4 hide identification and account plaintexts; G5 is ideal."
+        - "The final account term is q_ac; a reducer suffix in the source is a typographical inconsistency, not a different primitive."
+      transition: "Quorums are the thesis's main resilience choice, but the design space includes public synchronization layers."
+      skip: "No; state the complete displayed bound once."
+      jury: "Why does RoUpSPA have an explicit RIO term when the UpSPA displayed bound does not?"
+      pointer: "backup-roupspa-advantage-bound"
+
+  - id: alternatives-pbb
+    section: alternatives
+    title: "A public bulletin board trades private quorum repair for public history"
+    route: core
+    estimatedSeconds: 75
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/alternative.tex#sec:alternative_synchronization/lines-1-137"
+    formulas: []
+    visual: "Two-column PBB design: signed/untrusted board accepts any correctly signed entry; DKG-authorized board filters writers through distributed authorization. Show encrypted recovery bundles off board."
+    citation: "Thesis, Alternative State-Synchronization Mechanisms, PBB-based synchronization."
+    speakerNotes:
+      main: "A bulletin board can provide append-only public discovery and recovery, with a signed board minimizing trust and a DKG-authorized board adding admission control at higher complexity."
+      cues:
+        - "The board stores opaque authenticated metadata, not passwords or decrypted account secrets."
+        - "Encrypted recovery bundles remain off board and still require an availability mechanism."
+        - "Untrusted admission permits flooding; authorization-enforcing admission introduces distributed setup and key-management cost."
+      transition: "A blockchain can instantiate a public log autonomously, but it adds platform-level costs and leakage."
+      skip: "May present only the signed-versus-DKG admission tradeoff."
+      jury: "Does a public bulletin board replace encrypted off-chain recovery storage?"
+      pointer: "backup-backend-charts"
+
+  - id: alternatives-blockchain-and-choice
+    section: alternatives
+    title: "No synchronization backend dominates every deployment objective"
+    route: core
+    estimatedSeconds: 75
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/alternative.tex#blockchain-based-synchronization/lines-138-190"
+      - "source-material/thesis/Implementation/ch5_impl.tex#resilient-synchronization-backend-evaluation/lines-530-635"
+    formulas: []
+    visual: "Decision matrix across quorum, signed PBB, DKG PBB, and blockchain: private/local, autonomous recovery, write filtering, public auditability, metadata exposure, finality, and fees."
+    citation: "Thesis, alternative synchronization mechanisms and resilient backend evaluation."
+    speakerNotes:
+      main: "Blockchains can publish commitments, counters, phases, and bundle pointers with public ordering, but finality, fees, metadata exposure, smart-contract risk, and censorship become part of the system model."
+      cues:
+        - "Encrypted bundles remain off chain even when commitments are on chain."
+        - "Quorums keep the main construction private and direct."
+        - "The preferred backend depends on recovery, auditability, filtering, latency, and infrastructure priorities."
+      transition: "The implementation evaluates these choices through one shared architecture while keeping native costs separate."
+      skip: "No; this is the design-choice conclusion, not a blockchain advocacy claim."
+      jury: "Under what objective would you choose a public log over quorum synchronization?"
+      pointer: "backup-evm-gas"
+
+  - id: implementation-architecture-method
+    section: implementation-results
+    title: "One architecture, traceable measurements, and explicit timing boundaries"
+    route: core
+    estimatedSeconds: 60
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#chapter:spa_engineering/lines-80-115"
+      - "source-material/thesis/Implementation/ch5_impl.tex#testing-benchmarking-validation/lines-364-403"
+    formulas:
+      - 'T_{stage}^{P}(I)=T_{client,pre}^{P}+\\max_{i\\in I}\\{L_i+T_{SP_i}^{P}\\}+T_{client,post}^{P}'
+    visual: "Architecture pipeline: client engine, LS adapter, provider service, threshold module, state codec, pluggable sync adapter, recorder; below, a parallel-within-stage timing bracket."
+    citation: "Thesis, Implementation Chapter, shared architecture and measurement validation."
+    speakerNotes:
+      main: "The prototype maps each formal phase to typed modules, executes provider requests in parallel within a stage, and records raw intervals and backend-native evidence before aggregation."
+      cues:
+        - "Rust latency series use 50 warm-ups and 200 measured samples; plotted points are p50."
+        - "LAN and WAN values are composed models, not geographically deployed measurements."
+        - "Modeled stages are not formal protocol rounds, and independent p50 targets must not be algebraically added."
+      transition: "With that measurement contract fixed, the first comparison isolates UpSPA against its TSPA baseline."
+      skip: "No; these caveats are necessary to interpret every result slide."
+      jury: "Why is max provider latency used inside one modeled stage?"
+      pointer: "backup-experiment-configuration"
+
+  - id: results-upspa-tspa
+    section: implementation-results
+    title: "Network stages dominate the UpSPA-TSPA deployment grid"
+    route: core
+    estimatedSeconds: 54
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#tab:thesis-upspa-tspa-summary/lines-405-461"
+      - "source-material/thesis/Implementation/upspa_tspa_fixed_nsp30.tex#fig:client-reg-auth-nsp30"
+      - "source-material/thesis/Implementation/upspa_tspa_proportional.tex#fig:client-reg-auth-nsptsp60"
+    formulas:
+      - '\\mathrm{WAN}_{1\\ stage}\\approx63\\text{--}67\\,ms,\\quad \\mathrm{WAN}_{2}\\approx125\\text{--}134\\,ms,\\quad \\mathrm{WAN}_{3}\\approx188\\text{--}195\\,ms'
+    visual: "Slopegraph pairing local p50 ranges with modeled WAN ranges for Registration, Authentication, Secret Update, and Password Update; label stage count rather than implying crypto cost."
+    citation: "Thesis, Table tab:thesis-upspa-tspa-summary and UpSPA-TSPA scaling figures."
+    speakerNotes:
+      main: "Across the deployment grid, local work stays below one millisecond, while WAN ordering follows one, two, or three sequential modeled stages."
+      cues:
+        - "UpSPA registration and authentication use two modeled stages versus one for TSPA."
+        - "Secret update is about 188-195 ms in WAN because it has three stages."
+        - "Password update is locally heavier yet about 126-134 ms in WAN because it has two stages."
+      transition: "Against update-enabled threshold SSO systems, computation per threshold response becomes the differentiator as n_sp grows."
+      skip: "No; deliver the stage-count takeaway and one numerical range."
+      jury: "Why can password update be faster than secret update over WAN?"
+      pointer: "backup-upspa-tspa-charts"
+
+  - id: results-threshold-sso-comparison
+    section: implementation-results
+    title: "At scale, threshold-response work separates the SSO constructions"
+    route: core
+    estimatedSeconds: 54
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:full-grid-registration/lines-41-137"
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:auth-tsp60-row/lines-530-675"
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:pwdupd-tsp60-row/lines-678-825"
+    formulas:
+      - 't_{\\mathrm{sp}}=0.6n_{\\mathrm{sp}}'
+    visual: "Log-aware three-line comparison for UpSPA, PASTA-U, and AugSSO at proportional threshold; emphasize authentication endpoints at n_sp=100 and retain functional-scope warning."
+    citation: "Thesis, threshold SSO comparison figures fig:full-grid-registration, fig:auth-tsp60-row, and fig:pwdupd-tsp60-row."
+    speakerNotes:
+      main: "On the same Rust platform, proportional-threshold authentication at n_sp=100 is 1.075 ms for UpSPA, 20.523 ms for PASTA-U, and 221.759 ms for AugSSO on the client."
+      cues:
+        - "The slope reflects different per-response cryptographic work."
+        - "WAN ranking can differ because stage schedules and RTT dominate local computation."
+        - "These systems do not expose identical relying-party, recovery, or liveness semantics."
+      transition: "The next comparison isolates the cost of adding quorum resilience to UpSPA itself."
+      skip: "May omit registration and password-update details; keep the authentication endpoints and scope caveat."
+      jury: "Is this a feature-equivalent end-to-end comparison?"
+      pointer: "aux-sso-low-registration"
+
+  - id: results-upspa-roupspa
+    section: implementation-results
+    title: "RoUpSPA's local quorum increment stays sub-millisecond in the paired grid"
+    route: core
+    estimatedSeconds: 54
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#subsec:upspa-abd-comparison/lines-830-1110"
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:UpSPA-abd-password"
+    formulas:
+      - '\\Delta^{P}_{Q,p50}=T^{P}_{RoUpSPA,full-no-net,p50}-T^{P}_{UpSPA,full-no-net,p50}'
+    visual: "Paired dumbbells for five (n_sp,t_sp,q_sp) settings across registration, secret update, and password update; separate local increments from composed-LAN gaps."
+    citation: "Thesis, UpSPA and RoUpSPA comparison, Figures fig:UpSPA-abd-registration through fig:UpSPA-abd-password."
+    speakerNotes:
+      main: "Across the five paired settings, RoUpSPA password update remains below 0.73 ms locally and its isolated quorum overhead is 0.058-0.147 ms."
+      cues:
+        - "Registration rises from 0.197 to 0.445 ms across RoUpSPA settings."
+        - "Composed-LAN gaps are roughly two milliseconds because of additional sequential stages."
+        - "WAN is not plotted: fixed RTT and schedule would dominate, so it is not used to rank local cryptography."
+      transition: "The resilient backend suite then shows that the synchronization mechanism can dominate the update cost."
+      skip: "No; state one local range and the WAN non-ranking caveat."
+      jury: "What portion of the gap is cryptographic work versus the modeled schedule?"
+      pointer: "backup-upspa-roupspa-charts"
+
+  - id: results-backends
+    section: implementation-results
+    title: "Backend cost depends strongly on phase and scale"
+    route: core
+    estimatedSeconds: 54
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#tab:resilient-q080-endpoints/lines-530-606"
+      - "source-material/thesis/Implementation/ch5_impl.tex#fig:res-fig01-q080-registration/lines-587-610"
+      - "source-material/thesis/Implementation/ch5_impl.tex#tab:evm-direct-receipts/lines-639-669"
+    formulas:
+      - 'q_{\\mathrm{sp}}=\\lceil0.8n_{\\mathrm{sp}}\\rceil'
+    visual: "Small-multiple endpoint chart from n_sp=10 to 100 for quorum/ABD, signed PBB, DKG PBB, and chain modes; add a separate evidence badge for local EVM receipts."
+    citation: "Thesis, resilient backend endpoint table and receipt-level EVM gas tables."
+    speakerNotes:
+      main: "At n_sp=100, quorum registration is 3.723 ms and close to signed PBB at 3.869 ms, but quorum secret update reaches 11.241 ms versus 3.852 ms for signed PBB."
+      cues:
+        - "The q_sp parameter is a quorum only for quorum/ABD; elsewhere it matches an availability scenario."
+        - "Chain-mode local timings do not include public-network finality or fees."
+        - "The EVM receipt dataset is a successful local Anvil regression, not production-chain evidence."
+      transition: "Across all experiments, three interpretation rules are more stable than any single winning curve."
+      skip: "May show registration and secret update only; preserve the backend-semantics caveat."
+      jury: "Why should q_sp not be interpreted as a ledger quorum in the chain rows?"
+      pointer: "backup-backend-charts"
+
+  - id: results-key-takeaways
+    section: implementation-results
+    title: "The evidence supports three bounded engineering conclusions"
+    route: core
+    estimatedSeconds: 54
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#testing-benchmarking-validation/lines-364-403"
+      - "source-material/thesis/Implementation/ch5_impl.tex#evm-receipt-evidence/lines-639-707"
+      - "source-material/thesis/Implementation/ch5_impl.tex#tron-status/lines-783-796"
+    formulas: []
+    visual: "Three large numbered claims: communication stages dominate WAN; resilience has modest local cost but nonuniform backend cost; evidence classes must remain separate. Add a small 'not claimed' rail."
+    citation: "Thesis, implementation methodology, backend evaluation, EVM receipts, and TRON status."
+    speakerNotes:
+      main: "First, sequential communication stages dominate modeled WAN totals; second, RoUpSPA's local increment is modest but backend scaling is phase-dependent; third, measured, modeled, and implementation-only evidence must not be mixed."
+      cues:
+        - "The GPU is metadata and was unused for protocol operations."
+        - "Foundry provides an independent contract regression, while Anvil receipts provide the reported EVM dataset."
+        - "TRON has an implementation and schema but no complete native receipt matrix, so no TRON number or chart is claimed."
+      transition: "I will close by separating the thesis contributions from its remaining research boundaries."
+      skip: "No; this is the evidence-calibrated result summary."
+      jury: "Which result is directly measured, and which is produced by a network composition model?"
+      pointer: "backup-experiment-configuration"
+
+  - id: conclusion-contributions
+    section: conclusion
+    title: "The thesis contributes a lifecycle, a resilience layer, and evidence"
+    route: core
+    estimatedSeconds: 35
+    sourceRefs:
+      - "source-material/thesis/Prelude/Introduction/Outline.tex#Contributions/lines-22-162"
+      - "source-material/thesis/Conclusion_Limitations_Future_Work.tex#chapter:conclusion/lines-1-68"
+    formulas: []
+    visual: "Three-column synthesis: UpSPA - two-layer updateable credentials; RoUpSPA - separate threshold/quorum with synchronization; Engineering - shared implementation and traceable comparative evidence."
+    citation: "Thesis, Contributions and Conclusion."
+    speakerNotes:
+      main: "The central result is a complete single-password credential lifecycle, extended with quorum-based replica recovery and evaluated through a common, evidence-traceable implementation."
+      cues:
+        - "UpSPA separates password rotation from service-secret rotation."
+        - "RoUpSPA separates cryptographic threshold from availability quorum."
+        - "The evaluation identifies communication structure as the main WAN lever."
+      transition: "These contributions are deliberately bounded by the model and prototype scope."
+      skip: "No; this is the answer to 'what did the thesis add?'"
+      jury: "Which contribution would remain if the resilient extension were removed?"
+      pointer: "backup-notation"
+
+  - id: conclusion-limitations-future
+    section: conclusion
+    title: "The next work is adaptive, deployable, and failure-aware"
+    route: core
+    estimatedSeconds: 35
+    sourceRefs:
+      - "source-material/thesis/Conclusion_Limitations_Future_Work.tex#chapter:conclusion/lines-70-157"
+    formulas: []
+    visual: "Two-row boundary roadmap: current limits - static corruption, trusted endpoint, DoS, serialized state machine, research prototype; next - proactive refresh, dynamic providers, crash testing, deployment hardening, post-quantum and hybrid recovery."
+    citation: "Thesis, Conclusion, Limitations, and Future Work."
+    speakerNotes:
+      main: "The proofs assume static corruption and a trusted endpoint, while the prototype omits production crash recovery and dynamic provider management; these are the most important next steps."
+      cues:
+        - "Cryptography cannot force unavailable parties to respond."
+        - "Adaptive corruption and composable concurrency require stronger formal treatment."
+        - "Deployment needs audited orchestration, durable retry-safe storage, and independent failure testing."
+      transition: "The work has produced three manuscripts, each with a precisely stated status."
+      skip: "No; state one model limit and one engineering limit."
+      jury: "What is the largest gap between the formal construction and a production deployment?"
+      pointer: "backup-references"
+
+  - id: conclusion-publications
+    section: conclusion
+    title: "Three manuscripts carry the work forward"
+    route: core
+    estimatedSeconds: 35
+    sourceRefs:
+      - "source-material/thesis/Prelude/Introduction/Publications.tex#Publications/lines-1-25"
+      - "presentation.config.yaml#links"
+    formulas: []
+    visual: "Three publication cards with status badges: public ePrint 2026/784; UpSPA workshop manuscript - submitted to WPES 2026; Robust Updatable SPA - submitted to ACM TOPS."
+    citation: "Thesis, Publications; Cryptology ePrint Report 2026/784."
+    speakerNotes:
+      main: "The UpSPA manuscript is publicly available as ePrint 2026/784; its workshop version is submitted to WPES 2026, and the RoUpSPA manuscript is submitted to ACM TOPS."
+      cues:
+        - "Use 'submitted' exactly; no acceptance or publication claim is made for WPES or TOPS."
+        - "The ePrint link and implementation repository remain available for inspection."
+      transition: "That concludes the defense; I welcome your questions."
+      skip: "Yes, if the committee prefers to move directly to questions."
+      jury: "Which artifacts are publicly accessible today?"
+      pointer: "backup-references"
+
+  - id: academic-genealogy
+    section: conclusion
+    title: "Candidate → advisor → advisor's advisor"
+    route: core
+    estimatedSeconds: 20
+    sourceRefs:
+      - "presentation.config.yaml#genealogy"
+    formulas: []
+    visual: "Three-node academic genealogy chain rendered from configuration, with a dashed TODO state for missing data."
+    citation: "presentation.config.yaml genealogy fields."
+    speakerNotes:
+      main: "The academic genealogy is rendered from configuration; the advisor's advisor remains an explicit TODO because the supplied materials do not identify that person."
+      cues:
+        - "Do not guess the missing identity."
+        - "Update presentation.config.yaml when authoritative information and photos are supplied."
+      transition: "Thank you; I welcome your questions."
+      skip: "May skip verbally while still displaying the honest placeholder."
+      jury: "Why is the third node incomplete?"
+      pointer: "presentation.config.yaml"
+
+  - id: thank-you
+    section: conclusion
+    title: "Thank you"
+    route: core
+    estimatedSeconds: 15
+    sourceRefs:
+      - "presentation.config.yaml#title-and-presenter"
+    formulas: []
+    visual: "Minimal closing slide: thesis title shortened to UpSPA and RoUpSPA, presenter, advisor, Koç University, and compact ePrint/GitHub links."
+    citation: "Defense configuration, 12 August 2026."
+    speakerNotes:
+      main: "Thank you for your attention. I welcome your questions."
+      cues:
+        - "Pause and make eye contact with the committee."
+        - "Use the backup index only in response to a specific question."
+      transition: "Questions."
+      skip: "No; this is the closing frame."
+      jury: "Open floor."
+      pointer: "backup-notation"
+
+  - id: backup-upspa-setup-full
+    section: backup-upspa
+    title: "Backup - UpSPA setup, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-setup"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-setup/lines-25-134"
+    formulas:
+      - 'cid=\\operatorname{Enc}_{F_K(pwd)}(ssk\\parallel R^{sp}\\parallel K_0)'
+    visual: "Full four-lane reconstruction of Figure fig:upspa-setup, redrawn as native vectors with message labels preserved."
+    citation: "Thesis, Figure fig:upspa-setup."
+    speakerNotes:
+      main: "Use this only to trace root creation, TOPRF sharing, and provider storage step by step."
+      cues:
+        - "Identify which values remain client-side and which are stored per provider."
+        - "End on the all-provider Store acknowledgements."
+      transition: "Return to #upspa-two-layer-state."
+      skip: "Backup only."
+      jury: "Where is the TOPRF key generated and how are its shares distributed?"
+      pointer: "upspa-two-layer-state"
+
+  - id: backup-upspa-registration-full
+    section: backup-upspa
+    title: "Backup - UpSPA registration, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-registration"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-registration/lines-178-258"
+    formulas:
+      - 'SUid_{l,i,j}=H(R^{sp}\\parallel ls_j\\parallel i)'
+    visual: "Complete registration message sequence with TOPRF recovery, account-record construction, provider Store acknowledgements, and login-server verifier installation."
+    citation: "Thesis, Figure fig:upspa-registration."
+    speakerNotes:
+      main: "Trace the exact ordering when asked how storage completion and login-server registration are bound."
+      cues:
+        - "Point out provider-specific SUid values."
+        - "Do not omit the final Store acknowledgements."
+      transition: "Return to #upspa-registration."
+      skip: "Backup only."
+      jury: "What is the last event that makes registration successful?"
+      pointer: "upspa-registration"
+
+  - id: backup-upspa-authentication-full
+    section: backup-upspa
+    title: "Backup - UpSPA authentication, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-authentication"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-authentication/lines-260-362"
+    formulas:
+      - '\\operatorname{Combine}(t_{\\mathrm{sp}}\\text{ valid TOPRF responses})=F_K(pwd)'
+    visual: "Full authentication sequence with validation gates at provider response, root decryption, account binding, and login-server challenge."
+    citation: "Thesis, Figure fig:upspa-authentication."
+    speakerNotes:
+      main: "Use the full sequence to locate every rejection condition in the read-only path."
+      cues:
+        - "Threshold reconstruction precedes both ciphertext decryptions."
+        - "No repair or persistent write occurs."
+      transition: "Return to #upspa-authentication."
+      skip: "Backup only."
+      jury: "Which checks fail before any service credential is used?"
+      pointer: "upspa-authentication"
+
+  - id: backup-upspa-secret-update-full
+    section: backup-upspa
+    title: "Backup - UpSPA secret update, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-secret-update"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-secret-update/lines-364-498"
+    formulas:
+      - 'c_{j,new}=\\operatorname{Enc}_{K_0}(R^{ls_j}_{new}\\parallel ctr_{ac,new})'
+    visual: "Complete Secret Update message diagram, emphasizing the one-account replacement and unchanged root."
+    citation: "Thesis, Figure fig:upspa-secret-update."
+    speakerNotes:
+      main: "Use this to show that rotation is account-local and does not rebuild unrelated service state."
+      cues:
+        - "The login server changes its verifier for the same account."
+        - "All required provider writes complete in baseline UpSPA."
+      transition: "Return to #upspa-two-updates."
+      skip: "Backup only."
+      jury: "Which persistent objects change during a service-secret rotation?"
+      pointer: "upspa-two-updates"
+
+  - id: backup-upspa-password-update-full
+    section: backup-upspa
+    title: "Backup - UpSPA password update, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-password-update"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Construction.tex#fig:upspa-password-update/lines-500-606"
+    formulas:
+      - '\\sigma_i=\\operatorname{Sign}_{ssk}(Uid\\parallel cid_{new}\\parallel k_{i,new}\\parallel time\\parallel i)'
+    visual: "Full Password Update sequence with old-root recovery, fresh TOPRF key/share generation, exact signed tuple, freshness check, and provider acknowledgements."
+    citation: "Thesis, Figure fig:upspa-password-update."
+    speakerNotes:
+      main: "Use the figure as authority for the exact signed field order and fresh TOPRF material."
+      cues:
+        - "The surrounding prose omits i; the formal figure includes it."
+        - "Existing service records need not be re-encrypted."
+      transition: "Return to #upspa-two-updates."
+      skip: "Backup only."
+      jury: "Why does each provider receive a differently bound authorization?"
+      pointer: "upspa-two-updates"
+
+  - id: backup-upspa-challenges-full
+    section: backup-upspa
+    title: "Backup - UpSPA design challenges"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-design-challenges"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-design-challenges/lines-134-177"
+    formulas: []
+    visual: "Expanded challenge-to-mechanism matrix covering record preemption, service privacy, replay/rollback, authorization, update isolation, and password guessing."
+    citation: "Thesis, UpSPA design challenges."
+    speakerNotes:
+      main: "Use the matrix to map a challenged threat directly to its construction mechanism."
+      cues:
+        - "Separate unpredictable addressing from ciphertext confidentiality."
+        - "Separate update authorization from version freshness."
+      transition: "Return to #upspa-design-challenges."
+      skip: "Backup only."
+      jury: "Which mechanism stops storage-record preemption?"
+      pointer: "upspa-design-challenges"
+
+  - id: backup-upspa-threat-model-full
+    section: backup-upspa
+    title: "Backup - UpSPA corruption and availability model"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-threat-model"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#subsec:upspa-threat-model/lines-91-132"
+    formulas:
+      - '|\\mathcal{C}_{SP}|<t_{\\mathrm{sp}}'
+    visual: "Full assumption table for honest target user, honest target login server, bounded storage-provider corruption, controlled network, and phase-specific availability."
+    citation: "Thesis, UpSPA threat model."
+    speakerNotes:
+      main: "Use this to answer exactly which party combinations and failures the theorem covers."
+      cues:
+        - "Static corruption is assumed."
+        - "State-changing availability is stronger than authentication availability."
+      transition: "Return to #upspa-threat-model."
+      skip: "Backup only."
+      jury: "Does the model protect a user whose endpoint is compromised?"
+      pointer: "upspa-threat-model"
+
+  - id: backup-upspa-simulator-map
+    section: backup-upspa
+    title: "Backup - UpSPA simulator map"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#thm:upspa-security/lines-55-167"
+    formulas: []
+    visual: "Phase-by-phase map from Setup, Registration, Authentication, Secret Update, and Password Update transcripts to simulator-maintained ideal state."
+    citation: "Thesis, UpSPA security theorem and simulator construction."
+    speakerNotes:
+      main: "Use this only when asked how the simulator handles a particular lifecycle phase."
+      cues:
+        - "Separate ideal state transitions from transcript simulation."
+        - "Identify where bad events force an abort."
+      transition: "Return to #upspa-security."
+      skip: "Backup only."
+      jury: "How is password update represented in the ideal execution?"
+      pointer: "upspa-security"
+
+  - id: backup-upspa-advantage-bound
+    section: backup-upspa
+    title: "Backup - UpSPA final advantage bound"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#final-bound/lines-1213-1251"
+    formulas:
+      - '\\operatorname{Adv}_{real/ideal}\\le \\operatorname{Adv}_{TOPRF}^{prf}+q_{id}\\operatorname{Adv}_{AE}^{ind-cpa}+q_{sp}\\operatorname{Adv}_{AE}^{ind-cpa}'
+    visual: "Large bound with terms for TOPRF PRF, root confidentiality, and service-record confidentiality."
+    citation: "Thesis, UpSPA final hybrid bound."
+    speakerNotes:
+      main: "Read the bound exactly as printed and distinguish theorem assumptions from terms explicitly displayed here."
+      cues:
+        - "Do not insert an explicit RIO term into this formula."
+        - "The second AE multiplier is q_sp in the source."
+      transition: "Return to #upspa-security."
+      skip: "Backup only."
+      jury: "Is receiver-input obliviousness absent as an assumption or only absent as an explicit displayed term?"
+      pointer: "upspa-security"
+
+  - id: backup-roupspa-setup-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA setup, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-what-changes"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-setup/lines-46-157"
+    formulas:
+      - '1\\le t_{\\mathrm{sp}}\\le q_{\\mathrm{sp}}\\le n_{\\mathrm{sp}}'
+    visual: "Full RoUpSPA setup sequence with initial signed identification record, ctr_id, active replica state, and all-provider initial distribution."
+    citation: "Thesis, Figure fig:roupspa-setup."
+    speakerNotes:
+      main: "Use this to trace how the initial active replica family and root counter are established."
+      cues:
+        - "Setup still requires all n_sp providers."
+        - "Later mutable operations use q_sp."
+      transition: "Return to #roupspa-what-changes."
+      skip: "Backup only."
+      jury: "Why is initial setup not quorum-based?"
+      pointer: "roupspa-what-changes"
+
+  - id: backup-roupspa-registration-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA registration, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-registration"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-registration/lines-192-322"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics/lines-684-732"
+    formulas:
+      - '\\sigma_{ac}=\\operatorname{Sign}_{ssk}(Uid\\parallel SUid_{l,j}\\parallel c_{sp}\\parallel ctr_{ac})'
+    visual: "Complete Prepare → q_sp durable account writes → terminal Store registration flow, with Discard branch shown separately."
+    citation: "Thesis, Figure fig:roupspa-registration and completion semantics."
+    speakerNotes:
+      main: "Use this to distinguish login-server tentative state from signed provider state and the terminal Store."
+      cues:
+        - "Each counted provider acknowledgement follows durable storage."
+        - "The partial-write disagreement across sources remains explicit."
+      transition: "Return to #roupspa-phase-semantics."
+      skip: "Backup only."
+      jury: "When does the login server make its tentative verifier current?"
+      pointer: "roupspa-phase-semantics"
+
+  - id: backup-roupspa-authentication-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA authentication, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-threshold-quorum"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-authentication/lines-323-406"
+    formulas:
+      - '\\#active(root)\\ge t_{\\mathrm{sp}},\\qquad \\#active(account)\\ge t_{\\mathrm{sp}}'
+    visual: "Full read-only sequence with separate validation and active-state filters for root and account response families."
+    citation: "Thesis, Figure fig:roupspa-authentication."
+    speakerNotes:
+      main: "Use this to show exactly where stale signed records are rejected during login."
+      cues:
+        - "Root and account thresholds are evaluated independently."
+        - "Authentication never launches synchronization."
+      transition: "Return to #roupspa-read-and-authentication."
+      skip: "Backup only."
+      jury: "Can the two t_sp response sets contain different providers?"
+      pointer: "roupspa-read-and-authentication"
+
+  - id: backup-roupspa-secret-update-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA secret update, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-secret-update"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-secret-update/lines-408-547"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics/lines-684-732"
+    formulas:
+      - '\\sigma_{ac,new}=\\operatorname{Sign}_{ssk}(Uid\\parallel SUid_{l,j}\\parallel c_{sp,new}\\parallel ctr_{ac,new})'
+    visual: "Full Secret Update with login-server Prepare, signed counter increment, q_sp durable replacements, and terminal Store/Discard."
+    citation: "Thesis, Figure fig:roupspa-secret-update."
+    speakerNotes:
+      main: "Use this to trace the exact signed account replacement and tentative login-server verifier."
+      cues:
+        - "Only one account family changes."
+        - "Providers missing a completed write become stale."
+      transition: "Return to #roupspa-phase-semantics."
+      skip: "Backup only."
+      jury: "What binds the new ciphertext to its account family and version?"
+      pointer: "roupspa-phase-semantics"
+
+  - id: backup-roupspa-password-update-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA password update, full protocol"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-phase-semantics"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#fig:roupspa-password-update/lines-549-683"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics/lines-684-732"
+    formulas:
+      - '\\sigma_{id,new}=\\operatorname{Sign}_{ssk}(Uid\\parallel cid_{new}\\parallel ctr_{id,new})'
+    visual: "Full Password Update showing old-state recovery, fresh password protection, signed identification replacement, and q_sp durable provider writes."
+    citation: "Thesis, Figure fig:roupspa-password-update."
+    speakerNotes:
+      main: "Use this to distinguish identification-record quorum completion from account records that remain unchanged."
+      cues:
+        - "The exact signed replacement binds Uid, new root ciphertext, and new root counter."
+        - "The source has no final acknowledgement after the provider Store boundary."
+      transition: "Return to #roupspa-phase-semantics."
+      skip: "Backup only."
+      jury: "Does RoUpSPA password update atomically repair every stale provider?"
+      pointer: "roupspa-phase-semantics"
+
+  - id: backup-roupspa-synchronization-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA synchronization, full procedure"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-phase-semantics"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#storage-provider-synchronization-and-repair/lines-163-191"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#synchronization-and-counter-consistency/lines-367-495"
+    formulas:
+      - 'record^*=\\operatorname*{arg\\,max}_{valid\\ record}ctr(record)'
+    visual: "Detailed synchronization state machine with q_sp collection, signature checks, unique-maximum rule, copy/install, and active-state promotion."
+    citation: "Thesis, storage-provider synchronization and counter consistency."
+    speakerNotes:
+      main: "Use this to walk through repair without invoking password or decryption operations."
+      cues:
+        - "Reject two distinct valid maxima at one counter."
+        - "Keep the recipient provider's own TOPRF share."
+      transition: "Return to #roupspa-synchronization."
+      skip: "Backup only."
+      jury: "What happens if the quorum contains two different records with the same largest counter?"
+      pointer: "roupspa-synchronization"
+
+  - id: backup-roupspa-challenges-full
+    section: backup-roupspa
+    title: "Backup - RoUpSPA resilience challenges"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-threat-challenges"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#subsec:roupspa-design-challenges/lines-193-222"
+    formulas: []
+    visual: "Expanded challenge map: shared-but-private routing, signed freshness, active/stale classification, quorum completion, repair, and incomplete-operation boundaries."
+    citation: "Thesis, RoUpSPA design challenges."
+    speakerNotes:
+      main: "Use this to connect each resilience threat to a record field or quorum rule."
+      cues:
+        - "A shared handle enables routing but is not write authorization."
+        - "Counters require signatures and serialized record families."
+      transition: "Return to #roupspa-threat-and-boundary."
+      skip: "Backup only."
+      jury: "Why is a counter without a signature insufficient?"
+      pointer: "roupspa-threat-and-boundary"
+
+  - id: backup-roupspa-bad-events
+    section: backup-roupspa
+    title: "Backup - RoUpSPA bad-event accounting"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#bad-events/lines-169-240"
+    formulas:
+      - '\\epsilon_{bad}^{Ro}=q_{dec}\\operatorname{Adv}_{AE}^{int-ctxt}+q_{kb}\\operatorname{Adv}_{AE}^{kb}+q_{vk}\\operatorname{Adv}_{Sign}^{euf-cma}+\\operatorname{Adv}_{H}^{cr}'
+    visual: "Four-event reduction table matching each accepting invalid record or ambiguity to AE integrity, key binding, signature unforgeability, or hash collision resistance."
+    citation: "Thesis, RoUpSPA bad-event bound."
+    speakerNotes:
+      main: "Use this to isolate cryptographic bad events from deterministic quorum arguments."
+      cues:
+        - "Replication and synchronization add no new encryption calls."
+        - "The expression is quoted exactly."
+      transition: "Return to #roupspa-security."
+      skip: "Backup only."
+      jury: "Why is there no separate synchronization-forgery term?"
+      pointer: "roupspa-security"
+
+  - id: backup-roupspa-authorized-writes
+    section: backup-roupspa
+    title: "Backup - RoUpSPA authorized records and terminal messages"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-phase-semantics"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics/lines-684-732"
+      - "presentation/SOURCE_CONFLICTS.md#RoUpSPA-partial-write-semantics"
+    formulas:
+      - '\\operatorname{Sign}_{ssk}(Uid\\parallel SUid_{l,j}\\parallel c_{sp}\\parallel ctr_{ac})'
+      - '\\operatorname{Sign}_{ssk}(Uid\\parallel cid_{new}\\parallel ctr_{id,new})'
+    visual: "Exact field-order table for account and identification records, plus terminal-message table for Registration, Secret Update, and Password Update."
+    citation: "Thesis, RoUpSPA record binding and completion semantics; source conflict register."
+    speakerNotes:
+      main: "Use this for exact authorization tuples and to avoid claiming a completion acknowledgement absent from the construction."
+      cues:
+        - "Store or Discard is terminal at the login server."
+        - "Partial direct-write handling remains inconsistent across sources."
+      transition: "Return to #roupspa-phase-semantics."
+      skip: "Backup only."
+      jury: "Which exact fields authorize an account replacement?"
+      pointer: "roupspa-phase-semantics"
+
+  - id: backup-roupspa-active-threshold
+    section: backup-roupspa
+    title: "Backup - Feasible threshold and quorum region"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-threshold-quorum"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#eq:roupspa-quorum-condition/lines-8-22"
+    formulas:
+      - 'q_{\\mathrm{sp}}>\\frac{n_{\\mathrm{sp}}+t_{\\mathrm{sp}}-1}{2}'
+    visual: "Discrete feasible-region plot over integer (t_sp,q_sp) for selectable n_sp, shading majority threshold and strict intersection constraints."
+    citation: "Thesis, RoUpSPA quorum condition."
+    speakerNotes:
+      main: "Use this to calculate admissible integer quorums for a committee question."
+      cues:
+        - "Apply the strict inequality before rounding to the next integer."
+        - "Also enforce t_sp ≤ q_sp ≤ n_sp."
+      transition: "Return to #roupspa-threshold-quorum."
+      skip: "Backup only."
+      jury: "For n_sp=10 and t_sp=6, what q_sp values are admissible?"
+      pointer: "roupspa-threshold-quorum"
+
+  - id: backup-roupspa-quorum-proof
+    section: backup-roupspa
+    title: "Backup - Quorum consistency proof"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-quorum-intersection"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#thm:quorum-consistency/lines-436-468"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#cor:no-rollback/lines-470-480"
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#cor:no-divergent-commits/lines-482-495"
+    formulas:
+      - '|W\\cap R|\\ge |W|+|R|-n_{\\mathrm{sp}}\\ge2q_{\\mathrm{sp}}-n_{\\mathrm{sp}}>t_{\\mathrm{sp}}-1'
+    visual: "Three-line proof: set intersection lower bound, corruption-cap contradiction, then signed-counter uniqueness; conclude no rollback and no divergent completed commits."
+    citation: "Thesis, Theorem thm:quorum-consistency and corollaries."
+    speakerNotes:
+      main: "Use the inequalities to prove one honest latest-record holder exists in the later quorum."
+      cues:
+        - "At most t_sp-1 storage providers are corrupt."
+        - "The theorem assumes a completed serialized write."
+      transition: "Return to #roupspa-quorum-intersection."
+      skip: "Backup only."
+      jury: "Which step fails if equality replaces the strict final inequality?"
+      pointer: "roupspa-quorum-intersection"
+
+  - id: backup-roupspa-advantage-bound
+    section: backup-roupspa
+    title: "Backup - RoUpSPA final advantage bound"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#final-bound/lines-535-582"
+    formulas:
+      - '\\operatorname{Adv}_{real/ideal}\\le2\\epsilon_{bad}^{Ro}+q_K\\operatorname{Adv}_{TOPRF}^{prf}+q_T\\operatorname{Adv}_{TOPRF}^{rio}+q_{id}\\operatorname{Adv}_{AE}^{ind-cpa}+q_{ac}\\operatorname{Adv}_{AE}^{ind-cpa}'
+    visual: "Exact final bound with arrows back to games G1-G4 and a separate deterministic quorum-consistency badge."
+    citation: "Thesis, RoUpSPA final hybrid bound."
+    speakerNotes:
+      main: "Use this to map each advantage term to the corresponding game transition."
+      cues:
+        - "q_ac is the account-encryption multiplier."
+        - "The source reducer suffix has a typographical inconsistency; the primitive is AE IND-CPA."
+      transition: "Return to #roupspa-security."
+      skip: "Backup only."
+      jury: "Which game contributes the q_T receiver-input-obliviousness term?"
+      pointer: "roupspa-security"
+
+  - id: backup-experiment-configuration
+    section: backup-results
+    title: "Backup - Experiment configuration and timing contract"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "implementation-architecture-method"
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#testing-benchmarking-validation/lines-364-403"
+      - "source-material/thesis/Implementation/ch5_impl.tex#shared-software-architecture/lines-80-115"
+    formulas:
+      - 'T_{stage}^{P}(I)=T_{client,pre}^{P}+\\max_{i\\in I}\\{L_i+T_{SP_i}^{P}\\}+T_{client,post}^{P}'
+    visual: "Audit table of hardware, software, warm-ups, measured samples, p50 aggregation, LAN/WAN profile, RNG boundary, and stage-composition rule."
+    citation: "Thesis, implementation architecture and measurement validation."
+    speakerNotes:
+      main: "Use this to answer reproducibility or measurement-boundary questions."
+      cues:
+        - "50 warm-ups, 200 measured samples, median reporting."
+        - "LAN/WAN are composed estimates; GPU is unused."
+      transition: "Return to #implementation-architecture-method."
+      skip: "Backup only."
+      jury: "Are the WAN figures direct geographic measurements?"
+      pointer: "implementation-architecture-method"
+
+  - id: backup-upspa-tspa-charts
+    section: backup-results
+    title: "Backup - UpSPA versus TSPA scaling charts"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-upspa-tspa"
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_tspa_fixed_nsp30.tex#fig:client-reg-auth-nsp30"
+      - "source-material/thesis/Implementation/upspa_tspa_fixed_nsp30.tex#fig:client-setup-updates-nsp30"
+      - "source-material/thesis/Implementation/upspa_tspa_proportional.tex#fig:client-reg-auth-nsptsp60"
+      - "source-material/thesis/Implementation/upspa_tspa_proportional.tex#fig:lan-setup-updates-nsptsp60"
+    formulas:
+      - 't_{\\mathrm{sp}}=0.6n_{\\mathrm{sp}}\\quad\\text{in the proportional sweep}'
+    visual: "Four-panel source-faithful redraw: fixed n_sp=30 client and LAN; proportional-threshold client and LAN, with exact p50 axes and no interpolated points."
+    citation: "Thesis, UpSPA-TSPA fixed and proportional scaling figures."
+    speakerNotes:
+      main: "Use these panels when the committee asks about threshold sensitivity beyond the summary ranges."
+      cues:
+        - "Distinguish fixed-provider from joint provider/threshold scaling."
+        - "Treat isolated median reversals as sampling variation, not path changes."
+      transition: "Return to #results-upspa-tspa."
+      skip: "Backup only."
+      jury: "At what proportional scale does LAN registration cross?"
+      pointer: "results-upspa-tspa"
+
+  - id: aux-pastau-threshold-token-generation
+    section: backup-results
+    title: "Aux · PAS-TA-U — Threshold Token Generation"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/pastau/threshold-token-generation.jpg#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the supplied PAS-TA-U threshold token generation figure."
+    citation: "User-supplied PAS-TA-U threshold token generation source figure."
+    speakerNotes:
+      main: "The source figure shows threshold token generation as an interaction with the PAS-TA-U identity servers."
+      cues:
+        - "Preserve the source figure exactly; do not reinterpret its actors, arrows, formulas, or message order."
+        - "Use this only to explain the threshold-SSO comparison context."
+      transition: "Continue to the PAS-TA-U registration source figure."
+      skip: "Aux only."
+      jury: "How does PAS-TA-U's token architecture differ from SPA's login-server-specific secret architecture?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-pastau-registration
+    section: backup-results
+    title: "Aux · PAS-TA-U — Registration"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/pastau/registration.png#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the supplied PAS-TA-U registration diagram."
+    citation: "User-supplied PAS-TA-U registration source figure."
+    speakerNotes:
+      main: "The supplied source figure presents PAS-TA-U registration without altering its protocol semantics."
+      cues:
+        - "Preserve the source figure exactly."
+        - "Keep the identity-provider and identity-server roles distinct from UpSPA storage providers."
+      transition: "Continue to PAS-TA-U authentication and token generation."
+      skip: "Aux only."
+      jury: "Which PAS-TA-U parties receive registration material?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-pastau-authentication-token-generation
+    section: backup-results
+    title: "Aux · PAS-TA-U — Authentication and Token Generation"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/pastau/authentication-token-generation.png#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the supplied PAS-TA-U authentication and token generation diagram."
+    citation: "User-supplied PAS-TA-U authentication and token generation source figure."
+    speakerNotes:
+      main: "The supplied source figure shows PAS-TA-U threshold authentication and token generation."
+      cues:
+        - "Preserve every source actor, message, and formula."
+        - "The application server verifies a threshold-issued token rather than an SPA login-server secret."
+      transition: "Continue to PAS-TA-U password update."
+      skip: "Aux only."
+      jury: "What object does the PAS-TA-U application server verify?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-pastau-password-update
+    section: backup-results
+    title: "Aux · PAS-TA-U — Password Update"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/pastau/password-update.png#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the supplied PAS-TA-U password-update diagram."
+    citation: "User-supplied PAS-TA-U password-update source figure."
+    speakerNotes:
+      main: "The supplied source figure shows PAS-TA-U password update in its own threshold-SSO architecture."
+      cues:
+        - "Preserve the source figure exactly."
+        - "Do not describe this as an UpSPA identification-record replacement."
+      transition: "Continue to the AugSSO registration source figure."
+      skip: "Aux only."
+      jury: "What state does PAS-TA-U replace during password update?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-augsso-registration
+    section: backup-results
+    title: "Aux · AugSSO — Registration"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/augsso/registration.png#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the supplied AugSSO registration diagram."
+    citation: "User-supplied AugSSO registration source figure."
+    speakerNotes:
+      main: "The source figure shows AugSSO credential provisioning, password hardening, and popular-password registration."
+      cues:
+        - "Preserve the source figure exactly."
+        - "Keep the aggregation server outside the UpSPA/RoUpSPA storage-provider model."
+      transition: "Continue to AugSSO authentication and token issuance."
+      skip: "Aux only."
+      jury: "Why is AugSSO's aggregation server not an UpSPA storage provider?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-augsso-authentication-token-issuance
+    section: backup-results
+    title: "Aux · AugSSO — Authentication and Token Issuance"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/augsso/authentication-token-issuance.png#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the wider supplied AugSSO authentication and token-issuance diagram."
+    citation: "User-supplied AugSSO authentication and token issuance source figure."
+    speakerNotes:
+      main: "The supplied source figure shows AugSSO authentication, challenge response, and threshold token issuance."
+      cues:
+        - "Preserve all source messages and formulas."
+        - "The application server verifies the reconstructed master token."
+      transition: "Continue to AugSSO password update."
+      skip: "Aux only."
+      jury: "Where is the threshold token reconstructed in AugSSO?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-augsso-password-update
+    section: backup-results
+    title: "Aux · AugSSO — Password Update"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-threshold-sso-comparison"
+    sourceRefs:
+      - "presentation/public/assets/protocols/augsso/password-update.png#user-supplied-source-figure"
+    formulas: []
+    visual: "Image-only 16:9 source-figure slide using the supplied AugSSO password-update diagram."
+    citation: "User-supplied AugSSO password-update source figure."
+    speakerNotes:
+      main: "The source figure shows AugSSO old-credential verification, credential replacement, and aggregation update."
+      cues:
+        - "Preserve the source figure exactly."
+        - "Return to the comparison before resuming the main evaluation route."
+      transition: "Return to the threshold-SSO comparison."
+      skip: "Aux only."
+      jury: "How does AugSSO update the popular-password collection after a password change?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-sso-low-registration
+    section: backup-results
+    title: "AUX · Registration — Low-Threshold Comparison"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:full-grid-registration/lines-69-125"
+    formulas:
+      - '(n_{sp},t_{sp})\\in\\{(3,2),(5,2),(5,4),(7,2),(7,3),(7,5),(7,7)\\}'
+    visual: "Four exact-data panels: Client, Storage Provider, LAN, and WAN; UpSPA, PAS-TA-U, and AugSSO."
+    speakerNotes:
+      main: "Exact registration deployment-grid medians from the active thesis PGFPlots source."
+      cues: ["No screenshot-derived values.", "Keep all seven source configurations."]
+      transition: "Continue vertically to Authentication."
+      skip: "Aux only."
+      jury: "Why does WAN ordering differ from local ordering?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-sso-low-authentication
+    section: backup-results
+    title: "AUX · Authentication — Low-Threshold Comparison"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:full-grid-authentication/lines-169-225"
+    formulas:
+      - '(n_{sp},t_{sp})\\in\\{(3,2),(5,2),(5,4),(7,2),(7,3),(7,5),(7,7)\\}'
+    visual: "Four exact-data panels: Client, Storage Provider, LAN, and WAN; UpSPA, PAS-TA-U, and AugSSO."
+    speakerNotes:
+      main: "Exact authentication deployment-grid medians from the active thesis PGFPlots source."
+      cues: ["No screenshot-derived values.", "Keep the source system order and line identities."]
+      transition: "Continue vertically to Password Update."
+      skip: "Aux only."
+      jury: "Which threshold operations drive the client separation?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-sso-low-password-update
+    section: backup-results
+    title: "AUX · Password Update — Low-Threshold Comparison"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:full-grid-password/lines-268-324"
+    formulas:
+      - '(n_{sp},t_{sp})\\in\\{(3,2),(5,2),(5,4),(7,2),(7,3),(7,5),(7,7)\\}'
+    visual: "Four exact-data panels: Client, Storage Provider, LAN, and WAN; UpSPA, PAS-TA-U, and AugSSO."
+    speakerNotes:
+      main: "Exact password-update deployment-grid medians from the active thesis PGFPlots source."
+      cues: ["No screenshot-derived values.", "Do not add configurations outside the source grid."]
+      transition: "Continue vertically to proportional Registration."
+      skip: "Aux only."
+      jury: "Why is PAS-TA-U provider work higher during password update?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-sso-asymptotic-registration
+    section: backup-results
+    title: "AUX · Registration — Asymptotic Comparison"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:reg-tsp60-row/lines-408-519"
+    formulas: ['t_{sp}=0.6n_{sp}']
+    visual: "Three exact-data panels: Client, LAN, and WAN for n_sp=10 through 100."
+    speakerNotes:
+      main: "Registration proportional-scaling medians at the source policy t_sp=0.6n_sp."
+      cues: ["Client, LAN, and WAN only.", "All ten source points remain present."]
+      transition: "Continue vertically to proportional Authentication."
+      skip: "Aux only."
+      jury: "Where do the local registration curves cross?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-sso-asymptotic-authentication
+    section: backup-results
+    title: "AUX · Authentication — Asymptotic Comparison"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:auth-tsp60-row/lines-557-668"
+    formulas: ['t_{sp}=0.6n_{sp}']
+    visual: "Three exact-data panels: Client, LAN, and WAN for n_sp=10 through 100."
+    speakerNotes:
+      main: "Authentication proportional-scaling medians at the source policy t_sp=0.6n_sp."
+      cues: ["Client, LAN, and WAN only.", "All ten source points remain present."]
+      transition: "Continue vertically to proportional Password Update."
+      skip: "Aux only."
+      jury: "Why does AugSSO grow faster on the client?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-sso-asymptotic-password-update
+    section: backup-results
+    title: "AUX · Password Update — Asymptotic Comparison"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:pwdupd-tsp60-row/lines-707-818"
+    formulas: ['t_{sp}=0.6n_{sp}']
+    visual: "Three exact-data panels: Client, LAN, and WAN for n_sp=10 through 100."
+    speakerNotes:
+      main: "Password-update proportional-scaling medians at the source policy t_sp=0.6n_sp."
+      cues: ["Client, LAN, and WAN only.", "All ten source points remain present."]
+      transition: "Continue vertically to the PAS-TA-U source figures."
+      skip: "Aux only."
+      jury: "Where do the PAS-TA-U and AugSSO WAN curves cross?"
+      pointer: "results-threshold-sso-comparison"
+
+  - id: aux-resilient-registration
+    section: backup-results
+    title: "AUX · Registration — UpSPA vs RoUpSPA"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/resilient_backend_charts/curated/scaling_q080.tex#fig:res-fig01-q080-registration/lines-37-52"
+      - "C:/Users/Reza/Documents/thesis 2/scripts/generate_resilient_comparison_charts.py#prop_keys/lines-209-215"
+    formulas: ['t_{sp}=\\lceil0.6n_{sp}\\rceil', 'q_{sp}=\\lceil0.8n_{sp}\\rceil']
+    visual: "Log-scale Complete local and Composed LAN panels preserving all source backend series."
+    speakerNotes:
+      main: "The active proportional source is the broader resilient-backend comparison with the exact pipeline thresholds."
+      cues: ["Four local and six LAN series.", "n_sp=10 through 100; t_sp=ceil(0.6n_sp); q_sp=ceil(0.8n_sp)."]
+      transition: "Continue vertically to Secret Update."
+      skip: "Aux only."
+      jury: "Why are these panels logarithmic?"
+      pointer: "results-backend-scaling"
+
+  - id: aux-resilient-secret-update
+    section: backup-results
+    title: "AUX · Secret Update — UpSPA vs RoUpSPA"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/resilient_backend_charts/curated/scaling_q080.tex#fig:res-fig01-q080-secret-update/lines-97-112"
+      - "C:/Users/Reza/Documents/thesis 2/scripts/generate_resilient_comparison_charts.py#prop_keys/lines-209-215"
+    formulas: ['t_{sp}=\\lceil0.6n_{sp}\\rceil', 'q_{sp}=\\lceil0.8n_{sp}\\rceil']
+    visual: "Log-scale Complete local and Composed LAN panels preserving all source backend series."
+    speakerNotes:
+      main: "Exact secret-update proportional backend medians from the active curated figure."
+      cues: ["Four local and six LAN series.", "No resilient Authentication slide exists."]
+      transition: "Continue vertically to Password Update."
+      skip: "Aux only."
+      jury: "Which source backend dominates secret-update LAN latency?"
+      pointer: "results-backend-scaling"
+
+  - id: aux-resilient-password-update
+    section: backup-results
+    title: "AUX · Password Update — UpSPA vs RoUpSPA"
+    route: backup
+    estimatedSeconds: 0
+    sourceRefs:
+      - "source-material/thesis/resilient_backend_charts/curated/scaling_q080.tex#fig:res-fig01-q080-password-update/lines-157-172"
+      - "C:/Users/Reza/Documents/thesis 2/scripts/generate_resilient_comparison_charts.py#prop_keys/lines-209-215"
+    formulas: ['t_{sp}=\\lceil0.6n_{sp}\\rceil', 'q_{sp}=\\lceil0.8n_{sp}\\rceil']
+    visual: "Log-scale Complete local and Composed LAN panels preserving all source backend series."
+    speakerNotes:
+      main: "Exact password-update proportional backend medians from the active curated figure."
+      cues: ["Four local and six LAN series.", "The pipeline uses t_sp=ceil(0.6n_sp) and q_sp=ceil(0.8n_sp)."]
+      transition: "Return horizontally to the next main evaluation slide."
+      skip: "Aux only."
+      jury: "Why is quorum/ABD password update steeper locally?"
+      pointer: "results-backend-scaling"
+
+  - id: backup-upspa-roupspa-charts
+    section: backup-results
+    title: "Backup - UpSPA versus RoUpSPA paired charts"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-upspa-roupspa"
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:UpSPA-abd-registration/lines-840-920"
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:UpSPA-abd-secret/lines-920-1000"
+      - "source-material/thesis/Implementation/upspa_sso_and_quorum_results.tex#fig:UpSPA-abd-password/lines-1000-1105"
+    formulas:
+      - '\\Delta^{P}_{Q,N,p50}=T^{P}_{RoUpSPA,full-net,p50}-T^{P}_{UpSPA,full,p50}'
+    visual: "All three paired client/LAN charts with exact (n_sp,t_sp,q_sp) labels and explicit absence of a WAN ranking panel."
+    citation: "Thesis, UpSPA and RoUpSPA comparison figures."
+    speakerNotes:
+      main: "Use this to distinguish the local robust increment from the extra staged network cost."
+      cues:
+        - "All differences are paired on phase, threshold, provider count, and profile."
+        - "WAN totals are intentionally not used to rank the constructions."
+      transition: "Return to #results-upspa-roupspa."
+      skip: "Backup only."
+      jury: "How were the isolated quorum overheads calculated?"
+      pointer: "results-upspa-roupspa"
+
+  - id: backup-backend-charts
+    section: backup-results
+    title: "Backup - Resilient synchronization backend charts"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-backends"
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#tab:resilient-q080-endpoints/lines-530-582"
+      - "source-material/thesis/Implementation/ch5_impl.tex#fig:res-fig01-q080-registration/lines-587-610"
+      - "source-material/thesis/Implementation/ch5_impl.tex#fig:res-fig07-overhead-q080/lines-600-635"
+    formulas:
+      - 'q_{\\mathrm{sp}}=\\lceil0.8n_{\\mathrm{sp}}\\rceil'
+    visual: "Full local/LAN backend small multiples for registration, secret update, password update, and isolated synchronization overhead."
+    citation: "Thesis, resilient synchronization backend evaluation."
+    speakerNotes:
+      main: "Use this to compare phase-specific scaling without declaring one universally best backend."
+      cues:
+        - "Public-state q_sp labels match availability scenarios, not ledger consensus."
+        - "Complete-local and backend-overhead targets answer different questions."
+      transition: "Return to #results-backends."
+      skip: "Backup only."
+      jury: "Why does quorum/ABD password update grow faster than signed PBB locally?"
+      pointer: "aux-resilient-registration"
+
+  - id: backup-evm-gas
+    section: backup-results
+    title: "Backup - Receipt-level EVM gas"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-backends"
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#tab:evm-direct-receipts/lines-639-669"
+      - "source-material/thesis/Implementation/ch5_impl.tex#tab:evm-merkle-receipts/lines-672-707"
+      - "source-material/thesis/Implementation/ch5_impl.tex#fig:evm-receipt-gas/lines-710-752"
+    formulas:
+      - '\\mathrm{medianGas}_{direct-reg}=123\\,619'
+      - '\\mathrm{medianGas}_{direct-update}\\approx51\\,17x'
+      - '\\mathrm{publicationGas}/record: 11\\,704.625\\rightarrow731.727\\ (B:8\\rightarrow128)'
+    visual: "Two exact tables plus compact log-scale bars for direct registration/update and Merkle publication/proof verification; badge '91/91 successful local Anvil receipts'."
+    citation: "Thesis, receipt-level EVM gas tables and figure."
+    speakerNotes:
+      main: "Use this for exact local-regression gas values, not public-chain fee or confirmation claims."
+      cues:
+        - "All 91 archived receipts succeeded on local Anvil."
+        - "Deployer, publisher, relayer, and controller share one EOA in this dataset."
+      transition: "Return to #results-backends."
+      skip: "Backup only."
+      jury: "Can these gas rows predict a production transaction fee?"
+      pointer: "results-backends"
+
+  - id: backup-foundry-cross-check
+    section: backup-results
+    title: "Backup - Foundry gas cross-check"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-key-takeaways"
+    sourceRefs:
+      - "source-material/thesis/Implementation/upspa_foundry_gas_snapshot.tex#tab:upspa-foundry-direct-snapshot/lines-1-25"
+      - "source-material/thesis/Implementation/upspa_foundry_gas_snapshot.tex#tab:upspa-foundry-merkle-snapshot/lines-27-56"
+    formulas: []
+    visual: "Side-by-side Foundry snapshots for direct and Merkle contract calls with a banner separating regression evidence from receipt-distribution evidence."
+    citation: "Thesis, Foundry gas snapshot tables."
+    speakerNotes:
+      main: "Use this as an independent contract-level regression check, not as a substitute for the receipt dataset."
+      cues:
+        - "Contract and timed boundaries differ from the Anvil manifest."
+        - "Do not pool the two distributions."
+      transition: "Return to #results-key-takeaways."
+      skip: "Backup only."
+      jury: "Why do the Foundry and receipt values not need to match exactly?"
+      pointer: "results-key-takeaways"
+
+  - id: backup-tron-status
+    section: backup-results
+    title: "Backup - TRON implementation status"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "results-key-takeaways"
+    sourceRefs:
+      - "source-material/thesis/Implementation/ch5_impl.tex#TRON-implementation-and-pending-native-measurements/lines-783-796"
+    formulas: []
+    visual: "Evidence checklist: TVM-compatible contract - complete; runner/schema - complete; live solidified receipt matrix - missing; numerical chart - intentionally absent."
+    citation: "Thesis, TRON Implementation and Pending Native Measurements."
+    speakerNotes:
+      main: "Use this to state the TRON boundary plainly: implementation exists, numerical native-resource evidence does not."
+      cues:
+        - "No synthetic Energy or Bandwidth numbers are reported."
+        - "EVM gas is not used as a TRON proxy."
+      transition: "Return to #results-key-takeaways."
+      skip: "Backup only."
+      jury: "Why is there no TRON chart?"
+      pointer: "results-key-takeaways"
+
+  - id: backup-references
+    section: backup-reference
+    title: "Backup - Selected references and artifacts"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "conclusion-publications"
+    sourceRefs:
+      - "source-material/thesis/references.bib#selected-SPA-TSPA-UpSPA-and-comparison-entries"
+      - "source-material/thesis/Prelude/Introduction/Publications.tex#Publications/lines-1-25"
+      - "presentation.config.yaml#links"
+    formulas: []
+    visual: "Readable two-column reference list grouped by SPA lineage, password/threshold systems, distributed storage, and thesis artifacts; include ePrint and repository QR codes."
+    citation: "Thesis bibliography and Publications section."
+    speakerNotes:
+      main: "Use this to provide a precise citation or artifact link without interrupting the core narrative."
+      cues:
+        - "Differentiate public ePrint availability from submitted venue status."
+        - "Use bibliography metadata exactly as recorded."
+      transition: "Return to #conclusion-publications."
+      skip: "Backup only."
+      jury: "Where can the UpSPA manuscript and code be inspected?"
+      pointer: "conclusion-publications"
+
+  - id: backup-notation
+    section: backup-reference
+    title: "Backup - Notation"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "conclusion-contributions"
+    sourceRefs:
+      - "source-material/thesis/Prelude/Preliminaries/Notations.tex#protocol-notation"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#eq:roupspa-quorum-condition/lines-8-22"
+    formulas:
+      - 'n_{\\mathrm{sp}}:\\ \\text{providers},\\quad t_{\\mathrm{sp}}:\\ \\text{cryptographic threshold},\\quad q_{\\mathrm{sp}}:\\ \\text{write/sync quorum}'
+      - 'ctr_{id}:\\ \\text{root version},\\quad ctr_{ac}:\\ \\text{account version}'
+    visual: "Compact symbol dictionary grouped by parties, thresholds, root state, account state, and protocol phases."
+    citation: "Thesis, Preliminaries notation and RoUpSPA construction."
+    speakerNotes:
+      main: "Use this to resolve symbols quickly during questions."
+      cues:
+        - "Keep t_sp and q_sp conceptually separate."
+        - "Use provider count n_sp consistently across both constructions."
+      transition: "Return to #conclusion-contributions."
+      skip: "Backup only."
+      jury: "What is the difference between ctr_id and ctr_ac?"
+      pointer: "conclusion-contributions"
+
+  - id: backup-upspa-proof-g0-g1
+    section: backup-upspa
+    title: "UpSPA proof: G0 to G1"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#games-g0-g1"
+    formulas: []
+    visual: "Two-column transition from the stopped real game to TOPRF replacement."
+    citation: "Thesis, UpSPA Security Analysis, games G0-G1."
+    speakerNotes: { main: "Use this to explain the bad-event conditioning and TOPRF hop.", cues: [], transition: "Return to UpSPA security.", skip: "Backup only.", jury: "What changes between G0 and G1?", pointer: "upspa-security" }
+
+  - id: backup-upspa-proof-g2-g3
+    section: backup-upspa
+    title: "UpSPA proof: G2 to G3"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#games-g2-g3"
+    formulas: []
+    visual: "Paired AE IND-CPA hybrids for identification and account ciphertexts."
+    citation: "Thesis, UpSPA Security Analysis, games G2-G3."
+    speakerNotes: { main: "Use this to separate identification-record and account confidentiality hybrids.", cues: [], transition: "Return to UpSPA security.", skip: "Aux only.", jury: "Why are two AE hybrids needed?", pointer: "upspa-security" }
+
+  - id: backup-upspa-proof-g4-terminal
+    section: backup-upspa
+    title: "UpSPA proof: G4 and terminal equivalence"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/security analysis.tex#game-g4"
+    formulas: []
+    visual: "Simulator state, local pending state, and ideal completed outcome."
+    citation: "Thesis, UpSPA Security Analysis, terminal game."
+    speakerNotes: { main: "Use this to explain why partial protocol state is simulator-local.", cues: [], transition: "Return to UpSPA security.", skip: "Backup only.", jury: "What state enters the ideal functionality?", pointer: "upspa-security" }
+
+  - id: backup-upspa-password-scope
+    section: backup-upspa
+    title: "UpSPA password-security scope"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Full available version/Threat model.tex#password-security"
+    formulas: []
+    visual: "Claimed versus not-claimed password-security boundary."
+    citation: "Thesis, UpSPA threat model and security statement."
+    speakerNotes: { main: "Use this to avoid describing a human password as uniformly random.", cues: [], transition: "Return to UpSPA security.", skip: "Backup only.", jury: "Does the theorem make weak passwords unguessable?", pointer: "upspa-security" }
+
+  - id: backup-roupspa-proof-g0-g2
+    section: backup-roupspa
+    title: "RoUpSPA proof: G0 to G2"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#games-g0-g2"
+    formulas: []
+    visual: "Bad-event conditioning followed by TOPRF PRF and RIO hybrids."
+    citation: "Thesis, RoUpSPA Security Analysis, games G0-G2."
+    speakerNotes: { main: "Use this to show why RoUpSPA exposes separate PRF and RIO terms.", cues: [], transition: "Return to RoUpSPA security.", skip: "Backup only.", jury: "Where does the RIO term enter?", pointer: "roupspa-security" }
+
+  - id: backup-roupspa-proof-g3-g5
+    section: backup-roupspa
+    title: "RoUpSPA proof: G3 to G5"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#games-g3-g5"
+    formulas: []
+    visual: "Identification and account AE hybrids ending in the ideal game."
+    citation: "Thesis, RoUpSPA Security Analysis, games G3-G5."
+    speakerNotes: { main: "Use this to separate encrypted-root and encrypted-account replacements.", cues: [], transition: "Return to RoUpSPA security.", skip: "Backup only.", jury: "Which game hides account plaintexts?", pointer: "roupspa-security" }
+
+  - id: backup-roupspa-terminal-equivalence
+    section: backup-roupspa
+    title: "RoUpSPA terminal equivalence"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-security"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/security analysis.tex#terminal-equivalence"
+      - "source-material/thesis/UpSPA variation/Resilient Version/Construction.tex#record-binding-and-completion-semantics"
+    formulas: []
+    visual: "Exact retransmission, Store, Discard, stale marking, and ideal-success map."
+    citation: "Thesis, RoUpSPA completion semantics and security analysis."
+    speakerNotes: { main: "Use this to distinguish local replica state from ideal completed state.", cues: [], transition: "Return to RoUpSPA security.", skip: "Backup only.", jury: "How is a missed terminal decision represented?", pointer: "roupspa-security" }
+
+  - id: backup-roupspa-liveness-scope
+    section: backup-roupspa
+    title: "RoUpSPA liveness scope"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-threat-and-boundary"
+    sourceRefs:
+      - "source-material/thesis/UpSPA variation/Resilient Version/Threat model.tex#availability-and-liveness"
+    formulas: []
+    visual: "Progress requirements versus conditions outside the guarantee."
+    citation: "Thesis, RoUpSPA threat model."
+    speakerNotes: { main: "Use this to state conditional progress without implying consensus liveness.", cues: [], transition: "Return to safety and liveness.", skip: "Backup only.", jury: "Under which failures can progress stop?", pointer: "roupspa-threat-and-boundary" }
+
+  - id: backup-upspa-source-figures
+    section: backup-upspa
+    title: "UpSPA supplied source figures"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "upspa-setup"
+    sourceRefs:
+      - "setup upspa.png"
+      - "registration upspa.png"
+      - "authentication upspa.png"
+      - "secret update upspa.png"
+      - "password update upspa.png"
+    formulas: []
+    visual: "Five labeled source-figure thumbnails."
+    citation: "User-supplied UpSPA protocol figures."
+    speakerNotes: { main: "Use these only as source-reference figures; the main route remains editable HTML.", cues: [], transition: "Return to UpSPA setup.", skip: "Backup only.", jury: "How does the vector summary map to the numbered source?", pointer: "upspa-setup" }
+
+  - id: backup-roupspa-source-figures
+    section: backup-roupspa
+    title: "RoUpSPA supplied source figures"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "roupspa-registration"
+    sourceRefs:
+      - "setup RoUpSPA.png"
+      - "registration RoUpSPA.png"
+      - "authentication RoUpSPA.png"
+      - "secret update RoUpSPA.png"
+      - "password update RoUpSPA.png"
+    formulas: []
+    visual: "Five labeled source-figure thumbnails."
+    citation: "User-supplied RoUpSPA protocol figures."
+    speakerNotes: { main: "Use these only as source-reference figures; the main route remains editable HTML.", cues: [], transition: "Return to RoUpSPA registration.", skip: "Backup only.", jury: "Where is LS Prepare in the numbered source?", pointer: "roupspa-registration" }
+
+  - id: backup-spa-paper-figure
+    section: backup-lineage
+    title: "Aux · SPA — Original registration and authentication"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "lineage-spa"
+    sourceRefs:
+      - "presentation/public/assets/spa-paper-figure.png#best-clean-crop-available"
+    formulas: []
+    visual: "One landscape source-figure slide; aspect ratio preserved without redrawing."
+    citation: "Clean SPA paper-figure crop available in the supplied presentation workspace."
+    speakerNotes: { main: "Use the original SPA registration/authentication diagram as historical source context.", cues: ["Do not reinterpret the actors or messages inside the figure."], transition: "Return to SPA, then continue to TSPA.", skip: "Aux only.", jury: "How does the helper remain separate from the login server?", pointer: "lineage-spa" }
+
+  - id: aux-tspa-registration
+    section: backup-lineage
+    title: "Aux · TSPA — Registration"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "lineage-tspa"
+    sourceRefs:
+      - "presentation/public/assets/tspa-registration-figure.png#best-clean-crop-available"
+    formulas: []
+    visual: "One landscape TSPA registration source-figure slide; aspect ratio preserved without redrawing."
+    citation: "Clean TSPA registration figure crop available in the supplied presentation workspace."
+    speakerNotes: { main: "Use the TSPA registration figure to show provider-specific OPRF protection and threshold sharing.", cues: ["Keep OPRF terminology distinct from UpSPA's TOPRF construction."], transition: "Continue down to TSPA authentication.", skip: "Aux only.", jury: "Why does registration touch all provider-specific shares?", pointer: "lineage-tspa" }
+
+  - id: aux-tspa-authentication
+    section: backup-lineage
+    title: "Aux · TSPA — Authentication"
+    route: backup
+    estimatedSeconds: 0
+    returnTarget: "lineage-tspa"
+    sourceRefs:
+      - "presentation/public/assets/tspa-authentication-figure.png#best-clean-crop-available"
+    formulas: []
+    visual: "One landscape TSPA authentication source-figure slide; aspect ratio preserved without redrawing."
+    citation: "Clean TSPA authentication figure crop available in the supplied presentation workspace."
+    speakerNotes: { main: "Use the TSPA authentication figure to show threshold recovery before login-server verification.", cues: ["The source shows OPRF-based provider-specific protection, not UpSPA TOPRF-protected shares."], transition: "Return to TSPA, then continue to the lifecycle gap.", skip: "Aux only.", jury: "What does the user reconstruct from threshold contributions?", pointer: "lineage-tspa" }
+`,_l=`# Authoritative Reveal.js route rebuilt from the annotated PDF.
+# Only entries in this file are rendered; removed/crossed-out slides stay out of the DOM.
+slides:
+  # Horizontal main story - exactly 52 slides.
+  - { id: title, route: core }
+  - { id: problem-daily-authentication, route: core }
+  - { id: problem-two-strategies, route: core }
+  - { id: problem-password-manager, route: core }
+  - { id: problem-research-question, route: core }
+  - { id: lineage-overview, route: core }
+  - { id: lineage-spa, route: core }
+  - { id: lineage-tspa, route: core }
+  - { id: lineage-gap-and-thesis, route: core }
+  - { id: upspa-overview, route: core }
+  - { id: upspa-two-layer-state, route: core }
+  - { id: upspa-setup, route: core }
+  - { id: upspa-toprf, sourceId: upspa-toprf-interaction, route: core }
+  - { id: upspa-identification, route: core }
+  - { id: upspa-registration, route: core }
+  - { id: upspa-authentication, route: core }
+  - { id: upspa-secret-update, route: core }
+  - { id: upspa-password-update, route: core }
+  - { id: upspa-two-updates, route: core }
+  - { id: upspa-threat-model, route: core }
+  - { id: upspa-design-challenges, route: core }
+  - { id: upspa-challenge-mechanisms, sourceId: upspa-toprf-interaction, route: core }
+  - { id: upspa-proof-waterfall, sourceId: upspa-security, route: core }
+  - { id: roupspa-motivation, route: core }
+  - { id: roupspa-what-changes, route: core }
+  - { id: roupspa-threshold-quorum, route: core }
+  - { id: roupspa-quorum-intersection, route: core }
+  - { id: roupspa-phase-semantics, route: core }
+  - { id: roupspa-synchronization, route: core }
+  - { id: roupspa-quorum-recovery, sourceId: backup-roupspa-synchronization-full, route: core, estimatedSeconds: 55 }
+  - { id: roupspa-registration, route: core }
+  - { id: roupspa-secret-update, route: core }
+  - { id: roupspa-password-update, sourceId: backup-roupspa-password-update-full, route: core }
+  - { id: roupspa-authorized-records, sourceId: backup-roupspa-authorized-writes, route: core }
+  - { id: roupspa-threat-challenges, route: core }
+  - { id: roupspa-threat-and-boundary, route: core }
+  - { id: roupspa-liveness, sourceId: backup-roupspa-liveness-scope, route: core, estimatedSeconds: 60 }
+  - { id: alternatives-pbb, route: core }
+  - { id: alternatives-blockchain-and-choice, route: core }
+  - { id: implementation-architecture-method, route: core }
+  - { id: results-upspa-tspa, route: core }
+  - { id: results-threshold-sso-comparison, route: core }
+  - { id: results-upspa-roupspa, route: core }
+  - { id: results-upspa-roupspa-charts, sourceId: backup-upspa-roupspa-charts, route: core }
+  - { id: results-backends, route: core }
+  - { id: results-backend-scaling, sourceId: backup-backend-charts, route: core }
+  - { id: results-evm-gas, sourceId: backup-evm-gas, route: core }
+  - { id: results-key-takeaways, route: core }
+  - { id: conclusion-contributions, route: core }
+  - { id: conclusion-limitations-future, route: core }
+  - { id: conclusion-publications, route: core }
+  - { id: thank-you, route: core }
+
+  # Vertical technical depth. These are reachable through Down/Up only.
+  - { id: backup-spa-paper-figure, route: backup, originId: lineage-spa }
+  - { id: aux-tspa-registration, route: backup, originId: lineage-tspa }
+  - { id: aux-tspa-authentication, route: backup, originId: lineage-tspa }
+  - { id: backup-notation, route: backup, originId: upspa-two-layer-state }
+  - { id: aux-toprf-concrete, sourceId: upspa-toprf-interaction, route: backup, originId: upspa-toprf }
+  - { id: backup-upspa-registration-full, route: backup, originId: upspa-registration }
+  - { id: backup-upspa-authentication-full, route: backup, originId: upspa-authentication }
+  - { id: backup-upspa-secret-update-full, route: backup, originId: upspa-secret-update }
+  - { id: backup-upspa-password-update-full, route: backup, originId: upspa-password-update }
+  - { id: backup-upspa-challenges-full, route: backup, originId: upspa-challenge-mechanisms }
+  - { id: aux-upspa-hybrid-g1, sourceId: backup-upspa-proof-g0-g1, route: backup, originId: upspa-proof-waterfall }
+  - { id: aux-upspa-hybrid-g2-g3, sourceId: backup-upspa-proof-g2-g3, route: backup, originId: upspa-proof-waterfall }
+  - { id: backup-upspa-advantage-bound, route: backup, originId: upspa-proof-waterfall }
+  - { id: backup-roupspa-setup-full, route: backup, originId: roupspa-what-changes }
+  - { id: aux-roupspa-quorum-consistency, sourceId: roupspa-security, route: backup, originId: roupspa-quorum-intersection }
+  - { id: aux-roupspa-quorum-proof, sourceId: backup-roupspa-proof-g0-g2, route: backup, originId: roupspa-quorum-intersection }
+  - { id: aux-roupspa-no-rollback, sourceId: backup-roupspa-proof-g3-g5, route: backup, originId: roupspa-quorum-intersection }
+  - { id: aux-roupspa-authorization-checks, sourceId: backup-roupspa-terminal-equivalence, route: backup, originId: roupspa-quorum-intersection }
+  - { id: backup-roupspa-registration-full, route: backup, originId: roupspa-registration }
+  - { id: backup-roupspa-secret-update-full, route: backup, originId: roupspa-secret-update }
+  - { id: backup-roupspa-password-update-full, route: backup, originId: roupspa-password-update }
+  - { id: backup-experiment-configuration, route: backup, originId: implementation-architecture-method }
+  - { id: backup-upspa-tspa-charts, route: backup, originId: results-upspa-tspa }
+  - { id: aux-sso-low-registration, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-sso-low-authentication, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-sso-low-password-update, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-sso-asymptotic-registration, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-sso-asymptotic-authentication, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-sso-asymptotic-password-update, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-pastau-threshold-token-generation, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-pastau-registration, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-pastau-authentication-token-generation, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-pastau-password-update, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-augsso-registration, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-augsso-authentication-token-issuance, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-augsso-password-update, route: backup, originId: results-threshold-sso-comparison }
+  - { id: aux-resilient-registration, route: backup, originId: results-backend-scaling }
+  - { id: aux-resilient-secret-update, route: backup, originId: results-backend-scaling }
+  - { id: aux-resilient-password-update, route: backup, originId: results-backend-scaling }
+  - { id: backup-foundry-cross-check, route: backup, originId: results-evm-gas }
+  - { id: backup-references, route: backup, originId: conclusion-publications }
+`,Tl=`# Visible core-route copy lives here. Renderer JavaScript supplies layout behavior only.
+# Math uses Reveal/MathJax delimiters. HTML is intentional so diagrams remain editable.
+slides:
+  title:
+    navLabel: Title
+    sectionKey: title
+    sectionLabel: Title
+    layout: raw
+    body: |
+      <div class="slide-shell title-stage">
+        <div class="title-copy">
+          <div class="section-kicker">MSc thesis defense</div>
+          <h1>{{config.title}}</h1>
+          <p class="program">Master of Science in {{config.program}}</p>
+          <div class="identity"><strong>{{config.presenterFormalName}}</strong><span>Candidate</span><strong>{{config.advisor}}</strong><span>Advisor</span></div>
+          <div class="title-date">{{config.institution}} · {{config.defenseDate}}</div>
+        </div>
+        <div class="title-visual" aria-label="Institutional affiliations">
+          <div class="title-rings"><i></i><i></i><i></i><strong>SPA</strong></div>
+          <div class="title-logos"><img src="assets/koc-logo.png" alt="Koç University logo"><img src="assets/ku-crypto.png" alt="Koç University Cryptography, Security, and Privacy Research Group logo"><img src="assets/tubitak.png" alt="TÜBİTAK logo"></div>
+        </div>
+      </div>
+
+  problem-daily-authentication:
+    navLabel: Daily authentication
+    sectionKey: problem
+    sectionLabel: Problem
+    kicker: The password problem
+    title: Authentication is a daily activity
+    body: |
+      <div class="split-40 editable-split">
+        <div><p class="lead">One person returns to many independent accounts—often from more than one device.</p><div class="claim">The repeated task is not creating a password once. It is reliably recovering the right credential, for the right service, every day.</div></div>
+        <div class="service-scene" aria-label="Generic account categories"><span>Email</span><span>Banking</span><span>University</span><span>Cloud</span><span>Developer</span><span>Health</span><span>Travel</span><span>Shopping</span><strong>User</strong></div>
+      </div>
+
+  problem-two-strategies:
+    navLabel: One or many?
+    sectionKey: problem
+    sectionLabel: Problem
+    kicker: The password problem
+    title: One password or many passwords?
+    body: |
+      <div class="choice-grid"><article class="danger-card"><span>01</span><h3>Reuse one password</h3><p>Low memory burden and low daily effort.</p><strong>One disclosure can propagate across independent accounts.</strong></article><div class="choice-or">or</div><article class="safe-card"><span>02</span><h3>Different password for every service</h3><p>Better compromise isolation.</p><strong>Remembering, maintaining, and recovering credentials becomes harder.</strong></article></div>
+
+  problem-strategy-comparison:
+    navLabel: Convenience vs isolation
+    sectionKey: problem
+    sectionLabel: Problem
+    kicker: The password problem
+    title: The tension is convenience versus isolation
+    body: |
+      <table class="comparison-table"><thead><tr><th>Reuse one password</th><th>Use different passwords</th></tr></thead><tbody><tr><td>Easy to remember</td><td>Better compromise isolation</td></tr><tr><td>Low daily effort</td><td>Higher maintenance and recovery burden</td></tr><tr><td>One disclosure may affect several accounts</td><td>May encourage predictable variations</td></tr></tbody></table><p class="small" style="margin-top:22px">The design opportunity is to keep one memorable secret while deriving independent service credentials.</p>
+
+  problem-password-manager:
+    navLabel: Password managers
+    sectionKey: problem
+    sectionLabel: Problem
+    kicker: The password problem
+    title: Password managers solve usability by introducing a vault
+    body: |
+      <div class="manager-layout"><div class="vault-stack"><strong>Master secret</strong><i></i><div>Encrypted credential vault</div><i></i><span>site A</span><span>site B</span><span>site C</span></div><div class="manager-models"><article><h3>Local vault</h3><p>Credential state remains on a device.</p><small>Portability, backup, synchronization, and device loss need a plan.</small></article><article><h3>Cloud-synchronized vault</h3><p>Encrypted state supports multi-device access.</p><small>Cloud availability, storage, and metadata become part of the trust boundary.</small></article><div class="claim">A strong practical answer—yet still a storage design centered on reusable website credentials.</div></div></div>
+
+  problem-local-cloud-managers:
+    navLabel: Vault models
+    sectionKey: problem
+    sectionLabel: Problem
+    kicker: Detail · Password managers
+    title: Local and cloud vaults move the operational boundary
+    body: |
+      <div class="split"><article class="detail-card"><h3>Local</h3><p>Device-held state; explicit backup and migration.</p></article><article class="detail-card"><h3>Cloud</h3><p>Remote encrypted state; explicit availability and metadata boundary.</p></article></div>
+
+  problem-research-question:
+    navLabel: Research question
+    sectionKey: problem
+    sectionLabel: Problem
+    kicker: Research question
+    title: A different design point
+    body: |
+      <div class="question-stage"><p>Can one memorable password support many services without giving every login server the password—or keeping reusable website passwords as the user’s primary local credential state?</p><strong>Single Password Authentication <span>(SPA)</span></strong></div>
+
+  lineage-overview:
+    navLabel: Research lineage
+    sectionKey: lineage
+    sectionLabel: SPA lineage
+    kicker: Evolution of SPA
+    title: The research line adds one missing capability at a time
+    body: |
+      <div class="lineage-cards"><article><div class="portrait-row"><img src="assets/tolga-acar.jpg" alt="Tolga Acar"><img src="assets/mira-belenkiy.jpg" alt="Mira Belenkiy"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><b>2013 · Computer Networks</b><h3>SPA</h3><p>Acar¹ · Belenkiy¹ · Küpçü²</p><small>One password, separate helper</small></article><article><div class="portrait-row"><img src="assets/devris-isler.jpg" alt="Devriş İşler"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><b>2017 · DPM</b><h3>TSPA</h3><p>İşler² · Küpçü²</p><small>Threshold-distributed helper</small></article><article><div class="portrait-row"><img src="assets/devris-isler.jpg" alt="Devriş İşler"><img src="assets/reza-saadi.jpg" alt="Reza Saadi"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><b>2026 · ePrint 2026/784; WPES submitted</b><h3>UpSPA</h3><p>İşler³ · Saadi² · Küpçü²</p><small>Native secret and password updates</small></article><article><div class="portrait-row"><img src="assets/reza-saadi.jpg" alt="Reza Saadi"><img src="assets/devris-isler.jpg" alt="Devriş İşler"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><b>2026 · TOPS submitted manuscript</b><h3>RoUpSPA</h3><p>Saadi² · İşler³ · Küpçü²</p><small>Quorum completion and stale repair</small></article></div><div class="affiliation-footnote">(1) Microsoft, (2) Koç University, (3) IMDEA Institute.</div>
+
+  lineage-spa:
+    navLabel: SPA
+    sectionKey: lineage
+    sectionLabel: SPA lineage
+    kicker: Evolution of SPA
+    title: SPA separates the password from the login server
+    body: |
+      <div class="protocol-columns"><article><b>Register</b><span>User</span><i>password-protected helper state</i><span>Storage provider</span><i>high-entropy verifier</i><span>Login server</span></article><article class="center-principle"><strong>pwd</strong><p>recovers</p><strong>high-entropy service material</strong></article><article><b>Authenticate</b><span>User</span><i>recover service secret</i><span>Storage provider</span><i>authenticate without pwd</i><span>Login server</span></article></div><div class="claim danger">Trust boundary: the intended offline-guessing protection assumes the login server and helper do not collude.</div>
+
+  lineage-tspa:
+    navLabel: TSPA
+    sectionKey: lineage
+    sectionLabel: SPA lineage
+    kicker: Evolution of SPA
+    title: TSPA distributes the helper role
+    body: |
+      <div class="protocol-columns"><article><b>Register</b><span>User</span><i>split secret + provider-specific OPRF protection</i><span>Storage providers</span><i>service verifier</i><span>Login server</span></article><article class="center-principle"><strong>t<sub>sp</sub> of n<sub>sp</sub></strong><p>threshold recovery</p><strong>OPRF-based protection</strong></article><article><b>Authenticate</b><span>User</span><i>collect threshold contributions</i><span>Storage providers</span><i>reconstruct service credential</i><span>Login server</span></article></div><div class="claim">TSPA covers registration and authentication—not the native update lifecycle developed in this thesis.</div>
+
+  lineage-gap-and-thesis:
+    navLabel: Thesis gap
+    sectionKey: lineage
+    sectionLabel: SPA lineage
+    kicker: Evolution of SPA
+    title: The missing piece is a credential lifecycle
+    body: |
+      <div class="evolution-grid"><article><b>SPA / TSPA</b><div><span>Registration</span><i></i><span>Authentication</span></div><p>Credential creation and use</p></article><article><b>UpSPA</b><div><span>Setup</span><i></i><span>Registration</span><i></i><span>Authentication</span></div><div><span>Secret update</span><i></i><span>Password update</span></div><p>Native secret and password updateability</p></article><article><b>RoUpSPA</b><div><span>Quorum completion</span><i></i><span>Versioned replicas</span><i></i><span>Repair</span></div><p>Partial availability and recovery</p></article></div>
+
+  upspa-overview:
+    navLabel: UpSPA overview
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA
+    title: UpSPA turns threshold SPA into a five-phase framework
+    body: |
+      <div class="phase-ribbon"><span>Setup</span><i></i><span>Registration</span><i></i><span>Authentication</span><i></i><span>Secret update</span><i></i><span>Password update</span></div><div class="three-col feature-cards"><article><b>One remembered password</b><p>Threshold providers help derive a root-opening key.</p></article><article><b>Independent accounts</b><p>Each login server receives only a domain-bound high-entropy verifier.</p></article><article><b>Two update scopes</b><p>Rotate one service secret or replace the master password without rewriting every account.</p></article></div><div class="equation-box center">Verifier at \\(LS_j\\): \\(vInfo_j = H(R_{ls_j} \\mathbin{\\|} ls_j)\\)</div>
+
+  upspa-parties:
+    navLabel: Roles
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: Detail · UpSPA
+    title: Three roles separate recovery from service authentication
+    body: |
+      <div class="three-col feature-cards"><article><b>User</b><p>Knows \\(pwd\\), opens encrypted state, and authorizes updates.</p></article><article><b>Storage providers</b><p>Hold TOPRF shares and encrypted identification/account records.</p></article><article><b>Login server</b><p>Stores only the service verifier and validates the recovered service secret.</p></article></div>
+
+  upspa-two-layer-state:
+    navLabel: Two-layer state
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · State design
+    title: A compact master record unlocks independent account records
+    body: |
+      <div class="state-tree"><article><b>Identification / master record</b><strong>\\(c_{id} \\leftarrow Enc_{F_K(pwd)}(ssk \\mathbin{\\|} R_{sp} \\mathbin{\\|} K_0)\\)</strong><small>Password-dependent opening; the UpSPA identification record has no counter.</small></article><i></i><div><article><b>Account \\(LS_1\\)</b><strong>\\(c_1 \\leftarrow Enc_{K_0}(R_{ls_1} \\mathbin{\\|} ctr_{ac})\\)</strong></article><article><b>Account \\(LS_2\\)</b><strong>\\(c_2 \\leftarrow Enc_{K_0}(R_{ls_2} \\mathbin{\\|} ctr_{ac})\\)</strong></article><article><b>Account \\(LS_j\\)</b><strong>\\(c_j \\leftarrow Enc_{K_0}(R_{ls_j} \\mathbin{\\|} ctr_{ac})\\)</strong></article></div></div>
+
+  upspa-lifecycle:
+    navLabel: Lifecycle map
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: Detail · UpSPA
+    title: Read and update phases share one identification step
+    body: |
+      <div class="phase-ribbon compact"><span>Identification</span><i></i><span>Register</span><span>Authenticate</span><span>Secret update</span><span>Password update</span></div>
+
+  upspa-setup:
+    navLabel: Setup
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Setup
+    title: Setup creates the threshold root at every provider
+    body: |
+      <div class="numbered-flow seven"><article><b>1</b><span>Sample \\(R_{sp}\\)</span></article><article><b>2</b><span>\\((K,\\{k_i\\}) \\leftarrow TOPRFGen\\)</span></article><article><b>3</b><span>\\((ssk,svk) \\leftarrow SignKeyGen\\)</span></article><article><b>4</b><span>\\(K_0 \\leftarrow KeyGen\\)</span></article><article><b>5</b><span>\\(c_{id} \\leftarrow Enc_{F_K(pwd)}(ssk\\|R_{sp}\\|K_0)\\)</span></article><article><b>6</b><span>Send \\(\\langle uid,svk,c_{id},k_i\\rangle\\) to \\(SP_i\\)</span></article><article><b>7</b><span>Accept only after \\(OK\\) from all \\(n_{sp}\\)</span></article></div><div class="notation-strip"><span>\\(R_{sp}\\) hidden routing secret</span><span>\\(ssk/svk\\) update authorization</span><span>\\(K_0\\) account key</span><span>\\(k_i\\) TOPRF share</span></div>
+
+  upspa-toprf-interaction:
+    navLabel: TOPRF interaction
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Reusable primitive
+    title: Threshold OPRF opens the master record without revealing the password
+    body: |
+      <div class="toprf-flow"><article><b>1 · Blind</b><p>User blinds \\(pwd\\) for each selected provider.</p></article><i></i><article><b>2 · Evaluate</b><p>Each \\(SP_i\\) evaluates with share \\(k_i\\).</p></article><i></i><article><b>3 · Combine</b><p>User combines at least \\(t_{sp}\\) valid contributions.</p></article><i></i><article><b>4 · Derive</b><p>User obtains \\(F_K(pwd)\\) and opens \\(c_{id}\\).</p></article></div><div class="three-col feature-cards compact"><article><b>Password privacy</b><p>Providers do not learn \\(pwd\\).</p></article><article><b>Output privacy</b><p>No individual provider learns the final output.</p></article><article><b>Threshold</b><p>Fewer than \\(t_{sp}\\) contributions are insufficient.</p></article></div><p class="small center">Explanatory abstraction; the security proof uses the TOPRF PRF and receiver-input-obliviousness properties.</p>
+
+  upspa-identification:
+    navLabel: Identification
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Reusable opening step
+    title: Identification recovers the compact root—or fails safely
+    body: |
+      <div class="split-60"><div class="numbered-flow vertical"><article><b>1</b><span>Request the \\(uid\\)-indexed setup record.</span></article><article><b>2</b><span>Collect at least \\(t_{sp}\\) valid provider responses.</span></article><article><b>3</b><span>Run TOPRF on \\(pwd\\) to derive \\(F_K(pwd)\\).</span></article><article><b>4</b><span>Decrypt \\(c_{id}\\) to recover \\(ssk,R_{sp},K_0\\).</span></article></div><div class="failure-panel"><h3>Safe failure</h3><p>Wrong password, fewer than \\(t_{sp}\\) valid responses, or failed authenticated decryption stops the phase.</p><strong>No account write · no login-server request · no partial success</strong></div></div>
+
+  upspa-registration:
+    navLabel: Registration
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Registration
+    title: Registration binds one fresh service secret to a hidden account family
+    body: |
+      <div class="phase-blueprint"><header><b>Identification</b><span>Recover \\(ssk,R_{sp},K_0\\)</span></header><div><article><b>Account derivation</b><p>\\(SUid_{l,i,j}=H(R_{sp}\\|ls_j\\|i)\\); sample \\(R_{ls_j}\\); set \\(ctr_{ac}=0\\); encrypt the account record.</p></article><article><b>Provider staging</b><p>All \\(n_{sp}\\) providers accept the new account record as pending.</p></article><article><b>Login-server authorization</b><p>Register \\(vInfo_j=H(R_{ls_j}\\|ls_j)\\) at \\(LS_j\\).</p></article><article><b>Terminal decision</b><p>Map the login-server result to provider \\(Store/Discard\\).</p></article></div></div>
+
+  upspa-authentication:
+    navLabel: Authentication
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Authentication
+    title: Authentication reconstructs the service credential without sending the
+      password
+    body: |
+      <div class="phase-blueprint"><header><b>Identification</b><span>Open \\(c_{id}\\) with \\(t_{sp}\\) valid TOPRF responses</span></header><div><article><b>Derive</b><p>Compute provider-specific \\(SUid_{l,i,j}\\).</p></article><article><b>Read</b><p>Fetch committed \\(c_j\\) values and select the valid maximum \\(ctr_{ac}\\).</p></article><article><b>Verify locally</b><p>Decrypt \\(R_{ls_j}\\) and compute \\(vInfo'_j=H(R_{ls_j}\\|ls_j)\\).</p></article><article><b>Authenticate</b><p>Send \\(\\langle uid,vInfo'_j\\rangle\\) to \\(LS_j\\).</p></article></div></div><div class="claim">Read-only path: no provider write, no \\(Store/Discard\\), and no synchronization.</div>
+
+  upspa-secret-update:
+    navLabel: Secret update
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Secret update
+    title: Secret update rotates one login-server credential
+    body: |
+      <div class="phase-blueprint"><header><b>Identification</b><span>Recover the current master state</span></header><div><article><b>Read current account</b><p>Derive account identifiers, decrypt committed records, and select maximum \\(ctr_{ac}\\).</p></article><article><b>Create replacement</b><p>Sample \\(R_{ls_j,new}\\), increment the counter, and encrypt \\(c'_j\\).</p></article><article><b>Authorize at \\(LS_j\\)</b><p>Present old and new verifiers so the login server can validate the transition.</p></article><article><b>Finalize providers</b><p>After all \\(n_{sp}\\) pending acknowledgements, map the LS result to \\(Store/Discard\\).</p></article></div></div><div class="claim">Only account \\(j\\) changes; the password and other account records remain unchanged.</div>
+
+  upspa-password-update:
+    navLabel: Password update
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Password update
+    title: Password update rewraps the compact root—not every account
+    body: |
+      <div class="phase-blueprint"><header><b>Identification</b><span>Recover current \\(ssk,R_{sp},K_0\\)</span></header><div><article><b>Fresh threshold material</b><p>Generate \\((K_{new},\\{k_{i,new}\\})\\).</p></article><article><b>Re-encrypt root</b><p>\\(c_{id,new}=Enc_{F_{K_{new}}(pwd_{new})}(ssk\\|R_{sp}\\|K_0)\\).</p></article><article><b>Authorize per provider</b><p>Sign the exact replacement tuple containing \\(uid,c_{id,new},k_{i,new},time,i\\).</p></article><article><b>Finalize</b><p>All \\(n_{sp}\\) providers validate freshness/signature, then receive \\(Store/Discard\\).</p></article></div></div><div class="claim">No login server participates; \\(K_0\\), all account ciphertexts, and all login-server verifiers remain unchanged.</div>
+
+  upspa-two-updates:
+    navLabel: Two update scopes
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Update scope
+    title: Secret update and password update rotate different layers
+    body: |
+      <table class="status-table update-table"><thead><tr><th></th><th>Secret update</th><th>Password update</th></tr></thead><tbody><tr><td>Changes</td><td>One \\(R_{ls_j}\\), \\(vInfo_j\\), \\(c_j\\), \\(ctr_{ac}\\)</td><td>TOPRF key/shares and \\(c_{id}\\)</td></tr><tr><td>Unchanged</td><td>\\(pwd\\), \\(c_{id}\\), \\(R_{sp}\\), \\(K_0\\); all other account records</td><td>\\(R_{sp}\\), \\(K_0\\), every \\(c_j\\), every \\(vInfo_j\\)</td></tr><tr><td>Login server</td><td>One \\(LS_j\\)</td><td>None</td></tr><tr><td>Provider completion</td><td>All \\(n_{sp}\\)</td><td>All \\(n_{sp}\\)</td></tr></tbody></table>
+
+  upspa-threat-model:
+    navLabel: Threat model
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Security boundary
+    title: Security tolerates fewer than \\(t_{sp}\\) corrupted providers
+    body: |
+      <div class="boundary-grid"><article><b>Adversary</b><p>Static, non-uniform PPT malicious adversary.</p></article><article><b>Corruption</b><p>At most \\(t_{sp}-1\\) storage providers, \\(n_{ls}-1\\) login servers, and \\(n_{user}-1\\) users.</p></article><article><b>Channels and time</b><p>Authenticated server channels, synchronous bounded delay, and password-update timestamp assumptions.</p></article><article><b>Availability</b><p>Authentication needs \\(t_{sp}\\) valid responses; state-changing phases require all \\(n_{sp}\\).</p></article><article><b>Password claim</b><p>The view adds no new offline-verification predicate; it does not make a human password guess negligible.</p></article><article><b>Excluded</b><p>Compromised endpoints, anonymity, traffic-analysis resistance, recovery, and adaptive/mobile corruption.</p></article></div>
+
+  upspa-design-challenges:
+    navLabel: Design challenges
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Design obligations
+    title: Updates add binding and consistency obligations
+    body: |
+      <div class="challenge-grid"><article><b>Hide password-dependent values</b><p>TOPRF plus authenticated encryption</p></article><article><b>Separate service accounts</b><p>Hidden \\(R_{sp}\\) routing and domain binding</p></article><article><b>Authorize replacements</b><p>Signatures, authenticated encryption, and freshness checks</p></article><article><b>Preserve one committed outcome</b><p>Pending/committed state and explicit terminal decisions</p></article></div><div class="warning-box"><strong>Scope precision.</strong> Collision resistance supplies binding; hidden-namespace prediction requires hidden-input output unpredictability.</div>
+
+  upspa-security:
+    navLabel: Security proof
+    sectionKey: upspa
+    sectionLabel: UpSPA
+    kicker: UpSPA · Real/ideal proof
+    title: The UpSPA proof replaces protected values one layer at a time
+    body: |
+      <div class="game-track"><article><b>G₀</b><span>Stopped real execution</span></article><i></i><article><b>G₁</b><span>Replace TOPRF outputs/transcripts</span></article><i></i><article><b>G₂</b><span>Replace identification plaintexts</span></article><i></i><article><b>G₃</b><span>Replace account plaintexts</span></article><i></i><article><b>G₄</b><span>Ideal \\(\\mathcal F_{UpSPA}\\) + simulator</span></article></div><div class="proof-pillars"><span>TOPRF PRF + RIO</span><span>AE IND-CPA + integrity + key binding</span><span>EUF-CMA signatures</span><span>Collision-resistant hash</span></div><p class="small center">Bad events are bounded first; complete hybrids and the final advantage bound are attached below this slide.</p>
+
+  roupspa-motivation:
+    navLabel: Why resilience?
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Motivation
+    title: One unavailable provider blocks every UpSPA update
+    body: |
+      <div class="failure-to-resilience"><article><b>UpSPA baseline</b><p>State-changing phases wait for all \\(n_{sp}\\) providers.</p><strong>one outage → blocked update</strong></article><i></i><article><b>RoUpSPA objective</b><p>Complete with a durable quorum, identify stale replicas, and repair them before they serve ordinary requests.</p><strong>partial availability → bounded progress</strong></article></div>
+
+  roupspa-what-changes:
+    navLabel: What changes
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · State layer
+    title: RoUpSPA adds versioned replicas—not a new password primitive
+    body: |
+      <div class="delta-grid"><article><b>Shared account family</b><p>\\(SUid_{l,j}=H(R_{sp}\\|ls_j)\\)</p></article><article><b>Signed records</b><p>Account and identification writes bind ciphertexts to exact counters.</p></article><article><b>Version counters</b><p>\\(ctr_{ac}\\) and \\(ctr_{id}\\) order accepted state.</p></article><article><b>Replica state</b><p>CURRENT/TENTATIVE and ACTIVE/STALE distinguish readable from repair-required state.</p></article><article><b>Quorum completion</b><p>Durable writes require \\(q_{sp}\\), not all \\(n_{sp}\\).</p></article><article><b>Synchronization</b><p>Stale providers recover the unique freshest signed ciphertext.</p></article></div>
+
+  roupspa-threshold-quorum:
+    navLabel: Threshold vs quorum
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Parameters
+    title: Authentication threshold and storage quorum serve different purposes
+    body: |
+      <div class="thresholds"><article class="threshold crypto"><span class="symbol">\\(t_{sp}\\)</span><h3>Cryptographic threshold</h3><p>Enough valid TOPRF/read responses; bounds provider corruption.</p></article><article class="threshold quorum"><span class="symbol">\\(q_{sp}\\)</span><h3>Availability quorum</h3><p>Enough durable writes or synchronization responses.</p></article></div><div class="equation-box center">\\[n_{sp}\\ge q_{sp}\\ge t_{sp}>\\frac{n_{sp}}2,\\qquad 2q_{sp}-n_{sp}>t_{sp}-1\\]</div>
+
+  roupspa-quorum-intersection:
+    navLabel: Quorum intersection
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Safety
+    title: A completed write meets a later quorum in an honest holder
+    body: |
+      <div class="intersection-layout"><div class="venn"><span>W</span><span>R</span><strong>honest<br>witness</strong></div><div><div class="equation-box">\\[|W\\cap R|\\ge 2q_{sp}-n_{sp}>t_{sp}-1\\]</div><ol><li>\\(W\\): providers holding the latest completed record.</li><li>\\(R\\): a later valid read/synchronization quorum.</li><li>The intersection contains an honest provider.</li><li>Signatures, counters, and maximum selection preserve the newest acceptable record.</li></ol></div></div><div class="warning-box"><strong>Completion caveat.</strong> The proof requires the completed record to be durably processed by \\(q_{sp}\\) providers—not merely a terminal message being sent.</div>
+
+  roupspa-phase-semantics:
+    navLabel: Phase semantics
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Completion contract
+    title: Prepare, durable quorum, then a terminal decision
+    body: |
+      <div class="semantics-track"><article><b>1 · LS Prepare</b><p>Validate the old/new verifier transition before provider writes.</p></article><i></i><article><b>2 · Tentative write</b><p>Providers validate authorization and retain current state.</p></article><i></i><article><b>3 · \\(q_{sp}\\) durable acknowledgements</b><p>Enough matching records are installed.</p></article><i></i><article><b>4 · Store / Discard</b><p>Terminal message; no invented login-server acknowledgement.</p></article></div><div class="warning-box"><strong>Interrupted boundary.</strong> Withholding, timeout, or partial delivery may stop progress and leave replicas stale; RoUpSPA is not a general distributed transaction system.</div>
+
+  roupspa-read-and-authentication:
+    navLabel: Active reads
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: Detail · RoUpSPA
+    title: Authentication reads active replicas and performs no repair
+    body: |
+      <div class="three-col feature-cards"><article><b>ACTIVE only</b><p>Collect at least \\(t_{sp}\\) valid responses.</p></article><article><b>Validate maximum</b><p>Check authenticated encryption and bound counters.</p></article><article><b>Fail closed</b><p>Ties, malformed records, or too few active responses stop authentication.</p></article></div>
+
+  roupspa-synchronization:
+    navLabel: Synchronization
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: Detail · RoUpSPA
+    title: Synchronization copies the unique freshest signed ciphertext
+    body: |
+      <div class="split-60"><img class="recovery-figure" src="assets/roupspa-quorum-recovery.png" alt="Four-panel RoUpSPA quorum recovery illustration"><div><ol><li>Request one record family from a valid quorum.</li><li>Verify signatures and counter bindings.</li><li>Reject lower counters or distinct tied maxima.</li><li>Install the unique valid maximum and mark the family ACTIVE.</li></ol><div class="claim">No password, TOPRF output, plaintext account state, or another provider’s share is copied.</div></div></div>
+
+  roupspa-registration:
+    navLabel: Registration
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Registration
+    title: RoUpSPA registration authorizes the account before quorum storage
+    body: |
+      <div class="phase-blueprint resilient"><header><b>Active identification</b><span>Recover the current root from valid \\(t_{sp}\\) responses</span></header><div><article><b>Create candidate</b><p>Derive shared \\(SUid_{l,j}\\), sample the service secret, set \\(ctr_{ac}=0\\), and sign the exact account record.</p></article><article><b>LS Prepare first</b><p>Ask \\(LS_j\\) to validate the new verifier transition before provider mutation.</p></article><article><b>Durable quorum write</b><p>Collect \\(q_{sp}\\) matching acknowledgements for the signed record.</p></article><article><b>Terminal Store/Discard</b><p>Send the matching decision; no login-server acknowledgement is invented.</p></article></div></div><div class="claim">Providers missing a completed write become STALE for that account family until repair.</div>
+
+  roupspa-secret-update:
+    navLabel: Secret update
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Secret update
+    title: RoUpSPA secret update uses LS Prepare before quorum mutation
+    body: |
+      <div class="phase-blueprint resilient"><header><b>Read current state</b><span>Recover identification and select maximum \\(ctr_{ac}\\)</span></header><div><article><b>Build replacement</b><p>Compute old verifier, sample the new secret, increment \\(ctr_{ac}\\), encrypt and sign the exact account tuple.</p></article><article><b>LS Prepare first</b><p>Validate the old/new verifier transition.</p></article><article><b>Write to quorum</b><p>Obtain \\(q_{sp}\\) durable matching acknowledgements while current state remains readable.</p></article><article><b>Terminal decision</b><p>Send matching \\(Store/Discard\\); lagging providers become STALE.</p></article></div></div>
+
+  roupspa-threat-challenges:
+    navLabel: Threat & challenges
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Threat and design
+    title: Resilience adds stale-state and authorization obligations
+    body: |
+      <div class="split"><div class="boundary-column"><h3>Inherited / extended threat model</h3><ul><li>Static malicious adversary.</li><li>At most \\(t_{sp}-1\\) corrupted providers.</li><li>Unavailable, delayed, or stale honest replicas.</li><li>Authenticated channels and bounded-delay assumptions.</li><li>Honest user and an honest target login server.</li></ul></div><div class="boundary-column"><h3>New design challenges</h3><ul><li>Separate \\(t_{sp}\\) security from \\(q_{sp}\\) availability.</li><li>Authorize shared-namespace writes with signatures.</li><li>Distinguish valid from current using counters/state.</li><li>Repair without plaintext or TOPRF participation.</li><li>State completed-phase safety and conditional liveness precisely.</li></ul></div></div>
+
+  roupspa-threat-and-boundary:
+    navLabel: Safety & liveness
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Claim boundary
+    title: Completed-phase safety does not imply unconditional liveness
+    body: |
+      <div class="safety-liveness"><div class="safety"><h3>Safety</h3><ul><li>Exact signed records and counters authorize changes.</li><li>Quorum intersection preserves an honest witness.</li><li>ACTIVE/STALE state prevents ordinary use of unrepaired families.</li></ul></div><div class="liveness"><h3>Conditional liveness</h3><ul><li>Enough valid \\(t_{sp}\\)/\\(q_{sp}\\) responses.</li><li>Bounded honest-login-server availability when required.</li><li>Withholding, timeout, and excessive failures can stop progress.</li></ul></div></div><div class="claim danger">Not claimed: general BFT consensus, universal crash recovery, or a distributed transaction system.</div>
+
+  roupspa-security:
+    navLabel: Security proof
+    sectionKey: roupspa
+    sectionLabel: RoUpSPA
+    kicker: RoUpSPA · Real/ideal proof
+    title: The resilient proof separates cryptographic hybrids from quorum lemmas
+    body: |
+      <div class="game-track"><article><b>G₀</b><span>Stopped real execution</span></article><i></i><article><b>G₁</b><span>TOPRF PRF</span></article><i></i><article><b>G₂</b><span>TOPRF RIO</span></article><i></i><article><b>G₃</b><span>Identification privacy</span></article><i></i><article><b>G₄</b><span>Account privacy</span></article><i></i><article><b>G₅</b><span>Ideal functionality</span></article></div><div class="proof-pillars"><span>BadSig / BadHash / BadCtxt</span><span>Authorized-write lemma</span><span>Active-threshold lemma</span><span>Quorum consistency and recovery</span></div><p class="small center">Quorum intersection, counters, ACTIVE/STALE bookkeeping, and terminal decisions are deterministic obligations; they add no computational advantage term.</p>
+
+  alternatives-pbb:
+    navLabel: Public bulletin boards
+    sectionKey: alternatives
+    sectionLabel: Synchronization alternatives
+    kicker: Synchronization alternatives
+    title: A public bulletin board trades private quorum repair for public history
+    body: |
+      <div class="split"><article class="detail-card"><h3>Signed PBB</h3><p>Append signed commitments to a publicly readable history.</p><ul><li>Simple authorization</li><li>Public metadata/history</li><li>No private quorum repair</li></ul></article><article class="detail-card"><h3>DKG-authorized PBB</h3><p>Threshold authorization changes who may append.</p><ul><li>Distributed write authority</li><li>More setup/cryptography</li><li>Same public-history tradeoff</li></ul></article></div>
+
+  alternatives-blockchain-and-choice:
+    navLabel: Backend choice
+    sectionKey: alternatives
+    sectionLabel: Synchronization alternatives
+    kicker: Synchronization alternatives
+    title: No synchronization backend dominates every deployment objective
+    body: |
+      <table class="status-table choice-table"><thead><tr><th>Backend</th><th>State visibility</th><th>Write authority</th><th>Recovery model</th></tr></thead><tbody><tr><td>Quorum / ABD-style</td><td>Private replicas</td><td>User-signed record</td><td>Quorum read + repair</td></tr><tr><td>Signed PBB</td><td>Public append history</td><td>User signature</td><td>Read public history</td></tr><tr><td>DKG PBB</td><td>Public append history</td><td>Threshold authorization</td><td>Read public history</td></tr><tr><td>Blockchain</td><td>Ledger-visible commitments</td><td>Contract policy</td><td>Ledger history/finality</td></tr></tbody></table><div class="claim">Selection depends on privacy, availability, governance, persistence, and latency—not only local execution time.</div>
+
+  implementation-architecture-method:
+    navLabel: Implementation
+    sectionKey: results
+    sectionLabel: Implementation & results
+    kicker: Implementation and evaluation
+    title: One benchmark harness keeps timing boundaries explicit
+    body: |
+      <div class="architecture"><div class="module client"><strong>Client</strong><span>TOPRF, encryption, signatures, validation</span></div><div class="module"><strong>Storage provider</strong><span>Shares, replicated records, state checks</span></div><div class="module login"><strong>Login server</strong><span>Verifier registration and transitions</span></div><div class="module sync"><strong>Synchronization backend</strong><span>Quorum, PBB, or blockchain mode</span></div></div><div class="method-strip"><span>50 warm-up + 200 measured successful samples</span><span>Rust 1.93 · --locked --release</span><span>medians reported</span><span>LAN/WAN are composed estimates</span></div><div class="warning-box">Provider requests within a stage run in parallel; stages remain sequential. “Modeled stages” are a benchmark schedule, not formal protocol rounds.</div>
+
+  results-upspa-tspa:
+    navLabel: UpSPA vs TSPA
+    sectionKey: results
+    sectionLabel: Implementation & results
+    kicker: Results · UpSPA and TSPA
+    title: Network stages dominate the deployment grid
+    body: |
+      <div class="result-story"><div class="stage-bars"><span style="--w:18%">Local cryptography</span><span style="--w:78%">Composed LAN/WAN stages</span></div><div><h3>What the retained figures show</h3><ul><li>At fixed \\(n_{sp}=30\\), all retained client series remain below 1 ms.</li><li>End-to-end modeled latency is driven primarily by sequential network stages.</li><li>Client, provider, and full medians are independently sampled and are not algebraically added.</li></ul></div></div>
+
+  results-threshold-sso-comparison:
+    navLabel: Threshold SSO
+    sectionKey: results
+    sectionLabel: Implementation & results
+    kicker: Results · Threshold SSO comparison
+    title: Executable cost differs across constructions with different semantics
+    body: |
+      <div class="scheme-grid"><article><b>UpSPA</b><p>Independent service credentials and explicit secret/password updates.</p></article><article><b>PASTA-U</b><p>Password-based threshold authentication with password update.</p></article><article><b>AugSSO</b><p>Threshold single sign-on with a different functionality and trust architecture.</p></article></div><div class="warning-box"><strong>Comparison boundary.</strong> These are executable-cost comparisons—not claims of identical relying-party, recovery, or liveness semantics.</div>
+
+  results-upspa-roupspa:
+    navLabel: UpSPA vs RoUpSPA
+    sectionKey: results
+    sectionLabel: Implementation & results
+    kicker: Results · Availability cost
+    title: RoUpSPA adds coordination stages for quorum completion
+    body: |
+      <table class="status-table stage-table"><thead><tr><th>Phase</th><th>UpSPA benchmark schedule</th><th>RoUpSPA addition</th><th>Expected RTT effect</th></tr></thead><tbody><tr><td>Registration</td><td>Identification → provider stage → LS → finalize</td><td>LS Prepare before quorum write</td><td>Additional sequential coordination</td></tr><tr><td>Secret update</td><td>Read → pending write → LS → finalize</td><td>Prepare + durable \\(q_{sp}\\) write</td><td>More visible under composed LAN</td></tr><tr><td>Password update</td><td>Root read → replacement → finalize</td><td>Version/counter checks + quorum completion</td><td>Coordination dominates local increment</td></tr></tbody></table><p class="small center">Qualitative stage accounting from the benchmark harness; not a statement of formal protocol rounds.</p>
+
+  results-backends:
+    navLabel: Backend endpoints
+    sectionKey: results
+    sectionLabel: Implementation & results
+    kicker: Results · Resilient backends
+    title: Backend cost depends strongly on phase at \\(n_{sp}=100\\)
+    body: |
+      <div class="endpoint-chart" aria-label="Complete local median latency in milliseconds"><div class="endpoint-legend"><span>Quorum</span><span>Signed PBB</span><span>DKG PBB</span><span>Chain</span></div><article><b>Registration</b><i style="--v:12.8%">3.723</i><i style="--v:13.3%">3.869</i><i style="--v:16.3%">4.750</i><i style="--v:23.1%">6.737</i></article><article><b>Secret update</b><i style="--v:38.5%">11.241</i><i style="--v:13.2%">3.852</i><i style="--v:16.6%">4.852</i><i style="--v:23.5%">6.855</i></article><article><b>Password update</b><i style="--v:100%">29.176</i><i style="--v:28.3%">8.254</i><i style="--v:28.2%">8.220</i><i style="--v:29.5%">8.610</i></article></div><p class="small center">Complete local p50, ms · \\(q_{sp}=\\lceil0.8n_{sp}\\rceil\\). “Chain” is the shared local execution series; public/L2/permissioned differ outside this local boundary.</p>
+
+  results-key-takeaways:
+    navLabel: Engineering takeaways
+    sectionKey: results
+    sectionLabel: Implementation & results
+    kicker: Results · Bounded conclusions
+    title: The evidence supports three engineering conclusions
+    body: |
+      <div class="takeaway-list"><div class="takeaway-item"><p><strong>Local cryptography is small</strong> across the retained UpSPA/TSPA client grid.</p></div><div class="takeaway-item"><p><strong>Sequential coordination is visible</strong> once LAN/WAN schedules are composed.</p></div><div class="takeaway-item"><p><strong>Backend choice is phase-sensitive</strong>; quorum password update diverges most at \\(n_{sp}=100\\).</p></div><div class="takeaway-item"><p><strong>Evidence classes stay separate</strong>: Rust latency, EVM receipts, Foundry snapshots, and pending TRON measurements are not pooled.</p></div></div>
+
+  conclusion-contributions:
+    navLabel: Contributions
+    sectionKey: conclusion
+    sectionLabel: Conclusions
+    kicker: Conclusions
+    title: The thesis contributes a lifecycle, a resilience layer, and evidence
+    body: |
+      <div class="contribution-path"><div class="contribution" data-n="01"><strong>Two-layer state</strong><span>Compact password-protected identification state plus independent accounts</span></div><div class="contribution" data-n="02"><strong>Native updates</strong><span>Rotate one service secret or the password</span></div><div class="contribution" data-n="03"><strong>Quorum resilience</strong><span>Versioned signed replicas and stale repair</span></div><div class="contribution" data-n="04"><strong>Formal analysis</strong><span>Real/ideal hybrids plus quorum lemmas</span></div><div class="contribution" data-n="05"><strong>Implementation</strong><span>Traceable, bounded comparisons</span></div></div>
+
+  conclusion-limitations-future:
+    navLabel: Limits & future work
+    sectionKey: conclusion
+    sectionLabel: Conclusions
+    kicker: Conclusions
+    title: The next work is adaptive, deployable, and failure-aware
+    body: |
+      <div class="limit-future"><div class="limits"><h3>Current boundary</h3><ul><li>Static corruption and trusted endpoints</li><li>Conditional synchrony and availability</li><li>Interrupted finalization remains explicit</li><li>In-memory provider persistence in Rust benchmarks</li></ul></div><div class="future"><h3>Next work</h3><ul><li>Adaptive/mobile corruption</li><li>Crash-safe durable implementation</li><li>Provider replacement and recovery</li><li>Deployed multi-region measurement</li></ul></div></div>
+
+  conclusion-publications:
+    navLabel: Publications
+    sectionKey: conclusion
+    sectionLabel: Conclusions
+    kicker: Research outputs
+    title: The thesis is represented by public and submitted manuscripts
+    body: |
+      <div class="publication-list"><div class="publication"><span class="pub-num">1</span><div><strong>Secure and Updatable Single Password Authentication</strong><span>Devriş İşler, Reza Saadi, Alptekin Küpçü</span></div><em>Cryptology ePrint 2026/784 · public preprint</em></div><div class="publication"><span class="pub-num">2</span><div><strong>Secure and Updatable Single Password Authentication</strong><span>Workshop version</span></div><em>ACM WPES 2026 · submitted</em></div><div class="publication"><span class="pub-num">3</span><div><strong>Robust Updatable Single Password Authentication</strong><span>Reza Saadi, Devriş İşler, Alptekin Küpçü</span></div><em>ACM TOPS · submitted manuscript</em></div></div>
+
+  academic-genealogy:
+    navLabel: Academic genealogy
+    sectionKey: genealogy
+    sectionLabel: Genealogy
+    layout: genealogy
+    kicker: Academic genealogy
+    title: Candidate → advisor → advisor’s advisor
+    lead: Rendered from presentation.config.yaml; incomplete fields remain visibly
+      marked rather than guessed.
+
+  thank-you:
+    navLabel: Q&A
+    sectionKey: questions
+    sectionLabel: Q&A
+    layout: raw
+    body: |
+      <div class="slide-shell closing-stage"><div><div class="section-kicker">MSc thesis defense</div><p>Secure Single Password Authentication Protocols in Distributed Systems</p><h2>Questions?</h2><strong>{{config.presenterDisplayName}}</strong><span>{{config.institution}} · {{config.defenseDate}}</span></div></div>
+
+  backup-upspa-proof-g0-g1:
+    navLabel: G0 → G1
+    kicker: Backup · UpSPA proof
+    title: "G₀ to G₁: stop on bad events, then replace TOPRF views"
+    body: |
+      <div class="split"><div><h3>G₀</h3><p>Real execution stopped on BadSig, BadHash, BadCtxt, or key-binding failure.</p><div class="claim">Stopping changes the view by at most the explicit bad-event bound.</div></div><div><h3>G₁</h3><p>Replace honest TOPRF outputs with random-function values and simulate honest-receiver transcripts.</p><div class="equation-box">Transition: TOPRF PRF + receiver-input obliviousness.</div></div></div>
+
+  backup-upspa-proof-g2-g3:
+    navLabel: G2 → G3
+    kicker: Backup · UpSPA proof
+    title: "G₂ and G₃: hide identification, then account plaintexts"
+    body: |
+      <div class="split"><article class="detail-card"><h3>G₂ · Identification</h3><p>Replace \\(ssk\\|R_{sp}\\|K_0\\) inside honest \\(c_{id}\\) encryptions with fixed-length dummy plaintexts.</p><strong>AE IND-CPA transition</strong></article><article class="detail-card"><h3>G₃ · Accounts</h3><p>Replace \\(R_{ls_j}\\|ctr_{ac}\\) inside honest account ciphertexts with fixed-length dummy plaintexts.</p><strong>AE IND-CPA transition</strong></article></div>
+
+  backup-upspa-proof-g4-terminal:
+    navLabel: G4 & equivalence
+    kicker: Backup · UpSPA proof
+    title: G₄ is the simulator’s ideal view
+    body: |
+      <div class="three-col feature-cards"><article><b>Logical tables</b><p>Simulator tracks root/account records and completed phase outputs.</p></article><article><b>Local protocol state</b><p>Pending/committed mechanics remain inside the simulator.</p></article><article><b>Terminal equivalence</b><p>After bad events are excluded, the environment sees the same completed outcomes as \\(\\mathcal F_{UpSPA}\\).</p></article></div><div class="claim">The ideal functionality records only the logical result of a completed phase—not partial provider state.</div>
+
+  backup-upspa-password-scope:
+    navLabel: Password-security scope
+    kicker: Backup · UpSPA proof
+    title: What the password-security claim does—and does not—say
+    body: |
+      <div class="split"><article class="detail-card"><h3>Claimed</h3><p>The adversarial view adds no new offline verification predicate beyond the allowed corruption boundary and ideal leakage.</p></article><article class="detail-card"><h3>Not claimed</h3><p>A low-entropy human password does not become uniformly random or negligible to guess; endpoint compromise is excluded.</p></article></div>
+
+  backup-roupspa-proof-g0-g2:
+    navLabel: G0 → G2
+    kicker: Backup · RoUpSPA proof
+    title: "G₀ to G₂: bad events, TOPRF PRF, and RIO"
+    body: |
+      <div class="game-track"><article><b>G₀</b><span>Stop on BadSig, BadHash, BadCtxt</span></article><i></i><article><b>G₁</b><span>Replace TOPRF function outputs</span></article><i></i><article><b>G₂</b><span>Simulate honest-receiver transcripts</span></article></div><div class="proof-pillars"><span>EUF-CMA</span><span>hash collision resistance</span><span>AE integrity/key binding</span><span>TOPRF PRF + RIO</span></div>
+
+  backup-roupspa-proof-g3-g5:
+    navLabel: G3 → G5
+    kicker: Backup · RoUpSPA proof
+    title: "G₃ to G₅: encryptions become dummy state, then ideal state"
+    body: |
+      <div class="three-col feature-cards"><article><b>G₃</b><p>Replace honest identification plaintexts under AE IND-CPA.</p></article><article><b>G₄</b><p>Replace honest account plaintexts under AE IND-CPA.</p></article><article><b>G₅</b><p>Run the ideal functionality plus simulator over logical completed state.</p></article></div>
+
+  backup-roupspa-terminal-equivalence:
+    navLabel: Terminal equivalence
+    kicker: Backup · RoUpSPA proof
+    title: Terminal decisions and stale bookkeeping remain simulator-local
+    body: |
+      <div class="boundary-grid"><article><b>Exact retransmission</b><p>Idempotent for the same signed tuple.</p></article><article><b>Store</b><p>Promotes the matching tentative record.</p></article><article><b>Discard</b><p>Removes only the matching tentative state.</p></article><article><b>Missed completion</b><p>Replica becomes STALE for that record family.</p></article><article><b>Ordinary read</b><p>Never returns tentative or stale state.</p></article><article><b>Ideal success</b><p>Only the protocol-defined completed logical outcome is exposed.</p></article></div>
+
+  backup-roupspa-liveness-scope:
+    navLabel: Liveness scope
+    kicker: Backup · RoUpSPA proof
+    title: RoUpSPA liveness is conditional—not consensus liveness
+    body: |
+      <div class="split"><article class="detail-card"><h3>Needed for progress</h3><ul><li>\\(t_{sp}\\) valid active reads</li><li>\\(q_{sp}\\) durable write responses</li><li>bounded honest-LS response where required</li><li>eventual delivery for terminal decisions/repair</li></ul></article><article class="detail-card"><h3>Outside the claim</h3><ul><li>arbitrary network partitions</li><li>unbounded provider failure</li><li>general BFT consensus</li><li>cross-family distributed transactions</li></ul></article></div>
+
+  backup-upspa-source-figures:
+    navLabel: Source figures
+    kicker: Backup · UpSPA source figures
+    title: Numbered UpSPA protocol figures from the supplied source set
+    body: |
+      <div class="source-figure-grid"><figure><img src="assets/upspa-setup-source.png" alt="Source figure for UpSPA setup"><figcaption>Setup</figcaption></figure><figure><img src="assets/upspa-registration-source.png" alt="Source figure for UpSPA registration"><figcaption>Registration</figcaption></figure><figure><img src="assets/upspa-authentication-source.png" alt="Source figure for UpSPA authentication"><figcaption>Authentication</figcaption></figure><figure><img src="assets/upspa-secret-update-source.png" alt="Source figure for UpSPA secret update"><figcaption>Secret update</figcaption></figure><figure><img src="assets/upspa-password-update-source.png" alt="Source figure for UpSPA password update"><figcaption>Password update</figcaption></figure></div>
+
+  backup-roupspa-source-figures:
+    navLabel: Source figures
+    kicker: Backup · RoUpSPA source figures
+    title: Numbered RoUpSPA protocol figures from the supplied source set
+    body: |
+      <div class="source-figure-grid"><figure><img src="assets/roupspa-setup-source.png" alt="Source figure for RoUpSPA setup"><figcaption>Setup</figcaption></figure><figure><img src="assets/roupspa-registration-source.png" alt="Source figure for RoUpSPA registration"><figcaption>Registration</figcaption></figure><figure><img src="assets/roupspa-authentication-source.png" alt="Source figure for RoUpSPA authentication"><figcaption>Authentication</figcaption></figure><figure><img src="assets/roupspa-secret-update-source.png" alt="Source figure for RoUpSPA secret update"><figcaption>Secret update</figcaption></figure><figure><img src="assets/roupspa-password-update-source.png" alt="Source figure for RoUpSPA password update"><figcaption>Password update</figcaption></figure></div>
+`,Ul=`title: "Secure Single Password Authentication Protocols in Distributed Systems"
+presenterFormalName: "Reza Saadi"
+presenterDisplayName: "Reza Saadi"
+advisor: "Prof. Alptekin Küpçü"
+institution: "Koç University"
+program: "Computer Science and Engineering"
+defenseDate: "12 August 2026"
+durationMinutes: 40
+logoPath: "source-material/thesis/logo.png"
+showPublicationsSlide: true
+showEvmGasInCoreRoute: true
+showJuryOnTitle: false
+
+genealogy:
+  - name: "Reza Saadi"
+    role: "MSc Candidate"
+    institution: "Koç University"
+    photo: "assets/reza-saadi.jpg"
+  - name: "Prof. Alptekin Küpçü"
+    role: "Advisor"
+    institution: "Koç University"
+    photo: "assets/alptekin-kupcu.jpg"
+
+links:
+  thesis: null
+  eprint: "https://eprint.iacr.org/2026/784"
+  sourceCode: "https://github.com/rezasaadi/UpSpa_benchmark"
+  contact: null
+`,El={protocol:"\\mathsf{UpSPA}",RoUpSPA:"\\mathsf{RoUpSPA}",U:"\\mathsf{U}",SP:"\\mathsf{SP}",SPi:"\\mathsf{SP}_i",LS:"\\mathsf{LS}",LSj:"\\mathsf{LS}_j",uid:"\\mathsf{Uid}",pwd:"\\mathsf{pwd}",newpwd:"\\mathsf{pwd}_{\\mathrm{new}}",nsp:"n_{\\mathrm{sp}}",tsp:"t_{\\mathrm{sp}}",qsp:"q_{\\mathrm{sp}}",Rsp:"R_{\\mathrm{sp}}",Rlsj:"R_{\\mathsf{ls}_j}",newRls:"R_{\\mathsf{ls}_j}^{\\prime}",FK:"K_0",ssk:"\\mathsf{ssk}",svk:"\\mathsf{svk}",cipherid:"c_{\\mathrm{id}}",newcipherid:"c_{\\mathrm{id}}^{\\prime}",ciphersp:"c_j",newciphersp:"c_j^{\\prime}",ctrid:"\\mathsf{ctr}_{\\mathrm{id}}",ctrac:"\\mathsf{ctr}_{\\mathrm{ac}}",suidlj:"\\mathsf{SUid}_{l,j}",suidlij:"\\mathsf{SUid}_{l,i,j}",vinfo:"\\mathsf{vInfo}_j",newvinfo:"\\mathsf{vInfo}_j^{\\prime}",hash:"H",Enc:"\\operatorname{Enc}",Dec:"\\operatorname{Dec}",Sign:"\\operatorname{Sign}",SignVerify:"\\operatorname{SignVerify}",TOPRF:"\\mathsf{TOPRF}",REAL:"\\operatorname{REAL}",IDEAL:"\\operatorname{IDEAL}",Sim:"\\mathsf{Sim}",FUpSPA:"\\mathcal{F}_{\\mathsf{UpSPA}}",initok:"\\mathsf{success}",fail:"\\mathsf{fail}"},ke=(n="")=>String(n).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");function dt(){return""}function Hs(n){return`<div class="section-kicker">${n}</div>`}function Gt(n,e=""){const t={user:'<circle cx="32" cy="23" r="12"/><path d="M11 58c3-15 11-22 21-22s18 7 21 22"/>',lock:'<rect x="13" y="28" width="38" height="29" rx="5"/><path d="M22 28v-8a10 10 0 0 1 20 0v8"/><circle cx="32" cy="42" r="3"/><path d="M32 45v6"/>',server:'<rect x="8" y="10" width="48" height="14" rx="3"/><rect x="8" y="27" width="48" height="14" rx="3"/><rect x="8" y="44" width="48" height="14" rx="3"/><circle cx="17" cy="17" r="2"/><circle cx="17" cy="34" r="2"/><circle cx="17" cy="51" r="2"/>',vault:'<path d="M10 8h44v48H10z"/><circle cx="32" cy="32" r="12"/><path d="M32 20v24M20 32h24"/><path d="M54 20h5v24h-5"/>',cloud:'<path d="M17 50h31a11 11 0 0 0 2-22 17 17 0 0 0-32-3A13 13 0 0 0 17 50z"/>',key:'<circle cx="20" cy="30" r="11"/><path d="M29 30h29M45 30v9M53 30v6"/>',sync:'<path d="M13 25a21 21 0 0 1 35-8l7 7"/><path d="M55 12v12H43"/><path d="M51 39a21 21 0 0 1-35 8l-7-7"/><path d="M9 52V40h12"/>',shield:'<path d="M32 6 53 14v16c0 14-8 23-21 29C19 53 11 44 11 30V14z"/><path d="m22 32 7 7 14-16"/>',browser:'<rect x="6" y="10" width="52" height="44" rx="5"/><path d="M6 22h52"/><circle cx="14" cy="16" r="2"/><circle cx="21" cy="16" r="2"/><circle cx="28" cy="16" r="2"/>',ledger:'<path d="M9 12h46v40H9z"/><path d="M17 21h30M17 30h30M17 39h22"/><path d="M23 8v8M41 8v8"/>'};return`<svg class="icon icon-${n}" viewBox="0 0 64 64" role="img" aria-label="${ke(e||n)}"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${t[n]||t.shield}</g></svg>`}function Ll(){const n=[[110,80],[210,35],[330,70],[390,170],[330,270],[205,310],[95,250],[55,165]];return`<svg class="network-motif" viewBox="0 0 450 350" role="img" aria-label="One user connected to independent services through distributed storage providers">
+    <defs><filter id="soft"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity=".12"/></filter></defs>
+    <g class="motif-links">${n.map(([e,t])=>`<path d="M225 175 L${e} ${t}"/>`).join("")}</g>
+    <g class="motif-services">${n.map(([e,t],s)=>`<g transform="translate(${e-25} ${t-19})"><rect width="50" height="38" rx="9"/><circle cx="12" cy="11" r="3"/><path d="M8 23h34M8 29h25"/></g>`).join("")}</g>
+    <g class="motif-providers"><circle cx="178" cy="175" r="13"/><circle cx="272" cy="175" r="13"/><path d="M191 175h68"/></g>
+    <g class="motif-user" filter="url(#soft)"><circle cx="225" cy="175" r="36"/><circle cx="225" cy="166" r="10"/><path d="M207 194c3-11 9-16 18-16s15 5 18 16"/></g>
+  </svg>`}function Vn({resilient:n=!1}={}){return`<svg class="party-diagram" viewBox="0 0 960 420" role="img" aria-label="User, login servers, and storage providers">
+    <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 8 4 0 8z"/></marker></defs>
+    <g class="links"><path d="M480 120 L270 205"/><path d="M480 120 L690 205"/><path d="M480 145 L151 280"/><path d="M480 145 L256 280"/><path d="M480 145 L361 280"/><path d="M480 145 L466 280"/><path d="M480 145 L571 280"/><path d="M480 145 L676 280"/><path d="M480 145 L781 280"/></g>
+    <g class="party user"><circle cx="480" cy="80" r="48"/><text x="480" y="76">User</text><text x="480" y="98" class="state-label">trusted client</text></g>
+    <g class="party ls" transform="translate(195,190)"><rect width="150" height="66" rx="15"/><text x="75" y="29">Login server 1</text><text x="75" y="51" class="state-label">verifier only</text></g>
+    <g class="party ls" transform="translate(615,190)"><rect width="150" height="66" rx="15"/><text x="75" y="29">Login server j</text><text x="75" y="51" class="state-label">verifier only</text></g>
+    ${[0,1,2,3,4,5,6].map(t=>`<g transform="translate(${110+t*105},280)" class="party sp ${t===5?"stale":""}"><rect width="82" height="64" rx="13"/><text x="41" y="28">SP<tspan baseline-shift="sub" font-size="13">${t+1}</tspan></text><text x="41" y="49" class="state-label">${t===5&&n?"STALE":"active"}</text></g>`).join("")}
+    <text x="480" y="388" class="diagram-note">${n?"tₛₚ recovers • qₛₚ commits and repairs":"tₛₚ shares recover • state changes require all nₛₚ providers"}</text>
+  </svg>`}function Cl({resilient:n=!1}={}){return`<div class="record-system">
+    <div class="root-record"><div class="record-label">${n?"Identification record":"Root record"}</div><div class="record-formula">\\(c_{\\mathrm{id}}\\)</div><div class="record-fields">\\(\\mathsf{ssk}\\) · \\(R_{\\mathrm{sp}}\\) · \\(K_0\\)${n?" · \\(\\mathsf{ctr}_{\\mathrm{id}}\\)":""}</div><div class="record-key">protected by \\(F_K(\\mathsf{pwd})\\)</div></div>
+    <div class="branch-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="account-row">
+      ${[1,2,3].map(e=>`<div class="account-record"><div class="record-label">Account ${e}</div><div class="record-formula">\\(c_${e}\\)</div><div class="record-fields">\\(R_{\\mathsf{ls}_${e}}\\) · \\(\\mathsf{ctr}_{\\mathrm{ac}}\\)</div><div class="record-key">protected by \\(K_0\\)</div></div>`).join("")}
+    </div>
+  </div>`}function Nl(){return`<div class="lifecycle">${[["Setup","root state + shares","backup-upspa-setup-full"],["Registration","one service record","backup-upspa-registration-full"],["Authentication","threshold read","backup-upspa-authentication-full"],["Secret update","rotate one account","backup-upspa-secret-update-full"],["Password update","re-protect root","backup-upspa-password-update-full"]].map(([e,t,s],i)=>`<div class="phase phase-${i}"><a href="#/${s}"><span>${e}</span><small>${t}</small></a></div>${i<2?'<div class="phase-arrow">→</div>':""}`).join("")}<svg viewBox="0 0 700 180" aria-hidden="true"><path d="M515 72 C505 145 320 150 305 84"/><path d="M675 72 C660 170 355 180 345 84"/></svg></div>`}function ut({actors:n,steps:e,dense:t=!1,finalLabel:s=""}){const i=n.map(c=>c.id),a=i.map(()=>"1fr").join(" "),r=n.map((c,h)=>`<div class="sequence-actor ${c.kind||""}" style="grid-column:${h+1}">${c.label}</div>`).join(""),o=n.map((c,h)=>`<div class="sequence-lane" style="grid-column:${h+1};grid-row:2 / ${e.length+3}"></div>`).join(""),l=e.map((c,h)=>{const d=i.indexOf(c.from)+1,p=i.indexOf(c.to)+1,f=Math.min(d,p),S=Math.max(d,p),u=d<p?"right":"left",v=c.state?` ${c.state}`:"",w=c.fragment!=null?" fragment":"",P=c.fragment!=null?` data-fragment-index="${c.fragment}"`:"";return c.interaction?`<div class="sequence-interaction${w}${v}"${P} data-from="${c.from}" data-to="${c.to}" style="grid-column:${f} / ${S+1};grid-row:${h+3}"><b class="sequence-interaction-number">${c.number}</b>${c.interaction}</div>`:c.local?`<div class="sequence-local${w}${v}"${P} style="grid-column:${d};grid-row:${h+3}"><b>${c.number}</b> ${c.label}</div>`:`<div class="sequence-message ${u}${w}${v}"${P} style="grid-column:${f} / ${S+1};grid-row:${h+3}"><span class="seq-label"><b>${c.number}</b> ${c.label}</span><i></i></div>`}).join("");return`<div class="sequence ${t?"dense":""}" style="--actor-columns:${a};grid-template-columns:${a}">${r}${o}${l}${s?`<div class="sequence-final">${s}</div>`:""}</div>`}function vr(){return`<svg class="quorum-diagram" viewBox="0 0 720 380" role="img" aria-label="Two provider quorums intersect in honest evidence">
+    <ellipse cx="255" cy="180" rx="205" ry="135" class="q1"/><ellipse cx="330" cy="205" rx="205" ry="135" class="q2"/>
+    <text x="82" y="60" class="set-label q1-label">Q₁ · 5 providers</text><text x="430" y="330" class="set-label q2-label">Q₂ · 5 providers</text>
+    ${[[110,190,"SP₁","both"],[200,105,"SP₂","q1"],[315,85,"SP₃","q1"],[390,190,"SP₄","both honest"],[315,295,"SP₅","q2"],[200,275,"SP₆","q2"],[500,85,"SP₇","corrupt"]].map(([e,t,s,i])=>`<g transform="translate(${e} ${t})" class="qnode ${i.includes("corrupt")?"corrupt":""} ${i.includes("honest")?"honest":""}"><circle r="29"/><text y="5">${s}</text>${i==="both honest"?'<path d="m-9 0 7 7 13-16"/>':""}</g>`).join("")}
+    <g class="intersection-callout"><path d="M430 165h220"/><text x="660" y="155">|Q₁ ∩ Q₂| ≥ 3</text><text x="660" y="181">one honest witness survives</text></g>
+  </svg>`}function oe({labels:n,series:e,yMax:t,yMin:s,yLabel:i="Time (ms)",xLabel:a="",title:r="",width:o=920,height:l=390,baseline:c=0,yScale:h="linear",xTickIndices:d,legendColumns:p,dataKey:f=""}){const S=Math.max(1,Math.min(e.length,p||Math.min(e.length,3))),u=Math.ceil(e.length/S),v={l:82,r:24,t:50,b:82+u*25},w=o-v.l-v.r,P=l-v.t-v.b,C=e.flatMap(B=>B.values),T=C.filter(B=>B>0),A=t??Math.max(...C)*(h==="log"?1.16:1.08),k=s??(h==="log"?Math.min(...T)*.82:c);if(!(A>k)||h==="log"&&k<=0)throw new Error(`Invalid ${h} chart domain for ${r}`);const N=B=>v.l+(n.length===1?w/2:B*w/(n.length-1)),R=Math.log10(k),L=Math.log10(A),b=B=>v.t+P-(h==="log"?(Math.log10(B)-R)/(L-R)*P:(B-k)/(A-k)*P),q=h==="log"?Array.from({length:Math.max(0,Math.floor(L)-Math.ceil(R)+1)},(B,z)=>10**(Math.ceil(R)+z)):Array.from({length:5},(B,z)=>k+(A-k)*z/4),I=B=>B>=1e3?`${Number((B/1e3).toPrecision(3))}k`:B>=10?B.toFixed(0):B>=1?Number(B.toPrecision(3)).toString():Number(B.toPrecision(2)).toString(),K=q.map(B=>{const z=b(B);return`<path d="M${v.l} ${z}H${v.l+w}"/><text x="${v.l-12}" y="${z+5}">${I(B)}</text>`}).join(""),Y=e.map(B=>{const z=B.values.map((ie,ht)=>`${ht?"L":"M"}${N(ht)} ${b(ie)}`).join(" "),we=B.values.map((ie,ht)=>`<circle cx="${N(ht)}" cy="${b(ie)}" r="4"/>`).join(""),je=B.dashArray||(B.dash?"10 8":"");return`<g class="plot" data-series="${ke(B.name)}" data-point-count="${B.values.length}" style="--series:${B.color}"><path d="${z}" ${je?`stroke-dasharray="${je}"`:""}/>${we}</g>`}).join(""),te=new Set(d||n.map((B,z)=>z)),se=n.map((B,z)=>te.has(z)?`<text x="${N(z)}" y="${v.t+P+24}">${ke(B)}</text>`:"").join(""),ye=l-u*25+4,ts=e.map((B,z)=>{const we=Math.floor(z/S),je=z%S,ie=B.dashArray||(B.dash?"10 8":"");return`<g transform="translate(${v.l+je*(w/S)} ${ye+we*25})"><path d="M0 0h28" style="stroke:${B.color}" ${ie?`stroke-dasharray="${ie}"`:""}/><circle cx="14" cy="0" r="3" style="fill:${B.color}"/><text x="37" y="5">${ke(B.name)}</text></g>`}).join("");return`<svg class="line-chart" data-chart-key="${ke(f)}" data-y-scale="${ke(h)}" data-series-count="${e.length}" data-label-count="${n.length}" viewBox="0 0 ${o} ${l}" role="img" aria-label="${ke(r||i)}"><title>${ke(r||i)}</title><text class="chart-title" x="${o/2}" y="25">${ke(r)}</text><g class="grid">${K}</g><g class="axis"><path d="M${v.l} ${v.t}V${v.t+P}H${v.l+w}"/>${se}<text class="axis-label" transform="translate(22 ${v.t+P/2}) rotate(-90)">${ke(i)}</text><text class="axis-label" x="${v.l+w/2}" y="${v.t+P+50}">${ke(a)}</text></g>${Y}<g class="legend">${ts}</g></svg>`}function Il({groups:n,labels:e,max:t,unit:s="ms"}){return`<div class="comparison-bars">${n.map(i=>`<div class="bar-group"><div class="bar-label">${i.label}</div>${e.map((a,r)=>`<div class="bar-row"><span>${a}</span><i class="bar upspa" style="--w:${i.upspa[r]/t*100}%"></i><em>${i.upspa[r].toFixed(2)}</em><i class="bar roupspa" style="--w:${i.roupspa[r]/t*100}%"></i><em>${i.roupspa[r].toFixed(2)}</em></div>`).join("")}</div>`).join("")}<div class="bar-legend"><span class="upspa-dot"></span>UpSPA <span class="roupspa-dot"></span>RoUpSPA <small>${s}</small></div></div>`}function $l(n){return""}function As(n,e=""){return`<span class="tag ${e}">${n}</span>`}const We=[1,5,10,15,20,25,30],Gn=[{name:"UpSPA registration",color:"#164a7b",values:[.070868,.135315,.219034,.307113,.384857,.475739,.563759]},{name:"TSPA registration",color:"#d17722",dash:!0,values:[.563855,.556366,.581004,.58592,.603402,.605909,.611794]},{name:"UpSPA authentication",color:"#0b8f8c",values:[.070078,.137128,.227909,.311959,.400661,.494861,.574206]},{name:"TSPA authentication",color:"#7b61a8",dash:!0,values:[.041645,.113107,.22472,.30411,.392813,.500362,.582673]}],Qn=[{name:"Setup",color:"#68788a",values:[.032282,.045255,.061797,.078456,.09446,.112803,.127961]},{name:"Secret update",color:"#0b8f8c",values:[.071267,.137119,.230062,.319257,.402747,.490115,.577284]},{name:"Password update",color:"#7b61a8",values:[.373621,.448011,.548712,.667033,.74147,.865661,.945052]}],ql=[{name:"UpSPA registration",color:"#164a7b",values:[1.205534,1.314694,1.410225,1.511801,1.584882,1.689721,1.769325]},{name:"TSPA registration",color:"#d17722",dash:!0,values:[1.186568,1.161638,1.194402,1.200806,1.197394,1.215982,1.221872]},{name:"UpSPA authentication",color:"#0b8f8c",values:[1.19794,1.28858,1.397065,1.494925,1.593694,1.708542,1.782607]},{name:"TSPA authentication",color:"#7b61a8",dash:!0,values:[.565015,.687553,.805962,.906497,1.001973,1.118334,1.199139]}],Ol=[{name:"Setup",color:"#68788a",values:[.664901,.677575,.692669,.71131,.727035,.745585,.760319]},{name:"Secret update",color:"#0b8f8c",values:[1.820854,1.877829,2.010028,2.037987,2.141463,2.230809,2.284703]},{name:"Password update",color:"#7b61a8",values:[1.575924,1.708333,1.84321,1.944816,2.042866,2.156971,2.241427]}],jl=["3/2","5/2","5/4","7/2","7/3","7/5","7/7"],Bl=[{name:"UpSPA",color:"#164a7b",values:[.1548,.156648,.19022,.17545,.195555,.227818,.266122]},{name:"PAS-TA-U",color:"#d17722",dash:!0,values:[3.113067,3.193201,3.9276,3.143283,3.601192,4.219914,4.698315]},{name:"AugSSO",color:"#4b8458",dash:!0,values:[15.09335,22.166009,26.91324,28.04735,31.22592,35.935381,38.731422]}],Un=["3/2/3","5/3/4","7/4/6","7/5/6","10/6/8"],Ue={registration:{upspa:[.084,.101,.112,.127,.147],roupspa:[.197,.247,.33,.368,.445]},secret:{upspa:[.088,.101,.116,.133,.151],roupspa:[.2,.263,.348,.396,.46]},password:{upspa:[.14,.17,.205,.219,.263],roupspa:[.317,.411,.536,.616,.726]}},Ie={registration:{upspa:[1.189,1.204,1.25,1.271,1.298],roupspa:[3.304,3.339,3.457,3.485,3.583]},secret:{upspa:[1.706,1.736,1.782,1.807,1.825],roupspa:[3.826,3.887,4.036,4.066,4.155]},password:{upspa:[1.267,1.326,1.388,1.406,1.462],roupspa:[3.452,3.539,3.722,3.798,3.925]}},Jn=[10,20,30,40,50,60,70,80,90,100],Yn=[{name:"Quorum/ABD",color:"#164a7b",values:[1.0183,1.9043,6.9312,12.3324,15.5459,17.5592,21.9401,22.3659,24.5655,29.1757]},{name:"Signed PBB",color:"#0b8f8c",values:[.903637,1.661521,2.396007,3.327339,4.138306,5.45822,6.12808,6.364321,7.376414,8.254218]},{name:"Authorized PBB",color:"#d17722",dash:!0,values:[.894433,1.684284,2.495876,3.469696,4.093315,5.953122,6.445747,6.533122,7.630808,8.220148]},{name:"Shared local blockchain",color:"#7b61a8",dash:!0,values:[1.014246,1.847189,2.761906,3.857059,4.347346,5.114755,5.874095,7.012413,7.824678,8.609863]}],Ut=[{id:"sp",label:"Storage providers",kind:"sp"},{id:"user",label:"User / client",kind:"user"},{id:"ls",label:"Login server",kind:"ls"}];function F(n,e,t,s=""){return`<div class="slide-shell ${s}">${Hs(n)}<h2>${e}</h2>${t}</div>`}function br(n){return`<div class="game-chain">${n.map(([e,t],s)=>`${s?'<div class="game-arrow">↓</div>':""}<div class="game-step"><strong>${e}</strong><span>${t}</span></div>`).join("")}</div>`}function Ml(n){return`<div class="slide-shell">
+    <div class="title-copy">
+      ${Hs("MSc thesis defense")}
+      <h1>${n.title}</h1>
+      <p class="program">Master of Science in ${n.program}</p>
+      <div class="identity"><strong>${n.presenterFormalName}</strong><span>Candidate</span><strong>${n.advisor}</strong><span>Advisor</span></div>
+      <div class="institution-row"><img src="assets/koc-logo.png" alt="Koç University logo"><div><strong>${n.institution}</strong><br>${n.defenseDate}</div></div>
+    </div>
+    <div>${Ll()}</div>
+  </div>`}function Fl(){const n=[["Email","browser"],["Banking","lock"],["University","browser"],["Shopping","browser"],["Cloud storage","cloud"],["Developer tools","key"],["Healthcare","shield"],["Travel","browser"]];return F("The password problem","Authentication is a daily activity",`
+    <div class="split-40">
+      <div><p class="lead">One user maintains accounts across many independent services.</p><p class="lead" style="margin-top:26px">Creating accounts - and returning to old ones - makes password use a daily practice.</p></div>
+      <div class="auth-orbit"><div class="center-user">${Gt("user","user")}</div>${n.map(([e,t],s)=>`<div class="service-card fragment" data-fragment-index="${Math.floor(s/2)}">${Gt(t,e)}<span>${e}</span></div>`).join("")}</div>
+    </div>${dt()}`)}function zl(){return F("The password problem","One password or many passwords?",`
+    <div class="fork">
+      <div class="fork-path left"><h3>Reuse one password</h3><p>Low memory burden and low daily effort.</p><p class="impact">One disclosure can propagate across independent accounts.</p></div>
+      <div class="origin">Many<br>accounts</div>
+      <div class="fork-path right"><h3>Different password for every service</h3><p>Compromise stays better isolated.</p><p class="impact">Remembering, maintaining, and recovering credentials becomes harder.</p></div>
+    </div>`)}function Dl(){return F("The password problem","The tension is convenience versus isolation",`
+    <table class="comparison-table"><thead><tr><th>Reuse one password</th><th>Use different passwords</th></tr></thead><tbody>
+      <tr><td>Easy to remember</td><td>Better compromise isolation</td></tr>
+      <tr><td>Low daily effort</td><td>Harder to remember and maintain</td></tr>
+      <tr><td>One disclosure may affect several accounts</td><td>Reset and recovery burden</td></tr>
+      <tr><td>Attractive for honeypot or cross-site misuse</td><td>May encourage predictable variations</td></tr>
+    </tbody></table>
+    <p class="small" style="margin-top:20px">People do not always sit at either extreme. The tension creates the need for a credential-management layer.</p>`)}function Kl(){return F("The password problem","The practical answer is a password manager",`
+    <div class="split-60"><div><p class="lead">Password managers store or generate site-specific credentials, then put the management burden behind one master secret.</p><div class="claim">A fast, reliable usability solution - with a credential vault as its storage and trust design point.</div></div>
+    <div class="vault-visual"><div class="vault-core">${Gt("vault","encrypted password vault")}</div><div class="credential-chip">email ·••••</div><div class="credential-chip">bank ·••••</div><div class="credential-chip">cloud ·••••</div><div class="credential-chip">travel ·••••</div></div></div>`)}function Hl(){return F("The password problem","Password managers commonly use two storage models",`
+    <div class="split">
+      <div class="storage-model local">${Gt("vault","local vault")}<h3>Local vault</h3><ul><li>Credential state remains on a device.</li><li>No mandatory cloud service.</li><li>Portability, backup, synchronization, and device loss need a plan.</li></ul></div>
+      <div class="storage-model cloud">${Gt("cloud","cloud synchronized vault")}<h3>Cloud-synchronized vault</h3><ul><li>Multi-device access and synchronization.</li><li>Remote encrypted credential state.</li><li>Adds cloud availability, storage, and metadata boundaries.</li></ul></div>
+    </div>`)}function Wl(){return F("The password problem","A different design point",`
+    <div style="padding-top:70px"><p class="big-question">Can one memorable password support many services without giving every login server the password - or keeping reusable website passwords as the user’s primary local credential state?</p>
+    <div class="answer-reveal fragment">Single Password Authentication <span class="muted">(SPA)</span></div></div>`)}function Vl(){return F("Evolution of SPA","The research line adds one missing capability at a time",`<div class="timeline">${[["SPA","one password, separate helper","Acar¹ · Belenkiy¹ · Küpçü²"],["TSPA","threshold-distributed helper","İşler² · Küpçü²"],["UpSPA","password and account-secret updates","İşler³ · Saadi² · Küpçü²"],["RoUpSPA","quorum completion and stale repair","Saadi² · İşler³ · Küpçü²"]].map(([e,t,s])=>`<div class="timeline-node"><div class="disc">${e}</div><strong>${t}</strong><small>${s}</small></div>`).join("")}</div>${dt()}`)}function Gl(){return F("Evolution of SPA","SPA separates the password from the login server",`
+    <div class="split-60">
+      ${ut({actors:[Ut[0],Ut[1],Ut[2]],steps:[{number:"1",from:"user",to:"sp",label:"Use the password to recover a random-looking authentication secret"},{number:"2",from:"sp",to:"user",label:"Password-protected helper state"},{number:"3",from:"user",to:"ls",label:"Authenticate with high-entropy service material"}]})}
+      <div><div class="stack"><div><h3>Login server</h3><p class="small">Stores high-entropy verification material - not the password.</p></div><div><h3>Storage provider</h3><p class="small">Helps recover the random-looking secret protected through the password.</p></div></div><div class="claim danger">Trust boundary: the login server and helper must not collude for the intended offline-guessing protection.</div></div>
+    </div>`)}function Ql(){return F("Evolution of SPA","TSPA distributes the helper role",`
+    <div class="split-60"><div>${Vn()}</div><div><div class="formula-callout"><div>\\[\\text{authentication requires at least } t_{\\mathrm{sp}} \\text{ providers}\\]</div><p class="meaning">A random secret is shared; each share is protected with a provider-specific TOPRF output on the password.</p></div><div class="claim">Offline testing now requires the login server together with threshold-many storage providers.</div><p class="small" style="margin-top:20px">TSPA covers registration and authentication - not the complete update lifecycle developed here.</p></div></div>`)}function Jl(){return F("Evolution of SPA","The missing piece is a credential lifecycle",`
+    <div class="split" style="margin-top:40px">
+      <div><h3>SPA / TSPA</h3><div class="phase-semantics"><div class="flow-line"><span>Registration</span><i></i><span>Authentication</span></div></div></div>
+      <div><h3>This thesis</h3><div class="phase-semantics"><div class="flow-line"><span>Setup</span><i></i><span>Registration</span><i></i><span>Authentication</span></div><div class="flow-line"><span style="border-color:var(--changed)">Secret update</span><i></i><span style="border-color:var(--changed)">Password update</span></div></div></div>
+    </div>
+    <div class="split" style="margin-top:60px"><div class="claim"><strong>UpSPA</strong> adds updateability under a fully available provider baseline.</div><div class="claim" style="--section-color:var(--changed)"><strong>RoUpSPA</strong> adds partial availability and stale-provider recovery.</div></div>`)}function Yl(){return F("UpSPA","UpSPA turns threshold SPA into a five-phase framework",`
+    <p class="lead">The same remembered password supports independent services while updates stay explicit and isolated.</p>
+    <div class="three-col" style="margin-top:62px"><div class="delta"><strong>One remembered password</strong><span>TOPRF-protected root state distributes the helper role.</span></div><div class="delta"><strong>Service-specific secrets</strong><span>Each login server receives only high-entropy verification state.</span></div><div class="delta"><strong>Native updates</strong><span>Rotate one account secret - or re-protect the compact root.</span></div></div>${dt()}`)}function Xl(){return F("UpSPA","The architecture keeps the password-dependent work on the client",`
+    <div class="split-60"><div>${Vn()}</div><div><p>${As("User/client","user")} transient password, TOPRF output, decrypted root and account secrets</p><p style="margin-top:20px">${As("Login server","login")} \\(\\mathsf{Uid}\\) and a service-specific \\(\\mathsf{vInfo}_j\\)</p><p style="margin-top:20px">${As("Storage provider")} encrypted root/account records and one TOPRF share</p><div class="claim">Login servers neither evaluate the TOPRF nor communicate with storage providers.</div></div></div>`)}function Zl(){return F("UpSPA","Two protected layers make the updates independent",`
+    ${Cl()}
+    <div class="formula-band"><div class="formula-callout">\\[c_{\\mathrm{id}}\\leftarrow \\operatorname{Enc}_{F_K(\\mathsf{pwd})}(\\mathsf{ssk}\\parallel R_{\\mathrm{sp}}\\parallel K_0)\\]<div class="meaning">Password update changes this compact layer.</div></div><div class="formula-callout">\\[c_j\\leftarrow\\operatorname{Enc}_{K_0}(R_{\\mathsf{ls}_j}\\parallel\\mathsf{ctr}_{\\mathrm{ac}})\\]<div class="meaning">Secret update changes one account record.</div></div></div>`)}function ec(){return F("UpSPA","Five phases define the whole credential lifecycle",`${Nl()}`)}function tc(){return F("UpSPA","Registration creates one service-specific account",`${ut({actors:Ut,steps:[{number:"1",from:"user",to:"sp",label:"Read setup state from all providers",fragment:0},{number:"2",from:"sp",to:"user",label:"tₛₚ TOPRF shares + root ciphertext",fragment:1},{number:"3",from:"user",to:"user",label:"Recover root; derive provider-specific identifiers; create cⱼ and vInfoⱼ",local:!0,fragment:2},{number:"4",from:"user",to:"sp",label:"Pending account records",state:"pending",fragment:3},{number:"5",from:"user",to:"ls",label:"Register ⟨Uid, vInfoⱼ⟩",fragment:4},{number:"6",from:"user",to:"sp",label:"Store / Discard → final acknowledgements from all nₛₚ",state:"committed",fragment:5}],finalLabel:"Fully available baseline: all nₛₚ providers at state-changing boundaries"})}<a class="detail-link" href="#/backup-upspa-registration-full">Full numbered registration flow →</a>`)}function sc(){return F("UpSPA","Authentication is a threshold read",`${ut({actors:Ut,steps:[{number:"1",from:"user",to:"sp",label:"Request committed root state",fragment:0},{number:"2",from:"sp",to:"user",label:"At least tₛₚ valid setup responses",fragment:1},{number:"3",from:"user",to:"user",label:"Evaluate TOPRF; recover Rₛₚ and K₀",local:!0,fragment:2},{number:"4",from:"user",to:"sp",label:"Read committed account records; select maximum valid counter",fragment:3},{number:"5",from:"user",to:"ls",label:"⟨Uid, H(Rₗₛⱼ ∥ lsⱼ)⟩",fragment:4}],finalLabel:"No provider write · no Store/Discard · no synchronization"})}<a class="detail-link" href="#/backup-upspa-authentication-full">Full numbered authentication flow →</a>`)}function nc(){return F("UpSPA","Secret update and password update solve different problems",`
+    <div class="update-split"><div class="secret"><h3>Secret update</h3><ul><li>Rotates \\(R_{\\mathsf{ls}_j}\\) for one login server.</li><li>Increments the account counter.</li><li>Changes one account record and its verifier.</li><li>Leaves the password and unrelated accounts unchanged.</li></ul></div><div class="password"><h3>Password update</h3><ul><li>Replaces \\(\\mathsf{pwd}\\) with \\(\\mathsf{pwd}_{\\mathrm{new}}\\).</li><li>Re-protects the root and updates source-defined TOPRF material.</li><li>Preserves \\(R_{\\mathrm{sp}}\\), \\(K_0\\), and account ciphertexts.</li><li>No login server participates.</li></ul></div></div>`)}function ic(){return F("UpSPA","The security claim has a precise boundary",`
+    <div class="boundary"><div class="boundary-main"><div class="boundary-ring"><div class="inside">Static malicious corruption<br>\\(|\\mathcal C_{\\mathrm{SP}}|\\le t_{\\mathrm{sp}}-1\\)<br>one honest target user<br>one honest target login server<br>trusted endpoint + secure authenticated channels</div></div></div>
+    <div class="outside-panel"><h3>Outside the theorem</h3><ul><li>Endpoint compromise</li><li>Corruption at or above the provider threshold</li><li>Denial of service / missing availability</li><li>Forgotten-password recovery</li><li>Permanent provider replacement</li><li>Interrupted finalization and crash recovery</li></ul></div></div>`)}function ac(){return F("UpSPA","The construction combines cryptography with state discipline",`<div class="challenge-grid">${[["Password separation","No deterministic password information at login servers.","TOPRF"],["Subthreshold hiding","No offline test for fewer than \\(t_{\\mathrm{sp}}\\) providers.","TOPRF + AE"],["Independent updates","Rotate one account or the compact root.","Two-layer state"],["Hidden naming","Prevent predictable records and cross-domain reuse.","\\(R_{\\mathrm{sp}}\\)-derived IDs"],["Authorized freshness","Accept one fresh committed transition.","signatures + counters + state"]].map(([e,t,s],i)=>`<div class="challenge"><div class="num">CHALLENGE ${i+1}</div><h3>${e}</h3><p>${t}</p><div class="mechanism">${s}</div></div>`).join("")}</div>`)}function rc(){return F("UpSPA","The proof separates cryptographic hiding from state integrity",`
+    <div class="proof-map"><div class="bad-events"><div class="bad-event"><strong>BadSig</strong><span>accepted signature not produced by the honest user</span></div><div class="bad-event"><strong>BadHash</strong><span>collision changes an identifier or verifier binding</span></div><div class="bad-event"><strong>BadCtxt</strong><span>fresh or cross-key ciphertext acceptance changes a result</span></div></div>
+    ${br([["G₀","real execution"],["G₁","replace TOPRF values consistently"],["G₂","replace root plaintexts"],["G₃","replace account plaintexts"],["G₄","ideal execution"]])}</div>
+    <div class="claim">Within the corruption and endpoint assumptions, the protocol view adds no efficient offline password-verification predicate beyond the online guessing behavior represented in the ideal execution.</div>`)}function oc(){return F("RoUpSPA","Updateability is not yet resilience",`
+    <div class="split-60"><div>${Vn({resilient:!0})}</div><div><p class="lead">UpSPA authentication already tolerates a threshold of responses - but its state-changing phases need the full provider set.</p><div class="claim danger">One delayed, offline, or stale provider can block progress or miss current state.</div><div class="claim" style="--section-color:var(--changed)"><strong>RoUpSPA</strong> adds a resilient record lifecycle around the same cryptographic core.</div></div></div>${dt()}`)}function lc(){return F("RoUpSPA","The protected values stay; the completion rules change",`<p class="lead">RoUpSPA is not a separate authentication architecture. It adds six state-lifecycle mechanisms.</p><div class="delta-list">${[["Two thresholds","\\(t_{\\mathrm{sp}}\\) for cryptography; \\(q_{\\mathrm{sp}}\\) for replicated writes."],["Shared family ID","All providers use \\(H(R_{\\mathrm{sp}}\\parallel\\mathsf{ls}_j)\\)."],["Signed records","Exact replacement records carry explicit authorization."],["Two counters","Identification and account freshness advance separately."],["Replica status","Providers are active or stale per record family."],["Synchronization","A stale provider repairs from authenticated public evidence."]].map(([e,t])=>`<div class="delta"><strong>${e}</strong><span>${t}</span></div>`).join("")}</div>`)}function cc(){return F("RoUpSPA","Cryptographic security and availability use different parameters",`
+    <div class="thresholds"><div class="threshold crypto"><div class="symbol">\\(t_{\\mathrm{sp}}\\)</div><h3>Cryptographic threshold</h3><p>Enough valid provider contributions to evaluate the TOPRF and read protected state.</p></div><div class="threshold quorum"><div class="symbol">\\(q_{\\mathrm{sp}}\\)</div><h3>Availability quorum</h3><p>Enough matching durable acknowledgements to complete a replicated write or synchronization.</p></div></div>
+    <div class="formula-callout" style="margin-top:28px;text-align:center">\\[n_{\\mathrm{sp}}\\ge q_{\\mathrm{sp}}\\ge t_{\\mathrm{sp}}>\\frac{n_{\\mathrm{sp}}}{2},\\qquad 2q_{\\mathrm{sp}}-n_{\\mathrm{sp}}>t_{\\mathrm{sp}}-1\\]<div class="meaning">Increasing \\(q_{\\mathrm{sp}}\\) does not by itself strengthen password cryptography.</div></div>`)}function dc(){return F("RoUpSPA","Quorum intersection preserves honest evidence of completed state",`
+    <div class="split-60"><div>${vr()}</div><div><div class="formula-callout">\\[|Q_1\\cap Q_2|\\ge 2q_{\\mathrm{sp}}-n_{\\mathrm{sp}}>t_{\\mathrm{sp}}-1\\]<div class="meaning">With at most \\(t_{\\mathrm{sp}}-1\\) corrupt providers, the intersection contains honest evidence.</div></div><div class="claim">A completed write and a later recovery quorum share honest evidence of that state.</div><div class="claim danger">Signatures authorize records; counters and selection rules establish freshness. Intersection alone does neither.</div></div></div>`)}function uc(){return F("RoUpSPA","Each state-changing phase has one provider boundary",`<div class="phase-semantics">${[["Registration",["Prepare at LS","qₛₚ durable account writes","Store / Discard at LS"]],["Secret update",["Prepare old/new verifier","qₛₚ durable replacements","Store / Discard at LS"]],["Password update",["qₛₚ tentative identification writes","Store / Discard to providers"]],["Authentication",["tₛₚ valid active reads","no write"]],["Setup",["all nₛₚ providers receive long-term shares"]]].map(([e,t])=>`<div class="phase-flow"><strong>${e}</strong><div class="flow-line">${t.map((s,i)=>`${i?"<i></i>":""}<span>${s}</span>`).join("")}</div></div>`).join("")}</div><div class="claim pending">Store or Discard is terminal where the source says it is - there is no invented extra acknowledgement. Partial post-write failure remains an unresolved availability state.</div>`)}function pc(){return F("RoUpSPA","Authentication remains a threshold read",`${ut({actors:Ut,steps:[{number:"1",from:"user",to:"sp",label:"Request active identification records"},{number:"2",from:"sp",to:"user",label:"At least tₛₚ valid responses + TOPRF shares"},{number:"3",from:"user",to:"user",label:"Recover root; derive shared account-family ID",local:!0},{number:"4",from:"user",to:"sp",label:"At least tₛₚ active account responses; choose maximum valid counter"},{number:"5",from:"user",to:"ls",label:"Authenticate with H(Rₗₛⱼ ∥ lsⱼ)"}],finalLabel:"No quorum write · no automatic repair"})}<a class="detail-link" href="#/backup-roupspa-authentication-full">Full numbered authentication flow →</a>`)}function hc(){return F("RoUpSPA","A stale provider can repair without seeing the password",`
+    <div class="repair-scene"><div><h3 class="center">Before</h3><div class="replica-set"><div class="replica">SP₁<br>ctr 8</div><div class="replica">SP₂<br>ctr 8</div><div class="replica">SP₃<br>ctr 8</div><div class="replica stale">SPₖ<br>STALE</div></div></div><div class="repair-arrow">→</div><div><h3 class="center">After</h3><div class="replica-set"><div class="replica">SP₁<br>ctr 8</div><div class="replica">SP₂<br>ctr 8</div><div class="replica">SP₃<br>ctr 8</div><div class="replica fresh">SPₖ<br>ctr 8</div></div></div></div>
+    <div class="repair-steps"><span>collect ≥ qₛₚ responses</span><span>verify signatures and bindings</span><span>reject counter conflicts</span><span>install unique maximum</span></div>
+    <div class="claim">Only signed ciphertext and public metadata move. Identification repair retains the provider’s own TOPRF share.</div>`)}function mc(){return F("RoUpSPA","Completed-state safety does not imply unconditional liveness",`
+    <div class="safety-liveness"><div class="safety"><h3>Safety for completed phases</h3><ul><li>Exact signed records and exact-next counters</li><li>Active/stale selection</li><li>Honest quorum intersection</li><li>Synchronization without rollback</li><li>No divergent completed records outside bad events</li></ul></div><div class="liveness"><h3>Conditional liveness</h3><ul><li>Enough valid \\(t_{\\mathrm{sp}}\\) or \\(q_{\\mathrm{sp}}\\) participation</li><li>Bounded login-server availability where required</li><li>Withholding, timeout, or excessive failure may stop progress</li><li>Not a general Byzantine transaction or consensus protocol</li></ul></div></div>`)}function fc(){return F("RoUpSPA","RoUpSPA inherits hiding and proves deterministic consistency",`
+    <div class="proof-map"><div>${br([["G₀","real RoUpSPA"],["G₁","replace full TOPRF evaluations"],["G₂","simulate honest-receiver TOPRF transcripts"],["G₃","replace identification plaintexts"],["G₄","replace account plaintexts"],["G₅","ideal execution"]])}</div><div><h3 style="margin-bottom:14px">Deterministic obligations</h3><div class="proof-obligations"><div class="proof-obligation"><strong>Authorized writes</strong><span>exact records and terminal decisions</span></div><div class="proof-obligation"><strong>Active threshold</strong><span>only current replicas contribute</span></div><div class="proof-obligation"><strong>Quorum consistency</strong><span>completed state remains recoverable</span></div><div class="proof-obligation"><strong>No rollback</strong><span>maximum valid counters win</span></div><div class="proof-obligation"><strong>No divergence</strong><span>ties at a maximum are rejected</span></div></div><div class="equation-box" style="margin-top:18px">\\[\\operatorname{REAL}_{\\mathsf{RoUpSPA},\\mathcal A}\\approx_c\\operatorname{IDEAL}_{\\mathcal F_{\\mathsf{UpSPA}},\\mathsf{Sim}}\\]</div></div></div>`)}function gc(){return F("Synchronization alternatives","A public bulletin board enables autonomous catch-up",`
+    <div class="pbb-variants"><div class="pbb-variant untrusted"><h3>End-to-end authenticated PBB</h3><ul><li>The board may accept arbitrary entries.</li><li>User signatures and counters determine acceptance.</li><li>Strong end-to-end trust separation.</li><li>Flooding and scanning remain availability costs.</li></ul><div class="append-history"><i></i><i></i><i></i><i></i><i></i></div></div><div class="pbb-variant authorized"><h3>Authorization-enforcing PBB</h3><ul><li>The board filters unauthorized writes.</li><li>Lower junk-scanning burden.</li><li>Adds committee and admission-control assumptions.</li><li>Conservative deployments still verify user signatures.</li></ul><div class="append-history"><i></i><i></i><i></i><i></i><i></i></div></div></div><div class="claim">A provider can catch up from append-only history without waiting for the user.</div>${dt()}`)}function vc(){return F("Synchronization alternatives","Blockchain adds public ordering - and a larger systems boundary",`
+    <div class="ledger-flow"><div>Signed update record</div><div>Encrypted recovery bundle<br><span class="small">off chain</span></div><div>Commitment, counter, phase<br><span class="small">or Merkle root on chain</span></div><div>Provider verifies proof<br>and local signature</div></div>
+    <table class="mechanism-table"><thead><tr><th>Mechanism</th><th>Global component</th><th>Autonomous catch-up</th><th>Main added boundary</th></tr></thead><tbody><tr><td>Quorum</td><td>No</td><td>Provider synchronization</td><td>Provider participation</td></tr><tr><td>Signed PBB</td><td>Yes</td><td>Yes</td><td>Scanning, flooding, board availability</td></tr><tr><td>Authorized PBB</td><td>Yes</td><td>Yes</td><td>Admission committee and trust</td></tr><tr><td>Blockchain</td><td>Yes</td><td>Yes</td><td>Finality, fees, metadata, contract assumptions</td></tr></tbody></table>`)}function bc(){return F("Implementation and results","The prototype maps formal phases to measurable stages",`
+    <div class="architecture">${[["Client engine","orchestrates phases","client"],["Login-server adapter","verifier prepare / commit","login"],["Storage-provider service","records + durable writes",""],["Threshold crypto","TOPRF and sharing","client"],["State codec","authenticated records",""],["Synchronization adapter","quorum / PBB / ledger","sync"]].map(([e,t,s])=>`<div class="module ${s}"><strong>${e}</strong><span>${t}</span></div>`).join("")}</div>
+    <div class="stage-equation">\\[T_{\\mathrm{stage}}^P(I)=T_{\\mathrm{client,pre}}^P+\\max_{i\\in I}\\{L_i+T_{\\mathrm{SP}_i}^P\\}+T_{\\mathrm{client,post}}^P\\]</div>
+    <div class="method-strip"><span>provider requests parallel inside a stage</span><span>successive stages remain sequential</span><span>50 warm-ups + 200 measured samples</span><span>median (p50)</span><span>LAN/WAN are controlled compositions</span></div>${dt()}`)}function yc(){const n=Gn.map(t=>({...t,name:t.name.replace("registration","Reg.").replace("authentication","Auth.")})),e=Qn.map(t=>({...t,name:t.name.replace("Secret update","Secret upd.").replace("Password update","Password upd.")}));return F("Implementation and results","UpSPA adds updates with sub-millisecond local client work",`
+    <div class="split" style="gap:20px"><div class="chart-wrap">${oe({labels:We,series:n,yMax:.7,xLabel:"Threshold tₛₚ · nₛₚ = 30",title:"Registration and authentication",width:560,height:350})}</div><div class="chart-wrap">${oe({labels:We,series:e,yMax:1,xLabel:"Threshold tₛₚ · nₛₚ = 30",title:"Setup and updates",width:560,height:350})}</div></div>
+    <div class="chart-takeaway">Local cryptography stays small; the extra modeled network stage matters more in LAN/WAN composition.</div>`)}function wc(){return F("Implementation and results","Password update is the clearest measured UpSPA advantage",`
+    <div class="split-60"><div class="chart-wrap">${oe({labels:jl,series:Bl,yMax:41,xLabel:"(nₛₚ / tₛₚ)",title:"Client password-update latency",width:760,height:430})}</div><div><div class="warning-box"><strong>Different functionality and trust architecture.</strong><br>The comparison normalizes executable cost - not semantics.</div><p class="small" style="margin-top:24px">UpSPA remains below 0.27 ms on the client in this grid. PAS-TA-U and AugSSO pay for different threshold-SSO paths.</p><div class="claim">No across-the-board winner: authentication rounds, provider work, and relying-party roles differ.</div></div></div>`)}function Sc(){const n=s=>s[s.length-1],e={label:"Complete local · 10/6/8",upspa:[n(Ue.registration.upspa),n(Ue.secret.upspa),n(Ue.password.upspa)],roupspa:[n(Ue.registration.roupspa),n(Ue.secret.roupspa),n(Ue.password.roupspa)]},t={label:"Composed LAN · 10/6/8",upspa:[n(Ie.registration.upspa),n(Ie.secret.upspa),n(Ie.password.upspa)],roupspa:[n(Ie.registration.roupspa),n(Ie.secret.roupspa),n(Ie.password.roupspa)]};return F("Implementation and results","Resilience costs more in communication stages than in local checks",`
+    ${Il({groups:[e,t],labels:["Registration","Secret update","Password update"],max:4.2})}
+    <div class="chart-takeaway" style="margin-top:26px">RoUpSPA’s extra local checks are modest; the resilient communication schedule drives the larger end-to-end gap.</div>
+    <p class="small center" style="margin-top:12px">WAN totals are not used to rank the constructions because fixed RTT and extra stages dominate the composed values.</p>`)}function kc(){return F("Implementation and results","Synchronization backends move the dominant cost",`
+    <div class="chart-wrap">${oe({labels:Jn,series:Yn,yMax:32,xLabel:"Storage providers nₛₚ · qₛₚ = 0.8nₛₚ",title:"Password-update local backend overhead",width:1050,height:430})}</div>
+    <div class="chart-takeaway">Quorum coordination grows fastest here; the public-state options trade local cost for a global board or ledger boundary.</div>`)}function Ac(){return F("Implementation and results","The engineering lesson is to optimize the schedule, not only the primitives",`<div class="takeaway-list">${["Cryptographic work is generally small beside sequential distributed communication.","Password update remains independent of the number of login-server accounts.","Resilience shifts cost into quorum coordination, board processing, finality, or proof handling.","No backend is universally best: latency, autonomous recovery, filtering, auditability, metadata, and infrastructure all matter."].map(e=>`<div class="takeaway-item"><p>${e}</p></div>`).join("")}</div>`)}function Pc(){return F("Conclusions","The thesis extends SPA from authentication to resilient credential management",`<div class="contribution-path">${[["Lifecycle","five explicit phases"],["State design","isolated secret and password updates"],["Security","static-malicious lifecycle proof"],["Resilience","separate threshold, quorum, and repair"],["Evaluation","unified family and backend prototype"]].map(([e,t],s)=>`<div class="contribution" data-n="${s+1}"><strong>${e}</strong><span>${t}</span></div>`).join("")}</div>${dt()}`)}function xc(){return F("Conclusions","The present guarantees are strong - but deliberately scoped",`
+    <div class="limit-future"><div class="limits"><h3>Current limitations</h3><ul><li>Static corruption and phase-oriented, non-UC proofs</li><li>Trusted user endpoint</li><li>Availability only within threshold and quorum bounds</li><li>No dynamic membership or proactive refresh</li><li>Research prototype and controlled network models</li></ul></div><div class="future"><h3>Future directions</h3><ul><li>Adaptive/mobile corruption and proactive refresh</li><li>Provider join, leave, replacement, and threshold changes</li><li>Verified concurrent state machines</li><li>Hardened browser deployment and user study</li><li>Post-quantum instantiations and passkey recovery</li></ul></div></div>
+    <div class="claim">A password is most useful when it is not itself the long-term verifier - and no single supporting party can test it offline.</div>`)}function Rc(){return F("Conclusions","Three manuscripts carry the thesis contributions forward",`<div class="publication-list">${[["Secure and Updatable Single Password Authentication","Cryptology ePrint Archive, Report 2026/784","public manuscript"],["Secure and Updatable Single Password Authentication","ACM WPES 2026","workshop version submitted"],["Robust Updatable Single Password Authentication","ACM Transactions on Privacy and Security","manuscript submitted"]].map(([e,t,s],i)=>`<div class="publication"><div class="pub-num">${i+1}</div><div><strong>${e}</strong><span>${t}</span></div><em>${s}</em></div>`).join("")}</div><p class="small" style="margin-top:22px">Status is reported exactly as stated in the active thesis source.</p>`)}function _c(n){return`<div class="slide-shell"><div><h2>Thank you</h2><div class="questions">Questions?</div><div class="final-meta">${n.presenterDisplayName||n.presenterFormalName} · ${n.institution}${n.links?.eprint?` · <a href="${n.links.eprint}">ePrint 2026/784</a>`:""}</div></div></div>`}function Tc(n,e,t){const s={title:()=>Ml(t),"problem-daily-authentication":Fl,"problem-two-strategies":zl,"problem-strategy-comparison":Dl,"problem-password-manager":Kl,"problem-local-cloud-managers":Hl,"problem-research-question":Wl,"lineage-overview":Vl,"lineage-spa":Gl,"lineage-tspa":Ql,"lineage-gap-and-thesis":Jl,"upspa-overview":Yl,"upspa-parties":Xl,"upspa-two-layer-state":Zl,"upspa-lifecycle":ec,"upspa-registration":tc,"upspa-authentication":sc,"upspa-two-updates":nc,"upspa-threat-model":ic,"upspa-design-challenges":ac,"upspa-security":rc,"roupspa-motivation":oc,"roupspa-what-changes":lc,"roupspa-threshold-quorum":cc,"roupspa-quorum-intersection":dc,"roupspa-phase-semantics":uc,"roupspa-read-and-authentication":pc,"roupspa-synchronization":hc,"roupspa-threat-and-boundary":mc,"roupspa-security":fc,"alternatives-pbb":gc,"alternatives-blockchain-and-choice":vc,"implementation-architecture-method":bc,"results-upspa-tspa":yc,"results-threshold-sso-comparison":wc,"results-upspa-roupspa":Sc,"results-backends":kc,"results-key-takeaways":Ac,"conclusion-contributions":Pc,"conclusion-limitations-future":xc,"conclusion-publications":Rc,"thank-you":()=>_c(t)};return s[n]?s[n]():F(e.section||"Slide",e.title,'<p class="lead">Slide content unavailable.</p>')}const yr={"aux-pastau-threshold-token-generation":{title:"AUX · PAS-TA-U — Threshold Token Generation",src:"assets/protocols/pastau/threshold-token-generation.jpg",alt:"Original PAS-TA-U threshold token generation source figure"},"aux-pastau-registration":{title:"AUX · PAS-TA-U — Registration",src:"assets/protocols/pastau/registration.png",alt:"Original PAS-TA-U registration protocol source figure"},"aux-pastau-authentication-token-generation":{title:"AUX · PAS-TA-U — Authentication and Token Generation",src:"assets/protocols/pastau/authentication-token-generation.png",alt:"Original PAS-TA-U authentication and token generation protocol source figure"},"aux-pastau-password-update":{title:"AUX · PAS-TA-U — Password Update",src:"assets/protocols/pastau/password-update.png",alt:"Original PAS-TA-U password-update protocol source figure"},"aux-augsso-registration":{title:"AUX · AugSSO — Registration",src:"assets/protocols/augsso/registration.png",alt:"Original AugSSO registration protocol source figure"},"aux-augsso-authentication-token-issuance":{title:"AUX · AugSSO — Authentication and Token Issuance",src:"assets/protocols/augsso/authentication-token-issuance.png",alt:"Original AugSSO authentication and token issuance protocol source figure"},"aux-augsso-password-update":{title:"AUX · AugSSO — Password Update",src:"assets/protocols/augsso/password-update.png",alt:"Original AugSSO password-update protocol source figure"}};function gn(n=""){return String(n).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}function Uc(n,e={}){const t=yr[n];return t?`<div class="slide-shell comparison-source-slide" style="display:grid;grid-template-rows:auto minmax(0,1fr);gap:4px;min-height:0;padding-bottom:30px;box-sizing:border-box">
+    <h2 style="font-size:36px;line-height:1.04;margin:0;max-width:none">${gn(t.title)}</h2>
+    <figure style="margin:0;min-height:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <img src="${gn(t.src)}" alt="${gn(t.alt)}" loading="eager" decoding="sync" style="display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:center">
+    </figure>
+  </div>`:null}Object.freeze(Object.keys(yr));const Ec={registration:{labels:["3/2","5/2","5/4","7/2","7/3","7/5","7/7"],panels:{client:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.08996,.085067,.117697,.088509,.104755,.137181,.170153]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[.068574,.099377,.071868,.069564,.075533,.075766,.068399]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[.422095,.389136,.417541,.412505,.392217,.440211,.443365]}],domain:[0,.48]},provider:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.04175,.042034,.083841,.041862,.062762,.104273,.145985]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[108e-6,185e-6,17e-5,245e-6,245e-6,231e-6,21e-5]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[1.671588,2.7716,2.647775,4.004861,4.02157,4.058999,3.816141]}],domain:[0,4.35]},lan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[1.181643,1.195091,1.257402,1.200886,1.226481,1.272635,1.3123]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[1.216913,1.15817,1.159649,1.152032,1.152315,1.162638,1.157453]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[1.488102,1.547075,1.591575,1.49724,1.58262,1.577219,1.578448]}],domain:[1.1,1.66]},wan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[126.281834,127.062291,129.503568,127.741484,129.2791,130.067954,131.472101]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[125.345552,127.485101,127.186883,128.477529,127.700338,127.758297,128.416649]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[64.589267,65.904037,65.925191,66.746836,66.979199,66.637311,66.885875]}],domain:[58,136]}}},authentication:{labels:["3/2","5/2","5/4","7/2","7/3","7/5","7/7"],panels:{client:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.089631,.084599,.117876,.086577,.102821,.135467,.168596]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[2.928482,2.914716,3.488008,2.964994,3.204068,3.738179,4.053239]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[8.08843,8.450052,16.018096,7.959815,11.951477,19.234848,26.990815]}],domain:[0,29]},provider:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.04172,.041974,.083756,.041772,.062637,.104132,.145842]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[1.215238,1.031944,1.966452,1.004128,1.47885,2.451805,3.123022]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[1.473516,1.4301,2.743244,1.492222,2.244408,3.45501,5.034463]}],domain:[0,5.5]},lan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[1.165775,1.177431,1.224585,1.185298,1.195978,1.238804,1.26318]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[4.201208,3.78263,4.501911,3.882219,4.259086,4.753304,5.410801]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[11.330637,11.934826,18.827203,11.76652,15.845659,22.471753,30.229332]}],domain:[0,32]},wan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[125.254954,126.004686,127.37095,126.966253,126.711983,127.008765,125.978316]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[66.094906,65.928172,68.261177,65.553981,67.103605,69.041339,71.01604]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[135.759423,135.769169,148.357991,135.687729,141.91371,152.225707,160.972559]}],domain:[60,166]}}},passwordUpdate:{labels:["3/2","5/2","5/4","7/2","7/3","7/5","7/7"],panels:{client:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.1548,.156648,.19022,.17545,.195555,.227818,.266122]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[3.113067,3.193201,3.9276,3.143283,3.601192,4.219914,4.698315]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[15.09335,22.166009,26.91324,28.04735,31.22592,35.935381,38.731422]}],domain:[0,41]},provider:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.096077,.135499,.176591,.173336,.205338,.234767,.275884]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[10.02206,13.005261,16.72654,17.771036,20.038869,21.896659,23.092762]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[1.769822,1.754718,3.271156,1.780712,2.553684,4.161195,6.048203]}],domain:[0,25]},lan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[1.268727,1.303081,1.367868,1.33593,1.371311,1.416287,1.45972]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[8.791105,8.512206,9.47052,9.002216,9.32431,9.51654,10.062077]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[17.407253,24.523837,29.350642,30.482188,33.044249,38.067611,42.394521]}],domain:[0,45]},wan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[125.880908,127.578728,129.187599,127.870013,130.029483,131.213184,132.026715]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[229.241115,228.943014,235.068759,228.428543,232.210092,237.212998,239.833963]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[143.444679,154.067028,157.327582,161.762104,164.443383,167.962048,174.514319]}],domain:[118,246]}}}},Lc={registration:{labels:["10","20","30","40","50","60","70","80","90","100"],panels:{client:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.150464,.248797,.346698,.449716,.55075,.65588,.752471,.855776,.922057,1.070652]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[.074416,.130077,.13232,.171232,.276005,.296248,.399938,.47753,.586807,.69762]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[.482488,.43239,.4408,.470178,.486899,.502649,.52375,.559294,.595441,.635526]}]},lan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[1.304561,1.460341,1.567722,1.681471,1.815636,1.940632,2.064153,2.174175,2.255203,2.439236]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[1.171848,1.212942,1.277732,1.342849,1.43981,1.514936,1.608953,1.744066,1.867164,2.006318]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[1.560552,1.584888,1.620319,1.652572,1.670581,1.713253,1.748197,1.780812,1.845546,1.892553]}]},wan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[131.503365,134.214364,135.731185,136.998522,137.742416,138.600228,139.036797,139.66664,140.240173,140.866343]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[127.867577,129.689447,130.33866,130.383557,130.553496,131.461518,131.581205,132.520405,133.321183,133.618638]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[67.642496,68.497877,69.267213,69.780233,70.124374,70.424628,70.741083,71.09159,71.344007,71.665549]}]}}},authentication:{labels:["10","20","30","40","50","60","70","80","90","100"],panels:{client:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.149072,.248114,.349492,.44337,.551062,.65666,.767934,.857875,.921224,1.07542]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[4.070745,6.179417,8.269483,10.225707,12.537493,13.100085,15.125139,17.214673,18.67109,20.522861]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[22.655983,45.384012,65.932117,88.61457,110.012316,131.004532,153.040378,172.959069,196.942237,221.758631]}]},lan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[1.252173,1.406723,1.487519,1.583509,1.697189,1.805276,1.92697,2.043497,2.100507,2.247784]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[5.741749,7.068794,9.24164,11.508435,13.406552,14.276681,16.445892,17.925933,20.256802,21.64856]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[26.777547,47.946852,71.827816,92.549481,113.920767,136.299882,155.755064,177.941083,203.008085,224.879353]}]},wan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[128.397353,129.649804,129.606317,130.506604,131.05423,131.417203,131.736722,132.377456,132.432254,132.611935]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[70.472128,73.530497,76.544668,81.107462,80.654816,82.321099,84.202031,86.483077,88.538331,91.071884]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[156.529651,180.568875,205.151438,226.204574,248.005869,272.720598,294.624159,314.630498,339.801328,362.215979]}]}}},passwordUpdate:{labels:["10","20","30","40","50","60","70","80","90","100"],panels:{client:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[.275447,.493564,.720356,.962575,1.217049,1.50112,1.786403,2.103837,2.306297,2.762335]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[4.611094,7.03326,9.363889,12.363321,14.414505,15.168695,17.577865,20.707924,22.977932,24.409475]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[47.246091,91.510477,137.77644,181.589119,226.733893,270.532074,314.552364,361.91908,409.744498,457.130307]}]},lan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[1.47661,1.738314,2.004192,2.292079,2.58434,2.889312,3.216327,3.574202,3.809009,4.39923]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[10.625056,12.803482,16.205956,20.421336,22.566143,25.705872,29.964487,33.813212,38.964457,43.227006]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[50.066252,93.545017,141.584969,183.268341,228.558245,272.015457,320.523141,361.535248,407.8349,456.526161]}]},wan:{series:[{name:"UpSPA",color:"#164a7b",dashArray:"",values:[132.106869,135.309405,136.756162,138.485194,139.413303,140.395209,141.457665,142.64245,143.532753,144.753528]},{name:"PAS-TA-U",color:"#d17722",dashArray:"11 7",values:[241.245921,253.213819,270.184482,292.397469,317.090528,349.08259,385.68186,429.021124,476.964763,530.487304]},{name:"AugSSO",color:"#4b8458",dashArray:"3 6",values:[180.515448,228.228157,274.246884,324.78107,367.634007,412.314884,455.995468,506.937729,556.150051,597.398606]}]}}}},Cc={registration:{labels:["10","20","30","40","50","60","70","80","90","100"],panels:{local:{series:[{name:"Quorum/ABD",color:"#164a7b",dashArray:"",values:[.4358,.8288,1.0118,1.3908,1.9034,2.1563,2.4791,3.0339,3.179,3.7227]},{name:"Signed PBB",color:"#7b61a8",dashArray:"11 6",values:[.381248,.738695,1.313871,1.562625,1.849927,2.262291,2.550794,3.091769,3.462963,3.868796]},{name:"DKG PBB",color:"#0b8f8c",dashArray:"3 5",values:[.514963,.953678,1.415335,2.032783,2.745686,2.985749,4.249278,3.763583,4.415139,4.750087]},{name:"Blockchain · shared local",color:"#d17722",dashArray:"12 5 3 5",values:[.922893,1.457822,2.153572,2.840635,3.376361,4.337644,4.668524,5.607912,5.994522,6.736542]}]},lan:{series:[{name:"Quorum/ABD",color:"#164a7b",dashArray:"",values:[3.594114,3.970045,4.261176,4.713546,5.096217,5.339952,5.789535,6.235852,6.514241,7.068231]},{name:"Signed PBB",color:"#7b61a8",dashArray:"11 6",values:[3.523979,3.883149,4.262349,4.769845,5.093068,5.531644,5.85987,6.344053,6.799581,7.204865]},{name:"DKG PBB",color:"#0b8f8c",dashArray:"3 5",values:[4.649846,5.134839,5.654684,6.312757,6.67933,7.387504,7.824333,8.215974,9.00281,9.330863]},{name:"Public chain",color:"#b84d4d",dashArray:"12 5 3 5",values:[12354.162025,12354.837798,12354.604166,12355.6153,12356.44843,12357.429686,12359.568032,12358.312247,12359.573982,12359.196326]},{name:"L2 chain",color:"#d17722",dashArray:"7 5",values:[2133.852689,2135.258207,2134.90471,2134.997114,2136.424641,2137.629885,2137.626899,2138.273149,2138.70159,2139.663208]},{name:"Permissioned chain",color:"#4b8458",dashArray:"2 4",values:[60.396864,61.22213,61.788318,62.565947,62.857662,63.976759,64.396033,65.519846,65.74957,66.749311]}]}}},secretUpdate:{labels:["10","20","30","40","50","60","70","80","90","100"],panels:{local:{series:[{name:"Quorum/ABD",color:"#164a7b",dashArray:"",values:[.4467,.8547,1.2006,1.5059,1.773,2.2364,6.9729,9.0048,8.3609,11.2413]},{name:"Signed PBB",color:"#7b61a8",dashArray:"11 6",values:[.412395,.796834,1.099658,1.5769,1.936329,2.362771,2.779755,3.085528,3.433529,3.852159]},{name:"DKG PBB",color:"#0b8f8c",dashArray:"3 5",values:[.549647,.990656,1.449301,1.982633,2.437678,3.032207,3.755287,3.833092,4.493569,4.85219]},{name:"Blockchain · shared local",color:"#d17722",dashArray:"12 5 3 5",values:[.811,1.507674,2.212363,3.015792,3.405217,4.123879,4.714374,5.53239,6.148016,6.854568]}]},lan:{series:[{name:"Quorum/ABD",color:"#164a7b",dashArray:"",values:[4.181999,4.512377,4.839213,5.300109,9.129537,10.504749,11.392014,12.986258,12.25443,14.921573]},{name:"Signed PBB",color:"#7b61a8",dashArray:"11 6",values:[4.074837,4.464454,5.034385,5.328842,5.719983,6.155702,6.683465,6.857082,7.345752,7.876117]},{name:"DKG PBB",color:"#0b8f8c",dashArray:"3 5",values:[5.203578,5.70597,6.203228,6.819466,7.264999,7.906377,8.731271,8.832862,9.742236,9.924158]},{name:"Public chain",color:"#b84d4d",dashArray:"12 5 3 5",values:[12355.255039,12353.608256,12356.006084,12357.180735,12357.332602,12357.561408,12359.123777,12359.101789,12361.265803,12359.527899]},{name:"L2 chain",color:"#d17722",dashArray:"7 5",values:[2134.000582,2135.459104,2136.63468,2137.025666,2137.295661,2137.030418,2136.891998,2139.201833,2139.518644,2140.880755]},{name:"Permissioned chain",color:"#4b8458",dashArray:"2 4",values:[60.967745,61.636152,62.416104,63.206561,63.732476,64.357146,65.130285,66.002932,66.495948,67.164976]}]}}},passwordUpdate:{labels:["10","20","30","40","50","60","70","80","90","100"],panels:{local:{series:[{name:"Quorum/ABD",color:"#164a7b",dashArray:"",values:[1.0183,1.9043,6.9312,12.3324,15.5459,17.5592,21.9401,22.3659,24.5655,29.1757]},{name:"Signed PBB",color:"#7b61a8",dashArray:"11 6",values:[.903637,1.661521,2.396007,3.327339,4.138306,5.45822,6.12808,6.364321,7.376414,8.254218]},{name:"DKG PBB",color:"#0b8f8c",dashArray:"3 5",values:[.894433,1.684284,2.495876,3.469696,4.093315,5.953122,6.445747,6.533122,7.630808,8.220148]},{name:"Blockchain · shared local",color:"#d17722",dashArray:"12 5 3 5",values:[1.014246,1.847189,2.761906,3.857059,4.347346,5.114755,5.874095,7.012413,7.824678,8.609863]}]},lan:{series:[{name:"Quorum/ABD",color:"#164a7b",dashArray:"",values:[4.146824,5.333895,11.653187,15.770468,17.654607,20.225849,24.861616,25.497684,31.01354,34.706568]},{name:"Signed PBB",color:"#7b61a8",dashArray:"11 6",values:[3.975705,4.835975,5.736515,6.461613,7.376457,8.751642,9.522768,9.820156,10.758494,11.659799]},{name:"DKG PBB",color:"#0b8f8c",dashArray:"3 5",values:[5.016997,5.857932,6.90765,7.678986,8.322455,10.143683,10.706458,11.027112,12.091226,12.68977]},{name:"Public chain",color:"#b84d4d",dashArray:"12 5 3 5",values:[12352.949392,12354.268787,12355.975709,12355.837465,12356.724226,12359.755963,12358.769983,12359.974084,12362.855912,12361.63929]},{name:"L2 chain",color:"#d17722",dashArray:"7 5",values:[2133.489311,2135.112682,2135.076372,2136.351845,2137.029429,2137.508101,2138.481742,2139.005838,2139.544095,2140.942889]},{name:"Permissioned chain",color:"#4b8458",dashArray:"2 4",values:[60.707813,61.550175,62.431433,63.466164,64.271797,65.017648,66.097599,66.8757,67.673392,68.649473]}]}}}},Oe={registration:{title:"Registration",key:"registration"},authentication:{title:"Authentication",key:"authentication"},"password-update":{title:"Password Update",key:"passwordUpdate"},"secret-update":{title:"Secret Update",key:"secretUpdate"}},wr={"aux-sso-low-registration":Oe.registration,"aux-sso-low-authentication":Oe.authentication,"aux-sso-low-password-update":Oe["password-update"]},Sr={"aux-sso-asymptotic-registration":Oe.registration,"aux-sso-asymptotic-authentication":Oe.authentication,"aux-sso-asymptotic-password-update":Oe["password-update"]},kr={"aux-resilient-registration":Oe.registration,"aux-resilient-secret-update":Oe["secret-update"],"aux-resilient-password-update":Oe["password-update"]},Nc={client:"Client",provider:"Storage Provider",lan:"LAN",wan:"WAN",local:"Complete local"};function Xn(n,e,t){return`<div class="slide-shell evaluation-aux-slide" data-evaluation-kind="${e}">
+    <h2>${n}</h2>
+    <div class="evaluation-chart-grid ${e}">${t}</div>
+  </div>`}function Zn({dataset:n,panelKey:e,phaseTitle:t,kind:s,index:i}){const a=n.panels[e],[r,o]=a.domain||[],l=s==="asymptotic",c=s==="resilient";return`<article data-panel="${e}">${oe({labels:n.labels,series:a.series,yMin:r,yMax:o,yScale:c?"log":"linear",yLabel:"Median latency (ms)",xLabel:l?"nₛₚ · tₛₚ = 0.6nₛₚ":c?"nₛₚ · tₛₚ=⌈0.6nₛₚ⌉ · qₛₚ=⌈0.8nₛₚ⌉":"(nₛₚ/tₛₚ)",title:`${c&&e==="lan"?"Composed LAN":Nc[e]} · ${t}`,width:s==="low"?700:s==="asymptotic"?465:700,height:s==="low"?320:s==="asymptotic"?585:610,xTickIndices:l||c?[0,3,6,9]:void 0,legendColumns:c&&e==="local"?2:3,dataKey:`${s}-${t.toLowerCase().replaceAll(" ","-")}-${e}-${i}`})}</article>`}function Ic(n){const e=wr[n];if(!e)return null;const t=Ec[e.key],s=["client","provider","lan","wan"];return Xn(`AUX · ${e.title} — Low-Threshold Comparison`,"low",s.map((i,a)=>Zn({dataset:t,panelKey:i,phaseTitle:e.title,kind:"low",index:a})).join(""))}function $c(n){const e=Sr[n];if(!e)return null;const t=Lc[e.key],s=["client","lan","wan"];return Xn(`AUX · ${e.title} — Asymptotic Comparison`,"asymptotic",s.map((i,a)=>Zn({dataset:t,panelKey:i,phaseTitle:e.title,kind:"asymptotic",index:a})).join(""))}function qc(n){const e=kr[n];if(!e)return null;const t=Cc[e.key],s=["local","lan"];return Xn(`AUX · ${e.title} — UpSPA vs RoUpSPA`,"resilient",s.map((i,a)=>Zn({dataset:t,panelKey:i,phaseTitle:e.title,kind:"resilient",index:a})).join(""))}function Oc(n){return Ic(n)||$c(n)||qc(n)}Object.freeze([...Object.keys(wr),...Object.keys(Sr),...Object.keys(kr)]);const g=String.raw,jc=(n="")=>String(n).replace(/\bBACKUP\b|\bBackup\b/g,"Aux"),Xt=[{id:"sp",label:"Storage providers · SPᵢ",kind:""},{id:"user",label:"User · U(uid, pwd)",kind:"user"},{id:"ls",label:"Login server · LSⱼ",kind:"ls"}],Zt=[{id:"sp",label:"Active providers · SPᵢ",kind:""},{id:"user",label:"User · U(uid, pwd)",kind:"user"},{id:"ls",label:"Login server · LSⱼ",kind:"ls"}];function H(n,e,t,s,i,a){const r=jc(n?.title||t),o=n?.citation?"":$l();return g`<div class="slide-shell">
+    <h2>${r}</h2>
+    ${a}
+    ${o}
+  </div>`}function Re(n,e=405){return ut({...n,dense:!0}).replace('style="--actor-columns:',`style="min-height:${e}px;--actor-columns:`)}function ot(n,e,t=[]){const s=n.map((a,r)=>g`<th style="padding:5px 7px;font-size:12px;line-height:1.1;${t[r]?`width:${t[r]}`:""}">${a}</th>`).join(""),i=e.map(a=>g`<tr>${a.map((r,o)=>g`<td style="padding:5px 7px;font-size:12.5px;line-height:1.16;${t[o]?`width:${t[o]}`:""}">${r}</td>`).join("")}</tr>`).join("");return g`<table class="status-table" style="margin-top:8px;table-layout:fixed"><thead><tr>${s}</tr></thead><tbody>${i}</tbody></table>`}function Bc(n){return g`<div class="game-chain">${n.map(([e,t],s)=>g`
+    <div class="game-step"><strong>${e}</strong><span>${t}</span></div>${s<n.length-1?'<div class="game-arrow">↓</div>':""}
+  `).join("")}</div>`}function pt(n,e=3){return g`<div style="display:grid;grid-template-columns:repeat(${e},1fr);gap:12px;margin-top:10px">${n.map(([t,s,i="var(--provider)"])=>g`
+    <div style="padding:12px 14px;border-top:4px solid ${i};background:rgba(255,255,255,.62);min-height:92px">
+      <strong style="display:block;font-size:16px">${t}</strong>
+      <span style="display:block;margin-top:5px;font-size:13.5px;line-height:1.22;color:var(--ink-soft)">${s}</span>
+    </div>`).join("")}</div>`}function _e(n){return g`<div style="position:absolute;right:0;top:48px;text-align:right">${n.map(([e,t])=>As(e,t)).join("")}</div>`}function Mc(n){const e=g`${_e([["all nₛₚ providers",""],["no Store/Discard","user"]])}${Re({actors:Xt.slice(0,2).reverse(),steps:[{number:"1-5",from:"user",to:"user",local:!0,label:g`\(R_{sp}\leftarrow\{0,1\}^{\lambda}\); \((K,\{k_i\})\leftarrow\mathsf{TOPRFGen}\); \((ssk,svk)\leftarrow\mathsf{SignKeyGen}\); \(K_0\leftarrow\mathsf{KeyGen}\); \(c_{id}\leftarrow\mathsf{Enc}_{F_K(pwd)}(ssk\|R_{sp}\|K_0)\)`},{number:6,from:"user",to:"sp",label:g`\(\langle uid,svk,c_{id},k_i\rangle\)`},{number:7,from:"sp",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\); accept only if no setup record exists`,state:"committed"}]},420)}
+  <div class="claim" style="margin-top:2px;padding:10px 14px;font-size:15px">Success requires \(\mathsf{OK}\) from every provider. The public \(uid\)-indexed setup record remains subject to deployment-side onboarding protection.</div>`;return H(n,"Backup · UpSPA protocol","UpSPA Setup - complete phase","upspa-lifecycle","Thesis, UpSPA Construction, Fig. “UpSPA setup phase”.",e)}function Fc(n){const e=[{number:1,from:"user",to:"sp",label:g`\(uid\) to every provider`},{number:2,from:"sp",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\) from all \(n_{sp}\)`},{number:3,from:"user",to:"sp",label:g`\(\mathsf{TOPRF}(pwd,\{k_i\}_{i\in[t_{sp}]})\rightarrow F_K(pwd)\)`},{number:4,from:"sp",to:"user",label:g`committed \(c_{id}\)`},{number:"5-8",from:"user",to:"user",local:!0,label:g`\(ssk\|R_{sp}\|K_0\leftarrow\mathsf{Dec}(c_{id})\); \(SUid_{l,i,j}=H(R_{sp}\|ls_j\|i)\); sample \(R^{ls_j}\), set \(ctr_{ac}=0\); \(c_{sp}=\mathsf{Enc}_{K_0}(R^{ls_j}\|ctr_{ac})\), \(vInfo=H(R^{ls_j}\|ls_j)\)`},{number:9,from:"user",to:"sp",label:g`\(\langle SUid_{l,i,j},c_{sp}\rangle\)`,state:"pending"},{number:10,from:"sp",to:"user",label:g`pending \(\mathsf{OK}/\mathsf{FAIL}\) from all \(n_{sp}\)`},{number:11,from:"user",to:"ls",label:g`\(\langle uid,vInfo\rangle\)`},{number:12,from:"ls",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\)`},{number:13,from:"user",to:"sp",label:g`\(\mathsf{Store}/\mathsf{Discard}\)`},{number:14,from:"sp",to:"user",label:g`final \(\mathsf{OK}/\mathsf{FAIL}\) from all \(n_{sp}\)`,state:"committed"}],t=g`${_e([["all nₛₚ writes",""],["pending → committed","pending"]])}${Re({actors:Xt,steps:e},418)}`;return H(n,"Backup · UpSPA protocol","UpSPA Registration - complete phase","upspa-registration","Thesis, UpSPA Construction, Fig. “UpSPA registration phase”.",t)}function zc(n){const e=[{number:1,from:"user",to:"sp",label:g`\(uid\)`},{number:2,from:"sp",to:"user",label:g`valid setup response; at least \(t_{sp}\)`},{number:3,from:"user",to:"sp",label:g`\(\mathsf{TOPRF}(pwd,\{k_i\}_{i\in[t_{sp}]})\rightarrow F_K(pwd)\)`},{number:4,from:"sp",to:"user",label:g`committed \(c_{id}\)`},{number:"5-6",from:"user",to:"user",local:!0,label:g`decrypt \(c_{id}\rightarrow ssk\|R_{sp}\|K_0\); derive \(SUid_{l,i,j}=H(R_{sp}\|ls_j\|i)\)`},{number:7,from:"user",to:"sp",label:g`\(SUid_{l,i,j}\)`},{number:8,from:"sp",to:"user",label:g`committed \(c_{sp}\) or \(\mathsf{FAIL}\)`},{number:"9-11",from:"user",to:"user",local:!0,label:g`decrypt \(R^{ls_j}\|ctr_{ac}\); select valid maximum counter; \(vInfo'=H(R^{ls_j}\|ls_j)\)`},{number:12,from:"user",to:"ls",label:g`\(\langle uid,vInfo'\rangle\)`},{number:13,from:"ls",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\)`,state:"committed"}],t=g`${_e([["tₛₚ valid reads","user"],["committed only",""]])}${Re({actors:Xt,steps:e},430)}
+  <div class="claim" style="margin-top:2px;padding:9px 13px;font-size:15px">Authentication is read-only: no pending state and no \(\mathsf{Store}/\mathsf{Discard}\).</div>`;return H(n,"Backup · UpSPA protocol","UpSPA Authentication - complete phase","upspa-authentication","Thesis, UpSPA Construction, Fig. “UpSPA authentication phase”.",t)}function Dc(n){const e=[{number:1,from:"user",to:"sp",label:g`\(uid\) to all providers`},{number:2,from:"sp",to:"user",label:g`setup response from all \(n_{sp}\)`},{number:3,from:"user",to:"sp",label:g`TOPRF on current \(pwd\) with any \(t_{sp}\) valid shares`},{number:4,from:"sp",to:"user",label:g`committed \(c_{id}\)`},{number:"5-6",from:"user",to:"user",local:!0,label:g`decrypt \(c_{id}\); derive each \(SUid_{l,i,j}\)`},{number:7,from:"user",to:"sp",label:g`\(SUid_{l,i,j}\)`},{number:8,from:"sp",to:"user",label:g`committed \(c_{sp}\) or \(\mathsf{FAIL}\)`},{number:"9-13",from:"user",to:"user",local:!0,label:g`decrypt/select max \(ctr_{ac}\); compute current \(vInfo'\); sample \(R^{ls_j}_{new}\); \(vInfo_{new}=H(R^{ls_j}_{new}\|ls_j)\); \(ctr'_{ac}=ctr_{max}+1\), \(c'_{sp}=\mathsf{Enc}_{K_0}(R^{ls_j}_{new}\|ctr'_{ac})\)`},{number:14,from:"user",to:"sp",label:g`\(\langle SUid_{l,i,j},c'_{sp}\rangle\) replacement`,state:"pending"},{number:15,from:"sp",to:"user",label:g`pending \(\mathsf{OK}/\mathsf{FAIL}\) from all \(n_{sp}\)`},{number:16,from:"user",to:"ls",label:g`\(\langle uid,vInfo',vInfo_{new}\rangle\)`},{number:17,from:"ls",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\)`},{number:18,from:"user",to:"sp",label:g`\(\mathsf{Store}/\mathsf{Discard}\)`},{number:19,from:"sp",to:"user",label:g`final acknowledgements from all \(n_{sp}\)`,state:"committed"}],t=g`${_e([["one account only","user"],["old committed remains readable","pending"]])}${Re({actors:Xt,steps:e},390)}`;return H(n,"Backup · UpSPA protocol","UpSPA Secret Update - complete phase","upspa-two-updates","Thesis, UpSPA Construction, Fig. “UpSPA secret-update phase”.",t)}function Kc(n){const e=Xt.slice(0,2).reverse(),t=[{number:1,from:"user",to:"sp",label:g`\(uid\) to all providers`},{number:2,from:"sp",to:"user",label:g`setup response from all \(n_{sp}\)`},{number:3,from:"user",to:"sp",label:g`TOPRF on current \(pwd\)`},{number:4,from:"sp",to:"user",label:g`committed \(c_{id}\)`},{number:"5-8",from:"user",to:"user",local:!0,label:g`decrypt \(ssk\|R_{sp}\|K_0\); generate fresh \((K_{new},\{k_{i,new}\})\); \(c_{id,new}=\mathsf{Enc}_{F_{K_{new}}(pwd_{new})}(ssk\|R_{sp}\|K_0)\); \(\sigma_i=\mathsf{Sign}_{ssk}(uid\|c_{id,new}\|k_{i,new}\|time\|i)\)`},{number:9,from:"user",to:"sp",label:g`\(\langle uid,\sigma_i,c_{id,new},k_{i,new},time,i\rangle\)`,state:"pending"},{number:10,from:"sp",to:"user",label:g`signature + freshness check; \(\mathsf{OK}/\mathsf{FAIL}\) from all \(n_{sp}\)`},{number:11,from:"user",to:"sp",label:g`\(\mathsf{Store}/\mathsf{Discard}\)`},{number:12,from:"sp",to:"user",label:g`final acknowledgements from all \(n_{sp}\)`,state:"committed"}],s=g`${_e([["O(nₛₚ), independent of nₗₛ","changed"],["no login server","user"]])}${Re({actors:e,steps:t},425)}
+  <div class="claim" style="margin-top:2px;padding:9px 13px;font-size:15px">\(K_0\), every account ciphertext, and every login-server verifier remain unchanged.</div>`;return H(n,"Backup · UpSPA protocol","UpSPA Password Update - complete phase","upspa-two-updates","Thesis, UpSPA Construction, Fig. “UpSPA password-update phase”.",s)}function Hc(n){const t=g`<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:8px">${[["1 · Login-server boundary","Keep pwd and deterministic password-derived values away from login servers.","Domain-specific high-entropy account secret"],["2 · Subthreshold privacy","Prevent fewer than tₛₚ providers from testing password guesses offline.","Threshold OPRF output protects cᵢd"],["3 · Independent updates","Rotate one account secret without coupling every account; change pwd without rewriting them.","Compact root + per-site layer"],["4 · Namespace/domain separation","Avoid public-only account names and cross-domain reuse after setup.","Hidden Rₛₚ routing + domain binding"],["5 · Authorization/freshness","A lookup value alone must not authorize replacement; old valid ciphertexts must not become current.","AE, signatures, counters, timestamp"],["6 · One committed outcome","Intermediate state must not become an accepted completed phase.","Pending/committed + all-provider finalization"],["7 · Ordinary deployment","Keep LS outside threshold crypto while stating the all-provider liveness cost.","Verifier-only LS; explicit DoS boundary"]].map(([s,i,a])=>g`
+    <div style="padding:11px 12px;border-top:4px solid var(--user);background:rgba(255,255,255,.62);min-height:150px">
+      <strong style="display:block;font-size:15px">${s}</strong>
+      <span style="display:block;margin-top:7px;font-size:13px;line-height:1.2;color:var(--ink-soft)">${i}</span>
+      <em style="display:block;margin-top:10px;font-style:normal;font-size:12px;font-weight:800;color:var(--login)">${a}</em>
+    </div>`).join("")}</div>
+    <div class="warning-box" style="margin-top:12px;padding:10px 14px;font-size:14px"><strong>Scope:</strong> the hidden-namespace prediction claim needs hidden-input output unpredictability; collision resistance alone supplies binding, not unpredictability.</div>`;return H(n,"Backup · UpSPA design","UpSPA design challenges - full map","upspa-design-challenges","Thesis, UpSPA Threat Model, “Design Challenges of UpSPA”.",t)}function Wc(n){const e=[["Adversary","Static, non-uniform PPT malicious adversary; the corruption set is fixed for the complete execution."],["Corruption",g`At most \(t_{sp}-1\) storage providers, \(n_{ls}-1\) login servers, and \(n_{user}-1\) users.`],["Honest target","At least one honest user and one honest login server; a corrupted target LS is outside the guarantee."],["Channels and time","Authenticated server channels, synchronous bounded delay, and the timestamp clock assumptions used by Password Update."],["Availability",g`Authentication needs \(t_{sp}\) valid responses; every UpSPA state-changing boundary needs all \(n_{sp}\).`]],t=[["Password claim","The view adds no new offline verification predicate; it does not make a human password guess negligible."],["Cryptographic assumptions","TOPRF PRF + receiver-input obliviousness; AE IND-CPA, integrity, and key binding; EUF-CMA signatures; collision-resistant hash."],["Completed phases","Safety only after protocol-defined final acknowledgements; interrupted finalization and repair are outside the theorem."],["Trusted endpoint","Malware, keyloggers, memory scraping, malicious extensions/OS/client code are excluded."],["Not claimed","Anonymity, traffic-analysis resistance, account recovery, permanent provider replacement, adaptive/mobile corruption, or general crash recovery."]],s=(a,r)=>g`<div style="display:grid;gap:8px">${a.map(([o,l])=>g`<div style="padding:10px 13px;border-left:4px solid ${r};background:rgba(255,255,255,.62)"><strong style="display:block;font-size:15px">${o}</strong><span style="display:block;margin-top:3px;font-size:13px;line-height:1.2;color:var(--ink-soft)">${l}</span></div>`).join("")}</div>`,i=g`<div class="backup-columns" style="gap:22px;margin-top:6px">${s(e,"var(--user)")}${s(t,"var(--danger)")}</div>`;return H(n,"Backup · UpSPA security","UpSPA threat model - exact boundary","upspa-threat-model","Thesis, UpSPA Threat Model, §§ System Model and Threat Model.",i)}function Vc(n){const e=[["Setup","Sample simulated root/signing/TOPRF material and dummy cᵢd; expose the corrupted-provider view.","Only after all nₛₚ accept."],["Registration","Use TOPRF/logical tables; create dummy account ciphertext and pending provider tuples; reproduce LS decision.","After LS accepts, Store, and all nₛₚ final acknowledgements."],["Authentication","Read committed logical root/account values, ignore pending state, select maximum valid counter, reproduce verifier decision.","No pending state and no Store/Discard."],["Secret update","Sample new account secret; keep dummy replacement pending; reproduce LS decision and exact finalization.","After LS accepts, Store, and all nₛₚ final acknowledgements."],["Password update","Generate fresh TOPRF key/shares; dummy cᵢd,new; sign exact uid‖cᵢd,new‖kᵢ,new‖time‖i; keep pending.","After Store and all nₛₚ final acknowledgements."]],t=Bc([["G₀","stopped real execution"],["G₁","replace TOPRF values and honest-receiver transcripts"],["G₂","replace identification plaintexts"],["G₃","replace account plaintexts"],["G₄","ideal FUpSPA + Sim"]]),s=g`<div class="split-60" style="gap:24px;align-items:start"><div>${ot(["Phase","Simulator state/view","Ideal success point"],e,["15%","57%","28%"])}</div><div>${t}<div class="claim" style="margin-top:10px;padding:10px 13px;font-size:14px">Pending/committed mechanics stay local to \(\mathsf{Sim}\); \(\mathcal F_{UpSPA}\) contains only the logical result of a completed phase.</div></div></div>`;return H(n,"Backup · UpSPA proof","UpSPA simulator - phase-to-ideal map","upspa-security","Thesis, UpSPA Security Analysis, Simulation Behavior and Games G₀-G₄.",s)}function Gc(n){const e=g`<div class="equation-box" style="margin-top:12px;font-size:18px;line-height:1.35">
+    \[\begin{aligned}
+    \mathsf{Adv}^{\mathsf{real/ideal}}_{UpSPA,\mathcal F_{UpSPA}}(\mathcal A)\le{}&\mathsf{Adv}^{prf}_{TOPRF}(\mathcal B_{prf})\\
+    &+q_{\mathsf{id}}\mathsf{Adv}^{ind\text{-}cpa}_{AE}(\mathcal B_{cpa,id})
+    +q_{\mathsf{sp}}\mathsf{Adv}^{ind\text{-}cpa}_{AE}(\mathcal B_{cpa,sp}).
+    \end{aligned}\]
+  </div>
+  ${pt([[g`\(q_{\mathsf{id}}\)`,"honest encryptions producing cᵢd or cᵢd,new"],[g`\(q_{\mathsf{sp}}\)`,"honest account-ciphertext encryptions; this proof count is not RoUpSPA’s availability quorum"],["Completion","only committed completed phases; interrupted finalization is outside the theorem"]],3)}
+  <div class="warning-box" style="margin-top:14px;padding:10px 14px;font-size:14px"><strong>Proof-accounting note.</strong> The theorem assumes receiver-input obliviousness and G₁ says it replaces honest-receiver transcripts, but the displayed final bound has no separately named receiver-input-obliviousness term. This transcription preserves the thesis formula; it does not invent one.</div>`;return H(n,"Backup · UpSPA proof","UpSPA final real/ideal advantage bound","upspa-security","Thesis, UpSPA Security Analysis, Completion of the Theorem.",e)}function Qc(n){const e=Zt.slice(0,2).reverse(),t=[{number:"1-6",from:"user",to:"user",local:!0,label:g`sample \(R_{sp}\); generate \((K,\{k_i\})\), \((ssk,svk)\), and \(K_0\); set \(ctr_{id}=0\); \(c_{id}=\mathsf{Enc}_{F_K(pwd)}(ssk\|R_{sp}\|K_0\|ctr_{id})\)`},{number:7,from:"user",to:"sp",label:g`\(\langle uid,svk,c_{id},k_i\rangle\)`},{number:8,from:"sp",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\) from all \(n_{sp}\)`,state:"committed"}],s=g`${_e([["all nₛₚ required",""],["ctrᵢd = 0","changed"]])}${Re({actors:e,steps:t},420)}
+    <div class="claim" style="margin-top:2px;padding:10px 14px;font-size:15px">Setup is the exception to quorum availability: synchronization can copy ciphertext state, but it cannot restore a provider’s missing long-term TOPRF share.</div>`;return H(n,"Backup · RoUpSPA protocol","RoUpSPA Setup - complete phase","roupspa-phase-semantics","Thesis, RoUpSPA Construction, Fig. “RoUpSPA setup phase”.",s)}function Jc(n){const e=[{number:1,from:"user",to:"sp",label:g`\(uid\)`},{number:2,from:"sp",to:"user",label:g`at least \(t_{sp}\) valid active identification responses`},{number:3,from:"user",to:"sp",label:g`TOPRF on \(pwd\)`},{number:4,from:"sp",to:"user",label:g`current \(c_{id}\)`},{number:"5-11",from:"user",to:"user",local:!0,label:g`decrypt \(ssk\|R_{sp}\|K_0\|ctr_{id}\); \(SUid_{l,j}=H(R_{sp}\|ls_j)\); sample \(R^{ls_j}\), \(ctr_{ac}=0\); compute \(c_{sp}\), \(vInfo\); \(\sigma_j=\mathsf{Sign}_{ssk}(uid\|SUid_{l,j}\|c_{sp}\|ctr_{ac})\)`},{number:12,from:"user",to:"ls",label:g`\(\langle\mathsf{Prepare},uid,vInfo\rangle\)`},{number:13,from:"ls",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\); tentative at LS`,state:"pending"},{number:14,from:"user",to:"sp",label:g`\(\langle uid,SUid_{l,j},c_{sp},ctr_{ac},\sigma_j\rangle\); provider installs CURRENT`},{number:15,from:"sp",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\); \(q_{sp}\) durable matching writes`,state:"committed"},{number:16,from:"user",to:"ls",label:g`\(\langle\mathsf{Store}/\mathsf{Discard},uid,vInfo\rangle\); terminal, no LS ack`}],t=g`${_e([["tₛₚ read","user"],["qₛₚ durable writes","changed"]])}${Re({actors:Zt,steps:e},365)}${sourceConflict()}`;return H(n,"Backup · RoUpSPA protocol","RoUpSPA Registration - complete phase","roupspa-phase-semantics","Thesis, RoUpSPA Construction, Fig. “RoUpSPA registration phase” and construction preamble.",t)}function Yc(n){const e=[{number:1,from:"user",to:"sp",label:g`\(uid\)`},{number:2,from:"sp",to:"user",label:g`\(t_{sp}\) valid active identification responses with one \(svk\)`},{number:3,from:"user",to:"sp",label:g`TOPRF on \(pwd\)`},{number:4,from:"sp",to:"user",label:g`current identification candidates`},{number:"5-7",from:"user",to:"user",local:!0,label:g`select max \(ctr_{id}\), decrypt \(c_{id}\), recover \(ssk\|R_{sp}\|K_0\), derive shared \(SUid_{l,j}=H(R_{sp}\|ls_j)\)`},{number:8,from:"user",to:"sp",label:g`\(SUid_{l,j}\)`},{number:9,from:"sp",to:"user",label:g`\(t_{sp}\) valid active account candidates`},{number:"10-12",from:"user",to:"user",local:!0,label:g`AE-decrypt and check bound counter; reject max-counter ties; select unique maximum \(ctr_{ac}\); \(vInfo'=H(R^{ls_j}\|ls_j)\)`},{number:13,from:"user",to:"ls",label:g`\(\langle uid,vInfo'\rangle\)`},{number:14,from:"ls",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\)`,state:"committed"}],t=g`${_e([["two active tₛₚ sets","user"],["not qₛₚ","danger"]])}${Re({actors:Zt,steps:e},425)}
+    <div class="claim" style="margin-top:2px;padding:9px 13px;font-size:15px">A stale provider, invalid record, tied maximum, or insufficient active threshold fails without repair or write-back.</div>`;return H(n,"Backup · RoUpSPA protocol","RoUpSPA Authentication - complete phase","roupspa-read-and-authentication","Thesis, RoUpSPA Construction, Fig. “RoUpSPA authentication phase”.",t)}function Xc(n){const e=[{number:1,from:"user",to:"sp",label:g`\(uid\)`},{number:2,from:"sp",to:"user",label:g`\(t_{sp}\) valid active identification responses`},{number:3,from:"user",to:"sp",label:g`TOPRF on current \(pwd\)`},{number:4,from:"sp",to:"user",label:g`current \(c_{id}\)`},{number:"5-7",from:"user",to:"user",local:!0,label:g`decrypt and recover \(ssk\|R_{sp}\|K_0\); derive \(SUid_{l,j}\)`},{number:8,from:"user",to:"sp",label:g`\(SUid_{l,j}\)`},{number:9,from:"sp",to:"user",label:g`active account candidates`},{number:"10-14",from:"user",to:"user",local:!0,label:g`select max \(ctr_{ac}\); compute current/new verifiers; \(ctr'_{ac}=ctr_{ac}+1\); \(c'_{sp}=\mathsf{Enc}_{K_0}(R^{ls_j}_{new}\|ctr'_{ac})\); \(\sigma_j=\mathsf{Sign}_{ssk}(uid\|SUid_{l,j}\|c'_{sp}\|ctr'_{ac})\)`},{number:15,from:"user",to:"ls",label:g`\(\langle\mathsf{Prepare},uid,vInfo',vInfo_{new}\rangle\)`},{number:16,from:"ls",to:"user",label:g`\(\mathsf{OK}/\mathsf{FAIL}\); tentative verifier`,state:"pending"},{number:17,from:"user",to:"sp",label:g`\(\langle uid,SUid_{l,j},c'_{sp},ctr'_{ac},\sigma_j\rangle\); install CURRENT`},{number:18,from:"sp",to:"user",label:g`\(q_{sp}\) durable matching acknowledgements`,state:"committed"},{number:19,from:"user",to:"ls",label:g`matching \(\mathsf{Store}/\mathsf{Discard}\); terminal, no LS ack`}],t=g`${_e([["Prepare → qₛₚ write → Store","changed"]])}${Re({actors:Zt,steps:e},325)}${sourceConflict()}`;return H(n,"Backup · RoUpSPA protocol","RoUpSPA Secret Update - complete phase","roupspa-phase-semantics","Thesis, RoUpSPA Construction, Fig. “RoUpSPA secret-update phase” and construction preamble.",t)}function Zc(n){const e=Zt.slice(0,2).reverse(),t=[{number:1,from:"user",to:"sp",label:g`\(uid\)`},{number:2,from:"sp",to:"user",label:g`\(t_{sp}\) valid active identification responses`},{number:3,from:"user",to:"sp",label:g`TOPRF on current \(pwd\)`},{number:4,from:"sp",to:"user",label:g`select largest-counter current \(c_{id}\)`},{number:"5-6",from:"user",to:"user",local:!0,label:g`decrypt \(ssk\|R_{sp}\|K_0\|ctr_{id}\)`},{number:7,from:"user",to:"sp",label:g`TOPRF on \(pwd_{new}\) under the same key/shares`},{number:"8-10",from:"user",to:"user",local:!0,label:g`\(ctr'_{id}=ctr_{id}+1\); \(c'_{id}=\mathsf{Enc}_{F_K(pwd_{new})}(ssk\|R_{sp}\|K_0\|ctr'_{id})\); \(\sigma_{id}=\mathsf{Sign}_{ssk}(uid\|c'_{id}\|ctr'_{id})\)`},{number:11,from:"user",to:"sp",label:g`\(\langle uid,\sigma_{id},c'_{id},ctr'_{id}\rangle\)`,state:"pending"},{number:12,from:"sp",to:"user",label:g`\(q_{sp}\) matching acknowledgements; current root retained meanwhile`},{number:13,from:"user",to:"sp",label:g`\(\mathsf{Store}/\mathsf{Discard}\); terminal, no acknowledgement`,state:"committed"}],s=g`${_e([["same TOPRF key/shares","user"],["provider tentative state","pending"]])}${Re({actors:e,steps:t},320)}${sourceConflict("password")}`;return H(n,"Backup · RoUpSPA protocol","RoUpSPA Password Update - complete phase","roupspa-phase-semantics","Thesis, RoUpSPA Construction, Fig. “RoUpSPA password-update phase”; Security Analysis, quorum theorem.",s)}function ed(n){const e=[{id:"stale",label:"Recovering SP · STALE",kind:""},{id:"quorum",label:"Provider response set",kind:""},{id:"local",label:"Local validation/install",kind:"user"}],t=[{number:1,from:"stale",to:"quorum",label:g`request current record for one identification/account family`},{number:2,from:"quorum",to:"stale",label:g`collect at least \(q_{sp}\) valid current-record responses`},{number:3,from:"stale",to:"local",label:g`verify exact user signature for counter-positive identification/account candidates`},{number:4,from:"local",to:"local",local:!0,label:g`reject malformed, lower-counter, invalid-signature, and distinct tied-maximum candidates`},{number:5,from:"local",to:"local",local:!0,label:g`select the unique valid largest counter; retain this provider’s own \(k_i\)`},{number:6,from:"local",to:"stale",label:g`install record and mark family ACTIVE; otherwise keep local state and remain STALE`,state:"committed"}],s=g`${_e([["qₛₚ valid responses","changed"],["no TOPRF","user"],["no LS state change",""]])}${Re({actors:e,steps:t},405)}
+  <div class="backup-columns" style="gap:18px;margin-top:2px"><div class="claim" style="margin-top:0;padding:9px 13px;font-size:14px"><strong>Identification:</strong> counter-zero Setup is the unique unsigned initialization exception; later records verify \(uid\|c'_{id}\|ctr'_{id}\).</div><div class="claim" style="margin-top:0;padding:9px 13px;font-size:14px"><strong>Account:</strong> verify \(uid\|SUid_{l,j}\|c_{sp}\|ctr_{ac}\). Synchronization copies ciphertext state, never another provider’s share.</div></div>`;return H(n,"Backup · RoUpSPA protocol","RoUpSPA Synchronization - repair procedure","roupspa-synchronization","Thesis, RoUpSPA Construction, “Storage-provider synchronization and repair”.",s)}function td(n){const e=g`${pt([["1 · Separate security from availability","tₛₚ protects password-dependent computation; qₛₚ measures sufficient replica participation.","var(--user)"],["2 · Authorize a shared namespace","SUidₗ,ⱼ enables corresponding-replica lookup but grants no write authority; signature + binding + counter do.","var(--changed)"],["3 · Distinguish valid from current","An older ciphertext can still authenticate; counters plus family-specific ACTIVE/STALE state exclude rollback.","var(--pending)"],["4 · Repair without plaintext","A returning provider selects signed ciphertext/counter evidence without pwd, TOPRF output, shares, or decrypted account state.","var(--provider)"],["5 · Limit the resilience claim","Completed quorum-backed safety and conditional stale repair are not consensus, unconditional liveness, or distributed transactions.","var(--danger)"]],5)}
+  <div class="equation-box" style="margin-top:18px;text-align:center;font-size:20px">\[n_{sp}\ge q_{sp}\ge t_{sp}>\frac{n_{sp}}2,\qquad 2q_{sp}-n_{sp}>t_{sp}-1\]</div>
+  <p class="small" style="margin-top:10px;font-size:15px!important">Shared \(SUid_{l,j}=H(R_{sp}\|ls_j)\) is routing metadata. Signatures authorize/bind records; counters and state rules establish freshness.</p>`;return H(n,"Backup · RoUpSPA design","RoUpSPA design challenges - new obligations only","roupspa-what-changes","Thesis, RoUpSPA Threat Model, “Design Challenges of RoUpSPA”.",e)}function sd(n){const e=g`<div class="proof-map" style="grid-template-columns:1fr 1.25fr;gap:24px;margin-top:8px">
+    <div class="bad-events">
+      <div class="bad-event"><strong>BadSig</strong><span>Honest provider accepts a write/synchronization record not signed by the honest user. Signed strings are \(uid\|SUid_{l,j}\|c_{sp}\|ctr_{ac}\) and \(uid\|c'_{id}\|ctr'_{id}\).</span></div>
+      <div class="bad-event"><strong>BadHash</strong><span>A collision changes account-family binding \(R_{sp}\|ls_j\) or verifier binding \(R^{ls_j}\|ls_j\).</span></div>
+      <div class="bad-event"><strong>BadCtxt</strong><span>Fresh adversarial ciphertext acceptance or cross-key acceptance changes a phase result. Honest replay is handled by counters and ACTIVE/STALE rules.</span></div>
+    </div>
+    <div>
+      <div class="equation-box" style="font-size:17px;line-height:1.35">\[\begin{aligned}
+      \epsilon^{RoUpSPA}_{\mathsf{bad}}(\lambda)={}&q_{\mathsf{dec}}\mathsf{Adv}^{int\text{-}ctxt}_{AE}(\mathcal B_{ctxt})
+      +q_{\mathsf{kb}}\mathsf{Adv}^{kb}_{AE}(\mathcal B_{kb})\\
+      &+q_{\mathsf{vk}}\mathsf{Adv}^{euf\text{-}cma}_{Sign}(\mathcal B_{sig})
+      +\mathsf{Adv}^{cr}_{H}(\mathcal B_{hash}).
+      \end{aligned}\]</div>
+      <p class="small" style="margin-top:14px;font-size:15px!important">\(\Pr[BadSig\vee BadHash\vee BadCtxt]\le\epsilon^{RoUpSPA}_{\mathsf{bad}}(\lambda)\). Store/Discard are not additional signed records; exact retransmission is idempotency, not forgery.</p>
+    </div>
+  </div>`;return H(n,"Backup · RoUpSPA proof","RoUpSPA bad events - exact bindings","roupspa-security","Thesis, RoUpSPA Security Analysis, Bad Events.",e)}function nd(n){const e=g`<div class="backup-columns" style="gap:24px;margin-top:6px">
+    <div>
+      <h3 style="font-size:22px">Account record</h3>
+      <div class="equation-box" style="margin-top:8px;font-size:16px">\[uid\|SUid_{l,j}\|c_{sp}\|ctr_{ac}\]</div>
+      <ul class="compact-list"><li>Registration requires counter 0 and nonexistence.</li><li>Secret Update requires exactly current counter + 1.</li><li>Provider installs the signed account record before durable acknowledgement.</li><li>Different record at one counter, skipped counter, or lower counter is rejected.</li></ul>
+    </div>
+    <div>
+      <h3 style="font-size:22px">Identification replacement</h3>
+      <div class="equation-box" style="margin-top:8px;font-size:16px">\[uid\|c'_{id}\|ctr'_{id}\]</div>
+      <ul class="compact-list"><li>Password Update requires exactly current counter + 1.</li><li>The provider retains CURRENT and stores one matching TENTATIVE record.</li><li>Matching Store promotes it; matching Discard removes only it.</li><li>Ordinary reads never return the tentative root.</li></ul>
+    </div>
+  </div>
+  ${pt([["Exact retransmission","Idempotent: the same signed tuple may be retried."],["Serialization","No honest read, later update, or synchronization begins before the earlier terminal decision."],["Discarded partial account write","The proof classifies such replicas as STALE and may fail availability; it does not turn them into ideal success."]],3)}
+  ${sourceConflict()}`;return H(n,"Backup · RoUpSPA proof","Authorized writes and terminal decisions","roupspa-security","Thesis, RoUpSPA Security Analysis, Lemma “Authorized writes and terminal decisions”.",e)}function id(n){const e=g`<div class="split-60" style="gap:28px;align-items:start;margin-top:10px">
+    <div>
+      <div class="equation-box" style="text-align:center;font-size:21px">\[|C_{sp}|\le t_{sp}-1,\qquad t_{sp}>\frac{n_{sp}}2\]</div>
+      ${pt([["Identification threshold","At least tₛₚ valid ACTIVE responses with one verification key; choose the unique valid maximum ctrᵢd."],["Account threshold","At least tₛₚ valid ACTIVE responses; AE-decrypt, check bound counters, choose the unique maximum ctrₐc."],["Honest witness","Every tₛₚ response set contains an honest provider under the corruption bound."],["Failure behavior","Missing active threshold, invalid/tied candidates, or malformed responses cause failure - not automatic repair."]],2)}
+    </div>
+    <div>
+      <h3 style="font-size:23px">Why this is not a quorum read</h3>
+      <div class="claim" style="margin-top:10px;padding:13px 16px;font-size:17px">Authentication uses \(t_{sp}\), not \(q_{sp}\). The quorum theorem first guarantees that the latest completed state remains represented among active replicas; the read then needs one honest witness plus maximum-counter validation.</div>
+      <div class="warning-box" style="margin-top:16px;padding:12px 15px;font-size:15px">Signatures authorize stored writes. The user does <strong>not</strong> verify provider signatures on reads; AE integrity/key binding and the encrypted/external counter checks exclude modified returned ciphertexts.</div>
+    </div>
+  </div>`;return H(n,"Backup · RoUpSPA proof","Authentication from active threshold responses","roupspa-security","Thesis, RoUpSPA Security Analysis, Lemma “Authentication from active threshold responses”.",e)}function ad(n){const e=g`<div class="split-60" style="gap:24px;align-items:start"><div>${vr()}</div><div style="padding-top:10px">
+    <div class="equation-box" style="font-size:19px">\[|W\cap R|\ge 2q_{sp}-n_{sp}>t_{sp}-1\]</div>
+    <ol class="compact-list" style="margin-top:12px"><li>\(W\): \(q_{sp}\) providers holding the latest completed record after terminal Store.</li><li>\(R\): later synchronization quorum of \(q_{sp}\) valid current-record responses.</li><li>The intersection contains an honest provider, which returns the completed record and never decreases its counter.</li><li>Without BadSig/BadCtxt and with serialization, no larger acceptable completed counter exists.</li><li>The unique-largest-counter rule returns exactly the latest completed record.</li></ol>
+  </div></div>
+  <div class="warning-box" style="margin-top:-6px;padding:9px 13px;font-size:13px"><strong>Completion/delivery caveat.</strong> The thesis phase says sending Store is terminal, but this proof starts after \(q_{sp}\) providers hold CURRENT state. A bounded processed-delivery condition is needed for that starting set; the manuscript states it more explicitly than the thesis phase wording.</div>`;return H(n,"Backup · RoUpSPA proof","Quorum intersection preserves the latest completed state","roupspa-quorum-intersection","Thesis, RoUpSPA Security Analysis, Theorem “Quorum consistency and recovery correctness”. Example (7,4,5) satisfies the thesis conditions.",e)}function rd(n){const e=g`<div class="equation-box" style="margin-top:8px;font-size:16.5px;line-height:1.32">\[\begin{aligned}
+    \mathsf{Adv}^{\mathsf{real/ideal}}_{RoUpSPA,\mathcal F_{UpSPA}}(\mathcal A)\le{}&2\epsilon^{RoUpSPA}_{\mathsf{bad}}(\lambda)
+    +q_{\mathsf K}\mathsf{Adv}^{prf}_{TOPRF}(\mathcal B_{prf})
+    +q_{\mathsf T}\mathsf{Adv}^{rio}_{TOPRF}(\mathcal B_{rio})\\
+    &+q_{\mathsf{id}}\mathsf{Adv}^{ind\text{-}cpa}_{AE}(\mathcal B_{cpa,id})
+    +q_{\mathsf{ac}}\mathsf{Adv}^{ind\text{-}cpa}_{AE}(\mathcal B_{cpa,sp}).
+  \end{aligned}\]</div>
+  ${pt([[g`\(q_{\mathsf K}\)`,"full TOPRF keys honestly generated at Setup; RoUpSPA retains the same key across Password Update"],[g`\(q_{\mathsf T}\)`,"honest-receiver TOPRF sessions; Password Update contributes two inputs; Synchronization contributes none"],[g`\(q_{\mathsf{id}}\)`,"honest identification encryption calls"],[g`\(q_{\mathsf{ac}}\)`,"honest account encryption calls; replication/copying is not a new encryption"]],4)}
+  <div class="claim" style="margin-top:14px;padding:11px 14px;font-size:15px">Quorum intersection, exact-counter acceptance, ACTIVE/STALE bookkeeping, terminal decisions, and synchronization consistency are deterministic proof obligations; they add no computational advantage term.</div>
+  <div class="warning-box" style="margin-top:10px;padding:9px 13px;font-size:13px"><strong>Notation correction preserved.</strong> The thesis earlier collides \(q_{sp}\) with an encryption-count name; the final formula uses \(q_{ac}\). This slide reserves \(q_{sp}\) for the availability quorum.</div>`;return H(n,"Backup · RoUpSPA proof","RoUpSPA final real/ideal advantage bound","roupspa-security","Thesis, RoUpSPA Security Analysis, Final Advantage Bound.",e)}function od(n){const t=g`${ot(["Dimension","Authoritative configuration / boundary"],[["Sampling","50 warm-up iterations + 200 measured successful Rust samples; random generation outside the timed region; plotted points are medians."],["Hardware","64-bit Windows laptop; 11th Gen Intel Core i7-1185G7 at 3.00 GHz; 16 GB RAM; RTX 2060 reported but unused."],["Build","Rust 1.93 toolchain; --locked --release for the unified comparison."],["Unified crypto profile","UpSPA/quorum: Ristretto255, BLAKE3, XChaCha20-Poly1305, Ed25519; PASTA-U additionally BLS12-381; AugSSO BLS12-381 + X25519."],["LAN model","0.5 ms RTT; 0.05 ms jitter; 1000 Mbps."],["WAN model","60 ms RTT; 5 ms jitter; 50 Mbps; 64-byte message overhead."],["Measurement boundary","Client, SP, and full targets are independently sampled; their medians are not algebraically added. Provider requests within a stage run in parallel; stages remain sequential."],["Persistence","Rust provider targets use in-memory maps; no disk latency, WAL, cross-party durable transaction, production TLS/API, retry, or crash repair is measured."],["Ledger separation","EVM gas, TRON Energy/Bandwidth/SUN, CPU time, and confirmation latency remain separate units; they are not pooled with Rust latency."]],["20%","80%"])}
+    <div class="warning-box" style="margin-top:10px;padding:9px 13px;font-size:14px"><strong>Network labels:</strong> LAN/WAN are controlled composed estimates, not measurements from geographically deployed VPSs. “Modeled stages” are a benchmark schedule, not formal protocol rounds.</div>`;return H(n,"Backup · Evaluation","Experimental configuration and measurement boundary","implementation-architecture-method","Thesis, Implementation chapter, Common Benchmark Environment and Network Profiles.",t)}function ld(n){const e=g`<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:2px">
+    <div class="chart-wrap">${oe({labels:We,series:Gn,yMax:.65,xLabel:"threshold tₛₚ · nₛₚ = 30",title:"Registration and authentication · client",width:550,height:350})}</div>
+    <div class="chart-wrap">${oe({labels:We,series:Qn,yMax:1,xLabel:"threshold tₛₚ · nₛₚ = 30",title:"Setup and updates · client",width:550,height:350})}</div>
+  </div>
+  <div class="chart-takeaway" style="margin-top:6px;font-size:17px">At fixed \(n_{sp}=30\), every retained client series remains below 1 ms; UpSPA password update is the largest local UpSPA path in this sweep.</div>
+  <p class="small center" style="margin-top:6px;font-size:13px!important">Exact points from the active thesis figures; no client/provider medians are added.</p>`;return H(n,"Backup · Evaluation","UpSPA and TSPA - fixed-provider client charts","results-upspa-tspa","Thesis, Implementation chapter, figures client-reg-auth-nsp30 and client-setup-updates-nsp30.",e)}function na(n){return[{name:"UpSPA registration",color:"#164a7b",values:n.registration.upspa},{name:"RoUpSPA registration",color:"#7b61a8",dash:!0,values:n.registration.roupspa},{name:"UpSPA secret update",color:"#0b8f8c",values:n.secret.upspa},{name:"RoUpSPA secret update",color:"#d17722",dash:!0,values:n.secret.roupspa},{name:"UpSPA password update",color:"#3f7b5a",values:n.password.upspa},{name:"RoUpSPA password update",color:"#b84d4d",dash:!0,values:n.password.roupspa}]}function cd(n){const e=g`<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:0">
+    <div class="chart-wrap">${oe({labels:Un,series:na(Ue),yMax:.8,xLabel:"(nₛₚ/tₛₚ/qₛₚ)",title:"Complete local medians",width:560,height:360})}</div>
+    <div class="chart-wrap">${oe({labels:Un,series:na(Ie),yMax:4.5,xLabel:"(nₛₚ/tₛₚ/qₛₚ)",title:"Composed LAN medians",width:560,height:360})}</div>
+  </div>
+  <div class="chart-takeaway" style="margin-top:2px;font-size:17px">RoUpSPA’s local checks are modest; its additional sequential coordination is more visible after the common LAN composition.</div>
+  <p class="small center" style="margin-top:6px;font-size:13px!important">Functionality differs: UpSPA requires full availability for writes; RoUpSPA adds quorum completion, ACTIVE/STALE state, and synchronization.</p>`;return H(n,"Backup · Evaluation","UpSPA and RoUpSPA - local and composed LAN","results-upspa-roupspa","Thesis, Implementation chapter, UpSPA/RoUpSPA comparison data. LAN is composed, not deployed.",e)}function dd(n){const e=g`<div class="split-60" style="gap:26px;align-items:start"><div class="chart-wrap">${oe({labels:Jn,series:Yn,yMax:31,xLabel:"storage providers nₛₚ · qₛₚ = ⌈0.8nₛₚ⌉",title:"Password-update complete local latency",width:790,height:420})}</div><div>
+    ${pt([["Quorum/ABD","1.0183 → 29.1757 ms"],["Signed PBB","0.903637 → 8.254218 ms"],["Authorized PBB","0.894433 → 8.220148 ms"],["Shared local blockchain","1.014246 → 8.609863 ms"]],2)}
+    <div class="warning-box" style="margin-top:14px;padding:10px 13px;font-size:14px">The public-state modes use \(q_{sp}\) only to match the availability scenario; it is not a board or ledger quorum. The four series have different synchronization work and trust boundaries.</div>
+  </div></div>`;return H(n,"Backup · Evaluation","Synchronization backends - password-update scaling","results-backends","Thesis, Implementation chapter, resilient backend scaling at qₛₚ=⌈0.8nₛₚ⌉.",e)}function ud(n){const e=[["Contract deployment","1","1,356,750","1,356,750","1,356,750"],["Direct registration","10","123,607","123,619","123,639"],["Direct secret update","10","51,157","51,173","51,189"],["Direct password update","10","51,145","51,169","51,189"]],t=[["8 / 3","93,625","93,637","11,704.625","28,260"],["32 / 5","93,625","93,643","2,926.344","30,790"],["128 / 7","93,649","93,661","731.727","33,350"]],s=g`<div class="backup-columns" style="gap:24px;margin-top:4px"><div><h3 style="font-size:21px">Direct commitments · gas receipts</h3>${ot(["Operation","N","Min","p50","Max"],e,["37%","9%","18%","18%","18%"])}</div><div><h3 style="font-size:21px">Merkle publication and verification</h3>${ot(["B/depth","Publish min","Publish p50","p50/B","Verify p50"],t,["18%","21%","21%","20%","20%"])}</div></div>
+  ${pt([["Run","qa-local-anvil-20260728b · Anvil 1.5.1 · chain ID 31337"],["Receipts","91/91 successful, blocks 2-92; 10 repetitions; one confirmation"],["Interpretation","Local execution-cost/regression evidence - not public-network fee, congestion, or finality"],["Roles","Deployer, publisher, relayer, controller mapped to one Anvil EOA in this archive"]],4)}
+  <div class="warning-box" style="margin-top:10px;padding:9px 13px;font-size:13px">With only ten successful samples per operation, p95 is the observed maximum. ERC-1271 is contract-tested but has no separate receipt series; no gas comparison is inferred.</div>`;return H(n,"Backup · Ledger evaluation","EVM direct and Merkle gas - receipt-level run","results-key-takeaways","Thesis, Implementation chapter, Tables “Receipt-level EVM gas”.",s)}function pd(n){const e=[["Read latest after valid write","6,240"],["Rejected duplicate counter","5,305"],["Rejected stale counter","5,668"],["Rejected invalid phase","9,421"],["Rejected zero bundle-pointer hash","9,247"],["Rejected zero record hash","9,169"],["Rejected zero tag","9,229"],["Valid registration commitment","121,902"],["Valid secret-update commitment","32,842"],["Valid password-update commitment","32,798"]],t=[["Rejected unknown-batch proof","14,879"],["Verify proof · depth 8","13,730"],["Verify proof · depth 16","21,614"],["Verify proof · depth 32","37,624"],["Append root · 1 leaf","144,515"],["Append root · 64 leaves","144,538"],["Append root · 256 leaves","144,472"],["Read batch after write","6,708"],["Rejected invalid counter range","9,825"],["Rejected duplicate batch tag","5,511"],["Rejected duplicate Merkle root","7,658"],["Rejected empty batch","9,702"],["Rejected zero batch tag","9,449"],["Rejected zero Merkle root","9,455"]],s=g`<div class="backup-columns" style="gap:22px;margin-top:0"><div><h3 style="font-size:20px">Single-commitment board · Foundry gas</h3>${ot(["Target","Gas"],e,["76%","24%"])}</div><div><h3 style="font-size:20px">Merkle-root board · Foundry gas</h3>${ot(["Target","Gas"],t,["76%","24%"])}</div></div>
+  <p class="small center" style="margin-top:6px;font-size:13px!important">Snapshot boundary excludes test setup; provider signatures are checked off chain. These results are not pooled with the receipt distribution because the contract and timed boundary differ.</p>`;return H(n,"Backup · Ledger evaluation","Foundry snapshot - complete cross-check table","results-key-takeaways","Thesis, Implementation/upspa_foundry_gas_snapshot.tex.",s)}function hd(n){const e=[["Implementation","TVM-compatible contract and benchmark runner complete."],["Scenario matrix","Deployment; direct registration, secret update, password update; root publication per batch; transactional proof verification."],["Designed receipt fields","Energy, Bandwidth, SUN fee, submit/confirm latency, tx ID, block metadata, success, solidification."],["Supplied archive","No completed live TRON receipt file."],["Publication rule",g`Add results only after every normal row has \(success=true\) and \(solidified=true\).`]],t=g`<div style="display:grid;place-items:center;margin-top:28px"><div style="width:78%">
+    <div class="warning-box" style="padding:22px 26px;border-left-color:var(--danger);background:var(--danger-soft);font-size:25px;text-align:center"><strong>Native TRON measurements are pending.</strong></div>
+    ${ot(["Status item","Evidence"],e,["25%","75%"])}
+    <div class="claim danger" style="margin-top:18px;padding:13px 17px;font-size:18px;text-align:center">No TRON chart, no synthetic Energy/Bandwidth/SUN values, and no reuse of EVM gas as a proxy.</div>
+  </div></div>`;return H(n,"Backup · Ledger evaluation","TRON implementation status","results-key-takeaways","Thesis, Implementation chapter, “TRON Implementation and Pending Native Measurements”.",t)}function md(n){const t=g`<div class="reference-list" style="columns:2;column-gap:42px;margin-top:6px">${[["SPA","Tolga Acar, Mira Belenkiy, and Alptekin Küpçü. “Single Password Authentication.” Computer Networks, 2013."],["TSPA","Devriş İşler and Alptekin Küpçü. “Threshold Single Password Authentication.” ESORICS DPM, 2017."],["DiSPP","Devriş İşler and Alptekin Küpçü. “Distributed Single Password Protocol Framework.” Cryptology ePrint Archive, Paper 2018/976, 2018."],["UpSPA","Devriş İşler, Reza Saadi, and Alptekin Küpçü. “Secure and Updatable Single Password Authentication.” Cryptology ePrint Archive, Paper 2026/784, 2026."],["RoUpSPA","Reza Saadi, Devriş İşler, and Alptekin Küpçü. “Robust Updatable Single Password Authentication.” Manuscript submitted to ACM Transactions on Privacy and Security."],["PAS-TA-U","Rachit Rawat and Mahabir Prasad Jhanwar. “PAS-TA-U: PASsword-Based Threshold Authentication with Password Update.” SPACE, 2020."],["AugSSO","Changsong Jiang, Chunxiang Xu, and Guomin Yang. “AugSSO: Secure Threshold Single-Sign-On Authentication With Popular Password Collection.” IEEE Transactions on Mobile Computing, 2025."],["ABD register","Hagit Attiya, Amotz Bar-Noy, and Danny Dolev. “Sharing Memory Robustly in Message-Passing Systems.” Journal of the ACM 42(1), 1995."],["Byzantine quorums","Dahlia Malkhi and Michael K. Reiter. “Byzantine Quorum Systems.” Distributed Computing 11(4), 1998."],["Append-only PBB","James Heather and David Lundin. “The Append-Only Web Bulletin Board.” FAST 2008, Revised Selected Papers, LNCS 5491, 2009."],["Evaluation sources","Active thesis Implementation chapter and its included raw-data/chart sources; local Rust, composed LAN/WAN, EVM receipts, and Foundry snapshots remain separate evidence classes."],["Protocol authority","Active thesis UpSPA and RoUpSPA Construction and Security Analysis files. Manuscripts are secondary when their semantics conflict with the thesis."]].map(([s,i])=>g`<p style="font-size:13.5px;margin-bottom:11px"><strong>${s}.</strong> ${i}</p>`).join("")}</div>`;return H(n,"Backup · Sources","References used by the defense deck","thank-you","Active thesis references.bib and Publications.tex; active UpSPA/RoUpSPA source graphs.",t)}function fd(n){const e=[[g`\(n_{sp}\)`,"number of storage providers"],[g`\(t_{sp}\)`,"cryptographic/TOPRF response threshold"],[g`\(q_{sp}\)`,"RoUpSPA durable-write and synchronization quorum"],[g`\(uid\)`,"public/guessable user identifier"],[g`\(ls_j\)`,"canonical authenticated login-server label"],[g`\(pwd,pwd_{new}\)`,"current and replacement remembered passwords"],[g`\(R_{sp}\)`,"hidden high-entropy identifier secret"],[g`\(R^{ls_j}\)`,"login-server-specific high-entropy account secret"],[g`\(K, k_i\)`,"TOPRF full key and provider share"],[g`\(K_0\)`,"account-record encryption key"],[g`\(c_{id}\)`,"password-protected identification/root ciphertext"],[g`\(c_{sp}\)`,"account ciphertext"],[g`\(SUid_{l,i,j}\)`,"UpSPA provider-specific account identifier"],[g`\(SUid_{l,j}\)`,"RoUpSPA shared account-family routing identifier"],[g`\(vInfo_j\)`,g`login-server verifier \(H(R^{ls_j}\|ls_j)\)`],[g`\(ctr_{id}\)`,"RoUpSPA identification counter"],[g`\(ctr_{ac}\)`,"account-record counter"],[g`\(ssk,svk\)`,"user signing and verification keys"],["PENDING","not returned by ordinary reads; awaits terminal decision"],["CURRENT","provider’s current accepted record"],["ACTIVE / STALE","eligible for ordinary response / must synchronize first"]],t=g`<div class="notation-grid" style="grid-template-columns:repeat(3,1fr);gap:5px 24px;margin-top:4px">${e.map(([s,i])=>g`<div class="notation-item" style="grid-template-columns:92px 1fr;padding:5px 0"><strong style="font-size:15px">${s}</strong><span style="font-size:12.5px;line-height:1.15">${i}</span></div>`).join("")}</div>
+  <div class="warning-box" style="margin-top:10px;padding:8px 12px;font-size:13px"><strong>Do not conflate:</strong> \(t_{sp}\) is the cryptographic response/corruption boundary; \(q_{sp}\) is the resilience write/repair quorum. Signatures authorize records; counters and state rules establish freshness.</div>`;return H(n,"Backup · Quick reference","Notation and state vocabulary","upspa-two-layer-state","Active thesis symbols, UpSPA Construction, and RoUpSPA Construction.",t)}const gd={"backup-upspa-setup-full":Mc,"backup-upspa-registration-full":Fc,"backup-upspa-authentication-full":zc,"backup-upspa-secret-update-full":Dc,"backup-upspa-password-update-full":Kc,"backup-upspa-challenges-full":Hc,"backup-upspa-threat-model-full":Wc,"backup-upspa-simulator-map":Vc,"backup-upspa-advantage-bound":Gc,"backup-roupspa-setup-full":Qc,"backup-roupspa-registration-full":Jc,"backup-roupspa-authentication-full":Yc,"backup-roupspa-secret-update-full":Xc,"backup-roupspa-password-update-full":Zc,"backup-roupspa-synchronization-full":ed,"backup-roupspa-challenges-full":td,"backup-roupspa-bad-events":sd,"backup-roupspa-authorized-writes":nd,"backup-roupspa-active-threshold":id,"backup-roupspa-quorum-proof":ad,"backup-roupspa-advantage-bound":rd,"backup-experiment-configuration":od,"backup-upspa-tspa-charts":ld,"backup-upspa-roupspa-charts":cd,"backup-backend-charts":dd,"backup-evm-gas":ud,"backup-foundry-cross-check":pd,"backup-tron-status":hd,"backup-references":md,"backup-notation":fd};function vd(n,e){const t=Oc(n);if(t)return t;const s=Uc(n,e);if(s)return s;const i=gd[n];return i?i(e):H(e,"Backup",e?.title||"Backup slide",e?.returnTarget||e?.originId||"thank-you","Backup slide metadata.",'<p class="lead">Slide content unavailable.</p>')}function et(n=""){return String(n).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}function vn(n="",e={}){return String(n).replace(/\{\{config\.([A-Za-z0-9_]+)\}\}/g,(t,s)=>et(e[s]??""))}function bd(n,e){const t=n.content||{},s=Array.isArray(e.genealogy)?e.genealogy:[],i=[0,1,2].map(a=>{const r=s[a]||{},o=!r.name||!r.role||!r.institution||/TODO/i.test(JSON.stringify(r)),l=o?"?":r.name.split(/\s+/).filter(Boolean).slice(0,2).map(h=>h[0]).join("").toUpperCase(),c=r.photo?`<img src="${et(r.photo)}" alt="${et(r.name)}">`:`<span aria-hidden="true">${et(l)}</span>`;return`<article class="gene-node ${o?"todo":""}"><div class="portrait">${c}</div><strong>${et(r.name||"TODO")}</strong><span>${et(r.role||"Role not configured")}</span><small>${et(r.institution||"Institution not configured")}</small></article>`});return`<div class="slide-shell">${Hs(t.kicker||"Academic genealogy")}<h2>${t.title||n.title}</h2><p class="lead genealogy-lead">${t.lead||""}</p><div class="genealogy">${i.join("")}</div></div>`}function yd(n,e){const t=n.content||{};if(t.layout==="genealogy")return bd(n,e);if(t.layout==="raw")return vn(t.body||"",e);const s=t.kicker||n.sectionLabel||n.section||"Slide",i=vn(t.title||n.title||"",e),a=vn(t.body||"",e);return`<div class="slide-shell">${Hs(s)}<h2>${i}</h2>${a}</div>`}const wd=[{id:"user",label:"User",kind:"user"},{id:"sp",label:"Storage providers \\(SP_i\\)"}];function Sd(n){return n?"\\(ssk, R^{sp}, K_0, ctr_{id}\\)":"\\(ssk, R^{sp}, K_0\\)"}function Ar({password:n="pwd",sameShares:e=!1,detailed:t=!1}={}){if(!t)return`<div class="protocol-interaction toprf-interaction is-compact-minimal" data-protocol-interaction="toprf" data-span="user-sp">
+      <div class="interaction-heading"><strong>Interactive TOPRF</strong></div>
+    </div>`;const s=`\\(${n}\\)`;return`<div class="protocol-interaction toprf-interaction${t?" is-detailed":""}" data-protocol-interaction="toprf" data-span="user-sp">
+    <div class="interaction-heading"><strong>Interactive TOPRF(${s})</strong><span>User ↔ \\(SP_i\\)</span></div>
+    <div class="interaction-parties" aria-hidden="true"><b>User</b><i>↔</i><b>\\(SP_i\\)</b></div>
+    <div class="interaction-exchange"><span>blinded ${s} request →</span><span>← valid partial evaluations · ${e?"same provider shares \\(\\{k_i\\}\\)":"provider shares \\(\\{k_i\\}\\)"}</span></div>
+  </div>`}function Pr({mode:n="compact",password:e="pwd",oldPassword:t=!1,resilient:s=!1}={}){return n==="compact"?`<div class="protocol-interaction identification-interaction is-compact-minimal ${s?"is-resilient":"is-upspa"}" data-protocol-interaction="identification" data-span="user-sp">
+      <div class="interaction-heading"><strong>Identification</strong></div>
+    </div>`:`<div class="identification-component is-detailed" data-identification-mode="detailed">${ut({actors:wd,steps:[{number:1,from:"user",to:"sp",label:"\\(Uid\\)"},{number:2,from:"sp",to:"user",label:"OK / FAIL"},{number:3,from:"user",to:"sp",interaction:Ar({password:e,detailed:!0})},{number:4,from:"user",to:"user",local:!0,label:`Aggregate at least \\(t_{sp}\\) valid partial evaluations; finalize \\(F_K(${e})\\)`},{number:5,from:"sp",to:"user",label:"Return \\(c_{id}\\)"},{number:6,from:"user",to:"user",local:!0,label:`Authenticated-decrypt \\(c_{id}\\) with \\(F_K(${e})\\)`},{number:7,from:"user",to:"user",local:!0,label:`Recover ${Sd(s)}`}]})}</div>`}function Ye({number:n=1,password:e="pwd",oldPassword:t=!1,resilient:s=!1}={}){return{number:n,from:"user",to:"sp",interaction:Pr({mode:"compact",password:e,oldPassword:t,resilient:s})}}function kd({number:n,password:e="pwd",sameShares:t=!1}={}){return{number:n,from:"user",to:"sp",interaction:Ar({password:e,sameShares:t})}}const Xe={upspa:[{id:"ls",label:"Login server \\(LS_j\\)",kind:"ls"},{id:"user",label:"User",kind:"user"},{id:"sp",label:"Storage providers \\(SP_i\\)"}],password:[{id:"user",label:"User",kind:"user"},{id:"sp",label:"Storage providers \\(SP_i\\)"}]};function ge(n,e=""){return`<div class="takeaway-strip ${e}"><b>Takeaway</b><span>${n}</span></div>`}function xr(n,e,t=""){return`<figure class="exact-figure"><img src="${n}" alt="${e}">${t?`<figcaption>${t}</figcaption>`:""}</figure>`}function he(n,e,t){return`<div class="screenshot-stage">${xr(n,e,t)}</div>`}function Ze(n,e,t){return ut({actors:n,steps:e,finalLabel:t})}function bn(n,e){return`<article class="mini-chart-card">${oe({labels:Un,series:[{name:"UpSPA",color:"#164a7b",values:Ue[n].upspa},{name:"RoUpSPA",color:"#7b61a8",values:Ue[n].roupspa}],yMax:Math.max(...Ue[n].roupspa)*1.12,yLabel:"Local client (ms)",xLabel:"n/t/q",title:e,width:460,height:330})}<div class="lan-endpoint"><b>Composed LAN at 10/6/8</b><span>UpSPA ${Ie[n].upspa.at(-1).toFixed(3)} ms</span><span>RoUpSPA ${Ie[n].roupspa.at(-1).toFixed(3)} ms</span></div></article>`}const Ad=[["Registration",[3.723,3.869,4.75,6.737]],["Secret update",[11.241,3.852,4.852,6.855]],["Password update",[29.176,8.254,8.22,8.61]]],Pd=["Quorum / ABD","Signed PBB","Authorized PBB","Local chain"],ia=["#164a7b","#0b8f8c","#d17722","#7b61a8"];function xd(){return`<div class="grouped-endpoints"><div class="endpoint-key">${Pd.map((e,t)=>`<span style="--key:${ia[t]}">${e}</span>`).join("")}</div>${Ad.map(([e,t])=>`<article><h3>${e}</h3><div>${t.map((s,i)=>`<span class="endpoint-bar${e==="Password update"&&i===0?" label-inside":" label-above"}" style="--h:${s/30*100}%;--bar:${ia[i]}"><i>${s.toFixed(3)}</i></span>`).join("")}</div></article>`).join("")}</div>`}const Rd=[["Contract deployment","1,356,750","$81.405"],["Direct registration","123,619","$7.417"],["Direct secret update","51,173","$3.070"],["Direct password update","51,169","$3.070"]],_d=[["8","93,637","11,704.625","$0.7023"],["32","93,643","2,926.344","$0.1756"],["128","93,661","731.727","$0.0439"]];function Td(){return`<div class="gas-layout"><article><h3>Direct receipt medians</h3><table class="evidence-table"><thead><tr><th>Operation</th><th>gasUsed</th><th>Illustrative USD</th></tr></thead><tbody>${Rd.map(n=>`<tr>${n.map(e=>`<td>${e}</td>`).join("")}</tr>`).join("")}</tbody></table></article><article><h3>Merkle publication batching</h3><table class="evidence-table"><thead><tr><th>Batch</th><th>Publish gas</th><th>Gas / record</th><th>USD / record</th></tr></thead><tbody>${_d.map(n=>`<tr>${n.map(e=>`<td>${e}</td>`).join("")}</tr>`).join("")}</tbody></table><div class="batch-drop"><strong>16× lower</strong><span>per-record publication cost</span><small>B = 8 → 128 · 93.75% reduction</small></div></article></div><div class="gas-scenario"><b>Illustrative conversion only</b><span>20 gwei · ETH/USD = $3,000 · replace with presentation-time market inputs</span><span>All 91 archived local-Anvil receipts succeeded.</span></div>`}const Ud={title:{navLabel:"Title",sectionKey:"title",sectionLabel:"Title",layout:"raw",body:'<div class="slide-shell title-stage"><div class="title-copy"><div class="section-kicker">MSc thesis defense</div><h1>{{config.title}}</h1><p class="program">Master of Science in {{config.program}}</p><div class="identity aligned"><div><strong>{{config.presenterFormalName}}</strong><span>Candidate</span></div><div><strong>{{config.advisor}}</strong><span>Advisor</span></div></div><div class="title-date">{{config.institution}} · {{config.defenseDate}}</div></div><div class="title-visual" aria-label="Institutional affiliations"><div class="title-rings"><i></i><i></i><i></i><strong>SPA</strong></div><div class="title-logos"><img src="assets/koc-logo.png" alt="Koç University logo"><img src="assets/ku-crypto.png" alt="Koç University Cryptography, Security, and Privacy Research Group logo"><img src="assets/tubitak.png" alt="TÜBİTAK logo"></div></div></div>'},"problem-research-question":{navLabel:"Research questions",sectionKey:"problem",sectionLabel:"Problem",kicker:"Research questions",title:"Three research questions define the thesis",body:'<div class="research-questions three"><article><b>RQ1</b><p>Can one memorable password support many independent services without exposing the password to login servers?</p></article><article><b>RQ2</b><p>Can service credentials and the master password be updated efficiently without rebuilding every account?</p></article><article><b>RQ3</b><p>Can resilience be added so phases keep making progress when some parties are temporarily unavailable?</p></article></div><div class="rq-map"><span><b>RQ1</b> SPA / TSPA</span><span><b>RQ2</b> UpSPA</span><span><b>RQ3</b> RoUpSPA</span></div>'},"lineage-overview":{navLabel:"Evolution",sectionKey:"lineage",sectionLabel:"SPA lineage",kicker:"Evolution of SPA",title:"The research line adds one missing capability at a time",body:'<div class="lineage-cards compact"><article><b>2013 · Computer Networks</b><h3>SPA</h3><p>Single Password Authentication</p><small>One password, separate helper</small><div class="portrait-row"><img src="assets/tolga-acar.jpg" alt="Tolga Acar"><img src="assets/mira-belenkiy.jpg" alt="Mira Belenkiy"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><em>Acar¹ · Belenkiy¹ · Küpçü²</em></article><article><b>2017 · DPM</b><h3>TSPA</h3><p>Threshold Single Password Authentication</p><small>Threshold-distributed helper</small><div class="portrait-row"><img src="assets/devris-isler.jpg" alt="Devriş İşler"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><em>İşler² · Küpçü²</em></article><article><b>2026 · ePrint 2026/784 · WPES submitted</b><h3>UpSPA</h3><p>Updatable Single Password Authentication</p><small>Native secret and password updates</small><div class="portrait-row"><img src="assets/devris-isler.jpg" alt="Devriş İşler"><img src="assets/reza-saadi.jpg" alt="Reza Saadi"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><em>İşler³ · Saadi² · Küpçü²</em></article><article><b>2026 · ACM TOPS submitted manuscript</b><h3>RoUpSPA</h3><p>Robust Updatable Single Password Authentication</p><small>Quorum completion and stale repair</small><div class="portrait-row"><img src="assets/reza-saadi.jpg" alt="Reza Saadi"><img src="assets/devris-isler.jpg" alt="Devriş İşler"><img src="assets/alptekin-kupcu.jpg" alt="Alptekin Küpçü"></div><em>Saadi² · İşler³ · Küpçü²</em></article></div><div class="affiliation-footnote">(1) Microsoft, (2) Koç University, (3) IMDEA Institute.</div>'},"upspa-setup":{navLabel:"Setup",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Setup",title:"Setup creates the threshold identification record at every provider",body:`<p class="lead compact-lead">Setup initializes provider-held TOPRF material and the encrypted identification record.</p>${xr("assets/upspa-setup-source.png","UpSPA setup protocol source figure")}`},"upspa-toprf":{navLabel:"TOPRF interaction",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Password-private threshold evaluation",title:"TOPRF derives the password key without revealing the password",body:String.raw`<div class="toprf-flow"><article><b>1 · Blind</b><h3>User</h3><p>Blinds \(pwd\) and sends the blinded input to available providers.</p></article><i>→</i><article><b>2 · Evaluate</b><h3>Providers</h3><p>Each \(SP_i\) uses only its share \(k_i\) and returns a partial evaluation.</p></article><i>→</i><article><b>3 · Aggregate</b><h3>User</h3><p>Combines at least \(t_{sp}\) valid partial evaluations.</p></article><i>→</i><article><b>4 · Finalize</b><h3>Output</h3><p>Unblinds and finalizes \(F_K(pwd)\).</p></article></div><div class="privacy-boundary"><strong>Provider view</strong><span>No provider learns \(pwd\) or the final output \(F_K(pwd)\).</span><b>Threshold rule: \(|S|\ge t_{sp}\)</b></div>`},"aux-toprf-concrete":{navLabel:"2D-DDH TOPRF example",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"Aux · Concrete TOPRF example",title:"A 2D-DDH-style OPRF/PRF evaluation, step by step",body:String.raw`<div class="concrete-toprf"><article><b>Blind</b><p>Map \(pwd\) to \(X=H_1(pwd)\), choose \(r\ne0\), and send \(B=X^r\).</p></article><article><b>Partial evaluations</b><p>Provider \(i\) returns \(Z_i=B^{k_i}\) using only its key share.</p></article><article><b>Threshold combine</b><p>For \(|S|\ge t_{sp}\), compute \(Z=\prod_{i\in S} Z_i^{\lambda_i}=B^K\).</p></article><article><b>Unblind + finalize</b><p>Compute \(Y=Z^{r^{-1}}=H_1(pwd)^K\), then \(F_K(pwd)=H_2(pwd,Y)\).</p></article></div><div class="assumption-note"><b>Security intuition</b><span>The blind exponent hides the user input; the threshold shares prevent fewer than \(t_{sp}\) providers from evaluating the full PRF. The 2D-DDH assumption supports pseudorandomness for this group-based example.</span></div>`},"upspa-identification":{navLabel:"Identification",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Reusable opening step",title:"Identification",body:`${Pr({mode:"detailed"})}<div class="safe-failure">FAIL, fewer than \\(t_{sp}\\) valid provider responses, TOPRF failure, or authenticated-decryption failure stops the phase.</div>`},"upspa-registration":{navLabel:"Registration",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Registration",title:"Registration commits provider records only after login-server acceptance",body:`${Ze(Xe.upspa,[Ye({number:1}),{number:2,from:"user",to:"user",local:!0,label:"Sample \\(R^{ls_j}\\); set \\(ctr_{ac}=0\\); derive \\(SUid_{l,i,j}=H(R^{sp}\\|ls_j\\|i)\\)"},{number:3,from:"user",to:"user",local:!0,label:"\\(c_j=Enc_{K_0}(R^{ls_j}\\|ctr_{ac})\\); \\(vInfo_j=H(R^{ls_j}\\|ls_j)\\)"},{number:4,from:"user",to:"sp",label:"Pending \\(\\langle SUid_{l,i,j},c_j\\rangle\\)",state:"pending"},{number:5,from:"sp",to:"user",label:"OK / FAIL (all \\(n_{sp}\\))"},{number:6,from:"user",to:"ls",label:"Register \\(\\langle Uid,vInfo_j\\rangle\\)"},{number:7,from:"ls",to:"user",label:"OK / FAIL"},{number:8,from:"user",to:"sp",label:"Store if accepted · Discard otherwise",state:"committed"},{number:9,from:"sp",to:"user",label:"Final OK / FAIL (all \\(n_{sp}\\))"}],"")}${ge("Registration commits provider records only after login-server acceptance.")}`},"upspa-authentication":{navLabel:"Authentication",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Authentication",title:"Authentication reconstructs the service credential without sending the password",body:`${Ze(Xe.upspa,[Ye({number:1}),{number:2,from:"user",to:"user",local:!0,label:"Derive \\(SUid_{l,i,j}=H(R^{sp}\\|ls_j\\|i)\\)"},{number:3,from:"user",to:"sp",label:"Request committed account record under \\(SUid_{l,i,j}\\)"},{number:4,from:"sp",to:"user",label:"\\(c_j\\) or FAIL"},{number:5,from:"user",to:"user",local:!0,label:"Authenticated-decrypt candidates; select valid maximum \\(ctr_{ac}\\)"},{number:6,from:"user",to:"user",local:!0,label:"\\(vInfo'_{j}=H(R^{ls_j}\\|ls_j)\\)"},{number:7,from:"user",to:"ls",label:"\\(\\langle Uid,vInfo'_{j}\\rangle\\)"},{number:8,from:"ls",to:"user",label:"OK / FAIL"}],"")}${ge("Authentication reconstructs the service credential without sending the password.")}`},"upspa-secret-update":{navLabel:"Secret update",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Secret update",title:"Secret update rotates one login-server credential",body:`${Ze(Xe.upspa,[Ye({number:1}),{number:2,from:"user",to:"sp",label:"Request account record under derived \\(SUid_{l,i,j}\\)"},{number:3,from:"sp",to:"user",label:"\\(c_j\\) or FAIL (committed only)"},{number:4,from:"user",to:"user",local:!0,label:"Decrypt; select maximum \\(ctr_{ac}\\); sample \\(R^{ls_j}_{new}\\); compute old/new \\(vInfo\\)"},{number:5,from:"user",to:"user",local:!0,label:"\\(ctr'_{ac}=(ctr_{ac})_{max}+1\\); \\(c_{j,new}=Enc_{K_0}(R^{ls_j}_{new}\\|ctr'_{ac})\\)"},{number:6,from:"user",to:"sp",label:"Pending \\(\\langle SUid_{l,i,j},c_{j,new}\\rangle\\)",state:"pending"},{number:7,from:"sp",to:"user",label:"OK / FAIL (all \\(n_{sp}\\))"},{number:8,from:"user",to:"ls",label:"\\(\\langle Uid,vInfo'_{j},vInfo_{j,new}\\rangle\\)"},{number:9,from:"ls",to:"user",label:"OK / FAIL"},{number:10,from:"user",to:"sp",label:"Store / Discard",state:"committed"},{number:11,from:"sp",to:"user",label:"Final OK / FAIL (all \\(n_{sp}\\))"}],"")}${ge("Secret update rotates one service credential without changing the master password.")}`},"upspa-password-update":{navLabel:"Password update",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Password update",title:"Password update replaces the master-opening material - not every account",body:`${Ze(Xe.password,[Ye({number:1,oldPassword:!0}),{number:2,from:"user",to:"user",local:!0,label:"\\((K_{new},\\{k_{i,new}\\}_{i\\in[n_{sp}]})\\leftarrow TOPRFGen(1^\\lambda,n_{sp},t_{sp})\\)"},{number:3,from:"user",to:"user",local:!0,label:"\\(c_{id,new}\\leftarrow Enc_{F_{K_{new}}(pwd_{new})}(ssk\\|R^{sp}\\|K_0)\\)"},{number:4,from:"user",to:"user",local:!0,label:"\\(sig_i=Sign_{ssk}(Uid\\|c_{id,new}\\|k_{i,new}\\|time\\|i)\\)"},{number:5,from:"user",to:"sp",label:"Pending \\(\\langle Uid,sig_i,c_{id,new},k_{i,new},time,i\\rangle\\)",state:"pending"},{number:6,from:"sp",to:"user",label:"OK / FAIL (all \\(n_{sp}\\))"},{number:7,from:"user",to:"sp",label:"Store / Discard",state:"committed"},{number:8,from:"sp",to:"user",label:"Final OK / FAIL (all \\(n_{sp}\\))"}],"")}${ge("Password update changes provider-side master-opening material without contacting login servers.")}`},"upspa-design-challenges":{navLabel:"Update obligations",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Security obligations",title:"Updates add binding and consistency obligations",body:'<div class="obligation-grid"><article><b>01 · State binding</b><p>Hidden identifiers bind each record to its family and service domain.</p><span>Identifiers</span></article><article><b>02 · Password-update authorization</b><p>Only the legitimate user can replace the identification record.</p><span>Signatures</span></article><article><b>03 · Freshness</b><p>New state must advance beyond, not replay, an older account record.</p><span>Counters</span></article><article><b>04 · Terminal decision</b><p>Every staged write ends in one explicit final state.</p><span>Store / Discard</span></article></div>'},"upspa-challenge-mechanisms":{navLabel:"Challenges → mechanisms",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Design rationale",title:"Each design challenge has an explicit mechanism",body:'<table class="mechanism-table"><thead><tr><th>Challenge</th><th>Mechanism</th></tr></thead><tbody><tr><td>Prevent an offline dictionary predicate</td><td>Random-looking plaintext under password-derived authenticated encryption</td></tr><tr><td>Avoid login-server password exposure</td><td>Login server stores only \\(vInfo_j\\)</td></tr><tr><td>Bind an account to its service</td><td>Domain-bound \\(H(R^{ls_j}\\|ls_j)\\)</td></tr><tr><td>Bind a user to its account</td><td>Provider-side \\(SUid_{l,i,j}\\) derived from \\(R^{sp}\\) and the service domain</td></tr><tr><td>Authorize replacement of the identification record</td><td>Phase-bound \\(ssk/svk\\) signature</td></tr><tr><td>Avoid partial writes</td><td>Pending state followed by Store / Discard</td></tr></tbody></table>'},"upspa-proof-waterfall":{navLabel:"Hybrid proof waterfall",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"UpSPA · Security proof",title:"G₀–G₄ remove protected structure one layer at a time",body:String.raw`<div class="proof-chain"><article><b>G₀</b><h3>Stopped real execution</h3><p>Run the real phases on real inputs and stop if a separately bounded bad event occurs.</p></article><i>↓</i><article><b>G₁</b><h3>TOPRF PRF replacement</h3><p>Replace honest-receiver TOPRF outputs and transcripts with random-function-consistent values.</p></article><i>↓</i><article><b>G₂</b><h3>Identification plaintext replacement</h3><p>Replace the protected identification plaintext in \(c_{id}\) by an equal-length dummy value.</p></article><i>↓</i><article><b>G₃</b><h3>Account plaintext replacement</h3><p>Replace honest account-record plaintexts by equal-length dummy values.</p></article><i>↓</i><article><b>G₄</b><h3>Ideal functionality + simulator</h3><p>Generate the same visible outcomes from \(\mathcal F_{UpSPA}\) and simulator-maintained logical state.</p></article></div><div class="proof-separation"><b>Accounted outside the hybrids</b><span>signature forgery · hash collision · authenticated-encryption integrity/key-binding failure · online password guesses</span></div>`},"aux-upspa-hybrid-g1":{navLabel:"G₀ → G₁ details",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"Aux · UpSPA proof details",title:"G₁ replaces the TOPRF view with one random function",body:String.raw`<div class="proof-detail-grid"><article><b>Random-function game</b><p>Sample one consistent random function \(R\) and replace every honest receiver output \(F_K(pwd^*)\) by \(R(pwd^*)\).</p></article><article><b>Encryption key</b><p>Use \(R(pwd^*)\) as the master-record encryption key in place of the real TOPRF output.</p></article><article><b>Transcript simulation</b><p>Simulate the honest-receiver interaction while preserving abort and result behavior.</p></article><article><b>Reduction</b><p>A distinguisher between G₀ and G₁ yields a distinguisher against TOPRF receiver-side PRF security and receiver-input obliviousness.</p></article></div>`},"aux-upspa-hybrid-g2-g3":{navLabel:"G₂ → G₃ details",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"Aux · UpSPA proof details",title:"G₂ and G₃ apply IND-CPA to each protected plaintext class",body:String.raw`<div class="proof-detail-grid two"><article><b>G₂ · Identification ciphertexts</b><p>Replace \(ssk\|R^{sp}\|K_0\) by a random string of the same length under the corresponding \(R(pwd^*)\) key.</p><small>Setup and password-update keys remain independent instances.</small></article><article><b>G₃ · Account ciphertexts</b><p>Replace each honest \(R^{ls_j}\|ctr_{ac}\) plaintext under \(K_0\) by an equal-length dummy string, one ciphertext at a time.</p><small>The logical record table still determines the visible phase result.</small></article></div><div class="assumption-note"><b>Integrity boundary</b><span>AE integrity and key binding keep malformed ciphertexts from changing simulated accept/reject behavior; IND-CPA hides only the plaintext contents.</span></div>`},"backup-upspa-advantage-bound":{navLabel:"UpSPA advantage bound",sectionKey:"upspa",sectionLabel:"UpSPA",kicker:"Aux · UpSPA final advantage bound",title:"The final bound separates TOPRF, identification, and account privacy",body:String.raw`<div class="final-bound"><div>\[\operatorname{Adv}_{real/ideal}\le \operatorname{Adv}_{TOPRF}^{prf}+q_{dec}\operatorname{Adv}_{AE,id}^{ind-cpa}+q_{ac}\operatorname{Adv}_{AE,ac}^{ind-cpa}\]</div><p>All query counts are polynomial; each term is negligible under the stated primitive assumption.</p></div>`},"roupspa-quorum-intersection":{navLabel:"Quorum intersection",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Safety",title:"Every write quorum meets a later read quorum in honest evidence",body:String.raw`<div class="intersection-layout exact"><div class="venn"><span>W</span><span>R</span><strong><i class="honest-sp-marker">✓</i><em>honest SP<br>evidence</em></strong></div><div><div class="equation-box">\[\lvert W\cap R\rvert\ge 2q_{sp}-n_{sp}>t_{sp}-1\]</div><ol><li>\(W\): the \(q_{sp}\) providers that acknowledged the committed record.</li><li>\(R\): a later \(q_{sp}\)-provider read or synchronization quorum.</li><li>The overlap is larger than the corrupt set, so it contains an honest SP.</li><li>The largest-valid-counter rule carries the latest committed evidence forward.</li></ol><p class="intersection-rule">Signatures authorize; counters order; quorum intersection preserves evidence.</p></div></div>`},"roupspa-registration":{navLabel:"Registration",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Registration",title:"RoUpSPA prepares the login server, then completes a durable write quorum",body:`${Ze(Xe.upspa,[Ye({number:1,resilient:!0}),{number:2,from:"user",to:"user",local:!0,label:"\\(SUid_{l,j}=H(R^{sp}\\|ls_j)\\); sample \\(R^{ls_j}\\); set \\(ctr_{ac}=0\\); build \\(c_j,vInfo_j\\)"},{number:3,from:"user",to:"user",local:!0,label:"\\(\\sigma_j=Sign_{ssk}(Uid\\|SUid_{l,j}\\|c_j\\|ctr_{ac})\\)"},{number:4,from:"user",to:"ls",label:"\\(\\langle Prepare,Uid,vInfo_j\\rangle\\)",state:"pending"},{number:5,from:"ls",to:"user",label:"OK / FAIL (tentative at \\(LS_j\\))"},{number:6,from:"user",to:"sp",label:"\\(\\langle Uid,SUid_{l,j},c_j,ctr_{ac},\\sigma_j\\rangle\\)"},{number:7,from:"sp",to:"user",label:"\\(q_{sp}\\) matching durable acknowledgements",state:"committed"},{number:8,from:"user",to:"ls",label:"\\(\\langle Store,Uid,vInfo_j\\rangle\\)",state:"committed"}],"")}<div class="terminal-rule"><b>Discard rule</b><span>Discard is allowed only before the first provider-write request. After writing begins, retransmit the identical signed tuple until quorum or remain unresolved.</span></div>`},"roupspa-phase-semantics":{navLabel:"Completion semantics",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Completion contract",title:"State changes use two precise completion patterns",body:String.raw`<div class="completion-patterns"><article><h3>Registration / Secret Update</h3><ol><li>Prepare tentative verifier at \(LS_j\).</li><li>Install one phase-signed exact-counter record at providers.</li><li>Collect \(q_{sp}\) matching durable acknowledgements.</li><li>Send matching terminal Store to \(LS_j\).</li></ol></article><article><h3>Password Update</h3><ol><li>Create one signed exact-next identification-record replacement.</li><li>Providers retain the replacement tentatively.</li><li>Collect \(q_{sp}\) matching tentative acknowledgements.</li><li>Send matching terminal Store to providers.</li></ol></article></div><div class="terminal-rule"><b>Interrupted phase</b><span>Discard is a pre-write abort. Once provider writing begins, the phase retransmits the identical tuple or remains unresolved; no later phase starts for that record family.</span></div>`},"roupspa-synchronization":{navLabel:"Synchronization & repair",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Recovery",title:"Synchronization copies the freshest signed ciphertext",body:`<div class="replica-repair"><div class="replicas old"><b>Before read</b><span>SP₁ · v</span><span>SP₂ · v+1</span><span>SP₃ · v+1</span><span>SP₄ · v</span><span>SP₅ · v+1</span></div><div class="repair-core"><strong>Read quorum</strong><p>verify signatures<br>compare counters<br>select maximum valid version</p><b>v+1</b></div><div class="replicas repaired"><b>After repair</b><span>SP₁ · v+1</span><span>SP₂ · v+1</span><span>SP₃ · v+1</span><span>SP₄ · v+1</span><span>SP₅ · v+1</span></div></div>${ge("A provider that misses a completed write can later repair from quorum evidence.")}`},"roupspa-quorum-recovery":{navLabel:"Quorum recovery figure",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Quorum recovery",title:"A stale provider recovers the freshest valid signed record",body:`${he("assets/roupspa-quorum-recovery.png","RoUpSPA quorum synchronization and stale-replica recovery figure","")}`},"roupspa-secret-update":{navLabel:"Secret update",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Secret update",title:"Secret update binds the exact-next counter before quorum storage",body:`${Ze(Xe.upspa,[Ye({number:1,resilient:!0}),{number:2,from:"user",to:"sp",label:"Request active account record under derived \\(SUid_{l,j}\\)"},{number:3,from:"sp",to:"user",label:"\\(c_j\\) or FAIL"},{number:4,from:"user",to:"user",local:!0,label:"Decrypt; select \\(ctr_{ac,max}\\); build \\(c_{j,new},vInfo'_j,vInfo_{j,new}\\) with \\(ctr'_{ac}=ctr_{ac,max}+1\\)"},{number:5,from:"user",to:"user",local:!0,label:"\\(\\sigma_j=Sign_{ssk}(Uid\\|SUid_{l,j}\\|c_{j,new}\\|ctr'_{ac})\\)"},{number:6,from:"user",to:"ls",label:"\\(\\langle Prepare,Uid,vInfo'_j,vInfo_{j,new}\\rangle\\)",state:"pending"},{number:7,from:"ls",to:"user",label:"OK / FAIL (tentative at \\(LS_j\\))"},{number:8,from:"user",to:"sp",label:"\\(\\langle Uid,SUid_{l,j},c_{j,new},ctr'_{ac},\\sigma_j\\rangle\\)"},{number:9,from:"sp",to:"user",label:"\\(q_{sp}\\) matching durable acknowledgements",state:"committed"},{number:10,from:"user",to:"ls",label:"\\(\\langle Store,Uid,vInfo'_j,vInfo_{j,new}\\rangle\\)",state:"committed"}],"")}<div class="terminal-rule"><b>One-account scope</b><span>Pre-write Discard is allowed; after the first provider write, only the identical signed replacement may be retransmitted until quorum.</span></div>`},"roupspa-password-update":{navLabel:"Password update",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Password update",title:"Password update re-protects the identification record under the new password",body:`${Ze(Xe.password,[Ye({number:1,oldPassword:!0,resilient:!0}),kd({number:2,password:"pwd_{new}",sameShares:!0}),{number:3,from:"user",to:"user",local:!0,label:"\\(ctr'_{id}=ctr_{id}+1\\); \\(c_{id,new}=Enc_{F_K(pwd_{new})}(ssk\\|R^{sp}\\|K_0\\|ctr'_{id})\\)"},{number:4,from:"user",to:"user",local:!0,label:"\\(sig=Sign_{ssk}(Uid\\|c_{id,new}\\|ctr'_{id})\\)"},{number:5,from:"user",to:"sp",label:"\\(\\langle Uid,sig,c_{id,new},ctr'_{id}\\rangle\\) (tentative)",state:"pending"},{number:6,from:"sp",to:"user",label:"\\(q_{sp}\\) matching tentative acknowledgements"},{number:7,from:"user",to:"sp",label:"Store after \\(q_{sp}\\) matching acknowledgements",state:"committed"}],"")}<div class="terminal-rule"><b>No login-server interaction</b><span>Discard is only a pre-write abort. After the first provider transmission, retransmit the identical signed tuple until quorum or remain unresolved. Store promotes the matching tentative record; no final acknowledgement follows.</span></div>`},"roupspa-authorized-records":{navLabel:"Authorized state",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · State validity",title:"Signed records authorize change; terminal messages finalize it",body:`<div class="authorized-state"><article><h3>Signed replacement record</h3><div class="record-payload"><span>family identifier</span><span>encrypted payload</span><span>counter / version</span><span>phase + domain</span><strong>signature under \\(ssk\\)</strong></div><p>Signatures authorize replacement. Counters order valid records.</p></article><div class="terminal-switch"><span class="store">Store</span><i>or</i><span class="discard">Discard</span></div><article><h3>Terminal decision</h3><div class="state-outcomes"><span>Store → committed</span><span>Discard → pending removed</span><span>Missing terminal evidence → not completed</span></div><p>Quorum visibility does not itself authorize state.</p></article></div>${ge("Quorum alone is not authorization; signed records and terminal messages define valid state.")}`},"aux-roupspa-quorum-consistency":{navLabel:"Quorum theorem",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"Aux · RoUpSPA quorum consistency theorem",title:"Quorum consistency and recovery correctness",body:String.raw`<div class="theorem-card"><b>Theorem</b><p>Assume fewer than \(t_{sp}\) storage providers are corrupted; \(2q_{sp}-n_{sp}>t_{sp}-1\); and honest providers store only valid records, never decrease counters, and acknowledge only after storage.</p><p>Writes and reads require \(q_{sp}\) providers, and reads choose the valid record with the largest counter. If \(rec^*\) is the latest committed valid record before a successful read or recovery, then the returned \(rec\) satisfies \(ctr_{rec}\ge ctr_{rec^*}\).</p></div>`},"aux-roupspa-quorum-proof":{navLabel:"Quorum proof sketch",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"Aux · Quorum proof sketch",title:"One honest intersection member carries committed evidence forward",body:String.raw`<div class="proof-steps"><article><b>1</b><p>For write quorum \(W\) and later read quorum \(R\), \(\lvert W\cap R\rvert\ge2q_{sp}-n_{sp}>t_{sp}-1\).</p></article><article><b>2</b><p>Therefore \(W\cap R\) contains at least one honest provider.</p></article><article><b>3</b><p>After acknowledging \(rec^*\), that provider never stores a smaller counter.</p></article><article><b>4</b><p>Thus \(R\) contains a valid record with counter at least \(ctr_{rec^*}\).</p></article><article><b>5</b><p>Selecting the largest valid counter prevents rollback.</p></article></div>`},"aux-roupspa-no-rollback":{navLabel:"No rollback / divergence",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"Aux · RoUpSPA corollaries",title:"Committed records cannot roll back or diverge at one counter",body:String.raw`<div class="corollary-grid"><article><b>Corollary · No rollback</b><p>A successful read or recovery cannot return a record older than the latest committed valid record.</p></article><article><b>Corollary · No divergent committed records</b><p>Two distinct valid records with the same counter cannot both commit: their write quorums intersect in an honest provider, which acknowledges at most one valid record per account and counter.</p></article></div>`},"aux-roupspa-authorization-checks":{navLabel:"Authorization checks",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"Aux · Authorization checks",title:"Routing identifies a record; signatures and counters authorize replacement",body:String.raw`<div class="authorization-checks"><article><b>Route</b><p>\(SUid_{l,j}\) identifies and routes the account family. Knowledge of it does not authorize a write.</p></article><article><b>Authorize</b><p>The phase-specific signature binds \(Uid\), the family, ciphertext, and exact-next counter.</p></article><article><b>Freshness</b><p>An honest provider accepts only the expected next counter and never rolls a counter back.</p></article><article><b>Reject</b><p>Malformed or stale records are ignored unless every record, counter, quorum, synchronization, and authorization check passes.</p></article></div>`},"roupspa-threat-and-boundary":{navLabel:"Safety boundary",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Claim boundary",title:"Safety and progress depend on different response thresholds",body:String.raw`<div class="safety-liveness"><div class="safety"><h3>Completed-state safety</h3><ul><li>Phase-bound signatures and exact-next counters authorize writes.</li><li>Quorum intersection preserves honest committed evidence.</li><li>The largest-valid-counter rule prevents rollback.</li></ul></div><div class="liveness"><h3>Conditional progress</h3><ul><li>Authentication needs at least \(t_{sp}\) valid ACTIVE responses.</li><li>State changes and synchronization need at least \(q_{sp}\) responses.</li><li>Too many unavailable parties or an unresolved write can stop progress.</li></ul></div></div><div class="claim danger">Not claimed: Byzantine consensus, a general BFT storage protocol, or cross-family distributed transactions.</div>`},"roupspa-liveness":{navLabel:"Liveness scope",sectionKey:"roupspa",sectionLabel:"RoUpSPA",kicker:"RoUpSPA · Liveness",title:"RoUpSPA provides conditional progress—not Byzantine consensus",body:String.raw`<div class="liveness-matrix"><article><b>Authentication</b><strong>≥ \(t_{sp}\)</strong><p>Valid ACTIVE provider responses. Read-only; no repair or write-back.</p></article><article><b>Registration / Secret Update</b><strong>≥ \(q_{sp}\)</strong><p>Matching durable provider acknowledgements, then the matching login-server Store.</p></article><article><b>Password Update</b><strong>≥ \(q_{sp}\)</strong><p>Matching tentative acknowledgements, then provider-side Store.</p></article><article><b>Synchronization</b><strong>≥ \(q_{sp}\)</strong><p>Valid responses; verify signatures and select the largest valid counter.</p></article></div><div class="not-consensus"><b>Availability boundary</b><span>A state-changing phase tolerates at most \(n_{sp}-q_{sp}\) unavailable providers. The quorum condition is a consistency rule, not a consensus protocol.</span></div>`},"implementation-architecture-method":{navLabel:"Implementation architecture",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Implementation",title:"The prototype separates protocol, cryptography, and measurement surfaces",body:`<div class="implementation-pipeline"><article><b>Browser / client</b><span>phase orchestration</span></article><i></i><article><b>Rust crypto core</b><span>TOPRF · AE · signatures · hashes</span></article><i></i><article><b>Provider API</b><span>records · counters · quorum state</span></article><i></i><article><b>Login-server API</b><span>verifier and Prepare / terminal decisions</span></article><i></i><article><b>Benchmark harness</b><span>timing boundary · network configuration</span></article></div>${ge("Protocol logic, cryptographic operations, and deployment measurement remain independently inspectable.")}`},"results-upspa-tspa":{navLabel:"UpSPA / TSPA performance",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Client-side measurements",title:"Update support adds protocol work while client costs remain practical",body:`<div class="dual-charts"><article>${oe({labels:We,series:Gn,yMax:.65,yLabel:"Client time (ms)",xLabel:"Threshold tₛₚ",title:"Registration and authentication",width:700,height:470})}</article><article>${oe({labels:We,series:Qn,yMax:1,yLabel:"Client time (ms)",xLabel:"Threshold tₛₚ",title:"Setup and update phases",width:700,height:470})}</article></div>${ge("At fixed nₛₚ = 30, measured client-side work grows with the threshold; updateability remains below 1 ms across the retained grid.")}`},"backup-upspa-tspa-charts":{navLabel:"Fixed nₛₚ = 30 LAN charts",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Aux · Evaluation · LAN",title:"LAN latency grows with tₛₚ at fixed nₛₚ = 30",body:`<div class="dual-charts"><article>${oe({labels:We,series:ql,yMax:2.5,yLabel:"LAN p50 (ms)",xLabel:"Threshold tₛₚ",title:"Registration and authentication",width:700,height:470})}</article><article>${oe({labels:We,series:Ol,yMax:2.5,yLabel:"LAN p50 (ms)",xLabel:"Threshold tₛₚ",title:"Setup and update phases",width:700,height:470})}</article></div>${ge("These LAN medians are separate from the client-only measurements on the main slide.")}`},"results-threshold-sso-comparison":{navLabel:"Comparison boundary",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Interpretation boundary",title:"UpSPA, PAS-TA-U, and AugSSO answer different system questions",body:'<div class="comparison-boundary"><article><h3>UpSPA</h3><b>SPA lifecycle</b><p>Independent service verifier, secret rotation, and master-password update.</p><small>Rust prototype · SPA trust model</small></article><article><h3>PAS-TA-U</h3><b>Threshold authentication</b><p>Password update inside a token/identity-provider authentication setting.</p><small>Different semantics and trusted roles</small><a class="comparison-detail-link" href="#/aux-pastau-threshold-token-generation">PAS-TA-U protocols →</a></article><article><h3>AugSSO</h3><b>Threshold SSO</b><p>Popular-password collection and key renewal in a single-sign-on setting.</p><small>Different functionality and environment</small><a class="comparison-detail-link" href="#/aux-augsso-registration">AugSSO protocols →</a></article></div><div class="boundary-callout">The benchmark is informative about measured executable cost - it is not a one-to-one replacement claim.</div>'},"results-upspa-roupspa":{navLabel:"Coordination stages",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Coordination semantics",title:"RoUpSPA adds coordination only where state changes",body:`<table class="coordination-table"><thead><tr><th>Phase</th><th>Protocol coordination</th><th>LS interaction?</th><th>\\(q_{sp}\\) write?</th><th>Store / Discard implemented in prototype?</th></tr></thead><tbody><tr><td>Authentication</td><td>Read ACTIVE replicas</td><td>Yes · ordinary verify</td><td>No</td><td>N/A</td></tr><tr><td>Registration</td><td>Prepare + quorum durability</td><td>Yes</td><td>Yes</td><td><strong class="not-implemented">No · not implemented</strong></td></tr><tr><td>Secret update</td><td>Prepare + quorum durability</td><td>Yes</td><td>Yes</td><td><strong class="not-implemented">No · not implemented</strong></td></tr><tr><td>Password update</td><td>Signed versioned identification record</td><td>No</td><td>Yes</td><td><strong class="not-implemented">No · not implemented</strong></td></tr></tbody></table>${ge("The protocol defines terminal handling; the measured prototype models its control-flow stage but does not execute database-backed Store / Discard handlers.")}`},"results-upspa-roupspa-charts":{navLabel:"UpSPA / RoUpSPA charts",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Resilience cost",title:"RoUpSPA adds measurable resilience cost while practical configurations remain visible",body:`<div class="triple-mini-charts">${bn("registration","Registration")}${bn("secret","Secret update")}${bn("password","Password update")}</div><div class="chart-callout">Low-threshold configurations remain deployable.</div>`},"results-backends":{navLabel:"Backend endpoints",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · nₛₚ = 100",title:"Backend cost depends strongly on phase at nₛₚ = 100",body:`${xd()}<p class="chart-note">Complete local p50 · milliseconds · \\(q_{sp}=\\lceil 0.8n_{sp}\\rceil\\)</p>${ge("Endpoint choice changes the cost profile, especially for synchronized update phases.")}`},"results-backend-scaling":{navLabel:"Backend scaling",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Resilient storage backends",title:"Password-update scaling depends on the synchronization backend",body:`<div class="wide-chart">${oe({labels:Jn,series:Yn,yMax:32,yLabel:"Complete local p50 (ms)",xLabel:"nₛₚ",title:"Password-update endpoint scaling",width:1380,height:540})}</div>${ge("The quorum path diverges most at scale; append-only and chain-backed paths have different operational trade-offs.")}`},"results-evm-gas":{navLabel:"EVM gas & batching",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Receipt-level EVM evidence",title:"Batching cuts per-record publication cost by 16×",body:`${Td()}`},"results-key-takeaways":{navLabel:"Engineering conclusions",sectionKey:"results",sectionLabel:"Implementation & results",kicker:"Evaluation · Synthesis",title:"Three engineering conclusions survive every evidence boundary",body:'<div class="engineering-conclusions"><article><b>01</b><h3>Coordination dominates</h3><p>Core cryptographic operations are small compared with network and deployment coordination.</p></article><article><b>02</b><h3>Update scopes stay clean</h3><p>UpSPA separates one-service secret rotation from master-password replacement.</p></article><article><b>03</b><h3>Resilience has a visible price</h3><p>RoUpSPA trades added coordination for partial availability and stale-replica repair.</p></article></div>'},"conclusion-contributions":{navLabel:"Contributions",sectionKey:"conclusion",sectionLabel:"Conclusions",kicker:"Contributions",title:"The thesis moves SPA from authentication-only to an updateable, resilient lifecycle",body:'<div class="contribution-blocks"><article><b>01 · UpSPA</b><h3>Update-enabled threshold SPA</h3><p>Native secret rotation and master-password replacement without rebuilding every account.</p></article><article><b>02 · RoUpSPA</b><h3>Quorum-based robust lifecycle</h3><p>Versioned signed records, durable completion, and stale-replica repair.</p></article><article><b>03 · Evidence</b><h3>Prototype and evaluation</h3><p>Executable comparisons, backend trade-offs, and receipt-level gas measurements.</p></article></div>'},"conclusion-limitations-future":{navLabel:"Future work",sectionKey:"conclusion",sectionLabel:"Conclusions",kicker:"Future work",title:"The next step is deployment robustness under stronger adversaries",body:'<div class="future-grid"><article><b>Asynchronous completion</b><p>Stronger fault-tolerant completion and recovery models.</p></article><article><b>Endpoint recovery</b><p>Compromise detection, credential recovery, and trusted-client hardening.</p></article><article><b>Deployment study</b><p>Broader multi-region measurements and user studies.</p></article><article><b>Mobile / browser</b><p>Hardened extensions, secure storage, and platform integration.</p></article><article><b>Post-quantum path</b><p>Evaluate practical post-quantum or hybrid primitives where relevant.</p></article></div>'},"conclusion-publications":{navLabel:"Publications",sectionKey:"conclusion",sectionLabel:"Conclusions",kicker:"Research outputs",title:"The work is represented by public and submitted manuscripts",body:'<div class="publication-list cleaned"><article class="publication"><span class="pub-num">1</span><div><strong>Secure and Updatable Single Password Authentication</strong><span>Devriş İşler · Reza Saadi · Alptekin Küpçü</span></div><em>ePrint 2026/784<br>WPES submitted</em></article><article class="publication"><span class="pub-num">2</span><div><strong>RoUpSPA: Robust Updatable Single Password Authentication</strong><span>Reza Saadi · Devriş İşler · Alptekin Küpçü</span></div><em>ACM TOPS<br>submitted manuscript</em></article><article class="publication"><span class="pub-num">3</span><div><strong>Secure Single Password Authentication Protocols in Distributed Systems</strong><span>Reza Saadi · MSc thesis</span></div><em>Koç University<br>2026</em></article></div>'},"thank-you":{navLabel:"Questions",sectionKey:"questions",sectionLabel:"Q&A",layout:"raw",body:'<div class="slide-shell closing-stage"><p>Secure Single Password Authentication Protocols in Distributed Systems</p><h2>Thank you</h2><strong>Questions?</strong><span>Reza Saadi · Koç University</span></div>'},"backup-spa-paper-figure":{navLabel:"SPA paper figure",sectionKey:"lineage",sectionLabel:"SPA lineage",kicker:"Aux · SPA source figure",title:"Original SPA registration and authentication figure",body:`${he("assets/spa-paper-figure.png","SPA registration and authentication source figure","")}`},"aux-tspa-registration":{navLabel:"TSPA registration source figure",sectionKey:"lineage",sectionLabel:"SPA lineage",kicker:"Aux · TSPA source figure",title:"TSPA Registration",body:`${he("assets/tspa-registration-figure.png","TSPA registration source figure","")}`},"aux-tspa-authentication":{navLabel:"TSPA authentication source figure",sectionKey:"lineage",sectionLabel:"SPA lineage",kicker:"Aux · TSPA source figure",title:"TSPA Authentication",body:`${he("assets/tspa-authentication-figure.png","TSPA authentication source figure","")}`},"backup-upspa-registration-full":{navLabel:"Full registration figure",kicker:"Aux · UpSPA source figure",title:"UpSPA Registration — Full protocol",body:`${he("assets/upspa-registration-source.png","UpSPA registration protocol source figure","")}`},"backup-upspa-authentication-full":{navLabel:"Full authentication figure",kicker:"Aux · UpSPA source figure",title:"UpSPA Authentication — Full protocol",body:`${he("assets/upspa-authentication-source.png","UpSPA authentication protocol source figure","")}`},"backup-upspa-secret-update-full":{navLabel:"Full secret-update figure",kicker:"Aux · UpSPA source figure",title:"UpSPA Secret Update — Full protocol",body:`${he("assets/upspa-secret-update-source.png","UpSPA secret-update protocol source figure","")}`},"backup-upspa-password-update-full":{navLabel:"Full password-update figure",kicker:"Aux · UpSPA source figure",title:"UpSPA Password Update — Full protocol",body:`${he("assets/upspa-password-update-source.png","UpSPA password-update protocol source figure","")}`},"backup-roupspa-setup-full":{navLabel:"Full setup figure",kicker:"Aux · RoUpSPA source figure",title:"RoUpSPA Setup — Full protocol",body:`${he("assets/roupspa-setup-source.png","RoUpSPA setup protocol source figure","")}`},"backup-roupspa-registration-full":{navLabel:"Full registration figure",kicker:"Aux · RoUpSPA source figure",title:"RoUpSPA registration - full protocol figure",body:`${he("assets/roupspa-registration-updated.png","RoUpSPA registration protocol source figure","")}`},"backup-roupspa-synchronization-full":{navLabel:"Full synchronization figure",kicker:"Aux · RoUpSPA recovery",title:"RoUpSPA synchronization and quorum recovery",body:`${he("assets/roupspa-quorum-recovery.png","RoUpSPA quorum recovery figure","")}`},"backup-roupspa-secret-update-full":{navLabel:"Full secret-update figure",kicker:"Aux · RoUpSPA source figure",title:"RoUpSPA secret update - full protocol figure",body:`${he("assets/roupspa-secretupdate-updated.png","RoUpSPA secret-update protocol source figure","")}`},"backup-roupspa-password-update-full":{navLabel:"Full password-update figure",kicker:"Aux · RoUpSPA source figure",title:"RoUpSPA password update - full protocol figure",body:`${he("assets/roupspa-passwordupdate-updated.png","RoUpSPA password-update protocol source figure","")}`}},aa=Ks.parse(Rl),ra=Ks.parse(_l),oa=Ks.parse(Tl),la=Ks.parse(Ul),ca=oa.slides||oa,Ed=aa.slides||aa,Ld=new Map(Ed.map(n=>[n.id,n]));function En(n){return typeof n=="string"?n.replace(/\bBACKUP\b|\bBackup\b/g,"Aux"):Array.isArray(n)?n.map(En):n&&typeof n=="object"?Object.fromEntries(Object.entries(n).map(([e,t])=>[e,En(t)])):n}const Ws=(ra.slides||ra).map(n=>{const e=n.sourceId||n.id,t=Ld.get(e);if(!t)throw new Error(`Unknown sourceId in web route: ${e}`);const s=Ud[n.id]||ca[n.id]||ca[e],i=s?{...t,...n,...s,content:s,title:s.title||n.title||t.title}:{...t,...n};return i.route==="core"?(delete i.originId,delete i.returnTarget):n.originId&&(i.returnTarget=n.originId),En(i)}),Cd=new Map(Ws.map(n=>[n.id,n])),Rr={title:["Title","#0b8f8c"],problem:["Problem","#b84d4d"],lineage:["SPA lineage","#68788a"],upspa:["UpSPA","#0b8f8c"],roupspa:["RoUpSPA","#7b61a8"],alternatives:["Synchronization alternatives","#d17722"],results:["Implementation & results","#164a7b"],conclusion:["Conclusions","#3f7b5a"],genealogy:["Genealogy","#68788a"],questions:["Q&A","#0b8f8c"]};function Pe(n=""){return String(n).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;")}function jt(n){if(n.sectionKey)return n.sectionKey;if(n.route==="backup"){const t=Cd.get(n.originId||n.returnTarget);if(t)return jt(t)}return{title:"title","password-problem":"problem","spa-lineage":"lineage",upspa:"upspa",roupspa:"roupspa",alternatives:"alternatives","implementation-results":"results",conclusion:n.id==="academic-genealogy"?"genealogy":n.id==="thank-you"?"questions":"conclusion"}[n.section]||"conclusion"}function ei(n){return n.sectionLabel||Rr[jt(n)]?.[0]||n.section}function ti(n){return Rr[jt(n)]?.[1]||"#164a7b"}function Nd(n){const e=n.speakerNotes||{},t=e.cues||[],s=n.sourceRefs||[];return`<aside class="notes">
+Estimated time: ${n.estimatedSeconds||0} seconds
+
+Main point: ${Pe(e.main||n.title)}
+
+${t.map(i=>`- ${Pe(i)}`).join(`
+`)}
+
+Transition: ${Pe(e.transition||"")}
+
+Skip option: ${Pe(e.skip||"Do not skip.")}
+
+Possible jury question: ${Pe(e.jury||"—")}
+
+Answer pointer: ${Pe(e.pointer||"—")}
+
+[Sources]
+${s.map(i=>`- ${Pe(i)}`).join(`
+`)}
+  </aside>`}function yn(n){const e=jt(n),t=document.createElement("section");t.id=n.id,t.dataset.route=n.route,t.dataset.sectionGroup=e,t.dataset.sectionLabel=ei(n),t.dataset.estimatedSeconds=n.estimatedSeconds||0,t.dataset.originId=n.originId||n.returnTarget||"",t.classList.add(`${e}-slide`),n.route==="backup"&&t.classList.add("backup-slide"),t.style.setProperty("--section-color",ti(n));const s=n.content?yd(n,la):n.route==="backup"?vd(n.id,n):Tc(n.id,n,la),i='<div class="global-logo-strip" aria-label="Affiliations"><img src="assets/koc-logo.png" alt="Koç University"><img src="assets/ku-crypto.png" alt="Koç University Cryptography, Security, and Privacy Research Group"><img src="assets/tubitak.png" alt="TÜBİTAK"></div>';if(t.innerHTML=`${s}${i}${Nd(n)}`,t.querySelectorAll(".return-link").forEach(a=>a.remove()),n.route==="backup"){const a=t.querySelector("h2");if(a){const o=a.innerHTML.trim().replace(/^\s*(?:BACKUP|Backup|AUX|Aux)\s*(?:[·—:\-]\s*)?/i,"");a.innerHTML=`AUX · ${o}`}const r=t.querySelector(".section-kicker");if(r&&/\b(?:AUX|BACKUP)\b/i.test(r.textContent||"")){const o=(r.textContent||"").replace(/^\s*(?:BACKUP|Backup|AUX|Aux)\s*(?:[·—:\-]\s*)?/i,"").trim();o?r.textContent=o:r.remove()}}return t}const es=Ws.filter(n=>n.route==="core"),Id=new Set(es.map(n=>n.id)),si=new Map(es.map(n=>[n.id,[]])),Ln=[];for(const n of Ws.filter(e=>e.route==="backup")){const e=n.originId||n.returnTarget;!e||!Id.has(e)?Ln.push(n):si.get(e).push(n)}function $d(){if(Ln.length)throw new Error(`Aux slides need a valid main originId/returnTarget: ${Ln.map(e=>e.id).join(", ")}`);const n=document.getElementById("slides");for(const e of es){const t=si.get(e.id)||[];if(!t.length){n.append(yn(e));continue}const s=document.createElement("section");s.className="stack",s.dataset.sectionGroup=jt(e),s.dataset.sectionLabel=ei(e),s.style.setProperty("--section-color",ti(e));const i=yn(e);i.classList.add("has-backups"),s.append(i),t.forEach(a=>s.append(yn(a))),n.append(s)}}function _r(){const n=[];for(const e of es){const t=jt(e);let s=n.find(i=>i.key===t);s||(s={key:t,label:ei(e),color:ti(e),slides:[]},n.push(s)),s.slides.push(e)}return n}function qd(){const n=document.getElementById("roadmap"),e=_r();n.style.gridTemplateColumns=`repeat(${e.length}, minmax(0,1fr))`;const t=s=>({alternatives:"Sync",results:"Results"})[s.key]||s.label;n.innerHTML=e.map(s=>`<a href="#/${s.slides[0].id}" data-group="${s.key}" style="--roadmap-color:${s.color}">${Pe(t(s))}</a>`).join("")}function Od(){const n=_r(),e=document.createElement("nav");e.className="waterfall-nav",e.setAttribute("aria-label","Slide navigator");const t=(r="")=>String(r).replace(/^\s*(?:BACKUP|AUX)\s*(?:[·—:\-]\s*)?/i,"");e.innerHTML=`<button class="waterfall-trigger" type="button" aria-expanded="false" aria-controls="waterfall-panel"><span>Deck map</span><i aria-hidden="true">⌄</i></button><div class="waterfall-panel" id="waterfall-panel">${n.map(r=>`<section class="waterfall-section" data-group="${r.key}" style="--section-color:${r.color}"><a class="waterfall-section-link" href="#/${r.slides[0].id}">${Pe(r.label)}</a><div>${r.slides.map(o=>{const l=si.get(o.id)||[];return`<div class="waterfall-branch"><a class="waterfall-core" data-slide-id="${o.id}" href="#/${o.id}">${Pe(o.navLabel||o.title)}</a>${l.length?`<div class="waterfall-details">${l.map((c,h)=>`<span class="waterfall-detail" data-slide-id="${c.id}" data-parent-id="${o.id}">${h+1}. ${Pe(t(c.navLabel||c.title))}</span>`).join("")}</div>`:""}</div>`}).join("")}</div></section>`).join("")}</div>`,document.body.append(e);const s=e.querySelector(".waterfall-trigger"),i=e.querySelector(".waterfall-panel");i.inert=!0;const a=(r=!1)=>{e.classList.remove("open"),s.setAttribute("aria-expanded","false"),i.inert=!0,r&&s.focus()};s.addEventListener("click",()=>{const r=e.classList.toggle("open");s.setAttribute("aria-expanded",String(r)),i.inert=!r}),e.querySelectorAll("a").forEach(r=>r.addEventListener("click",()=>a(!1))),document.addEventListener("keydown",r=>{r.key==="Escape"&&e.classList.contains("open")&&(r.preventDefault(),r.stopImmediatePropagation(),a(!0))}),document.addEventListener("pointerdown",r=>{e.contains(r.target)||a()})}function jd(n){if(!n)return;const e=n.dataset.sectionGroup||n.parentElement?.dataset.sectionGroup||"",t=n.id,s=n.dataset.originId||t;document.querySelectorAll("#roadmap a").forEach(a=>a.classList.toggle("active",a.dataset.group===e)),document.querySelectorAll(".waterfall-section").forEach(a=>a.classList.toggle("active",a.dataset.group===e)),document.querySelectorAll(".waterfall-core").forEach(a=>{const r=a.dataset.slideId===s;a.classList.toggle("active",r),r?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")}),document.querySelectorAll(".waterfall-detail").forEach(a=>a.classList.toggle("active",a.dataset.slideId===t)),document.querySelector(`.waterfall-nav [data-slide-id="${CSS.escape(t)}"]`)?.scrollIntoView({block:"nearest"}),document.body.dataset.currentSection=e}$d();qd();Od();const da=es.reduce((n,e)=>n+Number(e.estimatedSeconds||0),0);da>2340&&console.warn(`Core route is ${(da/60).toFixed(1)} minutes; target is at most 39.0 minutes.`);const Bd=new URL("mathjax/tex-chtml.js",document.baseURI).href;let ne,yt;function Tr(n){const e=ne.getHorizontalSlides()[n],t=e?.querySelectorAll(":scope > section")||[];return t.length?[...t]:[e]}function Ae(n){const{h:e=0,v:t=0}=ne.getIndices();if(t===0){const i=ne.availableFragments();if(n>0&&i.next){ne.nextFragment();return}if(n<0&&i.prev){ne.prevFragment();return}}const s=e+n;s>=0&&s<ne.getHorizontalSlides().length&&ne.slide(s,0)}function xt(n){const{h:e=0,v:t=0}=ne.getIndices(),s=Tr(e),i=t+n;i>=0&&i<s.length&&ne.slide(e,i)}function Md(){const n=document.createElement("nav");return n.className="flow-controls",n.setAttribute("aria-label","Slide flow controls"),n.innerHTML='<div class="flow-pad"><button type="button" data-flow="up" aria-label="Previous vertical slide" aria-keyshortcuts="ArrowUp K">↑</button><button type="button" data-flow="left" aria-label="Previous horizontal slide" aria-keyshortcuts="ArrowLeft H">←</button><button type="button" data-flow="down" aria-label="Next vertical slide" aria-keyshortcuts="ArrowDown J">↓</button><button type="button" data-flow="right" aria-label="Next horizontal slide" aria-keyshortcuts="ArrowRight L">→</button></div>',document.body.append(n),n.querySelector('[data-flow="left"]').addEventListener("click",()=>Ae(-1)),n.querySelector('[data-flow="right"]').addEventListener("click",()=>Ae(1)),n.querySelector('[data-flow="up"]').addEventListener("click",()=>xt(-1)),n.querySelector('[data-flow="down"]').addEventListener("click",()=>xt(1)),n}function Fd(){if(!yt)return;const{h:n=0,v:e=0}=ne.getIndices(),t=Tr(n);yt.querySelector('[data-flow="left"]').disabled=n===0,yt.querySelector('[data-flow="right"]').disabled=n>=ne.getHorizontalSlides().length-1,yt.querySelector('[data-flow="up"]').disabled=e===0,yt.querySelector('[data-flow="down"]').disabled=e>=t.length-1}yt=Md();ne=new Fe({width:1600,height:900,margin:0,minScale:.2,maxScale:2,hash:!0,history:!0,center:!1,controls:!1,controlsTutorial:!1,progress:!0,slideNumber:!1,transition:"fade",transitionSpeed:"fast",backgroundTransition:"fade",navigationMode:"default",touch:!1,keyboard:{37:()=>Ae(-1),39:()=>Ae(1),38:()=>xt(-1),40:()=>xt(1),72:()=>Ae(-1),76:()=>Ae(1),75:()=>xt(-1),74:()=>xt(1),33:()=>Ae(-1),34:()=>Ae(1),78:()=>Ae(1),80:()=>Ae(-1),32:n=>Ae(n?.shiftKey?-1:1)},pdfSeparateFragments:!1,plugins:[mo,fo,vo.MathJax3],mathjax3:{mathjax:Bd,tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]],macros:El},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}}});window.Reveal=ne;window.__DECK_META__=Ws;const Vs=n=>{jd(n.currentSlide||ne.getCurrentSlide()),Fd()};ne.on("ready",Vs);ne.on("slidechanged",Vs);ne.on("fragmentshown",Vs);ne.on("fragmenthidden",Vs);ne.initialize();
+//# sourceMappingURL=index-BDfIb6ZM.js.map
