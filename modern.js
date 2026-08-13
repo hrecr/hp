@@ -159,7 +159,7 @@ function configureProfileLinks(site) {
   setHref('btnLinkedIn', normalizeUrl(links.linkedin || ''));
   setHref('btnScholar', normalizeUrl(links.googleScholar || ''));
   setHref('btnOrcid', normalizeUrl(links.orcid || ''));
-  setHref('btnCVShort', links.cvShortPdf || 'resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf');
+  setHref('btnCVShort', links.cvShortPdf || 'resume/CV_Short.pdf');
 
   const email = site.email || '';
   const emailLink = byId('heroEmail');

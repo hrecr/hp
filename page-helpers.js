@@ -29,7 +29,7 @@ const ROOT_LINKS = [
   ['Publications', 'publications/'],
   ['Projects', 'projects/'],
   ['Teaching', 'teaching/'],
-  ['CV', 'resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf'],
+  ['CV', 'resume/CV_Short.pdf'],
   ['Contact', 'contact/']
 ];
 

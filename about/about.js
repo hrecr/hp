@@ -47,8 +47,8 @@ async function init() {
   el('bio').textContent = site?.bio || '';
   renderHighlights(site?.highlights || []);
   renderSkills(site?.skills || {});
-  setHref('btnCVLong', site?.links?.cvLongPdf ? `../${site.links.cvLongPdf.replace(/^\.\.\//, '')}` : '../resume/HamidReza-Saadi-Dadmarzi-CV-long.pdf');
-  setHref('btnCVShort', site?.links?.cvShortPdf ? `../${site.links.cvShortPdf.replace(/^\.\.\//, '')}` : '../resume/HamidReza-Saadi-Dadmarzi-CV-short.pdf');
+  setHref('btnCVLong', site?.links?.cvLongPdf ? `../${site.links.cvLongPdf.replace(/^\.\.\//, '')}` : '../resume/CV_Long.pdf');
+  setHref('btnCVShort', site?.links?.cvShortPdf ? `../${site.links.cvShortPdf.replace(/^\.\.\//, '')}` : '../resume/CV_Short.pdf');
   attachReveal();
 }
 
